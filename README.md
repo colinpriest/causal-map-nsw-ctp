@@ -29,7 +29,7 @@ expert's stated claim. Edges without evidence are not drawn.
 | [`causal/ctp_reviewed_dag.html`](causal/ctp_reviewed_dag.html) | Self-contained interactive graph. Click an edge for its provision quote or tested mechanism; click a node for parents, children and statistics. |
 | [`causal/provenance/banded_graph.json`](causal/provenance/banded_graph.json) | The assembled graph: edges, evidence per edge, roles, violations, cycle breaks. |
 | [`ctp/dictionary.md`](ctp/dictionary.md) | Data dictionary, generated from [`ctp/columns.yaml`](ctp/columns.yaml). |
-| [`docs/ordinals-review.md`](docs/ordinals-review.md) | **What the eight ordinal columns actually measure** — two of them partly encode which Act applied, and all six elicited edges involve one of those two. |
+| [`docs/ordinals-review.md`](docs/ordinals-review.md) | **What the eight ordinal columns actually measure** — only two recover as the construct they are named for. |
 | [`causal/ctp_tabpfn_dml_map.html`](causal/ctp_tabpfn_dml_map.html) | The competing analysis: DoubleML + TabPFN-3 effect sizes, naive vs DAG adjustment. |
 | [`docs/LLM-elicited-vs-TabPFN-causal.md`](docs/LLM-elicited-vs-TabPFN-causal.md) | **The two approaches compared.** Changing only the adjustment set flips two treatments' sign. |
 | `causal/provenance/*.json` | Every intermediate result, including the LLM request/response cache. |
@@ -126,26 +126,20 @@ settled by measurement instead — see below.
 
 ## What is known to be unresolved
 
-- **Two ordinals partly encode which Act applied.** `Causation Complexity` recovers as
-  "the legislative framework under which claims are assessed" (ρ=+0.291 with is-MACA-1999,
-  p=5e-12); `Legal Procedural Complexity` is worse at +0.304, with all 30 old-regime cases
-  landing in a single level. **All six elicited edges involve one of these two columns.**
-  Injury date is not in `ctp.csv` and so cannot be adjusted for. See
-  [`docs/ordinals-review.md`](docs/ordinals-review.md).
 - **Only two of eight ordinals recover as the construct they are named for.** Three recover
   as "the type of damages being claimed" rather than injury severity, treatment extent or
-  lost capacity.
-- **Reliability varies widely.** `Work Impact Severity` κ=0.72; `Treatment Burden` κ=0.28
-  with 24% exact agreement, which survives being measured against the recovered rubric and
-  is therefore real unreliability. 19 of 28 pairs survive a change of coder; 1 is a
-  confirmed coder artefact.
+  lost capacity. The names promise more than the codings deliver — see
+  [`docs/ordinals-review.md`](docs/ordinals-review.md).
+- **One association is a coder halo.** Of 28 pairs of reader-assigned columns, 19 survive
+  being crossed between two independent readers and 1 does not: `Injury Burden Intensity ~
+  Legal Procedural Complexity`, survival 0.14. Stage 9 drops any edge resting on it.
 - **The statutory leg detects gates, limits and scope; it does not find everything.**
   Five links from 102 provisions read.
-- **`reasoned_prior_path` evidence is weak** and some path labels are incoherent, where a
-  backwards leg was reversed independently of the path it came from.
-- **The original rubric for the ordinal columns is not recorded anywhere**, so stage 7's
-  scale descriptions are reconstructed and its disagreement mixes unreliability with
-  rubric drift.
+- **`reasoned_prior_path` is the weakest evidence class and carries 17 of 36 edges.** It
+  records that a model named a mediator, nothing more.
+- **The original rubric for the ordinal columns was never recorded.** Stage 12 recovers what
+  the coder appears to have responded to, from the codings themselves — but that reproduces
+  the coder's behaviour, not the instructions it was given.
 - **Two instruments block automated retrieval** (`legislation.nsw.gov.au`, `austlii.edu.au`
   — Cloudflare, and AustLII's `robots.txt` names `ClaudeBot`). Statute is read from locally
   saved files, identified by content rather than filename.

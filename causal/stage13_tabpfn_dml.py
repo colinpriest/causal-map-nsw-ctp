@@ -68,6 +68,7 @@ import pandas as pd
 warnings.filterwarnings("ignore")
 
 HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE))   # stage15 helper
 ROOT = HERE.parent
 CSV = ROOT / "ctp" / "ctp.csv"
 GRAPH = HERE / "provenance" / "banded_graph.json"
@@ -138,6 +139,21 @@ def dag_parents() -> dict[str, list[str]]:
 
 def run(dml, data, treatment, covars, learners, n_rep):
     import doubleml as dml_pkg
+    # An exogenous treatment has an EMPTY adjustment set, and DoubleML errors on an empty
+    # design matrix. That is the one case where no estimator is needed: the raw contrast is
+    # already the causal effect. stage15 owns that helper; reuse rather than reimplement.
+    if not covars:
+        from stage15_dag_effects import unadjusted
+        r = unadjusted(data, treatment, TARGET)
+        if "error" in r:
+            return None, r["error"]
+        # stage15 reports a scalar ATE for the top contrast; this stage's callers expect
+        # the per-level lists DoubleML returns. Reshape at the boundary rather than
+        # changing either side's natural shape.
+        shaped = dict(r, ate=[r["ate"]], ate_ci=[r["ci"]], ate_se=[r["se"] or 0.0],
+                      apo=[], apo_ci=[])
+        shaped.pop("ci", None)
+        return {name: dict(shaped) for name in learners}, None
     cols = [TARGET, treatment] + covars
     df = data[cols].dropna()
     levels = sorted(df[treatment].unique())
