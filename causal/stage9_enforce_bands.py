@@ -37,7 +37,7 @@ from __future__ import annotations
 
 import itertools
 import json
-from collections import defaultdict
+from collections import Counter, defaultdict
 
 import yaml
 from datetime import datetime, timezone
@@ -73,6 +73,10 @@ BANDS = [
 BAND_OF = {col: n for n, _, _, cols in BANDS for col in cols}
 # Unobserved: carried in the graph, never treated as data.
 LATENT = {"Psychological Injury"}
+# for reporting each edge under its STRONGEST evidence, not every class it has
+RANK_REPORT = {"elicited": 5, "statute": 4, "measurement": 4,
+               "reasoned_prior_tested": 2, "reasoned_prior_path": 1,
+               "reasoned_prior_common_cause": 1}
 # An indicator is caused by the thing it indicates. This is a measurement edge, not a
 # claim about the scheme, and it is asserted by the data dictionary.
 MEASURES = [("Psychological Injury", "Psychological Injury Emphasis")]
@@ -139,6 +143,23 @@ def main() -> int:
     def add(src, dst, cls, detail):
         if permitted(src, dst):
             e = edges.setdefault((src, dst), dict(source=src, target=dst, evidence=[]))
+            # An edge appearing as a leg in five different paths is ONE piece of support
+            # mentioned five times, not five reasons to believe it. Collapse them into a
+            # single entry that lists the paths, so the evidence count means what a reader
+            # takes it to mean.
+            if cls.endswith("_path"):
+                existing = next((v for v in e["evidence"]
+                                 if v["evidence_class"] == cls), None)
+                if existing:
+                    # an entry may predate this collapsing (e.g. added by another branch)
+                    existing.setdefault("paths", [existing.pop("path", None)])
+                    if detail.get("path") not in existing["paths"]:
+                        existing["paths"].append(detail.get("path"))
+                    existing["n_paths"] = len(existing["paths"])
+                    return
+                detail = dict(detail)
+                detail["paths"] = [detail.pop("path", None)]
+                detail["n_paths"] = 1
             e["evidence"].append(dict(evidence_class=cls, **detail))
             return
         # Evidence pointing backwards still establishes that the PAIR is related; only the
@@ -146,6 +167,24 @@ def main() -> int:
         # than discard it. WPI % -> Injury Burden Intensity came back at 100% agreement
         # from the reasoned priors, and it is backwards: injury burden is a fact of the
         # crash, WPI is a later assessment OF that burden. Reversed, it is correct.
+        # A backwards PATH leg refutes the path; it is never reversed. This check must
+        # come BEFORE the repeat-violation branch below, which also reverses -- leaving it
+        # after meant a path leg seen twice got reversed by that branch instead, which is
+        # how `Injury Burden Intensity -> Treatment Burden` ended up citing
+        # "Treatment Burden -> Injury Burden Intensity -> Lump Sum" as its support.
+        if cls.endswith("_path"):
+            for existing in violations:
+                if (existing.get("source"), existing.get("target"),
+                        existing.get("evidence_class")) == (src, dst, cls):
+                    existing["times_seen"] = existing.get("times_seen", 1) + 1
+                    return
+            violations.append(dict(
+                source=src, target=dst, evidence_class=cls, times_seen=1,
+                band_source=BAND_OF[src], band_target=BAND_OF[dst], detail=detail,
+                resolution="dropped: a leg of this path runs backwards, so the path claim "
+                           "is refuted rather than reversed"))
+            return
+
         # Each `indirect` path re-adds the same backwards edge, so the same violation was
         # logged six times. One row per (pair, evidence class), with a count.
         key = (src, dst, cls)
@@ -383,6 +422,10 @@ def main() -> int:
         n_ordered_pairs=len(ordered), n_permitted=len(allowed),
         n_forbidden=len(ordered) - len(allowed),
         n_edges=len(edges), n_violations=len(violations),
+        n_evidence_items=sum(len(e["evidence"]) for e in edges.values()),
+        edges_by_strongest_class=dict(sorted(Counter(
+            max((ev["evidence_class"] for ev in e["evidence"]),
+                key=lambda c: RANK_REPORT.get(c, 0)) for e in edges.values()).items())),
         roles=roles, roles_by_type=by_role,
         edges=sorted(edges.values(), key=lambda e: (BAND_OF[e["source"]],
                                                     BAND_OF[e["target"]])),

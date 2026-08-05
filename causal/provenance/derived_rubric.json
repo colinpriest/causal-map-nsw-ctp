@@ -1,0 +1,386 @@
+{
+  "generated_at": "2026-08-05T10:58:39+00:00",
+  "model": "gpt-4o",
+  "seed": 2026,
+  "chars_per_document": 2200,
+  "method": "For each ordinal, decisions the original coder placed at each level were sampled and shown to a model as unlabelled groups, in order. The model was told neither the column name nor what the levels mean, so it describes what the coder responded to rather than rationalising a label.",
+  "limitation": "This recovers what the original coder DID, not what it was told. A poor original rubric is reproduced faithfully. It removes rubric drift as a confound in stage 7; it does not validate any scale.",
+  "system_prompt": "You are reverse-engineering how a set of documents was sorted into groups.\n\nYou will see several groups of extracts from decided motor accident claims. Someone sorted them, and you are not told what the sorting criterion was, what the groups are called, or which end of any scale they represent. The groups are presented in the order the sorter used.\n\nFor each group, state what the documents in it have in common that the documents in the OTHER groups do not. Describe what is actually present in the text -- the injuries, the treatment, the argument -- rather than guessing at an abstract label. If two adjacent groups are not distinguishable from their contents, say so plainly: that is a finding about the sorting, not a failure on your part.",
+  "columns": {
+    "Injury Burden Intensity": {
+      "criterion": "The sorter appears to have been responding to the type of damages being claimed or approved in the settlement.",
+      "levels": {
+        "0": {
+          "description": "Documents in this group involve settlements where the primary focus is on economic loss, including past and future economic loss, with no significant mention of non-economic loss or severe injuries.",
+          "distinguishing": [
+            "Focus on economic loss, both past and future.",
+            "No significant mention of non-economic loss or severe injuries."
+          ]
+        },
+        "1": {
+          "description": "Documents in this group involve settlements with minor injuries and low settlement amounts, often with contributory negligence or minimal economic impact.",
+          "distinguishing": [
+            "Minor injuries with low settlement amounts.",
+            "Presence of contributory negligence or minimal economic impact."
+          ]
+        },
+        "2": {
+          "description": "Documents in this group involve settlements where non-economic loss is a significant component, often due to psychological injuries or high whole person impairment (WPI).",
+          "distinguishing": [
+            "Significant non-economic loss component.",
+            "Psychological injuries or high WPI."
+          ]
+        },
+        "3": {
+          "description": "Documents in this group involve settlements focused on non-economic loss for elderly claimants with serious injuries, often with high WPI and no economic loss claims due to retirement or age.",
+          "distinguishing": [
+            "Non-economic loss for elderly claimants with serious injuries.",
+            "High WPI and no economic loss claims due to retirement or age."
+          ]
+        },
+        "4": {
+          "description": "Documents in this group involve compensation to relatives claims, where the settlement is for financial dependency and loss of services following a fatal accident.",
+          "distinguishing": [
+            "Compensation to relatives claims.",
+            "Focus on financial dependency and loss of services following a fatal accident."
+          ]
+        }
+      },
+      "indistinguishable": [],
+      "notes": "",
+      "level_counts": {
+        "0": 8,
+        "1": 60,
+        "2": 314,
+        "3": 147,
+        "4": 11
+      },
+      "n_sampled_per_level": 6,
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "c42df86667d9b47dc9f6a431",
+        "cache": "miss",
+        "column": "Injury Burden Intensity",
+        "requested_at": "2026-08-05T10:58:11+00:00"
+      }
+    },
+    "Treatment Burden": {
+      "criterion": "The sorter appears to have been responding to the type of loss or damages being claimed or approved in the settlement.",
+      "levels": {
+        "0": {
+          "description": "Documents in this group involve settlements where the primary focus is on economic loss, with no entitlement to non-economic loss due to whole person impairment (WPI) being below 10%.",
+          "distinguishing": [
+            "Economic loss claims only",
+            "WPI below 10%",
+            "No non-economic loss entitlement"
+          ]
+        },
+        "1": {
+          "description": "Documents in this group involve settlements where non-economic loss is a significant component, often with high settlement amounts, and economic loss is either not claimed or not the primary focus.",
+          "distinguishing": [
+            "Non-economic loss claims",
+            "High settlement amounts",
+            "Economic loss not primary"
+          ]
+        },
+        "2": {
+          "description": "Documents in this group involve settlements where there is a mix of economic and non-economic loss claims, often with contributory negligence or complex causation issues.",
+          "distinguishing": [
+            "Mixed economic and non-economic loss",
+            "Contributory negligence",
+            "Complex causation issues"
+          ]
+        },
+        "3": {
+          "description": "Documents in this group involve settlements where non-economic loss is explicitly claimed and awarded, with clear evidence of injuries exceeding the 10% WPI threshold, often involving significant medical or psychological injuries.",
+          "distinguishing": [
+            "Non-economic loss awarded",
+            "WPI exceeds 10%",
+            "Significant medical/psychological injuries"
+          ]
+        }
+      },
+      "indistinguishable": [],
+      "notes": "",
+      "level_counts": {
+        "0": 32,
+        "1": 220,
+        "2": 241,
+        "3": 47
+      },
+      "n_sampled_per_level": 6,
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "7ac5acd39ecde792557d09f1",
+        "cache": "miss",
+        "column": "Treatment Burden",
+        "requested_at": "2026-08-05T10:58:15+00:00"
+      }
+    },
+    "Work Impact Severity": {
+      "criterion": "The sorter appears to have been responding to the type of damages being claimed and approved, specifically focusing on whether non-economic loss was included or not.",
+      "levels": {
+        "0": {
+          "description": "Documents where settlements include non-economic loss due to significant injuries or impairments, often with a whole person impairment (WPI) greater than 10%.",
+          "distinguishing": [
+            "Inclusion of non-economic loss in settlements",
+            "Significant injuries or impairments with WPI > 10%"
+          ]
+        },
+        "1": {
+          "description": "Documents where settlements are primarily for economic loss, with no entitlement to non-economic loss due to WPI being below 10%.",
+          "distinguishing": [
+            "Settlements focused on economic loss only",
+            "WPI below 10%, excluding non-economic loss"
+          ]
+        },
+        "2": {
+          "description": "Documents where settlements or damages assessments focus on economic loss, often with disputes about causation or the extent of economic loss, and no non-economic loss due to WPI below 10%.",
+          "distinguishing": [
+            "Focus on economic loss with disputes about causation",
+            "No non-economic loss due to WPI below 10%"
+          ]
+        },
+        "3": {
+          "description": "Documents where settlements or damages assessments include non-economic loss due to significant injuries or impairments, often with a high WPI or catastrophic injuries.",
+          "distinguishing": [
+            "Inclusion of non-economic loss due to significant or catastrophic injuries",
+            "High WPI or severe impact on life"
+          ]
+        }
+      },
+      "indistinguishable": [],
+      "notes": "The sorting criterion seems to focus on the presence or absence of non-economic loss in the settlements, with groups 1 and 4 including non-economic loss due to significant injuries, while groups 2 and 3 focus on economic loss without non-economic loss due to lower WPI.",
+      "level_counts": {
+        "0": 123,
+        "1": 123,
+        "2": 224,
+        "3": 70
+      },
+      "n_sampled_per_level": 6,
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "ef50c79c14669bf56c8d34f2",
+        "cache": "miss",
+        "column": "Work Impact Severity",
+        "requested_at": "2026-08-05T10:58:20+00:00"
+      }
+    },
+    "Legal Procedural Complexity": {
+      "criterion": "The sorter appears to have been responding to the complexity and severity of the injuries and the nature of the claims, particularly focusing on the presence of contributory negligence and the type of loss (economic vs non-economic).",
+      "levels": {
+        "0": {
+          "description": "Documents in this group involve settlements where there is a mix of economic and non-economic losses, often with contributory negligence or complex injury scenarios. These cases include serious injuries or fatalities, and settlements are approved as just, fair, and reasonable under the Motor Accident Injuries Act 2017.",
+          "distinguishing": [
+            "Presence of contributory negligence or complex injury scenarios.",
+            "Mix of economic and non-economic losses.",
+            "Serious injuries or fatalities."
+          ]
+        },
+        "1": {
+          "description": "Documents in this group involve settlements where there is a focus on economic loss, often with pre-existing conditions or contributory negligence affecting the settlement. These cases typically involve significant economic loss components and sometimes non-economic loss, but with clear economic implications.",
+          "distinguishing": [
+            "Focus on economic loss with pre-existing conditions or contributory negligence.",
+            "Significant economic loss components."
+          ]
+        },
+        "2": {
+          "description": "Documents in this group involve claims where liability is admitted, and the focus is on assessing damages for economic and non-economic loss without contributory negligence. These cases often involve clear admissions of liability and straightforward assessments of damages.",
+          "distinguishing": [
+            "Liability admitted without contributory negligence.",
+            "Focus on assessing damages for economic and non-economic loss."
+          ]
+        },
+        "3": {
+          "description": "Documents in this group involve complex assessments of damages with issues of exaggeration or no-fault determinations. These cases involve disputes over the extent of injuries or the fault in the accident, leading to complex legal determinations.",
+          "distinguishing": [
+            "Complex assessments of damages with exaggeration or no-fault determinations.",
+            "Disputes over the extent of injuries or fault."
+          ]
+        }
+      },
+      "indistinguishable": [],
+      "notes": "The groups are distinguished by the complexity of the legal issues involved, particularly around contributory negligence, the type of loss claimed, and the clarity of liability.",
+      "level_counts": {
+        "0": 306,
+        "1": 40,
+        "2": 192,
+        "3": 2
+      },
+      "n_sampled_per_level": 6,
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "cc8f1610fa4bd96a38934577",
+        "cache": "miss",
+        "column": "Legal Procedural Complexity",
+        "requested_at": "2026-08-05T10:58:24+00:00"
+      }
+    },
+    "Psychological Injury Emphasis": {
+      "criterion": "The sorter appears to have been responding to the presence and impact of psychological injuries and their role in the claims.",
+      "levels": {
+        "0": {
+          "description": "Documents in this group primarily involve claims where psychological injuries are either not present or not a significant factor in the assessment of damages. The focus is on physical injuries and economic loss, with some cases involving non-economic loss but not due to psychological factors.",
+          "distinguishing": [
+            "Absence or minimal mention of psychological injuries.",
+            "Focus on physical injuries and economic loss."
+          ]
+        },
+        "1": {
+          "description": "Documents in this group involve claims where psychological injuries are present but are not the primary focus. There is mention of psychological injuries, but they are not the central factor in the assessment of damages. Contributory negligence is also a common theme in this group.",
+          "distinguishing": [
+            "Presence of psychological injuries but not as the primary focus.",
+            "Contributory negligence is a common theme."
+          ]
+        },
+        "2": {
+          "description": "Documents in this group involve claims where psychological injuries are a significant factor in the assessment of damages. These cases often involve ongoing psychological symptoms that impact the claimant's capacity to work and their overall quality of life.",
+          "distinguishing": [
+            "Significant focus on psychological injuries and their impact.",
+            "Psychological injuries are central to the assessment of damages."
+          ]
+        }
+      },
+      "indistinguishable": [],
+      "notes": "",
+      "level_counts": {
+        "0": 220,
+        "1": 180,
+        "2": 140
+      },
+      "n_sampled_per_level": 6,
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "e9e4dc0e16ee87793211b132",
+        "cache": "miss",
+        "column": "Psychological Injury Emphasis",
+        "requested_at": "2026-08-05T10:58:28+00:00"
+      }
+    },
+    "Liability Clarity": {
+      "criterion": "The sorter appears to have been responding to the presence and degree of contributory negligence attributed to the claimant.",
+      "levels": {
+        "0": {
+          "description": "Documents where contributory negligence is a significant factor, often leading to a deduction in damages. These cases involve detailed discussions of the claimant's actions contributing to the accident, with percentages of contributory negligence often specified.",
+          "distinguishing": [
+            "Significant contributory negligence attributed to the claimant.",
+            "Detailed analysis of claimant's actions contributing to the accident.",
+            "Specific percentages of contributory negligence often mentioned."
+          ]
+        },
+        "1": {
+          "description": "Documents where contributory negligence is either minimal or not attributed to the claimant. These cases often involve discussions where the claimant's actions are justified or the insured's actions are primarily at fault.",
+          "distinguishing": [
+            "Minimal or no contributory negligence attributed to the claimant.",
+            "Focus on insured's fault or justification of claimant's actions."
+          ]
+        },
+        "2": {
+          "description": "Documents where liability is admitted by the insurer, and contributory negligence is not a factor. These cases focus on settlement approvals and the calculation of damages without discussing contributory negligence.",
+          "distinguishing": [
+            "Liability admitted by the insurer.",
+            "No discussion of contributory negligence.",
+            "Focus on settlement approvals and damages calculation."
+          ]
+        }
+      },
+      "indistinguishable": [],
+      "notes": "",
+      "level_counts": {
+        "0": 6,
+        "1": 38,
+        "2": 496
+      },
+      "n_sampled_per_level": 6,
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "dc2c2ca39ef70a617467e96f",
+        "cache": "miss",
+        "column": "Liability Clarity",
+        "requested_at": "2026-08-05T10:58:31+00:00"
+      }
+    },
+    "Causation Complexity": {
+      "criterion": "The sorting criterion appears to be the legislative framework under which the motor accident claims are assessed and settled.",
+      "levels": {
+        "0": {
+          "description": "Documents in this group involve claims assessed and settled under the Motor Accident Injuries Act 2017, specifically focusing on settlements approved under section 6.23(2)(b). These cases often involve discussions of non-economic loss, economic loss, and contributory negligence, with settlements requiring approval by the Commission.",
+          "distinguishing": [
+            "Settlements approved under section 6.23(2)(b) of the Motor Accident Injuries Act 2017.",
+            "Involvement of the Personal Injury Commission for settlement approval.",
+            "Discussion of non-economic and economic loss, and contributory negligence."
+          ]
+        },
+        "1": {
+          "description": "Documents in this group also involve claims under the Motor Accident Injuries Act 2017, but they focus on claims where the settlement is approved without specific mention of section 6.23(2)(b). These cases often involve significant injuries, non-economic loss, and economic loss, with settlements being deemed just, fair, and reasonable.",
+          "distinguishing": [
+            "Claims under the Motor Accident Injuries Act 2017 without specific focus on section 6.23(2)(b).",
+            "Significant injuries and discussions of non-economic and economic loss.",
+            "Settlements deemed just, fair, and reasonable."
+          ]
+        },
+        "2": {
+          "description": "Documents in this group involve claims assessed under the Motor Accidents Compensation Act 1999, focusing on damages assessment under section 94. These cases often involve discussions of non-economic loss, economic loss, and care needs, with specific mention of whole person impairment and statutory thresholds.",
+          "distinguishing": [
+            "Claims assessed under the Motor Accidents Compensation Act 1999, specifically section 94.",
+            "Focus on damages assessment, non-economic loss, and care needs.",
+            "Mention of whole person impairment and statutory thresholds."
+          ]
+        }
+      },
+      "indistinguishable": [],
+      "notes": "The groups are distinguished by the legislative framework and specific sections of the law under which the claims are assessed and settled.",
+      "level_counts": {
+        "0": 284,
+        "1": 172,
+        "2": 84
+      },
+      "n_sampled_per_level": 6,
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "696acf3f60b80ac44ef7971c",
+        "cache": "miss",
+        "column": "Causation Complexity",
+        "requested_at": "2026-08-05T10:58:36+00:00"
+      }
+    },
+    "Pre-existing Condition Salience": {
+      "criterion": "The sorter appears to have been responding to the presence or absence of entitlement to non-economic loss (NEL) based on whole person impairment (WPI) assessments.",
+      "levels": {
+        "0": {
+          "description": "Documents where claimants are entitled to non-economic loss due to a whole person impairment (WPI) greater than 10%.",
+          "distinguishing": [
+            "Entitlement to non-economic loss due to WPI > 10%"
+          ]
+        },
+        "1": {
+          "description": "Documents where claimants are entitled to non-economic loss, but the WPI is not explicitly stated as greater than 10%, or the entitlement is based on other factors such as age or specific injuries.",
+          "distinguishing": [
+            "Entitlement to non-economic loss without explicit WPI > 10%"
+          ]
+        },
+        "2": {
+          "description": "Documents where claimants are not entitled to non-economic loss, often due to a WPI assessment of less than 10%.",
+          "distinguishing": [
+            "No entitlement to non-economic loss due to WPI < 10%"
+          ]
+        }
+      },
+      "indistinguishable": [],
+      "notes": "The sorting criterion is based on the entitlement to non-economic loss, which is often linked to the whole person impairment percentage.",
+      "level_counts": {
+        "0": 228,
+        "1": 182,
+        "2": 130
+      },
+      "n_sampled_per_level": 6,
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "08ff823c0aa807937f4b2948",
+        "cache": "miss",
+        "column": "Pre-existing Condition Salience",
+        "requested_at": "2026-08-05T10:58:39+00:00"
+      }
+    }
+  }
+}

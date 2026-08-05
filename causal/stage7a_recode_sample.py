@@ -104,6 +104,28 @@ SCHEMA = {
 }
 
 
+RUBRIC = HERE / "provenance" / "derived_rubric.json"
+
+
+def scale_text(name: str, lo: int, hi: int, fallback: str) -> str:
+    """Prefer the RECOVERED rubric over the reconstructed description.
+
+    The original rubric was never recorded, so the first version of this stage invented
+    scale descriptions -- which meant its disagreement figures mixed genuine unreliability
+    with my reconstruction differing from what the original coder actually did. Stage 12
+    recovers what the coder was responding to at each level by showing a model the
+    decisions it placed there, unlabelled. Using that makes the re-code a reliability test.
+    """
+    if not RUBRIC.exists():
+        return fallback
+    doc = json.loads(RUBRIC.read_text(encoding="utf-8"))["columns"].get(name)
+    if not doc or doc.get("skipped") or not doc.get("levels"):
+        return fallback
+    parts = [f"{lvl}: {' '.join(v['description'].split())[:180]}"
+             for lvl, v in sorted(doc["levels"].items(), key=lambda kv: int(kv[0]))]
+    return "; ".join(parts)
+
+
 def source_text(row) -> str:
     parts = []
     for col in ("Catchwords", "Key Paragraphs"):
@@ -114,7 +136,8 @@ def source_text(row) -> str:
 
 
 def recode(client, model, case_id, text, refresh):
-    scales = "\n".join(f"  {k} ({lo}-{hi}): {desc}" for k, (lo, hi, desc) in SCALES.items())
+    scales = "\n".join(f"  {k} ({lo}-{hi}): {scale_text(k, lo, hi, desc)}"
+                       for k, (lo, hi, desc) in SCALES.items())
     user = (f"DECISION TEXT:\n{text}\n\n"
             f"Assign each score:\n{scales}")
     key = hashlib.sha256(json.dumps([model, SYSTEM, user, SCHEMA],
@@ -182,7 +205,9 @@ def main() -> int:
         n_skipped_short_text=skipped,
         source_fields=["Catchwords", "Key Paragraphs"], max_chars=MAX_CHARS,
         scales={k: dict(min=lo, max=hi, description=d) for k, (lo, hi, d) in SCALES.items()},
-        rubric_is_reconstructed=True,
+        rubric_is_reconstructed=not RUBRIC.exists(),
+        rubric_source=("recovered from the original codings by stage 12"
+                       if RUBRIC.exists() else "reconstructed by hand"),
         limitation=("The original coding rubric is not recorded in this repository. These "
                     "scale descriptions were reconstructed from column names and observed "
                     "ranges, so disagreement mixes unreliability with rubric drift. The "

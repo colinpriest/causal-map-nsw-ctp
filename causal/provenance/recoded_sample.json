@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-05T08:17:07+00:00",
+  "generated_at": "2026-08-05T11:03:40+00:00",
   "model": "gpt-4o",
   "seed": 2026,
   "n_requested": 100,
@@ -52,7 +52,8 @@
       "description": "how prominent a prior condition is in the decision: 0 absent, 2 central"
     }
   },
-  "rubric_is_reconstructed": true,
+  "rubric_is_reconstructed": false,
+  "rubric_source": "recovered from the original codings by stage 12",
   "limitation": "The original coding rubric is not recorded in this repository. These scale descriptions were reconstructed from column names and observed ranges, so disagreement mixes unreliability with rubric drift. The second reader is also a language model: independent in context and prompt, not in kind.",
   "system_prompt": "You are coding NSW motor accident decisions for a research dataset. Read the decision text supplied and assign each ordinal score from the text alone.\n\nScore each dimension INDEPENDENTLY. A decision describing a severe case will score high on some dimensions and not others: severe physical injury does not by itself imply a contested proceeding, a disputed liability, or a prominent psychological component. Judge each scale against its own definition and resist letting an overall impression of severity carry across the scales.\n\nIf the text does not support a judgement on a dimension, give the lowest score rather than guessing upward, and say so in `uncertain`.",
   "codings": [
@@ -72,9 +73,9 @@
         "Pre-existing Condition Salience": 2
       },
       "recoded": {
-        "Injury Burden Intensity": 1,
+        "Injury Burden Intensity": 0,
         "Treatment Burden": 0,
-        "Work Impact Severity": 2,
+        "Work Impact Severity": 1,
         "Legal Procedural Complexity": 0,
         "Psychological Injury Emphasis": 0,
         "Liability Clarity": 2,
@@ -84,11 +85,12 @@
       "recoder_uncertain": [
         "Injury Burden Intensity",
         "Treatment Burden",
+        "Legal Procedural Complexity",
         "Psychological Injury Emphasis",
         "Causation Complexity",
         "Pre-existing Condition Salience"
       ],
-      "prompt_sha256": "a0fe5aa1f97e2f0ecb90fc1d"
+      "prompt_sha256": "b5883e5e97fcb93691a914b5"
     },
     {
       "row_index": 21,
@@ -106,10 +108,10 @@
         "Pre-existing Condition Salience": 0
       },
       "recoded": {
-        "Injury Burden Intensity": 2,
-        "Treatment Burden": 1,
+        "Injury Burden Intensity": 1,
+        "Treatment Burden": 0,
         "Work Impact Severity": 2,
-        "Legal Procedural Complexity": 1,
+        "Legal Procedural Complexity": 2,
         "Psychological Injury Emphasis": 0,
         "Liability Clarity": 2,
         "Causation Complexity": 0,
@@ -117,11 +119,10 @@
       },
       "recoder_uncertain": [
         "Treatment Burden",
-        "Legal Procedural Complexity",
         "Causation Complexity",
         "Pre-existing Condition Salience"
       ],
-      "prompt_sha256": "a3caa55f574720ef9f5dc371"
+      "prompt_sha256": "5e6c6220b7cd2be1f5142917"
     },
     {
       "row_index": 29,
@@ -142,20 +143,14 @@
         "Injury Burden Intensity": 1,
         "Treatment Burden": 0,
         "Work Impact Severity": 1,
-        "Legal Procedural Complexity": 0,
+        "Legal Procedural Complexity": 2,
         "Psychological Injury Emphasis": 0,
         "Liability Clarity": 2,
         "Causation Complexity": 0,
-        "Pre-existing Condition Salience": 0
+        "Pre-existing Condition Salience": 2
       },
-      "recoder_uncertain": [
-        "Injury Burden Intensity",
-        "Treatment Burden",
-        "Work Impact Severity",
-        "Psychological Injury Emphasis",
-        "Pre-existing Condition Salience"
-      ],
-      "prompt_sha256": "21722463ea9248b33c25cc25"
+      "recoder_uncertain": [],
+      "prompt_sha256": "688000458d2d97f678efa7c6"
     },
     {
       "row_index": 30,
@@ -175,8 +170,8 @@
       "recoded": {
         "Injury Burden Intensity": 0,
         "Treatment Burden": 0,
-        "Work Impact Severity": 2,
-        "Legal Procedural Complexity": 0,
+        "Work Impact Severity": 1,
+        "Legal Procedural Complexity": 1,
         "Psychological Injury Emphasis": 0,
         "Liability Clarity": 2,
         "Causation Complexity": 0,
@@ -186,9 +181,10 @@
         "Injury Burden Intensity",
         "Treatment Burden",
         "Psychological Injury Emphasis",
+        "Causation Complexity",
         "Pre-existing Condition Salience"
       ],
-      "prompt_sha256": "48091b2c104e1881311a847e"
+      "prompt_sha256": "4d752f19458a011194b4180c"
     },
     {
       "row_index": 37,
@@ -209,7 +205,7 @@
         "Injury Burden Intensity": 2,
         "Treatment Burden": 2,
         "Work Impact Severity": 2,
-        "Legal Procedural Complexity": 1,
+        "Legal Procedural Complexity": 2,
         "Psychological Injury Emphasis": 0,
         "Liability Clarity": 2,
         "Causation Complexity": 1,
@@ -218,7 +214,7 @@
       "recoder_uncertain": [
         "Psychological Injury Emphasis"
       ],
-      "prompt_sha256": "2dc8a904771f65f7028a7929"
+      "prompt_sha256": "a10b79c65980f402316fa877"
     },
     {
       "row_index": 39,
@@ -239,7 +235,7 @@
         "Injury Burden Intensity": 1,
         "Treatment Burden": 0,
         "Work Impact Severity": 2,
-        "Legal Procedural Complexity": 0,
+        "Legal Procedural Complexity": 2,
         "Psychological Injury Emphasis": 1,
         "Liability Clarity": 2,
         "Causation Complexity": 0,
@@ -249,7 +245,7 @@
         "Treatment Burden",
         "Pre-existing Condition Salience"
       ],
-      "prompt_sha256": "b83ee0e8c5cbcb0e99ae3cb4"
+      "prompt_sha256": "cf6cfad63e7998e4cc478308"
     },
     {
       "row_index": 44,
@@ -267,22 +263,20 @@
         "Pre-existing Condition Salience": 2
       },
       "recoded": {
-        "Injury Burden Intensity": 2,
+        "Injury Burden Intensity": 1,
         "Treatment Burden": 0,
         "Work Impact Severity": 2,
-        "Legal Procedural Complexity": 0,
+        "Legal Procedural Complexity": 1,
         "Psychological Injury Emphasis": 1,
         "Liability Clarity": 2,
-        "Causation Complexity": 1,
+        "Causation Complexity": 0,
         "Pre-existing Condition Salience": 1
       },
       "recoder_uncertain": [
         "Treatment Burden",
-        "Psychological Injury Emphasis",
-        "Causation Complexity",
-        "Pre-existing Condition Salience"
+        "Causation Complexity"
       ],
-      "prompt_sha256": "f840abe69c7996455ba6ea59"
+      "prompt_sha256": "cb6505979ef5b205fa215a27"
     },
     {
       "row_index": 50,
@@ -311,9 +305,10 @@
       },
       "recoder_uncertain": [
         "Treatment Burden",
+        "Causation Complexity",
         "Pre-existing Condition Salience"
       ],
-      "prompt_sha256": "062cd127b209d7dbbc884ec2"
+      "prompt_sha256": "71acfd3f89ffd6e2eb99c631"
     },
     {
       "row_index": 54,
@@ -334,7 +329,7 @@
         "Injury Burden Intensity": 0,
         "Treatment Burden": 0,
         "Work Impact Severity": 1,
-        "Legal Procedural Complexity": 0,
+        "Legal Procedural Complexity": 1,
         "Psychological Injury Emphasis": 0,
         "Liability Clarity": 2,
         "Causation Complexity": 0,
@@ -343,11 +338,11 @@
       "recoder_uncertain": [
         "Injury Burden Intensity",
         "Treatment Burden",
-        "Work Impact Severity",
         "Psychological Injury Emphasis",
+        "Causation Complexity",
         "Pre-existing Condition Salience"
       ],
-      "prompt_sha256": "5ed4888f0f216579fbbf20e9"
+      "prompt_sha256": "ccf05e5857fca398481ff63c"
     },
     {
       "row_index": 56,
@@ -365,22 +360,20 @@
         "Pre-existing Condition Salience": 1
       },
       "recoded": {
-        "Injury Burden Intensity": 3,
+        "Injury Burden Intensity": 2,
         "Treatment Burden": 1,
         "Work Impact Severity": 2,
-        "Legal Procedural Complexity": 0,
+        "Legal Procedural Complexity": 1,
         "Psychological Injury Emphasis": 0,
-        "Liability Clarity": 0,
+        "Liability Clarity": 2,
         "Causation Complexity": 0,
         "Pre-existing Condition Salience": 1
       },
       "recoder_uncertain": [
-        "Legal Procedural Complexity",
-        "Liability Clarity",
-        "Causation Complexity",
-        "Pre-existing Condition Salience"
+        "Psychological Injury Emphasis",
+        "Causation Complexity"
       ],
-      "prompt_sha256": "aa2dc6f01e4d013a8d3bcdc1"
+      "prompt_sha256": "5dbc9c32c8a59136f53d3b79"
     },
     {
       "row_index": 61,
@@ -398,9 +391,9 @@
         "Pre-existing Condition Salience": 0
       },
       "recoded": {
-        "Injury Burden Intensity": 2,
-        "Treatment Burden": 1,
-        "Work Impact Severity": 2,
+        "Injury Burden Intensity": 1,
+        "Treatment Burden": 0,
+        "Work Impact Severity": 1,
         "Legal Procedural Complexity": 1,
         "Psychological Injury Emphasis": 0,
         "Liability Clarity": 2,
@@ -408,12 +401,10 @@
         "Pre-existing Condition Salience": 0
       },
       "recoder_uncertain": [
-        "Treatment Burden",
-        "Legal Procedural Complexity",
-        "Causation Complexity",
+        "Psychological Injury Emphasis",
         "Pre-existing Condition Salience"
       ],
-      "prompt_sha256": "f9ac8786a760f0d4b318c840"
+      "prompt_sha256": "2570ed72c37647da9468119e"
     },
     {
       "row_index": 71,
@@ -448,7 +439,7 @@
         "Causation Complexity",
         "Pre-existing Condition Salience"
       ],
-      "prompt_sha256": "7b5e71782ded1db40a2c79e1"
+      "prompt_sha256": "62642ff60debe43ab4d2301e"
     },
     {
       "row_index": 72,
@@ -467,19 +458,16 @@
       },
       "recoded": {
         "Injury Burden Intensity": 2,
-        "Treatment Burden": 1,
+        "Treatment Burden": 2,
         "Work Impact Severity": 2,
-        "Legal Procedural Complexity": 1,
+        "Legal Procedural Complexity": 2,
         "Psychological Injury Emphasis": 1,
         "Liability Clarity": 2,
-        "Causation Complexity": 0,
+        "Causation Complexity": 1,
         "Pre-existing Condition Salience": 0
       },
-      "recoder_uncertain": [
-        "Causation Complexity",
-        "Pre-existing Condition Salience"
-      ],
-      "prompt_sha256": "9b0f11377c09291c637b316c"
+      "recoder_uncertain": [],
+      "prompt_sha256": "f3f1cbaac9c2f26eb5e3ad2f"
     },
     {
       "row_index": 78,
@@ -504,13 +492,14 @@
         "Psychological Injury Emphasis": 0,
         "Liability Clarity": 2,
         "Causation Complexity": 0,
-        "Pre-existing Condition Salience": 2
+        "Pre-existing Condition Salience": 1
       },
       "recoder_uncertain": [
         "Work Impact Severity",
-        "Psychological Injury Emphasis"
+        "Psychological Injury Emphasis",
+        "Causation Complexity"
       ],
-      "prompt_sha256": "de0abaf5f22aee89e3086be5"
+      "prompt_sha256": "b9cc20234f746c0a0d225abe"
     },
     {
       "row_index": 80,
@@ -529,21 +518,19 @@
       },
       "recoded": {
         "Injury Burden Intensity": 2,
-        "Treatment Burden": 0,
+        "Treatment Burden": 1,
         "Work Impact Severity": 2,
         "Legal Procedural Complexity": 1,
         "Psychological Injury Emphasis": 0,
         "Liability Clarity": 0,
-        "Causation Complexity": 0,
+        "Causation Complexity": 1,
         "Pre-existing Condition Salience": 0
       },
       "recoder_uncertain": [
         "Treatment Burden",
-        "Psychological Injury Emphasis",
-        "Causation Complexity",
-        "Pre-existing Condition Salience"
+        "Causation Complexity"
       ],
-      "prompt_sha256": "388b4ea035ef6f60dd4c3e53"
+      "prompt_sha256": "8b25f627b3c4c81d17c992ae"
     },
     {
       "row_index": 83,
@@ -573,11 +560,12 @@
       "recoder_uncertain": [
         "Injury Burden Intensity",
         "Treatment Burden",
-        "Work Impact Severity",
+        "Legal Procedural Complexity",
         "Psychological Injury Emphasis",
+        "Causation Complexity",
         "Pre-existing Condition Salience"
       ],
-      "prompt_sha256": "b0bd4152204fdbbb6e22b290"
+      "prompt_sha256": "ce1097e181fd5e0ae1bd2bc2"
     },
     {
       "row_index": 84,
@@ -595,24 +583,17 @@
         "Pre-existing Condition Salience": 2
       },
       "recoded": {
-        "Injury Burden Intensity": 0,
+        "Injury Burden Intensity": 1,
         "Treatment Burden": 0,
         "Work Impact Severity": 1,
-        "Legal Procedural Complexity": 0,
+        "Legal Procedural Complexity": 2,
         "Psychological Injury Emphasis": 1,
         "Liability Clarity": 2,
         "Causation Complexity": 0,
         "Pre-existing Condition Salience": 0
       },
-      "recoder_uncertain": [
-        "Injury Burden Intensity",
-        "Treatment Burden",
-        "Work Impact Severity",
-        "Psychological Injury Emphasis",
-        "Causation Complexity",
-        "Pre-existing Condition Salience"
-      ],
-      "prompt_sha256": "cc2a743b8315e158bf9cd32e"
+      "recoder_uncertain": [],
+      "prompt_sha256": "e7a9ea46b06a757c788b41a0"
     },
     {
       "row_index": 86,
@@ -630,7 +611,7 @@
         "Pre-existing Condition Salience": 0
       },
       "recoded": {
-        "Injury Burden Intensity": 1,
+        "Injury Burden Intensity": 3,
         "Treatment Burden": 0,
         "Work Impact Severity": 0,
         "Legal Procedural Complexity": 0,
@@ -640,14 +621,13 @@
         "Pre-existing Condition Salience": 0
       },
       "recoder_uncertain": [
-        "Injury Burden Intensity",
         "Treatment Burden",
         "Work Impact Severity",
         "Psychological Injury Emphasis",
         "Causation Complexity",
         "Pre-existing Condition Salience"
       ],
-      "prompt_sha256": "18e66302cc3cd3d1bd3bfebc"
+      "prompt_sha256": "37fca3b8bba2b2574a4f6c1d"
     },
     {
       "row_index": 103,
@@ -666,9 +646,9 @@
       },
       "recoded": {
         "Injury Burden Intensity": 2,
-        "Treatment Burden": 0,
+        "Treatment Burden": 1,
         "Work Impact Severity": 2,
-        "Legal Procedural Complexity": 1,
+        "Legal Procedural Complexity": 2,
         "Psychological Injury Emphasis": 1,
         "Liability Clarity": 2,
         "Causation Complexity": 0,
@@ -677,10 +657,12 @@
       "recoder_uncertain": [
         "Injury Burden Intensity",
         "Treatment Burden",
+        "Work Impact Severity",
         "Psychological Injury Emphasis",
+        "Causation Complexity",
         "Pre-existing Condition Salience"
       ],
-      "prompt_sha256": "397f9d5e4f9776e644e7f77b"
+      "prompt_sha256": "ee33b971aeb8292893e4abee"
     },
     {
       "row_index": 111,
@@ -707,11 +689,8 @@
         "Causation Complexity": 0,
         "Pre-existing Condition Salience": 0
       },
-      "recoder_uncertain": [
-        "Psychological Injury Emphasis",
-        "Pre-existing Condition Salience"
-      ],
-      "prompt_sha256": "0ab69a7032ac9e6a7112be7e"
+      "recoder_uncertain": [],
+      "prompt_sha256": "5e5837e2d6acc4e6a28a0a9e"
     },
     {
       "row_index": 113,
@@ -729,22 +708,22 @@
         "Pre-existing Condition Salience": 1
       },
       "recoded": {
-        "Injury Burden Intensity": 1,
+        "Injury Burden Intensity": 2,
         "Treatment Burden": 0,
         "Work Impact Severity": 2,
-        "Legal Procedural Complexity": 0,
+        "Legal Procedural Complexity": 2,
         "Psychological Injury Emphasis": 0,
         "Liability Clarity": 2,
         "Causation Complexity": 0,
         "Pre-existing Condition Salience": 0
       },
       "recoder_uncertain": [
-        "Injury Burden Intensity",
         "Treatment Burden",
         "Psychological Injury Emphasis",
+        "Causation Complexity",
         "Pre-existing Condition Salience"
       ],
-      "prompt_sha256": "10b8c4031fb65bb1247f1b6b"
+      "prompt_sha256": "1682e2a1fa2ca7ccc9789007"
     },
     {
       "row_index": 115,
@@ -765,19 +744,16 @@
         "Injury Burden Intensity": 2,
         "Treatment Burden": 1,
         "Work Impact Severity": 2,
-        "Legal Procedural Complexity": 1,
+        "Legal Procedural Complexity": 2,
         "Psychological Injury Emphasis": 1,
         "Liability Clarity": 2,
-        "Causation Complexity": 1,
+        "Causation Complexity": 0,
         "Pre-existing Condition Salience": 0
       },
       "recoder_uncertain": [
-        "Treatment Burden",
-        "Psychological Injury Emphasis",
-        "Causation Complexity",
         "Pre-existing Condition Salience"
       ],
-      "prompt_sha256": "295bbb84a5d9b851a84e85de"
+      "prompt_sha256": "1a5a50d6b712b26e94dc489b"
     },
     {
       "row_index": 119,
@@ -795,7 +771,7 @@
         "Pre-existing Condition Salience": 0
       },
       "recoded": {
-        "Injury Burden Intensity": 1,
+        "Injury Burden Intensity": 2,
         "Treatment Burden": 1,
         "Work Impact Severity": 1,
         "Legal Procedural Complexity": 0,
@@ -807,10 +783,11 @@
       "recoder_uncertain": [
         "Treatment Burden",
         "Work Impact Severity",
+        "Legal Procedural Complexity",
         "Causation Complexity",
         "Pre-existing Condition Salience"
       ],
-      "prompt_sha256": "46642fda8d4b2df548834d52"
+      "prompt_sha256": "386e025d82685ce9dddf9e11"
     },
     {
       "row_index": 121,
@@ -828,21 +805,20 @@
         "Pre-existing Condition Salience": 0
       },
       "recoded": {
-        "Injury Burden Intensity": 3,
+        "Injury Burden Intensity": 2,
         "Treatment Burden": 2,
         "Work Impact Severity": 2,
-        "Legal Procedural Complexity": 1,
+        "Legal Procedural Complexity": 0,
         "Psychological Injury Emphasis": 1,
-        "Liability Clarity": 1,
-        "Causation Complexity": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 2,
         "Pre-existing Condition Salience": 0
       },
       "recoder_uncertain": [
-        "Liability Clarity",
-        "Causation Complexity",
+        "Legal Procedural Complexity",
         "Pre-existing Condition Salience"
       ],
-      "prompt_sha256": "d57df50016a59d6b7585e0db"
+      "prompt_sha256": "1e16cf1d46ab68592221d1a3"
     },
     {
       "row_index": 130,
@@ -860,7 +836,7 @@
         "Pre-existing Condition Salience": 1
       },
       "recoded": {
-        "Injury Burden Intensity": 3,
+        "Injury Burden Intensity": 2,
         "Treatment Burden": 2,
         "Work Impact Severity": 1,
         "Legal Procedural Complexity": 1,
@@ -873,7 +849,7 @@
         "Psychological Injury Emphasis",
         "Pre-existing Condition Salience"
       ],
-      "prompt_sha256": "d1a8605c3578132967f1e75a"
+      "prompt_sha256": "8d8be2cfa4a3eb08268b4dd9"
     },
     {
       "row_index": 134,
@@ -894,20 +870,19 @@
         "Injury Burden Intensity": 2,
         "Treatment Burden": 0,
         "Work Impact Severity": 3,
-        "Legal Procedural Complexity": 0,
+        "Legal Procedural Complexity": 2,
         "Psychological Injury Emphasis": 0,
         "Liability Clarity": 2,
         "Causation Complexity": 0,
         "Pre-existing Condition Salience": 0
       },
       "recoder_uncertain": [
-        "Injury Burden Intensity",
         "Treatment Burden",
         "Psychological Injury Emphasis",
         "Causation Complexity",
         "Pre-existing Condition Salience"
       ],
-      "prompt_sha256": "c92e6358eed2227f1b795c9e"
+      "prompt_sha256": "f3b2af20f6aa4c13f0710500"
     },
     {
       "row_index": 141,
@@ -935,11 +910,10 @@
         "Pre-existing Condition Salience": 0
       },
       "recoder_uncertain": [
-        "Psychological Injury Emphasis",
         "Causation Complexity",
         "Pre-existing Condition Salience"
       ],
-      "prompt_sha256": "67640325aa0ffd62ce5fb9b3"
+      "prompt_sha256": "0ef94ae826385765170cd2cc"
     },
     {
       "row_index": 144,
@@ -960,17 +934,16 @@
         "Injury Burden Intensity": 1,
         "Treatment Burden": 0,
         "Work Impact Severity": 1,
-        "Legal Procedural Complexity": 0,
+        "Legal Procedural Complexity": 1,
         "Psychological Injury Emphasis": 0,
         "Liability Clarity": 2,
         "Causation Complexity": 0,
         "Pre-existing Condition Salience": 0
       },
       "recoder_uncertain": [
-        "Psychological Injury Emphasis",
         "Pre-existing Condition Salience"
       ],
-      "prompt_sha256": "79934bc39c310c8a04222280"
+      "prompt_sha256": "cc7475ff6e91e721160fad56"
     },
     {
       "row_index": 145,
@@ -988,19 +961,20 @@
         "Pre-existing Condition Salience": 2
       },
       "recoded": {
-        "Injury Burden Intensity": 4,
-        "Treatment Burden": 2,
+        "Injury Burden Intensity": 3,
+        "Treatment Burden": 3,
         "Work Impact Severity": 3,
-        "Legal Procedural Complexity": 0,
+        "Legal Procedural Complexity": 2,
         "Psychological Injury Emphasis": 1,
         "Liability Clarity": 2,
         "Causation Complexity": 0,
         "Pre-existing Condition Salience": 0
       },
       "recoder_uncertain": [
-        "Psychological Injury Emphasis"
+        "Causation Complexity",
+        "Pre-existing Condition Salience"
       ],
-      "prompt_sha256": "d19f0bef4b54dc02410d8458"
+      "prompt_sha256": "c42703c8474d37171b54690b"
     },
     {
       "row_index": 151,
@@ -1018,22 +992,20 @@
         "Pre-existing Condition Salience": 2
       },
       "recoded": {
-        "Injury Burden Intensity": 0,
+        "Injury Burden Intensity": 2,
         "Treatment Burden": 0,
         "Work Impact Severity": 2,
         "Legal Procedural Complexity": 0,
         "Psychological Injury Emphasis": 2,
-        "Liability Clarity": 0,
+        "Liability Clarity": 2,
         "Causation Complexity": 1,
         "Pre-existing Condition Salience": 1
       },
       "recoder_uncertain": [
-        "Injury Burden Intensity",
         "Treatment Burden",
-        "Legal Procedural Complexity",
-        "Liability Clarity"
+        "Legal Procedural Complexity"
       ],
-      "prompt_sha256": "7142e09c4fc0a70dbd6c060c"
+      "prompt_sha256": "0eeb3fce905985a7534f2f3f"
     },
     {
       "row_index": 154,
@@ -1054,14 +1026,14 @@
         "Injury Burden Intensity": 1,
         "Treatment Burden": 0,
         "Work Impact Severity": 1,
-        "Legal Procedural Complexity": 0,
+        "Legal Procedural Complexity": 2,
         "Psychological Injury Emphasis": 1,
         "Liability Clarity": 2,
         "Causation Complexity": 0,
         "Pre-existing Condition Salience": 0
       },
       "recoder_uncertain": [],
-      "prompt_sha256": "b1bc5a8e82b3a83bac997b06"
+      "prompt_sha256": "79847a419a04c3f04d94fb66"
     },
     {
       "row_index": 165,
@@ -1080,24 +1052,18 @@
       },
       "recoded": {
         "Injury Burden Intensity": 1,
-        "Treatment Burden": 1,
+        "Treatment Burden": 0,
         "Work Impact Severity": 1,
-        "Legal Procedural Complexity": 0,
+        "Legal Procedural Complexity": 2,
         "Psychological Injury Emphasis": 0,
         "Liability Clarity": 2,
         "Causation Complexity": 0,
         "Pre-existing Condition Salience": 0
       },
       "recoder_uncertain": [
-        "Injury Burden Intensity",
-        "Treatment Burden",
-        "Work Impact Severity",
-        "Legal Procedural Complexity",
-        "Psychological Injury Emphasis",
-        "Causation Complexity",
         "Pre-existing Condition Salience"
       ],
-      "prompt_sha256": "5d2216b7b679c7058afccbde"
+      "prompt_sha256": "9f1238b3c47b86fef958d3bb"
     },
     {
       "row_index": 168,
@@ -1118,17 +1084,18 @@
         "Injury Burden Intensity": 1,
         "Treatment Burden": 0,
         "Work Impact Severity": 1,
-        "Legal Procedural Complexity": 0,
+        "Legal Procedural Complexity": 2,
         "Psychological Injury Emphasis": 1,
         "Liability Clarity": 2,
-        "Causation Complexity": 1,
+        "Causation Complexity": 0,
         "Pre-existing Condition Salience": 0
       },
       "recoder_uncertain": [
         "Treatment Burden",
+        "Causation Complexity",
         "Pre-existing Condition Salience"
       ],
-      "prompt_sha256": "865326be2a7e671321a63a5c"
+      "prompt_sha256": "a988ac1462140cc8611ecb15"
     },
     {
       "row_index": 173,
@@ -1147,7 +1114,7 @@
       },
       "recoded": {
         "Injury Burden Intensity": 1,
-        "Treatment Burden": 2,
+        "Treatment Burden": 1,
         "Work Impact Severity": 1,
         "Legal Procedural Complexity": 0,
         "Psychological Injury Emphasis": 0,
@@ -1155,11 +1122,8 @@
         "Causation Complexity": 0,
         "Pre-existing Condition Salience": 0
       },
-      "recoder_uncertain": [
-        "Psychological Injury Emphasis",
-        "Pre-existing Condition Salience"
-      ],
-      "prompt_sha256": "7e56384ad81af30915950ed7"
+      "recoder_uncertain": [],
+      "prompt_sha256": "19cdf137b71fb80526b17b85"
     },
     {
       "row_index": 175,
@@ -1180,14 +1144,17 @@
         "Injury Burden Intensity": 2,
         "Treatment Burden": 2,
         "Work Impact Severity": 2,
-        "Legal Procedural Complexity": 0,
+        "Legal Procedural Complexity": 1,
         "Psychological Injury Emphasis": 1,
         "Liability Clarity": 2,
         "Causation Complexity": 0,
         "Pre-existing Condition Salience": 0
       },
-      "recoder_uncertain": [],
-      "prompt_sha256": "a554b43f7af67f42ee75f718"
+      "recoder_uncertain": [
+        "Causation Complexity",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "5549d327da7a9fb7cc378687"
     },
     {
       "row_index": 177,
@@ -1207,18 +1174,15 @@
       "recoded": {
         "Injury Burden Intensity": 1,
         "Treatment Burden": 0,
-        "Work Impact Severity": 0,
-        "Legal Procedural Complexity": 0,
+        "Work Impact Severity": 1,
+        "Legal Procedural Complexity": 1,
         "Psychological Injury Emphasis": 0,
         "Liability Clarity": 2,
         "Causation Complexity": 0,
         "Pre-existing Condition Salience": 0
       },
-      "recoder_uncertain": [
-        "Psychological Injury Emphasis",
-        "Pre-existing Condition Salience"
-      ],
-      "prompt_sha256": "26a98f6e47311314dd6857b2"
+      "recoder_uncertain": [],
+      "prompt_sha256": "93a76ac599d6fc8a7f7f804c"
     },
     {
       "row_index": 181,
@@ -1236,10 +1200,10 @@
         "Pre-existing Condition Salience": 1
       },
       "recoded": {
-        "Injury Burden Intensity": 4,
-        "Treatment Burden": 2,
+        "Injury Burden Intensity": 3,
+        "Treatment Burden": 3,
         "Work Impact Severity": 0,
-        "Legal Procedural Complexity": 0,
+        "Legal Procedural Complexity": 2,
         "Psychological Injury Emphasis": 0,
         "Liability Clarity": 2,
         "Causation Complexity": 0,
@@ -1250,7 +1214,7 @@
         "Psychological Injury Emphasis",
         "Pre-existing Condition Salience"
       ],
-      "prompt_sha256": "6e47db705ce411a453acee61"
+      "prompt_sha256": "7734207884ae93ff9c00876e"
     },
     {
       "row_index": 189,
@@ -1271,7 +1235,7 @@
         "Injury Burden Intensity": 0,
         "Treatment Burden": 0,
         "Work Impact Severity": 1,
-        "Legal Procedural Complexity": 0,
+        "Legal Procedural Complexity": 2,
         "Psychological Injury Emphasis": 0,
         "Liability Clarity": 2,
         "Causation Complexity": 0,
@@ -1281,9 +1245,10 @@
         "Injury Burden Intensity",
         "Treatment Burden",
         "Psychological Injury Emphasis",
+        "Causation Complexity",
         "Pre-existing Condition Salience"
       ],
-      "prompt_sha256": "e3fe439b9dea2a23c9c46d21"
+      "prompt_sha256": "508973f0e45464ef80a7a1c3"
     },
     {
       "row_index": 190,
@@ -1301,9 +1266,9 @@
         "Pre-existing Condition Salience": 0
       },
       "recoded": {
-        "Injury Burden Intensity": 3,
-        "Treatment Burden": 2,
-        "Work Impact Severity": 1,
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 3,
+        "Work Impact Severity": 0,
         "Legal Procedural Complexity": 0,
         "Psychological Injury Emphasis": 0,
         "Liability Clarity": 2,
@@ -1311,9 +1276,11 @@
         "Pre-existing Condition Salience": 0
       },
       "recoder_uncertain": [
-        "Work Impact Severity"
+        "Work Impact Severity",
+        "Psychological Injury Emphasis",
+        "Pre-existing Condition Salience"
       ],
-      "prompt_sha256": "dfb6a2299bddf2214a3e1a27"
+      "prompt_sha256": "95b98533f69e5e56ee876acd"
     },
     {
       "row_index": 198,
@@ -1331,10 +1298,10 @@
         "Pre-existing Condition Salience": 0
       },
       "recoded": {
-        "Injury Burden Intensity": 3,
-        "Treatment Burden": 2,
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 3,
         "Work Impact Severity": 2,
-        "Legal Procedural Complexity": 0,
+        "Legal Procedural Complexity": 2,
         "Psychological Injury Emphasis": 0,
         "Liability Clarity": 2,
         "Causation Complexity": 0,
@@ -1344,7 +1311,7 @@
         "Psychological Injury Emphasis",
         "Pre-existing Condition Salience"
       ],
-      "prompt_sha256": "4442da4fcf4e5f1184f73a82"
+      "prompt_sha256": "c476f257c85e5f2010bab906"
     },
     {
       "row_index": 199,
@@ -1363,9 +1330,9 @@
       },
       "recoded": {
         "Injury Burden Intensity": 2,
-        "Treatment Burden": 1,
+        "Treatment Burden": 0,
         "Work Impact Severity": 2,
-        "Legal Procedural Complexity": 0,
+        "Legal Procedural Complexity": 2,
         "Psychological Injury Emphasis": 1,
         "Liability Clarity": 2,
         "Causation Complexity": 0,
@@ -1376,7 +1343,7 @@
         "Causation Complexity",
         "Pre-existing Condition Salience"
       ],
-      "prompt_sha256": "6a18223cfe8f90e53624a814"
+      "prompt_sha256": "67de0d1fac5845fe86b8748e"
     },
     {
       "row_index": 200,
@@ -1394,8 +1361,8 @@
         "Pre-existing Condition Salience": 1
       },
       "recoded": {
-        "Injury Burden Intensity": 2,
-        "Treatment Burden": 2,
+        "Injury Burden Intensity": 3,
+        "Treatment Burden": 3,
         "Work Impact Severity": 0,
         "Legal Procedural Complexity": 0,
         "Psychological Injury Emphasis": 0,
@@ -1405,10 +1372,10 @@
       },
       "recoder_uncertain": [
         "Work Impact Severity",
-        "Psychological Injury Emphasis",
+        "Legal Procedural Complexity",
         "Causation Complexity"
       ],
-      "prompt_sha256": "c4043e36e81388f8c4b1396f"
+      "prompt_sha256": "7db0edb2ec7f45ee1cff5ea4"
     },
     {
       "row_index": 207,
@@ -1426,23 +1393,17 @@
         "Pre-existing Condition Salience": 0
       },
       "recoded": {
-        "Injury Burden Intensity": 1,
-        "Treatment Burden": 0,
-        "Work Impact Severity": 1,
-        "Legal Procedural Complexity": 1,
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 2,
         "Psychological Injury Emphasis": 2,
         "Liability Clarity": 2,
-        "Causation Complexity": 1,
+        "Causation Complexity": 2,
         "Pre-existing Condition Salience": 0
       },
-      "recoder_uncertain": [
-        "Treatment Burden",
-        "Work Impact Severity",
-        "Legal Procedural Complexity",
-        "Causation Complexity",
-        "Pre-existing Condition Salience"
-      ],
-      "prompt_sha256": "d9a1b5fa0b2ff8e21723be98"
+      "recoder_uncertain": [],
+      "prompt_sha256": "6c202c7ea34c98dc1c92feb6"
     },
     {
       "row_index": 208,
@@ -1460,22 +1421,20 @@
         "Pre-existing Condition Salience": 0
       },
       "recoded": {
-        "Injury Burden Intensity": 0,
+        "Injury Burden Intensity": 1,
         "Treatment Burden": 0,
         "Work Impact Severity": 1,
         "Legal Procedural Complexity": 1,
         "Psychological Injury Emphasis": 0,
         "Liability Clarity": 2,
-        "Causation Complexity": 1,
+        "Causation Complexity": 0,
         "Pre-existing Condition Salience": 0
       },
       "recoder_uncertain": [
-        "Injury Burden Intensity",
-        "Treatment Burden",
         "Psychological Injury Emphasis",
         "Pre-existing Condition Salience"
       ],
-      "prompt_sha256": "02dbac293399504af3bba91b"
+      "prompt_sha256": "e3f6b655ad479e8ffae3b386"
     },
     {
       "row_index": 211,
@@ -1496,7 +1455,7 @@
         "Injury Burden Intensity": 1,
         "Treatment Burden": 0,
         "Work Impact Severity": 1,
-        "Legal Procedural Complexity": 0,
+        "Legal Procedural Complexity": 1,
         "Psychological Injury Emphasis": 0,
         "Liability Clarity": 2,
         "Causation Complexity": 0,
@@ -1506,7 +1465,7 @@
         "Psychological Injury Emphasis",
         "Pre-existing Condition Salience"
       ],
-      "prompt_sha256": "837a19bc0fe4ca0db4beb9b0"
+      "prompt_sha256": "466a999edf6511b8c57e812d"
     },
     {
       "row_index": 234,
@@ -1524,10 +1483,10 @@
         "Pre-existing Condition Salience": 1
       },
       "recoded": {
-        "Injury Burden Intensity": 2,
-        "Treatment Burden": 2,
+        "Injury Burden Intensity": 3,
+        "Treatment Burden": 3,
         "Work Impact Severity": 0,
-        "Legal Procedural Complexity": 0,
+        "Legal Procedural Complexity": 2,
         "Psychological Injury Emphasis": 0,
         "Liability Clarity": 2,
         "Causation Complexity": 0,
@@ -1535,9 +1494,9 @@
       },
       "recoder_uncertain": [
         "Work Impact Severity",
-        "Psychological Injury Emphasis"
+        "Causation Complexity"
       ],
-      "prompt_sha256": "e99faee739534a17bf29cf5c"
+      "prompt_sha256": "77ae81bb4dceee0b6e2a8736"
     },
     {
       "row_index": 244,
@@ -1556,20 +1515,20 @@
       },
       "recoded": {
         "Injury Burden Intensity": 3,
-        "Treatment Burden": 1,
+        "Treatment Burden": 2,
         "Work Impact Severity": 3,
-        "Legal Procedural Complexity": 0,
+        "Legal Procedural Complexity": 2,
         "Psychological Injury Emphasis": 0,
         "Liability Clarity": 2,
         "Causation Complexity": 0,
         "Pre-existing Condition Salience": 0
       },
       "recoder_uncertain": [
-        "Treatment Burden",
         "Psychological Injury Emphasis",
+        "Causation Complexity",
         "Pre-existing Condition Salience"
       ],
-      "prompt_sha256": "42cc9a79f4e49d1bcf37af48"
+      "prompt_sha256": "8cf9edb210080af693da192e"
     },
     {
       "row_index": 247,
@@ -1587,22 +1546,23 @@
         "Pre-existing Condition Salience": 1
       },
       "recoded": {
-        "Injury Burden Intensity": 2,
+        "Injury Burden Intensity": 1,
         "Treatment Burden": 1,
         "Work Impact Severity": 3,
-        "Legal Procedural Complexity": 0,
+        "Legal Procedural Complexity": 2,
         "Psychological Injury Emphasis": 0,
         "Liability Clarity": 2,
         "Causation Complexity": 0,
         "Pre-existing Condition Salience": 0
       },
       "recoder_uncertain": [
+        "Injury Burden Intensity",
         "Treatment Burden",
         "Psychological Injury Emphasis",
         "Causation Complexity",
         "Pre-existing Condition Salience"
       ],
-      "prompt_sha256": "21e36ddffd4694cf6b56eaae"
+      "prompt_sha256": "2b561d078a5c4c804ede7121"
     },
     {
       "row_index": 260,
@@ -1622,17 +1582,15 @@
       "recoded": {
         "Injury Burden Intensity": 1,
         "Treatment Burden": 0,
-        "Work Impact Severity": 0,
-        "Legal Procedural Complexity": 0,
+        "Work Impact Severity": 1,
+        "Legal Procedural Complexity": 1,
         "Psychological Injury Emphasis": 1,
-        "Liability Clarity": 0,
+        "Liability Clarity": 2,
         "Causation Complexity": 0,
-        "Pre-existing Condition Salience": 1
+        "Pre-existing Condition Salience": 0
       },
-      "recoder_uncertain": [
-        "Liability Clarity"
-      ],
-      "prompt_sha256": "e1367da46abc54572ef05104"
+      "recoder_uncertain": [],
+      "prompt_sha256": "fffcbc9e6ed2b448ee80dbf8"
     },
     {
       "row_index": 261,
@@ -1651,19 +1609,18 @@
       },
       "recoded": {
         "Injury Burden Intensity": 1,
-        "Treatment Burden": 1,
+        "Treatment Burden": 0,
         "Work Impact Severity": 2,
-        "Legal Procedural Complexity": 0,
+        "Legal Procedural Complexity": 1,
         "Psychological Injury Emphasis": 0,
         "Liability Clarity": 2,
         "Causation Complexity": 0,
         "Pre-existing Condition Salience": 0
       },
       "recoder_uncertain": [
-        "Psychological Injury Emphasis",
         "Pre-existing Condition Salience"
       ],
-      "prompt_sha256": "d7d178fbecd84ab7e8c06715"
+      "prompt_sha256": "eb6b2b7d5f8a0f9ef23b8d4d"
     },
     {
       "row_index": 263,
@@ -1681,8 +1638,8 @@
         "Pre-existing Condition Salience": 2
       },
       "recoded": {
-        "Injury Burden Intensity": 3,
-        "Treatment Burden": 0,
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 1,
         "Work Impact Severity": 0,
         "Legal Procedural Complexity": 0,
         "Psychological Injury Emphasis": 0,
@@ -1692,9 +1649,10 @@
       },
       "recoder_uncertain": [
         "Treatment Burden",
-        "Psychological Injury Emphasis"
+        "Legal Procedural Complexity",
+        "Causation Complexity"
       ],
-      "prompt_sha256": "461fe30077b02addf69bbd70"
+      "prompt_sha256": "7adf90ccb20eb0940cb7018d"
     },
     {
       "row_index": 273,
@@ -1724,9 +1682,10 @@
       "recoder_uncertain": [
         "Work Impact Severity",
         "Psychological Injury Emphasis",
+        "Causation Complexity",
         "Pre-existing Condition Salience"
       ],
-      "prompt_sha256": "15272a3e01ab225f951a2b29"
+      "prompt_sha256": "0af26d43b7ef2b20a0063f3d"
     },
     {
       "row_index": 280,
@@ -1744,21 +1703,20 @@
         "Pre-existing Condition Salience": 0
       },
       "recoded": {
-        "Injury Burden Intensity": 3,
+        "Injury Burden Intensity": 2,
         "Treatment Burden": 1,
         "Work Impact Severity": 2,
-        "Legal Procedural Complexity": 0,
+        "Legal Procedural Complexity": 1,
         "Psychological Injury Emphasis": 1,
         "Liability Clarity": 2,
         "Causation Complexity": 0,
         "Pre-existing Condition Salience": 0
       },
       "recoder_uncertain": [
-        "Treatment Burden",
-        "Psychological Injury Emphasis",
+        "Causation Complexity",
         "Pre-existing Condition Salience"
       ],
-      "prompt_sha256": "66da9af8bc66d32b53841c59"
+      "prompt_sha256": "6b640fc581c0277916fd0b18"
     },
     {
       "row_index": 282,
@@ -1776,7 +1734,7 @@
         "Pre-existing Condition Salience": 0
       },
       "recoded": {
-        "Injury Burden Intensity": 0,
+        "Injury Burden Intensity": 1,
         "Treatment Burden": 0,
         "Work Impact Severity": 1,
         "Legal Procedural Complexity": 0,
@@ -1785,13 +1743,8 @@
         "Causation Complexity": 0,
         "Pre-existing Condition Salience": 0
       },
-      "recoder_uncertain": [
-        "Treatment Burden",
-        "Psychological Injury Emphasis",
-        "Causation Complexity",
-        "Pre-existing Condition Salience"
-      ],
-      "prompt_sha256": "6f2e8b2975dd99a47cbeafd1"
+      "recoder_uncertain": [],
+      "prompt_sha256": "cd5e40371f354cfb26b776be"
     },
     {
       "row_index": 285,
@@ -1812,18 +1765,16 @@
         "Injury Burden Intensity": 1,
         "Treatment Burden": 0,
         "Work Impact Severity": 1,
-        "Legal Procedural Complexity": 0,
+        "Legal Procedural Complexity": 1,
         "Psychological Injury Emphasis": 0,
         "Liability Clarity": 2,
         "Causation Complexity": 0,
         "Pre-existing Condition Salience": 0
       },
       "recoder_uncertain": [
-        "Treatment Burden",
-        "Psychological Injury Emphasis",
         "Pre-existing Condition Salience"
       ],
-      "prompt_sha256": "cf38a589ea7cdfdc80a33648"
+      "prompt_sha256": "d36e54331e59fd69878292c4"
     },
     {
       "row_index": 289,
@@ -1842,20 +1793,16 @@
       },
       "recoded": {
         "Injury Burden Intensity": 2,
-        "Treatment Burden": 1,
+        "Treatment Burden": 2,
         "Work Impact Severity": 2,
         "Legal Procedural Complexity": 1,
         "Psychological Injury Emphasis": 1,
-        "Liability Clarity": 1,
+        "Liability Clarity": 0,
         "Causation Complexity": 0,
         "Pre-existing Condition Salience": 0
       },
-      "recoder_uncertain": [
-        "Treatment Burden",
-        "Causation Complexity",
-        "Pre-existing Condition Salience"
-      ],
-      "prompt_sha256": "f10432933b18e97adb0b119b"
+      "recoder_uncertain": [],
+      "prompt_sha256": "487f61d69586ead788e5fcb9"
     },
     {
       "row_index": 290,
@@ -1884,9 +1831,11 @@
       },
       "recoder_uncertain": [
         "Treatment Burden",
+        "Legal Procedural Complexity",
+        "Causation Complexity",
         "Pre-existing Condition Salience"
       ],
-      "prompt_sha256": "5eb420e00a4dcad1811f4ea2"
+      "prompt_sha256": "75e2e77e674354c3952c43f6"
     },
     {
       "row_index": 314,
@@ -1907,14 +1856,14 @@
         "Injury Burden Intensity": 1,
         "Treatment Burden": 1,
         "Work Impact Severity": 1,
-        "Legal Procedural Complexity": 0,
+        "Legal Procedural Complexity": 1,
         "Psychological Injury Emphasis": 1,
         "Liability Clarity": 2,
         "Causation Complexity": 1,
-        "Pre-existing Condition Salience": 1
+        "Pre-existing Condition Salience": 2
       },
       "recoder_uncertain": [],
-      "prompt_sha256": "bab16e7bd79402443aad71fb"
+      "prompt_sha256": "bde6ba0a45e36acac3a85b4e"
     },
     {
       "row_index": 322,
@@ -1935,17 +1884,16 @@
         "Injury Burden Intensity": 1,
         "Treatment Burden": 1,
         "Work Impact Severity": 0,
-        "Legal Procedural Complexity": 0,
+        "Legal Procedural Complexity": 1,
         "Psychological Injury Emphasis": 0,
         "Liability Clarity": 2,
-        "Causation Complexity": 1,
+        "Causation Complexity": 2,
         "Pre-existing Condition Salience": 2
       },
       "recoder_uncertain": [
-        "Work Impact Severity",
-        "Psychological Injury Emphasis"
+        "Work Impact Severity"
       ],
-      "prompt_sha256": "a27b472aa6c50e9cf5e57835"
+      "prompt_sha256": "5b15d7d447add2c4ba6e2289"
     },
     {
       "row_index": 329,
@@ -1964,20 +1912,19 @@
       },
       "recoded": {
         "Injury Burden Intensity": 3,
-        "Treatment Burden": 0,
+        "Treatment Burden": 1,
         "Work Impact Severity": 0,
-        "Legal Procedural Complexity": 0,
-        "Psychological Injury Emphasis": 0,
+        "Legal Procedural Complexity": 2,
+        "Psychological Injury Emphasis": 1,
         "Liability Clarity": 2,
         "Causation Complexity": 0,
         "Pre-existing Condition Salience": 2
       },
       "recoder_uncertain": [
         "Treatment Burden",
-        "Work Impact Severity",
-        "Psychological Injury Emphasis"
+        "Causation Complexity"
       ],
-      "prompt_sha256": "814908d78e95af93680009f1"
+      "prompt_sha256": "9e8d02bebd222164f14dcbd2"
     },
     {
       "row_index": 335,
@@ -1997,8 +1944,8 @@
       "recoded": {
         "Injury Burden Intensity": 1,
         "Treatment Burden": 1,
-        "Work Impact Severity": 2,
-        "Legal Procedural Complexity": 0,
+        "Work Impact Severity": 1,
+        "Legal Procedural Complexity": 1,
         "Psychological Injury Emphasis": 0,
         "Liability Clarity": 2,
         "Causation Complexity": 0,
@@ -2008,7 +1955,7 @@
         "Psychological Injury Emphasis",
         "Pre-existing Condition Salience"
       ],
-      "prompt_sha256": "a047384e7367c3459409736e"
+      "prompt_sha256": "4be682e4c9a783644109318f"
     },
     {
       "row_index": 341,
@@ -2027,9 +1974,9 @@
       },
       "recoded": {
         "Injury Burden Intensity": 2,
-        "Treatment Burden": 0,
+        "Treatment Burden": 1,
         "Work Impact Severity": 2,
-        "Legal Procedural Complexity": 0,
+        "Legal Procedural Complexity": 2,
         "Psychological Injury Emphasis": 1,
         "Liability Clarity": 2,
         "Causation Complexity": 1,
@@ -2038,7 +1985,7 @@
       "recoder_uncertain": [
         "Treatment Burden"
       ],
-      "prompt_sha256": "0d9703ab4f41343ba1927dc7"
+      "prompt_sha256": "8f0825b9777c1ec7ff4a1abf"
     },
     {
       "row_index": 343,
@@ -2059,18 +2006,17 @@
         "Injury Burden Intensity": 1,
         "Treatment Burden": 0,
         "Work Impact Severity": 1,
-        "Legal Procedural Complexity": 0,
+        "Legal Procedural Complexity": 1,
         "Psychological Injury Emphasis": 0,
         "Liability Clarity": 0,
-        "Causation Complexity": 1,
-        "Pre-existing Condition Salience": 1
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
       },
       "recoder_uncertain": [
-        "Treatment Burden",
-        "Work Impact Severity",
-        "Psychological Injury Emphasis"
+        "Psychological Injury Emphasis",
+        "Pre-existing Condition Salience"
       ],
-      "prompt_sha256": "bfc9940262503cad85d8eff8"
+      "prompt_sha256": "2a5de2b6c3874865919d318d"
     },
     {
       "row_index": 346,
@@ -2088,22 +2034,19 @@
         "Pre-existing Condition Salience": 2
       },
       "recoded": {
-        "Injury Burden Intensity": 3,
-        "Treatment Burden": 2,
-        "Work Impact Severity": 1,
-        "Legal Procedural Complexity": 0,
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 0,
+        "Legal Procedural Complexity": 2,
         "Psychological Injury Emphasis": 1,
         "Liability Clarity": 2,
         "Causation Complexity": 1,
         "Pre-existing Condition Salience": 1
       },
       "recoder_uncertain": [
-        "Work Impact Severity",
-        "Legal Procedural Complexity",
-        "Causation Complexity",
-        "Pre-existing Condition Salience"
+        "Work Impact Severity"
       ],
-      "prompt_sha256": "88d5a64b2e18e1fcb470c383"
+      "prompt_sha256": "e7c9cb3572e15d2df6412f61"
     },
     {
       "row_index": 348,
@@ -2123,17 +2066,17 @@
       "recoded": {
         "Injury Burden Intensity": 1,
         "Treatment Burden": 1,
-        "Work Impact Severity": 2,
-        "Legal Procedural Complexity": 0,
+        "Work Impact Severity": 1,
+        "Legal Procedural Complexity": 1,
         "Psychological Injury Emphasis": 0,
         "Liability Clarity": 2,
         "Causation Complexity": 0,
-        "Pre-existing Condition Salience": 1
+        "Pre-existing Condition Salience": 2
       },
       "recoder_uncertain": [
         "Psychological Injury Emphasis"
       ],
-      "prompt_sha256": "635fea9965469a8383f6f17d"
+      "prompt_sha256": "ad41b22723832c3c860f9d45"
     },
     {
       "row_index": 356,
@@ -2155,7 +2098,7 @@
         "Treatment Burden": 2,
         "Work Impact Severity": 0,
         "Legal Procedural Complexity": 0,
-        "Psychological Injury Emphasis": 1,
+        "Psychological Injury Emphasis": 0,
         "Liability Clarity": 2,
         "Causation Complexity": 0,
         "Pre-existing Condition Salience": 1
@@ -2166,7 +2109,7 @@
         "Causation Complexity",
         "Pre-existing Condition Salience"
       ],
-      "prompt_sha256": "b23f89c0ce14f2326ffa49ed"
+      "prompt_sha256": "dc2dcea50a0a838c4d34776a"
     },
     {
       "row_index": 367,
@@ -2184,24 +2127,21 @@
         "Pre-existing Condition Salience": 1
       },
       "recoded": {
-        "Injury Burden Intensity": 1,
+        "Injury Burden Intensity": 2,
         "Treatment Burden": 0,
         "Work Impact Severity": 1,
-        "Legal Procedural Complexity": 0,
+        "Legal Procedural Complexity": 2,
         "Psychological Injury Emphasis": 2,
         "Liability Clarity": 2,
         "Causation Complexity": 0,
         "Pre-existing Condition Salience": 0
       },
       "recoder_uncertain": [
-        "Injury Burden Intensity",
         "Treatment Burden",
-        "Work Impact Severity",
-        "Legal Procedural Complexity",
         "Causation Complexity",
         "Pre-existing Condition Salience"
       ],
-      "prompt_sha256": "1ad5b4c7be0b766de2845c8c"
+      "prompt_sha256": "a4a1cac187e1ce86316b2ab0"
     },
     {
       "row_index": 371,
@@ -2219,10 +2159,10 @@
         "Pre-existing Condition Salience": 1
       },
       "recoded": {
-        "Injury Burden Intensity": 2,
+        "Injury Burden Intensity": 1,
         "Treatment Burden": 0,
         "Work Impact Severity": 2,
-        "Legal Procedural Complexity": 0,
+        "Legal Procedural Complexity": 1,
         "Psychological Injury Emphasis": 0,
         "Liability Clarity": 2,
         "Causation Complexity": 0,
@@ -2231,9 +2171,10 @@
       "recoder_uncertain": [
         "Treatment Burden",
         "Psychological Injury Emphasis",
+        "Causation Complexity",
         "Pre-existing Condition Salience"
       ],
-      "prompt_sha256": "326b252005c16d248bb9ba9f"
+      "prompt_sha256": "8762e97520009ff612d2203a"
     },
     {
       "row_index": 375,
@@ -2261,15 +2202,9 @@
         "Pre-existing Condition Salience": 0
       },
       "recoder_uncertain": [
-        "Injury Burden Intensity",
-        "Treatment Burden",
-        "Work Impact Severity",
-        "Legal Procedural Complexity",
-        "Psychological Injury Emphasis",
-        "Causation Complexity",
         "Pre-existing Condition Salience"
       ],
-      "prompt_sha256": "edfb6560a38d310c4027d0fc"
+      "prompt_sha256": "0f04609c207cf2877f19c2c0"
     },
     {
       "row_index": 388,
@@ -2290,17 +2225,14 @@
         "Injury Burden Intensity": 1,
         "Treatment Burden": 1,
         "Work Impact Severity": 1,
-        "Legal Procedural Complexity": 0,
+        "Legal Procedural Complexity": 1,
         "Psychological Injury Emphasis": 0,
         "Liability Clarity": 2,
         "Causation Complexity": 0,
         "Pre-existing Condition Salience": 0
       },
-      "recoder_uncertain": [
-        "Psychological Injury Emphasis",
-        "Pre-existing Condition Salience"
-      ],
-      "prompt_sha256": "11fd91ff65fbaa9d7d9a16d4"
+      "recoder_uncertain": [],
+      "prompt_sha256": "f3cc5e0c43e1086b8511767b"
     },
     {
       "row_index": 389,
@@ -2318,12 +2250,12 @@
         "Pre-existing Condition Salience": 1
       },
       "recoded": {
-        "Injury Burden Intensity": 2,
+        "Injury Burden Intensity": 3,
         "Treatment Burden": 0,
         "Work Impact Severity": 0,
         "Legal Procedural Complexity": 1,
         "Psychological Injury Emphasis": 0,
-        "Liability Clarity": 1,
+        "Liability Clarity": 0,
         "Causation Complexity": 0,
         "Pre-existing Condition Salience": 0
       },
@@ -2334,7 +2266,7 @@
         "Causation Complexity",
         "Pre-existing Condition Salience"
       ],
-      "prompt_sha256": "6315991b634d44c914f21fc0"
+      "prompt_sha256": "b5d2bdc220bdcd3b57d30455"
     },
     {
       "row_index": 399,
@@ -2353,19 +2285,18 @@
       },
       "recoded": {
         "Injury Burden Intensity": 2,
-        "Treatment Burden": 2,
+        "Treatment Burden": 3,
         "Work Impact Severity": 1,
         "Legal Procedural Complexity": 1,
         "Psychological Injury Emphasis": 0,
         "Liability Clarity": 2,
-        "Causation Complexity": 0,
+        "Causation Complexity": 1,
         "Pre-existing Condition Salience": 1
       },
       "recoder_uncertain": [
-        "Psychological Injury Emphasis",
-        "Causation Complexity"
+        "Psychological Injury Emphasis"
       ],
-      "prompt_sha256": "1fca141b6f470b649fac361e"
+      "prompt_sha256": "c37b000886accdb73aaa590d"
     },
     {
       "row_index": 403,
@@ -2386,9 +2317,9 @@
         "Injury Burden Intensity": 0,
         "Treatment Burden": 0,
         "Work Impact Severity": 0,
-        "Legal Procedural Complexity": 2,
+        "Legal Procedural Complexity": 1,
         "Psychological Injury Emphasis": 0,
-        "Liability Clarity": 1,
+        "Liability Clarity": 0,
         "Causation Complexity": 0,
         "Pre-existing Condition Salience": 0
       },
@@ -2400,7 +2331,7 @@
         "Causation Complexity",
         "Pre-existing Condition Salience"
       ],
-      "prompt_sha256": "a1e2c1dba6357b1242edc0c6"
+      "prompt_sha256": "42e5788b081ee9b449ed92a1"
     },
     {
       "row_index": 406,
@@ -2418,10 +2349,10 @@
         "Pre-existing Condition Salience": 1
       },
       "recoded": {
-        "Injury Burden Intensity": 2,
-        "Treatment Burden": 0,
+        "Injury Burden Intensity": 3,
+        "Treatment Burden": 1,
         "Work Impact Severity": 0,
-        "Legal Procedural Complexity": 0,
+        "Legal Procedural Complexity": 2,
         "Psychological Injury Emphasis": 1,
         "Liability Clarity": 2,
         "Causation Complexity": 0,
@@ -2429,11 +2360,10 @@
       },
       "recoder_uncertain": [
         "Treatment Burden",
-        "Work Impact Severity",
         "Psychological Injury Emphasis",
         "Pre-existing Condition Salience"
       ],
-      "prompt_sha256": "e65dbc7cdf49722a95c694ae"
+      "prompt_sha256": "5ffe9f03abe60068383f9935"
     },
     {
       "row_index": 420,
@@ -2454,7 +2384,7 @@
         "Injury Burden Intensity": 1,
         "Treatment Burden": 1,
         "Work Impact Severity": 2,
-        "Legal Procedural Complexity": 1,
+        "Legal Procedural Complexity": 2,
         "Psychological Injury Emphasis": 0,
         "Liability Clarity": 2,
         "Causation Complexity": 1,
@@ -2463,11 +2393,9 @@
       "recoder_uncertain": [
         "Injury Burden Intensity",
         "Treatment Burden",
-        "Psychological Injury Emphasis",
-        "Causation Complexity",
-        "Pre-existing Condition Salience"
+        "Psychological Injury Emphasis"
       ],
-      "prompt_sha256": "477f92b1efbd5060127d62a8"
+      "prompt_sha256": "361d080e12608bb9ee7224a5"
     },
     {
       "row_index": 425,
@@ -2486,9 +2414,9 @@
       },
       "recoded": {
         "Injury Burden Intensity": 3,
-        "Treatment Burden": 2,
+        "Treatment Burden": 3,
         "Work Impact Severity": 0,
-        "Legal Procedural Complexity": 0,
+        "Legal Procedural Complexity": 2,
         "Psychological Injury Emphasis": 0,
         "Liability Clarity": 2,
         "Causation Complexity": 0,
@@ -2496,10 +2424,10 @@
       },
       "recoder_uncertain": [
         "Work Impact Severity",
-        "Psychological Injury Emphasis",
+        "Causation Complexity",
         "Pre-existing Condition Salience"
       ],
-      "prompt_sha256": "742cd8554ad69f133c76abca"
+      "prompt_sha256": "0ed5b2b1ec2d0781c39cb41d"
     },
     {
       "row_index": 430,
@@ -2517,13 +2445,13 @@
         "Pre-existing Condition Salience": 1
       },
       "recoded": {
-        "Injury Burden Intensity": 0,
+        "Injury Burden Intensity": 1,
         "Treatment Burden": 0,
         "Work Impact Severity": 0,
-        "Legal Procedural Complexity": 2,
+        "Legal Procedural Complexity": 3,
         "Psychological Injury Emphasis": 0,
-        "Liability Clarity": 2,
-        "Causation Complexity": 1,
+        "Liability Clarity": 0,
+        "Causation Complexity": 2,
         "Pre-existing Condition Salience": 0
       },
       "recoder_uncertain": [
@@ -2533,7 +2461,7 @@
         "Psychological Injury Emphasis",
         "Pre-existing Condition Salience"
       ],
-      "prompt_sha256": "cd33cc0c705f81ab837ff88e"
+      "prompt_sha256": "ff85e3c8f13528f9c2c3dea4"
     },
     {
       "row_index": 439,
@@ -2554,7 +2482,7 @@
         "Injury Burden Intensity": 2,
         "Treatment Burden": 2,
         "Work Impact Severity": 2,
-        "Legal Procedural Complexity": 1,
+        "Legal Procedural Complexity": 2,
         "Psychological Injury Emphasis": 0,
         "Liability Clarity": 2,
         "Causation Complexity": 1,
@@ -2564,7 +2492,7 @@
         "Psychological Injury Emphasis",
         "Pre-existing Condition Salience"
       ],
-      "prompt_sha256": "be7dcf3cc962c34da4c5fa50"
+      "prompt_sha256": "68aca226784e80cd1bfffc7b"
     },
     {
       "row_index": 452,
@@ -2592,7 +2520,7 @@
         "Pre-existing Condition Salience": 0
       },
       "recoder_uncertain": [],
-      "prompt_sha256": "8ba4b22d4ae0621ee0cde317"
+      "prompt_sha256": "ec2199900aa7f229045ac152"
     },
     {
       "row_index": 453,
@@ -2613,7 +2541,7 @@
         "Injury Burden Intensity": 2,
         "Treatment Burden": 1,
         "Work Impact Severity": 1,
-        "Legal Procedural Complexity": 0,
+        "Legal Procedural Complexity": 2,
         "Psychological Injury Emphasis": 1,
         "Liability Clarity": 2,
         "Causation Complexity": 0,
@@ -2622,9 +2550,10 @@
       "recoder_uncertain": [
         "Treatment Burden",
         "Work Impact Severity",
-        "Psychological Injury Emphasis"
+        "Causation Complexity",
+        "Pre-existing Condition Salience"
       ],
-      "prompt_sha256": "531357d68a20ed58fe5b5c31"
+      "prompt_sha256": "5d7767504e24865b77f037aa"
     },
     {
       "row_index": 457,
@@ -2647,9 +2576,9 @@
         "Work Impact Severity": 1,
         "Legal Procedural Complexity": 2,
         "Psychological Injury Emphasis": 0,
-        "Liability Clarity": 1,
+        "Liability Clarity": 2,
         "Causation Complexity": 1,
-        "Pre-existing Condition Salience": 1
+        "Pre-existing Condition Salience": 2
       },
       "recoder_uncertain": [
         "Injury Burden Intensity",
@@ -2657,7 +2586,7 @@
         "Work Impact Severity",
         "Psychological Injury Emphasis"
       ],
-      "prompt_sha256": "eaff0c7bd3f02be2dd42aa5f"
+      "prompt_sha256": "ebfa07f4129f860e16d07fcf"
     },
     {
       "row_index": 458,
@@ -2678,20 +2607,17 @@
         "Injury Burden Intensity": 1,
         "Treatment Burden": 0,
         "Work Impact Severity": 2,
-        "Legal Procedural Complexity": 1,
+        "Legal Procedural Complexity": 3,
         "Psychological Injury Emphasis": 1,
         "Liability Clarity": 1,
-        "Causation Complexity": 1,
+        "Causation Complexity": 2,
         "Pre-existing Condition Salience": 0
       },
       "recoder_uncertain": [
-        "Injury Burden Intensity",
         "Treatment Burden",
-        "Liability Clarity",
-        "Causation Complexity",
         "Pre-existing Condition Salience"
       ],
-      "prompt_sha256": "0bcb14153ab9e85a59ef7e8a"
+      "prompt_sha256": "0c4728919de3a5790003f827"
     },
     {
       "row_index": 461,
@@ -2709,7 +2635,7 @@
         "Pre-existing Condition Salience": 1
       },
       "recoded": {
-        "Injury Burden Intensity": 1,
+        "Injury Burden Intensity": 2,
         "Treatment Burden": 1,
         "Work Impact Severity": 0,
         "Legal Procedural Complexity": 0,
@@ -2720,9 +2646,10 @@
       },
       "recoder_uncertain": [
         "Work Impact Severity",
+        "Causation Complexity",
         "Pre-existing Condition Salience"
       ],
-      "prompt_sha256": "8e4170f2e965f5b8b3d26f41"
+      "prompt_sha256": "3a41831314035c38519c176a"
     },
     {
       "row_index": 464,
@@ -2751,11 +2678,11 @@
       },
       "recoder_uncertain": [
         "Treatment Burden",
-        "Work Impact Severity",
-        "Psychological Injury Emphasis",
+        "Legal Procedural Complexity",
+        "Causation Complexity",
         "Pre-existing Condition Salience"
       ],
-      "prompt_sha256": "978864fbaa549be01f87e937"
+      "prompt_sha256": "9355dee5671f25f199cbb430"
     },
     {
       "row_index": 469,
@@ -2775,7 +2702,7 @@
       "recoded": {
         "Injury Burden Intensity": 1,
         "Treatment Burden": 0,
-        "Work Impact Severity": 0,
+        "Work Impact Severity": 1,
         "Legal Procedural Complexity": 0,
         "Psychological Injury Emphasis": 0,
         "Liability Clarity": 2,
@@ -2783,7 +2710,7 @@
         "Pre-existing Condition Salience": 0
       },
       "recoder_uncertain": [],
-      "prompt_sha256": "733052a515126a53f74b9b2a"
+      "prompt_sha256": "418487c8c3d3db4cc86719ba"
     },
     {
       "row_index": 470,
@@ -2804,7 +2731,7 @@
         "Injury Burden Intensity": 1,
         "Treatment Burden": 0,
         "Work Impact Severity": 1,
-        "Legal Procedural Complexity": 0,
+        "Legal Procedural Complexity": 2,
         "Psychological Injury Emphasis": 0,
         "Liability Clarity": 2,
         "Causation Complexity": 0,
@@ -2812,10 +2739,10 @@
       },
       "recoder_uncertain": [
         "Treatment Burden",
-        "Psychological Injury Emphasis",
+        "Causation Complexity",
         "Pre-existing Condition Salience"
       ],
-      "prompt_sha256": "a1e18628e222bd9930b119d0"
+      "prompt_sha256": "f3bf2da678c98037aa05759c"
     },
     {
       "row_index": 473,
@@ -2833,23 +2760,24 @@
         "Pre-existing Condition Salience": 1
       },
       "recoded": {
-        "Injury Burden Intensity": 4,
-        "Treatment Burden": 0,
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 2,
         "Work Impact Severity": 2,
-        "Legal Procedural Complexity": 1,
+        "Legal Procedural Complexity": 0,
         "Psychological Injury Emphasis": 2,
-        "Liability Clarity": 1,
-        "Causation Complexity": 1,
+        "Liability Clarity": 0,
+        "Causation Complexity": 0,
         "Pre-existing Condition Salience": 0
       },
       "recoder_uncertain": [
         "Treatment Burden",
+        "Work Impact Severity",
         "Legal Procedural Complexity",
         "Liability Clarity",
         "Causation Complexity",
         "Pre-existing Condition Salience"
       ],
-      "prompt_sha256": "79c6a9eaa35b7805b1428a70"
+      "prompt_sha256": "a14b161f52aeab25d8b2f2b5"
     },
     {
       "row_index": 475,
@@ -2867,7 +2795,7 @@
         "Pre-existing Condition Salience": 0
       },
       "recoded": {
-        "Injury Burden Intensity": 2,
+        "Injury Burden Intensity": 3,
         "Treatment Burden": 1,
         "Work Impact Severity": 0,
         "Legal Procedural Complexity": 0,
@@ -2878,10 +2806,9 @@
       },
       "recoder_uncertain": [
         "Work Impact Severity",
-        "Causation Complexity",
         "Pre-existing Condition Salience"
       ],
-      "prompt_sha256": "be1c1030e24edaba446f73a5"
+      "prompt_sha256": "164574885b775ea97ef4ba98"
     },
     {
       "row_index": 478,
@@ -2902,7 +2829,7 @@
         "Injury Burden Intensity": 1,
         "Treatment Burden": 0,
         "Work Impact Severity": 1,
-        "Legal Procedural Complexity": 0,
+        "Legal Procedural Complexity": 2,
         "Psychological Injury Emphasis": 0,
         "Liability Clarity": 2,
         "Causation Complexity": 0,
@@ -2910,11 +2837,10 @@
       },
       "recoder_uncertain": [
         "Treatment Burden",
-        "Psychological Injury Emphasis",
         "Causation Complexity",
         "Pre-existing Condition Salience"
       ],
-      "prompt_sha256": "d2a8f4dda69aa83090fcf3ee"
+      "prompt_sha256": "56be9be2c6151c747c347e4e"
     },
     {
       "row_index": 486,
@@ -2935,18 +2861,14 @@
         "Injury Burden Intensity": 1,
         "Treatment Burden": 1,
         "Work Impact Severity": 2,
-        "Legal Procedural Complexity": 1,
+        "Legal Procedural Complexity": 2,
         "Psychological Injury Emphasis": 1,
-        "Liability Clarity": 1,
+        "Liability Clarity": 2,
         "Causation Complexity": 1,
         "Pre-existing Condition Salience": 0
       },
-      "recoder_uncertain": [
-        "Liability Clarity",
-        "Causation Complexity",
-        "Pre-existing Condition Salience"
-      ],
-      "prompt_sha256": "dbef21c69bc46ab5ad521241"
+      "recoder_uncertain": [],
+      "prompt_sha256": "9301abcf37f9078bf381cfc6"
     },
     {
       "row_index": 490,
@@ -2967,7 +2889,7 @@
         "Injury Burden Intensity": 0,
         "Treatment Burden": 0,
         "Work Impact Severity": 1,
-        "Legal Procedural Complexity": 0,
+        "Legal Procedural Complexity": 2,
         "Psychological Injury Emphasis": 0,
         "Liability Clarity": 2,
         "Causation Complexity": 0,
@@ -2980,7 +2902,7 @@
         "Causation Complexity",
         "Pre-existing Condition Salience"
       ],
-      "prompt_sha256": "079357f8a888b29feff5f34f"
+      "prompt_sha256": "a5b49aa8263388f4a7f14113"
     },
     {
       "row_index": 500,
@@ -2998,21 +2920,20 @@
         "Pre-existing Condition Salience": 0
       },
       "recoded": {
-        "Injury Burden Intensity": 3,
+        "Injury Burden Intensity": 2,
         "Treatment Burden": 1,
         "Work Impact Severity": 3,
-        "Legal Procedural Complexity": 1,
-        "Psychological Injury Emphasis": 1,
+        "Legal Procedural Complexity": 2,
+        "Psychological Injury Emphasis": 2,
         "Liability Clarity": 2,
         "Causation Complexity": 0,
         "Pre-existing Condition Salience": 0
       },
       "recoder_uncertain": [
-        "Treatment Burden",
-        "Legal Procedural Complexity",
-        "Psychological Injury Emphasis"
+        "Causation Complexity",
+        "Pre-existing Condition Salience"
       ],
-      "prompt_sha256": "30d6dd94e4310033a27578ba"
+      "prompt_sha256": "a3698867d0b81b86bfb30f90"
     },
     {
       "row_index": 503,
@@ -3030,22 +2951,20 @@
         "Pre-existing Condition Salience": 2
       },
       "recoded": {
-        "Injury Burden Intensity": 2,
+        "Injury Burden Intensity": 1,
         "Treatment Burden": 2,
         "Work Impact Severity": 2,
-        "Legal Procedural Complexity": 0,
+        "Legal Procedural Complexity": 1,
         "Psychological Injury Emphasis": 0,
         "Liability Clarity": 2,
         "Causation Complexity": 0,
         "Pre-existing Condition Salience": 1
       },
       "recoder_uncertain": [
-        "Legal Procedural Complexity",
         "Psychological Injury Emphasis",
-        "Causation Complexity",
-        "Pre-existing Condition Salience"
+        "Causation Complexity"
       ],
-      "prompt_sha256": "dc16e3c230b07b4ace976f33"
+      "prompt_sha256": "6fdde034fc45a4e42db85f84"
     },
     {
       "row_index": 507,
@@ -3063,19 +2982,17 @@
         "Pre-existing Condition Salience": 2
       },
       "recoded": {
-        "Injury Burden Intensity": 0,
+        "Injury Burden Intensity": 1,
         "Treatment Burden": 0,
         "Work Impact Severity": 0,
-        "Legal Procedural Complexity": 1,
+        "Legal Procedural Complexity": 2,
         "Psychological Injury Emphasis": 0,
         "Liability Clarity": 2,
         "Causation Complexity": 2,
         "Pre-existing Condition Salience": 2
       },
-      "recoder_uncertain": [
-        "Legal Procedural Complexity"
-      ],
-      "prompt_sha256": "e9397db2a3bb394a19a3b8ae"
+      "recoder_uncertain": [],
+      "prompt_sha256": "9d98a9cec3abb302d3c995de"
     },
     {
       "row_index": 512,
@@ -3094,7 +3011,7 @@
       },
       "recoded": {
         "Injury Burden Intensity": 3,
-        "Treatment Burden": 2,
+        "Treatment Burden": 3,
         "Work Impact Severity": 0,
         "Legal Procedural Complexity": 0,
         "Psychological Injury Emphasis": 0,
@@ -3104,11 +3021,9 @@
       },
       "recoder_uncertain": [
         "Work Impact Severity",
-        "Legal Procedural Complexity",
-        "Psychological Injury Emphasis",
         "Causation Complexity"
       ],
-      "prompt_sha256": "b3a6e6ce2f3441719ec975a0"
+      "prompt_sha256": "44262fa2e5aa4674adb95647"
     },
     {
       "row_index": 517,
@@ -3129,18 +3044,14 @@
         "Injury Burden Intensity": 1,
         "Treatment Burden": 0,
         "Work Impact Severity": 1,
-        "Legal Procedural Complexity": 0,
+        "Legal Procedural Complexity": 1,
         "Psychological Injury Emphasis": 0,
-        "Liability Clarity": 1,
+        "Liability Clarity": 2,
         "Causation Complexity": 1,
-        "Pre-existing Condition Salience": 1
+        "Pre-existing Condition Salience": 2
       },
-      "recoder_uncertain": [
-        "Treatment Burden",
-        "Psychological Injury Emphasis",
-        "Liability Clarity"
-      ],
-      "prompt_sha256": "51840d3d2c29de56b4ed5e70"
+      "recoder_uncertain": [],
+      "prompt_sha256": "64caa63c5e7a7d9b6720c1f3"
     },
     {
       "row_index": 530,
@@ -3160,7 +3071,7 @@
       "recoded": {
         "Injury Burden Intensity": 3,
         "Treatment Burden": 1,
-        "Work Impact Severity": 2,
+        "Work Impact Severity": 0,
         "Legal Procedural Complexity": 0,
         "Psychological Injury Emphasis": 0,
         "Liability Clarity": 2,
@@ -3168,10 +3079,11 @@
         "Pre-existing Condition Salience": 0
       },
       "recoder_uncertain": [
-        "Treatment Burden",
-        "Work Impact Severity"
+        "Work Impact Severity",
+        "Psychological Injury Emphasis",
+        "Pre-existing Condition Salience"
       ],
-      "prompt_sha256": "397adf441221532d3a4ae7cb"
+      "prompt_sha256": "1043a1087ee3bb0c89f3ff0a"
     },
     {
       "row_index": 533,
@@ -3190,19 +3102,19 @@
       },
       "recoded": {
         "Injury Burden Intensity": 3,
-        "Treatment Burden": 2,
+        "Treatment Burden": 3,
         "Work Impact Severity": 0,
         "Legal Procedural Complexity": 0,
         "Psychological Injury Emphasis": 0,
         "Liability Clarity": 2,
-        "Causation Complexity": 1,
+        "Causation Complexity": 2,
         "Pre-existing Condition Salience": 1
       },
       "recoder_uncertain": [
         "Work Impact Severity",
         "Psychological Injury Emphasis"
       ],
-      "prompt_sha256": "42384cf1dd3282a9ecd28b4d"
+      "prompt_sha256": "3de46a076198a0188fe0c07a"
     },
     {
       "row_index": 538,
@@ -3220,22 +3132,20 @@
         "Pre-existing Condition Salience": 1
       },
       "recoded": {
-        "Injury Burden Intensity": 3,
+        "Injury Burden Intensity": 2,
         "Treatment Burden": 2,
         "Work Impact Severity": 2,
-        "Legal Procedural Complexity": 1,
+        "Legal Procedural Complexity": 2,
         "Psychological Injury Emphasis": 1,
         "Liability Clarity": 2,
         "Causation Complexity": 0,
         "Pre-existing Condition Salience": 0
       },
       "recoder_uncertain": [
-        "Legal Procedural Complexity",
-        "Psychological Injury Emphasis",
         "Causation Complexity",
         "Pre-existing Condition Salience"
       ],
-      "prompt_sha256": "a43c0eb83a5556a1a367e660"
+      "prompt_sha256": "217bc338670a49c09598250d"
     },
     {
       "row_index": 539,
@@ -3256,7 +3166,7 @@
         "Injury Burden Intensity": 0,
         "Treatment Burden": 0,
         "Work Impact Severity": 1,
-        "Legal Procedural Complexity": 0,
+        "Legal Procedural Complexity": 1,
         "Psychological Injury Emphasis": 0,
         "Liability Clarity": 2,
         "Causation Complexity": 0,
@@ -3266,9 +3176,10 @@
         "Injury Burden Intensity",
         "Treatment Burden",
         "Psychological Injury Emphasis",
+        "Causation Complexity",
         "Pre-existing Condition Salience"
       ],
-      "prompt_sha256": "198051a3b8fb8cd379476375"
+      "prompt_sha256": "90b724ebb0d642554570e040"
     }
   ]
 }
