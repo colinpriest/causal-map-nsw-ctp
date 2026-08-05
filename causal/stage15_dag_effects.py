@@ -189,9 +189,12 @@ def load():
         if d[c].isna().any():
             d[c + "__missing"] = d[c].isna().astype(float)
             d[c] = d[c].fillna(d[c].median())
-    for col, cut in operative_thresholds().items():
-        if col in d.columns:
-            d[col] = (d[col] > cut).astype(float)
+    # NOT applied here. The threshold is the operative form only where the column acts as
+    # a CAUSE -- s 4.11 gates non-economic loss on the crossing. As an OUTCOME the
+    # continuous value is the natural quantity: injury severity drives the assessed level,
+    # not merely whether it clears 10%. Binarising globally turned `Injury Burden Intensity
+    # -> WPI %` into a binary-outcome problem that DoubleML correctly refused. So the
+    # transform is applied per estimate, to the treatment only.
     return d
 
 
@@ -224,9 +227,23 @@ def unadjusted(data, treatment, outcome):
                 seconds=0.0)
 
 
+def as_treatment(data, treatment):
+    """Binarise a column at its declared cut when it is the treatment, not the outcome."""
+    cut = operative_thresholds().get(treatment)
+    if cut is None:
+        return data, None
+    d = data.copy()
+    d[treatment] = (d[treatment] > cut).astype(float)
+    return d, cut
+
+
 def estimate(data, treatment, outcome, adjust, learner_pair, n_rep=1):
+    data, cut = as_treatment(data, treatment)
     if not list(adjust):
-        return unadjusted(data, treatment, outcome)
+        r = unadjusted(data, treatment, outcome)
+        if cut is not None and "estimand" in r:
+            r["estimand"] = f"crossing the {cut:g} threshold (unadjusted, exogenous)"
+        return r
     import doubleml as dml
     extra = [c + "__missing" for c in adjust if c + "__missing" in data.columns]
     cols = [outcome, treatment] + list(adjust) + extra
@@ -250,7 +267,8 @@ def estimate(data, treatment, outcome, adjust, learner_pair, n_rep=1):
                     ci=[float(ci.iloc[i, 0]), float(ci.iloc[i, 1])],
                     se=float(c.ses[i]),
                     significant=bool(ci.iloc[i, 0] > 0 or ci.iloc[i, 1] < 0),
-                    estimand="top-vs-base level contrast",
+                    estimand=(f"crossing the {cut:g} threshold" if cut is not None
+                              else "top-vs-base level contrast"),
                     ate_all=[float(x) for x in c.thetas],
                     seconds=round(time.time() - t0, 1))
     except Exception as exc:                              # noqa: BLE001
@@ -351,7 +369,9 @@ def main() -> int:
                                     reason="no backdoor set of observed variables"))
                 continue
             z = sets_obs[0]
-            discrete = data[src].nunique() <= 6
+            # a thresholded treatment is discrete however many values the raw column has
+            discrete = (data[src].nunique() <= 6
+                        or src in operative_thresholds())
             est = (estimate(data, src, dst, z, learner) if discrete
                    else estimate_continuous(data, src, dst, z, learner))
             rows.append(dict(treatment=src, outcome=dst, backdoor_set=z,
