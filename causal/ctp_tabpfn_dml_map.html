@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NSW CTP — DoubleML + TabPFN causal map</title>
+<style>
+:root{color-scheme:light dark;--ink:#0b0b0b;--ink2:#52514e;--muted:#898781;--page:#f9f9f7;
+--surface:#fff;--line:rgba(11,11,11,.12);--pos:#0b7d3e;--neg:#d03b3b;--band:rgba(11,11,11,.03)}
+@media(prefers-color-scheme:dark){:root{--ink:#fff;--ink2:#c3c2b7;--page:#0d0d0d;
+--surface:#1a1a19;--line:rgba(255,255,255,.14);--pos:#3fbf74;--neg:#e66767;--band:rgba(255,255,255,.04)}}
+*{box-sizing:border-box}body{margin:0;background:var(--page);color:var(--ink);
+font:15px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif;padding:24px}
+.wrap{max-width:1400px;margin:0 auto}h1{font-size:23px;margin:0 0 6px;letter-spacing:-.01em}
+p.sub{margin:0;color:var(--ink2);max-width:92ch}
+.warn{border:1px solid #fab219;border-left-width:4px;border-radius:6px;padding:10px 14px;
+margin:14px 0;background:color-mix(in srgb,#fab219 11%,var(--surface));font-size:13.5px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:16px 0}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:9px;padding:11px 13px}
+.tile .v{font-size:22px;letter-spacing:-.02em}.tile .k{font-size:11.5px;color:var(--muted);
+text-transform:uppercase;letter-spacing:.05em;margin-top:2px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-bottom:22px}
+.panel h2{font-size:15px;margin:0;padding:14px 18px 0}
+.panel p.note{margin:4px 18px 10px;color:var(--ink2);font-size:13px}
+.scroll{overflow-x:auto}svg{display:block;min-width:900px}
+text{font:12px system-ui;fill:var(--ink)}text.small{font-size:10.5px;fill:var(--muted)}
+rect.node{fill:var(--surface);stroke:var(--line);stroke-width:1.3}
+g.node{cursor:pointer}g.node:hover rect{stroke:#2a78d6;stroke-width:2}
+path.edge{fill:none;opacity:.75}path.edge:hover{opacity:1}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line)}
+th{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+td.num{text-align:right;font-variant-numeric:tabular-nums}
+.sig{font-weight:600}.ns{color:var(--muted)}
+code{background:var(--band);padding:1px 5px;border-radius:4px;font-size:.9em}
+#detail{padding:14px 18px;font-size:13.5px;color:var(--ink2);min-height:70px;border-top:1px solid var(--line)}
+.legend{display:flex;gap:20px;flex-wrap:wrap;font-size:12.5px;color:var(--ink2);padding:0 18px 12px}
+</style></head><body><div class="wrap">
+<h1>NSW CTP — DoubleML + TabPFN causal map</h1>
+<p class="sub">Average Treatment Effect of each discrete column on <code>log(Lump Sum)</code>,
+estimated by double machine learning. An ATE of 0.10 is roughly a 10% change in the award.</p>
+<div class="warn" id="warn"></div>
+<div class="tiles" id="tiles"></div>
+
+<div class="panel">
+  <h2>The map</h2>
+  <p class="note">A star, not a graph. Edge width is |ATE|, colour is direction, solid means the
+  95% interval excludes zero. There are no edges between treatments because DoubleML does not
+  produce any — it estimates one treatment against one outcome at a time.</p>
+  <div class="legend" id="legend"></div>
+  <div class="scroll"><svg id="map" height="720"></svg></div>
+  <div id="detail">Select a treatment.</div>
+</div>
+
+<div class="panel">
+  <h2>Naive vs DAG adjustment</h2>
+  <p class="note">Same learner, same data, same treatment — only the adjustment set differs.
+  The gap is attributable to identification, not estimation.</p>
+  <div class="scroll"><table id="cmp"></table></div>
+</div>
+
+<div class="panel">
+  <h2>Learner comparison</h2>
+  <p class="note">There is no ground truth here, unlike the DoubleML documentation example
+  which uses synthetic data with oracle effects. A narrower interval is not necessarily a
+  better estimate — on a misspecified adjustment set it is a confident wrong answer.</p>
+  <div class="scroll"><table id="learn"></table></div>
+</div>
+
+<script id="d" type="application/json">{"target":"Lump Sum","generated":"2026-08-05T11:56:18+00:00","tabpfn_version":"8.2.0","learners":["TabPFN","LightGBM","Linear"],"n_rows":540,"adjustment_sets":{"naive":"every other column -- conditions on mediators and on a collider","dag":"the treatment's parents in the assembled graph, i.e. the backdoor set"},"caveat":"DoubleML estimates effect SIZE given an assumed direction and adjustment set. It cannot orient an edge: swap treatment and outcome and it will estimate that too, without complaint.","imputation":"median fill plus a per-column missingness indicator, because DoubleML needs complete rows and complete-case would leave 149","method":"DoubleMLAPOS per https://docs.doubleml.org/stable/examples/learners/py_tabpfn.html. Outcome is log(Lump Sum); ATE is reported in log-dollars, so 0.10 is roughly a 10% change in the award.","rows":[{"treatment":"Claimant Gender","dag_parents":[],"in_elicited_graph":false,"has_edge_to_target":false,"estimates":{"naive":{"TabPFN":{"ate":-0.0629,"ci":[-0.1439,0.018],"se":0.0413,"seconds":70.4,"significant":false,"levels":[0.0,1.0],"apo":[12.179,12.116],"ate_all":[-0.0629]},"LightGBM":{"ate":-0.0193,"ci":[-0.1204,0.0818],"se":0.0516,"seconds":4.9,"significant":false,"levels":[0.0,1.0],"apo":[12.145,12.125],"ate_all":[-0.0193]},"Linear":{"ate":-0.0139,"ci":[-0.1544,0.1267],"se":0.0717,"seconds":0.9,"significant":false,"levels":[0.0,1.0],"apo":[12.146,12.133],"ate_all":[-0.0139]}},"dag":{"skipped":"the assembled graph gives this variable no parents"}}},{"treatment":"Nature","dag_parents":["Work Impact Severity","Causation Complexity"],"in_elicited_graph":true,"has_edge_to_target":false,"estimates":{"naive":{"TabPFN":{"ate":-0.1765,"ci":[-0.4323,0.0794],"se":0.1305,"seconds":52.2,"significant":false,"levels":[0.0,1.0],"apo":[12.233,12.057],"ate_all":[-0.1765]},"LightGBM":{"ate":-0.1381,"ci":[-0.2549,-0.0212],"se":0.0596,"seconds":24.5,"significant":true,"levels":[0.0,1.0],"apo":[12.175,12.037],"ate_all":[-0.1381]},"Linear":{"ate":-0.0109,"ci":[-0.4845,0.4626],"se":0.2416,"seconds":1.6,"significant":false,"levels":[0.0,1.0],"apo":[12.263,12.252],"ate_all":[-0.0109]}},"dag":{"TabPFN":{"ate":0.265,"ci":[-0.1035,0.6335],"se":0.188,"seconds":64.8,"significant":false,"levels":[0.0,1.0],"apo":[11.997,12.262],"ate_all":[0.265]},"LightGBM":{"ate":0.2244,"ci":[-0.0041,0.453],"se":0.1166,"seconds":7.5,"significant":false,"levels":[0.0,1.0],"apo":[11.995,12.22],"ate_all":[0.2244]},"Linear":{"ate":0.2178,"ci":[-0.058,0.4937],"se":0.1407,"seconds":0.1,"significant":false,"levels":[0.0,1.0],"apo":[12.079,12.297],"ate_all":[0.2178]}}}},{"treatment":"Injury Burden Intensity","dag_parents":["Claimant Age","Pre-existing Condition Salience"],"in_elicited_graph":true,"has_edge_to_target":true,"estimates":{"naive":{"TabPFN":{"ate":1.9719,"ci":[1.2994,2.6445],"se":0.3432,"seconds":75.1,"significant":true,"levels":[1.0,2.0,3.0],"apo":[11.121,12.187,13.093],"ate_all":[1.0661,1.9719]},"LightGBM":{"ate":2.2256,"ci":[1.7406,2.7106],"se":0.2475,"seconds":12.9,"significant":true,"levels":[1.0,2.0,3.0],"apo":[10.724,12.166,12.95],"ate_all":[1.4419,2.2256]},"Linear":{"ate":0.7962,"ci":[-0.3131,1.9055],"se":0.566,"seconds":1.7,"significant":false,"levels":[1.0,2.0,3.0],"apo":[12.348,12.369,13.144],"ate_all":[0.0216,0.7962]}},"dag":{"TabPFN":{"ate":2.7965,"ci":[2.4189,3.1742],"se":0.1927,"seconds":74.9,"significant":true,"levels":[1.0,2.0,3.0],"apo":[10.475,12.057,13.271],"ate_all":[1.5818,2.7965]},"LightGBM":{"ate":2.7103,"ci":[2.3069,3.1137],"se":0.2058,"seconds":10.4,"significant":true,"levels":[1.0,2.0,3.0],"apo":[10.565,12.087,13.276],"ate_all":[1.522,2.7103]},"Linear":{"ate":2.8308,"ci":[2.4699,3.1918],"se":0.1841,"seconds":0.1,"significant":true,"levels":[1.0,2.0,3.0],"apo":[10.437,12.064,13.268],"ate_all":[1.6266,2.8308]}}}},{"treatment":"Treatment Burden","dag_parents":["Pre-existing Condition Salience","Claimant Weekly Income","Injury Burden Intensity"],"in_elicited_graph":false,"has_edge_to_target":false,"estimates":{"naive":{"TabPFN":{"ate":1.2131,"ci":[0.8412,1.5849],"se":0.1897,"seconds":98.8,"significant":true,"levels":[0.0,1.0,2.0,3.0],"apo":[11.474,12.191,12.132,12.687],"ate_all":[0.7171,0.6583,1.2131]},"LightGBM":{"ate":1.3463,"ci":[0.7199,1.9726],"se":0.3196,"seconds":14.4,"significant":true,"levels":[0.0,1.0,2.0,3.0],"apo":[11.575,12.245,12.213,12.922],"ate_all":[0.6696,0.6375,1.3463]},"Linear":{"ate":-1.8313,"ci":[-3.8671,0.2045],"se":1.0387,"seconds":2.3,"significant":false,"levels":[0.0,1.0,2.0,3.0],"apo":[14.652,12.208,12.287,12.821],"ate_all":[-2.4434,-2.365,-1.8313]}},"dag":{"TabPFN":{"ate":1.7858,"ci":[0.9935,2.5781],"se":0.4043,"seconds":97.7,"significant":true,"levels":[0.0,1.0,2.0,3.0],"apo":[11.776,12.196,12.04,13.562],"ate_all":[0.4202,0.2642,1.7858]},"LightGBM":{"ate":1.284,"ci":[0.3358,2.2323],"se":0.4838,"seconds":12.0,"significant":true,"levels":[0.0,1.0,2.0,3.0],"apo":[12.136,12.29,12.316,13.42],"ate_all":[0.1547,0.1798,1.284]},"Linear":{"ate":2.2876,"ci":[1.3454,3.2298],"se":0.4807,"seconds":0.3,"significant":true,"levels":[0.0,1.0,2.0,3.0],"apo":[11.118,12.279,12.229,13.406],"ate_all":[1.1607,1.1112,2.2876]}}}},{"treatment":"Work Impact Severity","dag_parents":["Injury Burden Intensity","WPI %"],"in_elicited_graph":true,"has_edge_to_target":false,"estimates":{"naive":{"TabPFN":{"ate":1.2361,"ci":[-0.066,2.5383],"se":0.6644,"seconds":63.7,"significant":false,"levels":[0.0,1.0,2.0,3.0],"apo":[11.005,11.985,12.02,12.241],"ate_all":[0.9796,1.0149,1.2361]},"LightGBM":{"ate":1.39,"ci":[0.9542,1.8259],"se":0.2224,"seconds":3.0,"significant":true,"levels":[0.0,1.0,2.0,3.0],"apo":[11.215,12.02,12.332,12.605],"ate_all":[0.805,1.1166,1.39]},"Linear":{"ate":0.8821,"ci":[-0.0798,1.844],"se":0.4908,"seconds":0.8,"significant":false,"levels":[0.0,1.0,2.0,3.0],"apo":[11.33,12.438,12.419,12.212],"ate_all":[1.1079,1.0895,0.8821]}},"dag":{"TabPFN":{"ate":1.5177,"ci":[1.0973,1.9382],"se":0.2145,"seconds":47.7,"significant":true,"levels":[0.0,1.0,2.0,3.0],"apo":[11.555,11.564,12.438,13.073],"ate_all":[0.0087,0.8826,1.5177]},"LightGBM":{"ate":1.6502,"ci":[1.1171,2.1832],"se":0.272,"seconds":2.3,"significant":true,"levels":[0.0,1.0,2.0,3.0],"apo":[11.441,11.634,12.521,13.092],"ate_all":[0.1923,1.0797,1.6502]},"Linear":{"ate":1.3433,"ci":[1.0142,1.6725],"se":0.1679,"seconds":0.1,"significant":true,"levels":[0.0,1.0,2.0,3.0],"apo":[11.659,11.534,12.503,13.002],"ate_all":[-0.1243,0.8444,1.3433]}}}},{"treatment":"Legal Procedural Complexity","dag_parents":["Pre-existing Condition Salience","Liability Clarity","Work Impact Severity","Causation Complexity","Nature"],"in_elicited_graph":true,"has_edge_to_target":false,"estimates":{"naive":{"TabPFN":{"ate":0.2531,"ci":[-0.1368,0.643],"se":0.1989,"seconds":36.1,"significant":false,"levels":[0.0,1.0,2.0],"apo":[12.112,12.125,12.365],"ate_all":[0.0128,0.2531]},"LightGBM":{"ate":0.2838,"ci":[0.0329,0.5348],"se":0.1281,"seconds":2.2,"significant":true,"levels":[0.0,1.0,2.0],"apo":[12.084,11.919,12.368],"ate_all":[-0.1649,0.2838]},"Linear":{"ate":-0.0012,"ci":[-0.7633,0.7609],"se":0.3888,"seconds":0.6,"significant":false,"levels":[0.0,1.0,2.0],"apo":[12.177,11.771,12.176],"ate_all":[-0.4063,-0.0012]}},"dag":{"TabPFN":{"ate":0.663,"ci":[-0.5246,1.8506],"se":0.6059,"seconds":65.1,"significant":false,"levels":[0.0,1.0,2.0],"apo":[11.94,11.55,12.602],"ate_all":[-0.3891,0.663]},"LightGBM":{"ate":0.5325,"ci":[-0.1329,1.1979],"se":0.3395,"seconds":8.3,"significant":false,"levels":[0.0,1.0,2.0],"apo":[11.943,11.956,12.475],"ate_all":[0.0136,0.5325]},"Linear":{"ate":0.5709,"ci":[-0.1754,1.3171],"se":0.3807,"seconds":0.1,"significant":false,"levels":[0.0,1.0,2.0],"apo":[12.007,11.866,12.577],"ate_all":[-0.1405,0.5709]}}}},{"treatment":"Psychological Injury Emphasis","dag_parents":["Injury Burden Intensity"],"in_elicited_graph":true,"has_edge_to_target":false,"estimates":{"naive":{"TabPFN":{"ate":0.1994,"ci":[-0.0277,0.4265],"se":0.1159,"seconds":75.0,"significant":false,"levels":[0.0,1.0,2.0],"apo":[12.213,12.116,12.413],"ate_all":[-0.0969,0.1994]},"LightGBM":{"ate":0.3379,"ci":[0.186,0.4898],"se":0.0775,"seconds":15.5,"significant":true,"levels":[0.0,1.0,2.0],"apo":[12.082,12.02,12.42],"ate_all":[-0.0613,0.3379]},"Linear":{"ate":0.1975,"ci":[-0.1732,0.5681],"se":0.1891,"seconds":1.7,"significant":false,"levels":[0.0,1.0,2.0],"apo":[12.429,11.68,12.627],"ate_all":[-0.7495,0.1975]}},"dag":{"TabPFN":{"ate":0.7481,"ci":[0.5295,0.9668],"se":0.1116,"seconds":72.9,"significant":true,"levels":[0.0,1.0,2.0],"apo":[11.84,12.104,12.588],"ate_all":[0.2641,0.7481]},"LightGBM":{"ate":0.8667,"ci":[0.6539,1.0795],"se":0.1086,"seconds":6.8,"significant":true,"levels":[0.0,1.0,2.0],"apo":[11.832,12.093,12.698],"ate_all":[0.2617,0.8667]},"Linear":{"ate":0.8937,"ci":[0.7011,1.0863],"se":0.0983,"seconds":0.1,"significant":true,"levels":[0.0,1.0,2.0],"apo":[11.753,12.107,12.646],"ate_all":[0.3547,0.8937]}}}},{"treatment":"Liability Clarity","dag_parents":[],"in_elicited_graph":true,"has_edge_to_target":false,"estimates":{"naive":{"TabPFN":{"ate":0.3052,"ci":[-0.0447,0.6552],"se":0.1786,"seconds":49.4,"significant":false,"levels":[1.0,2.0],"apo":[11.845,12.15],"ate_all":[0.3052]},"LightGBM":{"ate":0.0651,"ci":[-0.3024,0.4326],"se":0.1875,"seconds":6.7,"significant":false,"levels":[1.0,2.0],"apo":[12.088,12.153],"ate_all":[0.0651]},"Linear":{"ate":0.0081,"ci":[-0.7103,0.7264],"se":0.3665,"seconds":1.2,"significant":false,"levels":[1.0,2.0],"apo":[12.139,12.147],"ate_all":[0.0081]}},"dag":{"skipped":"the assembled graph gives this variable no parents"}}},{"treatment":"Causation Complexity","dag_parents":["Pre-existing Condition Salience","Injury Burden Intensity","Psychological Injury Emphasis"],"in_elicited_graph":true,"has_edge_to_target":false,"estimates":{"naive":{"TabPFN":{"ate":-0.3316,"ci":[-0.5249,-0.1383],"se":0.0986,"seconds":74.8,"significant":true,"levels":[0.0,1.0,2.0],"apo":[12.232,12.109,11.901],"ate_all":[-0.1232,-0.3316]},"LightGBM":{"ate":-0.2587,"ci":[-0.4025,-0.115],"se":0.0733,"seconds":12.4,"significant":true,"levels":[0.0,1.0,2.0],"apo":[12.145,12.187,11.886],"ate_all":[0.0422,-0.2587]},"Linear":{"ate":0.3533,"ci":[0.1256,0.581],"se":0.1162,"seconds":1.8,"significant":true,"levels":[0.0,1.0,2.0],"apo":[12.12,12.411,12.473],"ate_all":[0.2907,0.3533]}},"dag":{"TabPFN":{"ate":0.6004,"ci":[-0.091,1.2918],"se":0.3528,"seconds":73.9,"significant":false,"levels":[0.0,1.0,2.0],"apo":[12.064,12.361,12.664],"ate_all":[0.2977,0.6004]},"LightGBM":{"ate":0.6622,"ci":[0.2284,1.096],"se":0.2213,"seconds":10.8,"significant":true,"levels":[0.0,1.0,2.0],"apo":[12.069,12.465,12.731],"ate_all":[0.3958,0.6622]},"Linear":{"ate":0.3841,"ci":[-0.2498,1.0179],"se":0.3234,"seconds":0.1,"significant":false,"levels":[0.0,1.0,2.0],"apo":[12.04,12.435,12.424],"ate_all":[0.395,0.3841]}}}},{"treatment":"Pre-existing Condition Salience","dag_parents":[],"in_elicited_graph":true,"has_edge_to_target":false,"estimates":{"naive":{"TabPFN":{"ate":0.329,"ci":[-0.4057,1.0638],"se":0.3749,"seconds":75.6,"significant":false,"levels":[0.0,1.0,2.0],"apo":[12.148,12.203,12.477],"ate_all":[0.055,0.329]},"LightGBM":{"ate":-0.0144,"ci":[-0.2002,0.1714],"se":0.0948,"seconds":12.4,"significant":false,"levels":[0.0,1.0,2.0],"apo":[12.148,12.191,12.134],"ate_all":[0.0427,-0.0144]},"Linear":{"ate":-0.253,"ci":[-0.5874,0.0814],"se":0.1706,"seconds":1.8,"significant":false,"levels":[0.0,1.0,2.0],"apo":[12.269,12.268,12.016],"ate_all":[-0.0013,-0.253]}},"dag":{"skipped":"the assembled graph gives this variable no parents"}}}],"rendered":"2026-08-05T11:56:38+00:00"}</script>
+<script>
+const D=JSON.parse(document.getElementById('d').textContent);
+const SVG='http://www.w3.org/2000/svg',el=(t,a={})=>{const e=document.createElementNS(SVG,t);
+for(const k in a)e.setAttribute(k,a[k]);return e};
+const fmt=v=>v===undefined||v===null?'—':(v>=0?'+':'')+v.toFixed(3);
+
+document.getElementById('warn').innerHTML=
+ `<strong>This is not a causal graph.</strong> DoubleML estimates an effect size given a
+  direction and an adjustment set that it cannot supply. ${D.caveat}`;
+
+const rows=D.rows, est=(r,k,l)=>((r.estimates[k]||{})[l]||{});
+const nSig=rows.filter(r=>est(r,'naive','TabPFN').significant).length;
+const nDag=rows.filter(r=>est(r,'dag','TabPFN').significant).length;
+[[rows.length,'treatments'],[D.learners.length,'learners'],[D.tabpfn_version||'—','tabpfn'],
+ [nSig,'significant (naive)'],[nDag,'significant (dag)'],[D.n_rows,'rows']]
+ .forEach(([v,k])=>{const t=document.createElement('div');t.className='tile';
+  t.innerHTML=`<div class="v">${v}</div><div class="k">${k}</div>`;
+  document.getElementById('tiles').appendChild(t)});
+
+document.getElementById('legend').innerHTML=
+ '<span><b style="color:var(--pos)">green</b> = raises the award</span>'+
+ '<span><b style="color:var(--neg)">red</b> = lowers it</span>'+
+ '<span>solid = 95% CI excludes zero · dashed = does not</span>'+
+ '<span>width ∝ |ATE|</span>';
+
+const svg=document.getElementById('map'),CX=690,CY=350;
+const n=rows.length, R=250;
+svg.appendChild(el('rect',{x:CX-95,y:CY-24,width:190,height:48,rx:9,
+  fill:'var(--band)',stroke:'var(--line)','stroke-width':2}));
+const ct=el('text',{x:CX,y:CY+5,'text-anchor':'middle'});ct.textContent=D.target;
+svg.appendChild(ct);
+const detail=document.getElementById('detail');
+const maxAte=Math.max(...rows.map(r=>Math.abs(est(r,'naive','TabPFN').ate||0)),0.05);
+
+rows.forEach((r,i)=>{
+ const ang=(i/n)*2*Math.PI-Math.PI/2, x=CX+R*Math.cos(ang)*1.55, y=CY+R*Math.sin(ang);
+ const e=est(r,'naive','TabPFN'), a=e.ate;
+ if(a!==undefined){
+  const w=1+5*Math.abs(a)/maxAte;
+  const p=el('path',{d:`M${x},${y} Q${(x+CX)/2},${(y+CY)/2} ${CX+(x>CX?95:-95)},${CY}`,
+   class:'edge',stroke:a>=0?'var(--pos)':'var(--neg)','stroke-width':w});
+  if(!e.significant)p.setAttribute('stroke-dasharray','6 4');
+  svg.appendChild(p)}
+ const g=el('g',{class:'node'});
+ g.appendChild(el('rect',{x:x-100,y:y-19,width:200,height:38,rx:7,class:'node'}));
+ const t=el('text',{x:x,y:y-2,'text-anchor':'middle'});
+ t.textContent=r.treatment.length>27?r.treatment.slice(0,26)+'…':r.treatment;g.appendChild(t);
+ const s=el('text',{x:x,y:y+12,'text-anchor':'middle',class:'small'});
+ s.textContent=a===undefined?'not estimable':`ATE ${fmt(a)}`;g.appendChild(s);
+ g.addEventListener('click',()=>{
+  const nv=est(r,'naive','TabPFN'), dg=est(r,'dag','TabPFN');
+  detail.innerHTML=`<strong>${r.treatment}</strong>`+
+   `<div style="margin-top:6px">naive adjustment (all other columns): ATE ${fmt(nv.ate)} `+
+   (nv.ci?`[${fmt(nv.ci[0])}, ${fmt(nv.ci[1])}]`:'')+
+   (nv.significant?' <span class="sig">significant</span>':' <span class="ns">not significant</span>')+'</div>'+
+   `<div>DAG adjustment (${r.dag_parents.length?r.dag_parents.join(', '):'no parents in the graph'}): `+
+   (dg.ate!==undefined?`ATE ${fmt(dg.ate)} [${fmt(dg.ci[0])}, ${fmt(dg.ci[1])}]`:'not estimated')+'</div>'+
+   (nv.apo?`<div class="small" style="margin-top:6px">APO by level: ${nv.apo.join(' · ')}</div>`:'')});
+ svg.appendChild(g)});
+
+const cmp=document.getElementById('cmp');
+cmp.innerHTML='<thead><tr><th>Treatment</th><th>DAG parents</th><th>Naive ATE</th>'+
+ '<th>DAG ATE</th><th>Difference</th><th>Sign flip</th></tr></thead><tbody>'+
+ rows.map(r=>{const nv=est(r,'naive','TabPFN'),dg=est(r,'dag','TabPFN');
+  const diff=(nv.ate!==undefined&&dg.ate!==undefined)?dg.ate-nv.ate:undefined;
+  const flip=(nv.ate!==undefined&&dg.ate!==undefined&&Math.sign(nv.ate)!==Math.sign(dg.ate));
+  return `<tr><td>${r.treatment}</td><td class="small">${r.dag_parents.join(', ')||'—'}</td>
+   <td class="num ${nv.significant?'sig':'ns'}">${fmt(nv.ate)}</td>
+   <td class="num ${dg.significant?'sig':'ns'}">${fmt(dg.ate)}</td>
+   <td class="num">${diff===undefined?'—':fmt(diff)}</td>
+   <td>${flip?'<span style="color:var(--neg)">yes</span>':''}</td></tr>`}).join('')+'</tbody>';
+
+const lt=document.getElementById('learn');
+lt.innerHTML='<thead><tr><th>Treatment</th>'+D.learners.map(l=>`<th>${l} ATE</th><th>± CI width</th>`).join('')+
+ '</tr></thead><tbody>'+rows.map(r=>`<tr><td>${r.treatment}</td>`+
+ D.learners.map(l=>{const v=est(r,'naive',l);
+  const w=v.ci?(v.ci[1]-v.ci[0]):undefined;
+  return `<td class="num ${v.significant?'sig':'ns'}">${fmt(v.ate)}</td>
+          <td class="num small">${w===undefined?'—':w.toFixed(3)}</td>`}).join('')+
+ '</tr>').join('')+'</tbody>';
+</script></div></body></html>

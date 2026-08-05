@@ -30,6 +30,8 @@ expert's stated claim. Edges without evidence are not drawn.
 | [`causal/provenance/banded_graph.json`](causal/provenance/banded_graph.json) | The assembled graph: edges, evidence per edge, roles, violations, cycle breaks. |
 | [`ctp/dictionary.md`](ctp/dictionary.md) | Data dictionary, generated from [`ctp/columns.yaml`](ctp/columns.yaml). |
 | [`docs/ordinals-review.md`](docs/ordinals-review.md) | **What the eight ordinal columns actually measure** — two of them partly encode which Act applied, and all six elicited edges involve one of those two. |
+| [`causal/ctp_tabpfn_dml_map.html`](causal/ctp_tabpfn_dml_map.html) | The competing analysis: DoubleML + TabPFN-3 effect sizes, naive vs DAG adjustment. |
+| [`docs/LLM-elicited-vs-TabPFN-causal.md`](docs/LLM-elicited-vs-TabPFN-causal.md) | **The two approaches compared.** Changing only the adjustment set flips two treatments' sign. |
 | `causal/provenance/*.json` | Every intermediate result, including the LLM request/response cache. |
 
 Current state: **17 nodes** (1 latent), **37 edges**, acyclic, against 149 chronologically
@@ -74,6 +76,9 @@ merely repeatable in principle.
 | `stage9_enforce_bands` | Chronology enforced, evidence assembled, cycles broken | |
 | `stage10_derive_bands` | Chronology *derived* blind, as a check on the asserted one | ✓ |
 | `stage11_render_dag` | The reviewable page | |
+| `stage12_derive_rubric` | Recover the ordinal coding rubric from the codings themselves | ✓ |
+| `stage13_tabpfn_dml` | Competing analysis: DoubleML + TabPFN-3, naive vs DAG adjustment | |
+| `stage14_render_dml_map` | The DoubleML effect map | |
 
 Plus `check_calibration.py`, which validates the statutory reader against
 [provisions whose correct reading is known](causal/calibration_provisions.yaml) — including
