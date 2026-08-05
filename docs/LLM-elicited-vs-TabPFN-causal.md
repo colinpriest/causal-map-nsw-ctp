@@ -5,20 +5,21 @@ premises and answering different questions. This document sets them against each
 
 > **Correction to an earlier framing.** This document originally set these up as
 > "DAG: structure, no numbers" versus "DoubleML: numbers". That was wrong. A DAG plus an
-> estimator is a complete method, and [`stage15`](../causal/stage15_dag_effects.py) now
-> implements it: minimal backdoor sets by d-separation, identifiability refusals, and
-> total-versus-direct decomposition. The honest contrast is **no graph versus your graph,
-> same estimator both times** — see §3a.
+> estimator is a complete method, and [`stage15`](../causal/stage15_dag_effects.py)
+> implements it: minimal backdoor sets by d-separation, identifiability refusals,
+> total-versus-direct decomposition, and an effect on **every edge of the graph** (§3a,
+> §3b). The honest contrast is **no graph versus your graph, same estimator both
+> times**.
 
 | | **LLM-elicited DAG** | **DoubleML + TabPFN** |
 |---|---|---|
 | Question | *what causes what*, then *how large* | *how large is the effect* |
-| Output | 17 nodes, 36 edges, **24 identified effects** | 10 treatment→outcome effect sizes |
+| Output | 17 nodes, 36 edges, **an effect on 35 of them** | 10 treatment→outcome effect sizes |
 | Shape | a graph | not a map at all — a contrast between two adjustment sets |
 | Direction comes from | chronology, statute, domain claims, tested priors | **supplied by the analyst** |
-| Effect sizes | none | ATE with 95% CI, in log-dollars |
+| Effect sizes | per edge, each under its own backdoor set | per treatment, one adjustment set at a time |
 | Artefact | [`ctp_reviewed_dag.html`](../causal/ctp_reviewed_dag.html) | [`ctp_identification_contrast.html`](../causal/ctp_identification_contrast.html) |
-| Build | stages 0–11 | [`stage13`](../causal/stage13_tabpfn_dml.py), [`stage14`](../causal/stage14_render_dml_map.py) |
+| Build | stages 0–11, [`stage15`](../causal/stage15_dag_effects.py) | [`stage13`](../causal/stage13_tabpfn_dml.py), [`stage14`](../causal/stage14_render_dml_map.py) |
 
 The headline is not that one wins. It is that **each supplies exactly what the other
 cannot**, and that running DoubleML without a graph produces confident, significant,
@@ -41,10 +42,11 @@ set, so the picture displayed nothing the method had established. It has been re
 the one thing these estimates do speak to: that the answer depends on what is conditioned on.
 The superseded file is kept, banner-marked, as a record.
 
-**The elicited DAG needs an estimator, but supplies everything else.** On its own it says
-`WPI % → Non-Economic Loss` is a statutory gate quoting s 4.11 and gives no dollars. Attach
-any estimator and it becomes a complete causal analysis — and one that does four things no
-estimator can do alone (§3a).
+**The elicited DAG needs an estimator, and supplies everything else.** On its own it says
+`WPI % → Non-Economic Loss` is a statutory gate quoting s 4.11 and gives no dollars.
+Attached to an estimator it becomes a complete causal analysis: every one of its edges is
+an estimable quantity with its own adjustment set, and 35 of 36 now carry an effect with a
+confidence interval (§3b). What the graph adds beyond the number is in §3a.
 
 **They fit together at exactly one point: the adjustment set.** DoubleML estimates
 E[Y | do(D=d)] by adjusting for covariates X, and identification depends entirely on X being
@@ -174,6 +176,64 @@ and the offending path named, rather than estimated.
 
 ---
 
+---
+
+## 3b. Every edge of the DAG now carries an effect
+
+The graph is no longer only a claim about direction. Each edge is a
+(treatment, outcome) pair, so each has its own minimal backdoor set and its own estimate
+([`stage15 --edges`](../causal/stage15_dag_effects.py)).
+
+**35 of 36 edges estimated. 26 have a 95% interval excluding zero. One refused.**
+
+The refusal is `Psychological Injury → Psychological Injury Emphasis`: the source is the
+latent node, so no values exist to estimate from. That is the correct answer rather than a
+gap, and it is the identifiability machinery of §3a doing its job on the one edge where it
+bites.
+
+### Two estimators, because one estimand does not cover the graph
+
+`DoubleMLAPOS` contrasts discrete treatment levels and cannot treat a continuous variable.
+That excludes `Claimant Age`, `Claimant Weekly Income`, `WPI %` and the two dollar columns —
+between them the source of **12 of the 36 edges**, including both arithmetic edges into the
+award. Those go through `DoubleMLPLR` instead, which gives a per-unit coefficient under the
+same backdoor set.
+
+**The magnitudes are therefore not comparable across edges**, and the map says so in its
+legend and on every click:
+
+| source | estimator | estimand |
+|---|---|---|
+| discrete | `DoubleMLAPOS` | top-vs-base level contrast |
+| continuous | `DoubleMLPLR` | per-unit coefficient |
+| exogenous (no parents) | none needed | unadjusted contrast |
+
+`Non-Economic Loss → Lump Sum` reads **+0.021** not because the relationship is weak — it is
+arithmetic — but because it is per log-dollar. Sign and significance mean the same thing on
+every edge; the numbers do not.
+
+### What the map now shows
+
+[`ctp_reviewed_dag.html`](../causal/ctp_reviewed_dag.html) carries three encodings borrowed
+from the DoubleML visualisations:
+
+- **colour** — green where the effect is positive, red where negative
+- **line style** — solid where the 95% interval excludes zero, dashed where it does not
+- **the number**, on the edge
+
+and one that is not borrowed: **grey and unlabelled where there is no estimate**. "Not
+estimated" and "estimated at zero" are different claims, and a reader has to be able to tell
+which one they are looking at.
+
+Four edges are negative. `Liability Clarity → Legal Procedural Complexity` at **-0.566** is
+one of the six elicited edges — clear fault removing a limb of argument — and it holds with
+the interval excluding zero. `Claimant Age → Future Economic Loss` at **-0.253** is the
+retirement multiplier. `WPI % → Work Impact Severity` at **-0.004** is nil, which is worth
+seeing: the edge is drawn because the graph asserts it, and the estimate declines to support
+it.
+
+---
+
 ## 4. Learner comparison, and why it says less than the example's
 
 The DoubleML example concludes that TabPFN wins: lowest nuisance RMSE and tightest
@@ -222,10 +282,12 @@ conditioned on" and "a real total effect through mediators" are consistent, and 
 results together is more informative than either. A recorder can still carry a total effect
 if it lies upstream of things that matter.
 
-**Where DoubleML is silent.** It cannot treat `WPI %` — a continuous variable — so the one
-edge with the strongest statutory backing in the entire project, the s 4.11 gate
-`WPI % → Non-Economic Loss`, gets no effect estimate at all. The most secure structural
-claim is invisible to the method that quantifies things.
+**Where DoubleML was silent, and no longer is.** `DoubleMLAPOS` cannot treat `WPI %`, so
+the edge with the strongest statutory backing in the project — the s 4.11 gate
+`WPI % → Non-Economic Loss` — had no estimate at all: the most secure structural claim was
+invisible to the method that quantifies things. Adding `DoubleMLPLR` for continuous
+treatments (§3b) fixed that, and it was a limitation of how the estimator had been
+attached rather than of the data.
 
 ---
 

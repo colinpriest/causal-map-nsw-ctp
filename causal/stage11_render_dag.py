@@ -4,7 +4,17 @@ This exists to be argued with. Everything on it is traceable: click an edge and 
 the provision quoted, or the mechanism reasoned and the prediction it survived. Nothing is
 drawn that has no evidence behind it.
 
-Two things the page deliberately shows that a causal diagram usually hides:
+Edges carry an effect estimate where the graph identifies one (stage 15, `--edges`):
+colour for sign, dashing for whether the 95% interval excludes zero, and the number itself
+on the edge. An edge with no estimate is drawn grey and unlabelled rather than being given a
+default, because "not estimated" and "estimated at zero" are different things and a reader
+must be able to tell them apart.
+
+The magnitudes are NOT comparable across edges. A discrete treatment reports a top-vs-base
+level contrast; a continuous one reports a per-unit coefficient. Sign and significance mean
+the same thing throughout; the numbers do not, and each is labelled with its kind.
+
+Two more things the page deliberately shows that a causal diagram usually hides:
 
   WHAT IS MISSING. Band order permits 130 ordered pairs; a handful have evidence. Drawing
   only the survivors makes a sparse graph look like a complete one, so the coverage of
@@ -40,6 +50,24 @@ BAND_X = {1: 90, 2: 310, 3: 530, 4: 750, 5: 970, 6: 1180}
 
 def main() -> int:
     g = json.loads((P / "banded_graph.json").read_text(encoding="utf-8"))
+
+    # effect per edge, where the graph identifies one
+    eff_path = P / "dag_edge_effects.json"
+    effects = {}
+    if eff_path.exists():
+        ed = json.loads(eff_path.read_text(encoding="utf-8"))
+        for e in ed["effects"]:
+            tot = e.get("total", {})
+            if "ate" in tot:
+                ci = tot.get("ci") or [float("nan")] * 2
+                effects[(e["treatment"], e["outcome"])] = dict(
+                    ate=round(tot["ate"], 3),
+                    ci=[None if c != c else round(c, 3) for c in ci],
+                    significant=bool(tot.get("significant")),
+                    estimand=tot.get("estimand", ""),
+                    n=tot.get("n"), backdoor=e.get("backdoor_set", []))
+    for e in g["edges"]:
+        e["effect"] = effects.get((e["source"], e["target"]))
     latent = set(g.get("latent", []))
     roles = g["roles"]
 
@@ -73,6 +101,7 @@ def main() -> int:
         coverage=[dict(frm=k[0], to=k[1], have=v[0], permitted=v[1])
                   for k, v in sorted(cover.items()) if v[1]],
         n_permitted=g["n_permitted"], n_edges=g["n_edges"],
+        n_with_effect=sum(1 for e in g["edges"] if e.get("effect")),
         generated=datetime.now(timezone.utc).isoformat(timespec="seconds"),
         classes={k: dict(colour=v[0], dash=v[1], label=v[2]) for k, v in CLASS_STYLE.items()},
     )
@@ -150,6 +179,7 @@ document.getElementById('sparse').innerHTML=
   ordered pairs; ${D.n_edges} have evidence. Absence of an edge here means <em>nothing was
   found</em>, not that no relationship exists — most pairs have simply not been examined yet.`;
 [[Object.keys(D.roles).length,'nodes'],[D.latent.length,'latent'],[D.n_edges,'edges with evidence'],
+ [D.n_with_effect,'edges with an effect estimate'],
  [D.n_permitted,'pairs permitted'],[D.violations.length,'directions corrected']]
  .forEach(([v,k])=>{const t=document.createElement('div');t.className='tile';
   t.innerHTML=`<div class="v">${v}</div><div class="k">${k}</div>`;
@@ -158,9 +188,13 @@ const lg=document.getElementById('legend');
 for(const [k,c] of Object.entries(D.classes)){const s=document.createElement('span');
  s.innerHTML=`<i style="border-top-style:${c.dash};border-color:${c.colour}"></i>${c.label}`;
  lg.appendChild(s)}
-{const s=document.createElement('span');s.innerHTML=
- '<i style="border-top-style:dashed;border-color:var(--muted)"></i>dashed box = unobserved (no column)';
- lg.appendChild(s)}
+[['<i style="border-top-style:solid;border-color:#0b7d3e"></i>raises the outcome'],
+ ['<i style="border-top-style:solid;border-color:#d03b3b"></i>lowers it'],
+ ['<i style="border-top-style:solid;border-color:#a8a69e"></i>no estimate available'],
+ ['solid = 95% CI excludes zero · dashed = includes zero, or not estimated'],
+ ['number on the edge = the estimate; magnitudes are <b>not</b> comparable across edges'],
+ ['<i style="border-top-style:dashed;border-color:var(--muted)"></i>dashed box = unobserved (no column)']]
+ .forEach(([h])=>{const s=document.createElement('span');s.innerHTML=h;lg.appendChild(s)});
 
 const svg=document.getElementById('map'), P=D.pos;
 const W=176,H=38;
@@ -171,11 +205,13 @@ D.bands.forEach(b=>{const xs=b.columns.map(c=>P[c]&&P[c][0]).filter(Boolean);
  t.textContent=`${b.n}. ${b.label}`;svg.appendChild(t)});
 
 const defs=el('defs');svg.appendChild(defs);
-Object.entries(D.classes).forEach(([k,c])=>{const m=el('marker',{id:'a-'+k,viewBox:'0 0 10 10',
- refX:9,refY:5,markerWidth:7,markerHeight:7,orient:'auto-start-reverse'});
- m.appendChild(el('path',{d:'M0,0 L10,5 L0,10 z',fill:c.colour}));defs.appendChild(m)});
+[['pos','#0b7d3e'],['neg','#d03b3b'],['none','#a8a69e']].forEach(([k,c])=>{
+ const m=el('marker',{id:'a-'+k,viewBox:'0 0 10 10',refX:9,refY:5,markerWidth:7,
+  markerHeight:7,orient:'auto-start-reverse'});
+ m.appendChild(el('path',{d:'M0,0 L10,5 L0,10 z',fill:c}));defs.appendChild(m)});
 
 const detail=document.getElementById('detail');
+const POS='#0b7d3e', NEG='#d03b3b', NONE='#a8a69e';
 D.edges.forEach(e=>{const [x1,y1]=P[e.source],[x2,y2]=P[e.target];
  const cls=e.evidence.some(v=>v.evidence_class==='statute')?'statute':
    (e.evidence[0].evidence_class);
@@ -184,11 +220,25 @@ D.edges.forEach(e=>{const [x1,y1]=P[e.source],[x2,y2]=P[e.target];
  const same=Math.abs(x1-x2)<2;
  const d=same?`M${x1+W/2},${y1} C${x1+W/2+70},${y1} ${x2+W/2+70},${y2} ${x2+W/2},${y2}`
              :`M${sx},${y1} C${mx},${y1} ${mx},${y2} ${ex},${y2}`;
- const p=el('path',{d:d,class:'edge',stroke:st.colour,'stroke-width':
-   e.evidence.length>1?3.4:2.2,'marker-end':'url(#a-'+cls+')'});
- if(st.dash==='dashed')p.setAttribute('stroke-dasharray','6 4');
+ // colour = sign of the estimated effect, dash = 95% interval includes zero.
+ // No estimate means grey and unlabelled: "not estimated" is not "zero".
+ const ef=e.effect;
+ const colour=ef?(ef.ate>=0?POS:NEG):NONE;
+ const p=el('path',{d:d,class:'edge',stroke:colour,'stroke-width':
+   ef?(ef.significant?3.2:2):1.6,'marker-end':'url(#a-'+(ef?(ef.ate>=0?'pos':'neg'):'none')+')'});
+ if(!ef||!ef.significant)p.setAttribute('stroke-dasharray','6 4');
  p.addEventListener('click',()=>{
-  detail.innerHTML=`<strong>${e.source} → ${e.target}</strong>`+e.evidence.map(v=>{
+  const efd=e.effect;
+  detail.innerHTML=`<strong>${e.source} → ${e.target}</strong>`+
+   (efd?`<div style="margin-top:6px">effect <strong style="color:${efd.ate>=0?POS:NEG}">`+
+     `${efd.ate>=0?'+':''}${efd.ate}</strong>`+
+     (efd.ci[0]!==null?` [${efd.ci[0]}, ${efd.ci[1]}]`:'')+
+     (efd.significant?' <span class="sig">95% CI excludes zero</span>':
+      ' <span class="ns">95% CI includes zero</span>')+
+     `<div class="small">${efd.estimand} · n=${efd.n} · adjusted for `+
+     `${efd.backdoor.length?efd.backdoor.join(', '):'nothing (exogenous)'}</div></div>`
+    :'<div class="small" style="margin-top:6px">no effect estimate: the graph does not identify one, or the source is latent</div>')+
+   e.evidence.map(v=>{
    let s=`<div style="margin-top:8px"><code>${v.evidence_class}</code>`;
    if(v.direction_corrected)s+=` <span style="color:#d03b3b">direction corrected — originally claimed ${v.originally_claimed}</span>`;
    if(v.provision)s+=` · s ${v.provision} · <em>${v.relation}</em>`;
@@ -197,7 +247,17 @@ D.edges.forEach(e=>{const [x1,y1]=P[e.source],[x2,y2]=P[e.target];
    if(v.confidence)s+=`<div class="small">confidence ${v.confidence}/5 · magnitude ${v.magnitude}/5 · ${Math.round(v.agreement*100)}% sample agreement · test: ${v.test}</div>`;
    if(v.note)s+=`<blockquote>${v.note}</blockquote>`;
    return s+'</div>'}).join('')});
- svg.appendChild(p)});
+ svg.appendChild(p);
+ if(ef){                                    // the number itself, on the edge
+  const lx=same?(x1+W/2+58):((sx+ex)/2), ly=same?((y1+y2)/2):((y1+y2)/2-7);
+  const bg=el('rect',{x:lx-25,y:ly-9,width:50,height:15,rx:4,
+   fill:'var(--surface)',stroke:colour,'stroke-width':1,opacity:.95});
+  const tx=el('text',{x:lx,y:ly+3,'text-anchor':'middle',class:'small'});
+  tx.textContent=(ef.ate>=0?'+':'')+ef.ate.toFixed(2);
+  tx.setAttribute('fill',colour);
+  tx.setAttribute('font-weight',ef.significant?'600':'400');
+  svg.appendChild(bg);svg.appendChild(tx)}
+ });
 
 Object.entries(D.roles).forEach(([c,r])=>{const [x,y]=P[c];
  const g=el('g',{class:'node'});

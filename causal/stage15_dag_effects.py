@@ -196,7 +196,7 @@ def unadjusted(data, treatment, outcome):
                 se=float(ate / res.statistic) if res.statistic else None,
                 significant=bool(ci.low > 0 or ci.high < 0),
                 ate_all=[round(m - means[0], 4) for m in means],
-                estimator="unadjusted contrast (exogenous: no adjustment required)",
+                estimand="top-vs-base level contrast (exogenous, unadjusted)",
                 seconds=0.0)
 
 
@@ -226,7 +226,49 @@ def estimate(data, treatment, outcome, adjust, learner_pair, n_rep=1):
                     ci=[float(ci.iloc[i, 0]), float(ci.iloc[i, 1])],
                     se=float(c.ses[i]),
                     significant=bool(ci.iloc[i, 0] > 0 or ci.iloc[i, 1] < 0),
+                    estimand="top-vs-base level contrast",
                     ate_all=[float(x) for x in c.thetas],
+                    seconds=round(time.time() - t0, 1))
+    except Exception as exc:                              # noqa: BLE001
+        return dict(error=str(exc)[:180])
+
+
+def estimate_continuous(data, treatment, outcome, adjust, learner_pair, n_rep=1):
+    """Partially linear model, for a treatment DoubleMLAPOS cannot handle.
+
+    APOS contrasts discrete levels, so it cannot treat `Claimant Age`, `WPI %` or a dollar
+    column -- which between them are the source of 12 of the graph's 36 edges, including
+    both arithmetic edges into the award. DoubleMLPLR gives a single coefficient for a
+    continuous treatment under the same backdoor set.
+
+    The ESTIMAND DIFFERS: this is an effect per unit of the treatment, where APOS reports a
+    contrast between the top and bottom level. Sign and significance are comparable across
+    the two; the magnitudes are not, and anything displaying them together must say which
+    is which.
+    """
+    import doubleml as dml
+    extra = [c + "__missing" for c in adjust if c + "__missing" in data.columns]
+    cols = [outcome, treatment] + list(adjust) + extra
+    df = data[list(dict.fromkeys(cols))].dropna()
+    if len(df) < 60 or df[treatment].nunique() < 3:
+        return dict(error="too few rows or too few distinct treatment values")
+    if not [c for c in cols if c not in (outcome, treatment)]:
+        # no covariates: the partial correlation IS the adjusted association
+        from scipy import stats as st
+        r = st.spearmanr(df[treatment], df[outcome])
+        return dict(n=int(len(df)), ate=float(r.statistic), ci=[float("nan")] * 2,
+                    se=None, significant=bool(r.pvalue < 0.05),
+                    estimand="rank correlation (exogenous, no adjustment)", seconds=0.0)
+    t0 = time.time()
+    try:
+        obj = dml.DoubleMLData(df, outcome, treatment)
+        m = dml.DoubleMLPLR(obj, learner_pair["ml_g"], learner_pair["ml_g"], n_rep=n_rep)
+        m.fit()
+        ci = m.confint(level=0.95)
+        lo, hi = float(ci.iloc[0, 0]), float(ci.iloc[0, 1])
+        return dict(n=int(len(df)), ate=float(m.coef[0]), ci=[lo, hi],
+                    se=float(m.se[0]), significant=bool(lo > 0 or hi < 0),
+                    estimand="per-unit coefficient (partially linear)",
                     seconds=round(time.time() - t0, 1))
     except Exception as exc:                              # noqa: BLE001
         return dict(error=str(exc)[:180])
@@ -254,6 +296,8 @@ def main() -> int:
                     default="Lump Sum,Non-Economic Loss,Future Economic Loss")
     ap.add_argument("--learner", default="LightGBM", help="TabPFN | LightGBM")
     ap.add_argument("--device", default=None)
+    ap.add_argument("--edges", action="store_true",
+                    help="estimate every edge of the graph rather than treatment->outcome")
     args = ap.parse_args()
 
     g = json.loads(GRAPH.read_text(encoding="utf-8"))
@@ -267,6 +311,49 @@ def main() -> int:
     treatments = [n for n in graph.nodes
                   if n in data.columns and data[n].nunique() <= 6]
     rows, refused = [], []
+
+    if args.edges:
+        # Every edge is an estimable quantity with its own backdoor set. Discrete sources
+        # go through APOS, continuous through PLR, and the latent node through neither --
+        # it has no data, which is what "latent" means.
+        for src, dst in [(e["source"], e["target"]) for e in g["edges"]]:
+            if src in graph.latent or dst in graph.latent:
+                refused.append(dict(treatment=src, outcome=dst,
+                                    reason="latent node: no values exist to estimate from"))
+                continue
+            sets_obs = graph.backdoor_sets(src, dst, observed_only=True)
+            if not sets_obs:
+                refused.append(dict(treatment=src, outcome=dst,
+                                    reason="no backdoor set of observed variables"))
+                continue
+            z = sets_obs[0]
+            discrete = data[src].nunique() <= 6
+            est = (estimate(data, src, dst, z, learner) if discrete
+                   else estimate_continuous(data, src, dst, z, learner))
+            rows.append(dict(treatment=src, outcome=dst, backdoor_set=z,
+                             exogenous=(len(z) == 0), edge=True,
+                             treatment_kind="discrete" if discrete else "continuous",
+                             mediators=[], total=est))
+            mark = "ok " if "ate" in est else "XX "
+            val = (f"{est['ate']:+.3f} [{est['ci'][0]:+.3f},{est['ci'][1]:+.3f}]"
+                   if "ate" in est and est["ci"] == est["ci"] else est.get("error", "")[:40])
+            print(f"{mark}{src} -> {dst:28} {val}")
+        doc = dict(
+            generated_at=datetime.now(timezone.utc).isoformat(timespec="seconds"),
+            learner=args.learner, device=device, seed=SEED, mode="edges",
+            graph=dict(nodes=len(graph.nodes), edges=len(graph.edges),
+                       latent=sorted(graph.latent)),
+            estimand_note=("Discrete treatments report a top-vs-base level contrast; "
+                           "continuous treatments report a per-unit coefficient from a "
+                           "partially linear model. Sign and significance are comparable "
+                           "across the two; magnitudes are NOT."),
+            n_estimated=len(rows), n_refused=len(refused),
+            effects=rows, refused=refused)
+        out = OUT.with_name("dag_edge_effects.json")
+        out.write_text(json.dumps(doc, indent=2), encoding="utf-8")
+        print(f"\nwrote {out}")
+        print(f"estimated {len(rows)} of {len(g['edges'])} edges; refused {len(refused)}")
+        return 0
 
     for outcome in outcomes:
         if outcome not in data.columns:

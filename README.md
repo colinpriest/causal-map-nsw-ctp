@@ -25,7 +25,7 @@ consulted, or a domain expert's stated claim. Edges without evidence are not dra
 
 | Artefact | |
 |---|---|
-| [`causal/ctp_reviewed_dag.html`](causal/ctp_reviewed_dag.html) | Self-contained interactive graph. Click an edge for its provision quote or tested mechanism; click a node for parents, children and statistics. |
+| [`causal/ctp_reviewed_dag.html`](causal/ctp_reviewed_dag.html) | Self-contained interactive graph, with an effect estimate on 35 of 36 edges — green/red by sign, solid/dashed by whether the 95% interval excludes zero. Click an edge for its provision quote, tested mechanism, backdoor set and estimate. |
 | [`causal/provenance/banded_graph.json`](causal/provenance/banded_graph.json) | The assembled graph: edges, evidence per edge, roles, violations, cycle breaks. |
 | [`ctp/dictionary.md`](ctp/dictionary.md) | Data dictionary, generated from [`ctp/columns.yaml`](ctp/columns.yaml). |
 | [`docs/ordinals-review.md`](docs/ordinals-review.md) | **What the eight ordinal columns actually measure** — only two recover as the construct they are named for. |
@@ -77,6 +77,7 @@ merely repeatable in principle.
 | `stage12_derive_rubric` | Recover the ordinal coding rubric from the codings themselves | ✓ |
 | `stage13_tabpfn_dml` | Competing analysis: DoubleML + TabPFN-3, naive vs DAG adjustment | |
 | `stage14_render_dml_map` | The identification contrast: naive vs DAG adjustment | |
+| `stage15_dag_effects` | Minimal backdoor sets, identifiability refusals, an effect on every edge | |
 
 Plus `check_calibration.py`, which validates the statutory reader against
 [provisions whose correct reading is known](causal/calibration_provisions.yaml) — including
