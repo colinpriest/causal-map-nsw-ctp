@@ -49,7 +49,7 @@ not that no relationship exists.
 | `reasoned_prior_tested` | Blind causal reasoning that passed a prediction fixed before the data was seen | 11 |
 | `reasoned_prior_path` | An `indirect` verdict naming a mediator. **Weakest — and the count overstates support**, since one edge appearing as a leg in five paths is counted five times | 43 |
 
-Read the class mix at *edge* level, not item level: 37 edges carry 66 evidence items.
+Read the class mix at *edge* level, not item level: 34 edges carry 45 evidence items.
 
 ---
 
@@ -136,7 +136,7 @@ and neither is used.
   [`docs/ordinals-review.md`](docs/ordinals-review.md).
 - **The statutory leg detects gates, limits and scope; it does not find everything.**
   Five links from 102 provisions read.
-- **`reasoned_prior_path` is the weakest evidence class and carries 17 of 36 edges.** It
+- **`reasoned_prior_path` is the weakest evidence class and carries 16 of 34 edges.** It
   records that a model named a mediator, nothing more.
 - **The instructions given to the ordinal scoring pass were never recorded.** Stage 12
   recovers what separates the levels, from the codings themselves — which describes the
@@ -144,6 +144,25 @@ and neither is used.
 - **Two instruments block automated retrieval** (`legislation.nsw.gov.au`, `austlii.edu.au`
   — Cloudflare, and AustLII's `robots.txt` names `ClaudeBot`). Statute is read from locally
   saved files, identified by content rather than filename.
+
+---
+
+## Superseded, kept as a record
+
+The project began as a hand-authored 49-edge DAG described as "expert-elicited". It was
+LLM-generated and no edge rested on anything checkable. Those files remain, each carrying a
+banner, because the contrast with the current graph is the point of the work:
+
+| | |
+|---|---|
+| `causal/build_ctp_causal_dag.py` | built the original 49-edge graph |
+| `causal/ctp_causal_dashboard.html` | its dashboard |
+| `causal/verify_claims.py` | checked the descriptive statistics quoted in its prose |
+| [`docs/causal-algorithm.md`](docs/causal-algorithm.md) | how its edges were oriented |
+| [`docs/dag-construction.md`](docs/dag-construction.md) | how its artefact was built |
+| `causal/ctp_tabpfn_dml_map.html` | the DoubleML "causal map" that drew directions it had not established |
+
+Nothing in the current pipeline reads any of them.
 
 ---
 

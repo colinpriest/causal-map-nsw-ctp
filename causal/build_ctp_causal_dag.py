@@ -1,3 +1,11 @@
+"""
+SUPERSEDED. This built the original hand-authored 49-edge DAG. That graph has been
+replaced by the evidence-based pipeline in stages 0-15, whose output is
+causal/provenance/banded_graph.json. Kept as a record of what the project started from --
+a graph whose edges rested on nothing checkable -- because the contrast with the current
+one is the point. Nothing downstream reads anything this produces.
+"""
+
 """Build the NSW CTP severity causal DAG.
 
 Emits ``causal/ctp_causal_dag.json`` — the machine-readable structure consumed by

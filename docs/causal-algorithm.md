@@ -1,5 +1,20 @@
 # The causal algorithm — how cause was determined
 
+> ## ⚠ Superseded — this describes the ORIGINAL graph, not the current one
+>
+> This document explains the hand-authored 49-edge DAG produced by
+> [`causal/build_ctp_causal_dag.py`](../causal/build_ctp_causal_dag.py). That graph has been
+> **replaced** by the evidence-based pipeline in stages 0–15, whose output is
+> [`causal/provenance/banded_graph.json`](../causal/provenance/banded_graph.json) and
+> [`causal/ctp_reviewed_dag.html`](../causal/ctp_reviewed_dag.html) — currently 34 edges, each
+> traceable to statute, a tested prior, a domain expert's claim, or a mediator path.
+>
+> It is kept because the before-and-after is the point of the project: the original graph was
+> LLM-generated, described as "expert-elicited", and its 49 edges rested on nothing that could be
+> checked. Read this to understand **what was replaced and why**. For how the graph is built now,
+> start at [`README.md`](../README.md).
+
+
 > ## ⚠ Provenance: the causal claims are LLM-generated and unreviewed
 >
 > Every arrow, sign, strength and mechanism sentence in this graph was **written by a large language
