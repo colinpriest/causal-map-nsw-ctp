@@ -14,12 +14,12 @@ premises and answering different questions. This document sets them against each
 | | **LLM-elicited DAG** | **DoubleML + TabPFN** |
 |---|---|---|
 | Question | *what causes what*, then *how large* | *how large is the effect* |
-| Output | 17 nodes, 36 edges, **an effect on 35 of them** | 10 treatment→outcome effect sizes |
+| Output | 17 nodes, 34 edges, **an effect on 33 of them** | 10 treatment→outcome effect sizes |
 | Shape | a graph | not a map at all — a contrast between two adjustment sets |
 | Direction comes from | chronology, statute, domain claims, tested priors | **supplied by the analyst** |
 | Effect sizes | per edge, each under its own backdoor set | per treatment, one adjustment set at a time |
 | Artefact | [`ctp_reviewed_dag.html`](../causal/ctp_reviewed_dag.html) | [`ctp_identification_contrast.html`](../causal/ctp_identification_contrast.html) |
-| Build | stages 0–11, [`stage15`](../causal/stage15_dag_effects.py) | [`stage13`](../causal/stage13_tabpfn_dml.py), [`stage14`](../causal/stage14_render_dml_map.py) |
+| Build | stages 0–11, [`stage15`](../causal/stage15_dag_effects.py), [`elicited_edges.yaml`](../causal/elicited_edges.yaml) | [`stage13`](../causal/stage13_tabpfn_dml.py), [`stage14`](../causal/stage14_render_dml_map.py) |
 
 The headline is not that one wins. It is that **each supplies exactly what the other
 cannot**, and that running DoubleML without a graph produces confident, significant,
@@ -45,7 +45,7 @@ The superseded file is kept, banner-marked, as a record.
 **The elicited DAG needs an estimator, and supplies everything else.** On its own it says
 `WPI % → Non-Economic Loss` is a statutory gate quoting s 4.11 and gives no dollars.
 Attached to an estimator it becomes a complete causal analysis: every one of its edges is
-an estimable quantity with its own adjustment set, and 35 of 36 now carry an effect with a
+an estimable quantity with its own adjustment set, and 33 of 34 now carry an effect with a
 confidence interval (§3b). What the graph adds beyond the number is in §3a.
 
 **They fit together at exactly one point: the adjustment set.** DoubleML estimates
@@ -184,7 +184,7 @@ The graph is no longer only a claim about direction. Each edge is a
 (treatment, outcome) pair, so each has its own minimal backdoor set and its own estimate
 ([`stage15 --edges`](../causal/stage15_dag_effects.py)).
 
-**35 of 36 edges estimated. 26 have a 95% interval excluding zero. One refused.**
+**33 of 34 edges estimated. 25 have a 95% interval excluding zero. One refused.**
 
 The refusal is `Psychological Injury → Psychological Injury Emphasis`: the source is the
 latent node, so no values exist to estimate from. That is the correct answer rather than a
@@ -195,7 +195,7 @@ bites.
 
 `DoubleMLAPOS` contrasts discrete treatment levels and cannot treat a continuous variable.
 That excludes `Claimant Age`, `Claimant Weekly Income`, `WPI %` and the two dollar columns —
-between them the source of **12 of the 36 edges**, including both arithmetic edges into the
+between them the source of a third of the 34 edges, including both arithmetic edges into the
 award. Those go through `DoubleMLPLR` instead, which gives a per-unit coefficient under the
 same backdoor set.
 
@@ -225,12 +225,72 @@ and one that is not borrowed: **grey and unlabelled where there is no estimate**
 estimated" and "estimated at zero" are different claims, and a reader has to be able to tell
 which one they are looking at.
 
-Four edges are negative. `Liability Clarity → Legal Procedural Complexity` at **-0.566** is
-one of the six elicited edges — clear fault removing a limb of argument — and it holds with
-the interval excluding zero. `Claimant Age → Future Economic Loss` at **-0.253** is the
-retirement multiplier. `WPI % → Work Impact Severity` at **-0.004** is nil, which is worth
-seeing: the edge is drawn because the graph asserts it, and the estimate declines to support
-it.
+Negative edges include `Liability Clarity → Legal Procedural Complexity` at **-0.566** — one
+of the six elicited edges, clear fault removing a limb of argument — holding with the
+interval excluding zero, and `Claimant Age → Future Economic Loss` at **-0.253**, the
+retirement multiplier.
+
+An earlier version of this section cited `WPI % → Work Impact Severity` at -0.004 as an
+edge the estimate declined to support. That edge has since been removed altogether, for a
+better reason than a weak number — see §3c.
+
+---
+
+---
+
+## 3c. Two structural rules, neither of which needs evidence
+
+The band constraint is one: an effect cannot precede its cause. A second was added after a
+reviewer objected to `WPI % → Work Impact Severity` being in the graph at all.
+
+**A measurement cannot cause what the measured state causes.** `WPI %` is a clinical
+assessment of the permanent impairment remaining after stabilisation. The claimant's
+impairment is what limits their capacity to work; the number an assessor later writes down
+does not. The edge had rested on a single `reasoned_prior_path` asserting "WPI % affects
+working capacity" — a model reading the assessment as the impairment, the same confusion
+chronology had already caught in `WPI % → Injury Burden Intensity`.
+
+The rule is declared in [`ctp/columns.yaml`](../ctp/columns.yaml) rather than applied by
+hand, with one exception that has to be stated explicitly:
+
+```yaml
+measurement_of: the claimant's permanent impairment after stabilisation
+operative_for: [Non-Economic Loss]     # s 4.11 MAIA — the recorded score is decisive
+operative_form: threshold at 10% (s 4.11 MAIA)
+```
+
+`WPI % → Non-Economic Loss` survives because s 4.11 makes **the number on the certificate**
+operative: no award below 10%, whatever the impairment behind it. Everywhere else the score
+is a reading. Applying the rule removed two edges — the second, `WPI % → Lump Sum`, being
+one stage 8 had already flagged with a unique contribution to the award of 0.07, its effect
+running through the head of damage exactly as s 4.11 describes.
+
+**And the score operates as a threshold, not a scale.** Estimating a per-percent coefficient
+answers a question the scheme does not pose. The data is emphatic:
+
+| | above 10% | at or below | p |
+|---|---|---|---|
+| Non-Economic Loss | 12.33 | 0.70 | 2.7×10⁻⁹³ |
+| Future Economic Loss | 10.58 | 10.59 | **0.99** |
+
+The crossing is essentially the whole of WPI's effect on non-economic loss, and does nothing
+at all to future economic loss. Estimated as a threshold contrast,
+`WPI % → Non-Economic Loss` is **+5.410 [+4.793, +6.027]** — a factor of roughly 220,
+because below the gate the head is overwhelmingly zero. Under the continuous form that gate
+is invisible.
+
+The form is applied **only where the column causes**. As an outcome the continuous
+percentage is the natural quantity — injury severity drives the assessed level, not merely
+whether it clears a line — so `Injury Burden Intensity → WPI %` is estimated continuously at
+**+8.479 [+6.397, +10.561]**. Each edge records which form was used.
+
+### What this says about the two approaches
+
+Neither rule is available to an estimator. DoubleML asked for the effect of `WPI %` on
+`Work Impact Severity` returns a number; it has no concept of a variable being a measurement
+of something else. Both rules come from knowing what the columns mean, which is what
+[`ctp/columns.yaml`](../ctp/columns.yaml) exists to record — and both were found by a
+domain reviewer looking at a drawn graph, which is what the graph is for.
 
 ---
 

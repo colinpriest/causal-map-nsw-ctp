@@ -25,7 +25,7 @@ consulted, or a domain expert's stated claim. Edges without evidence are not dra
 
 | Artefact | |
 |---|---|
-| [`causal/ctp_reviewed_dag.html`](causal/ctp_reviewed_dag.html) | Self-contained interactive graph, with an effect estimate on 35 of 36 edges — green/red by sign, solid/dashed by whether the 95% interval excludes zero. Click an edge for its provision quote, tested mechanism, backdoor set and estimate. |
+| [`causal/ctp_reviewed_dag.html`](causal/ctp_reviewed_dag.html) | Self-contained interactive graph, with an effect estimate on 33 of 34 edges — green/red by sign, solid/dashed by whether the 95% interval excludes zero. Click an edge for its provision quote, tested mechanism, backdoor set and estimate. |
 | [`causal/provenance/banded_graph.json`](causal/provenance/banded_graph.json) | The assembled graph: edges, evidence per edge, roles, violations, cycle breaks. |
 | [`ctp/dictionary.md`](ctp/dictionary.md) | Data dictionary, generated from [`ctp/columns.yaml`](ctp/columns.yaml). |
 | [`docs/ordinals-review.md`](docs/ordinals-review.md) | **What the eight ordinal columns actually measure** — only two recover as the construct they are named for. |
@@ -33,8 +33,8 @@ consulted, or a domain expert's stated claim. Edges without evidence are not dra
 | [`docs/LLM-elicited-vs-TabPFN-causal.md`](docs/LLM-elicited-vs-TabPFN-causal.md) | **The two approaches compared.** Changing only the adjustment set flips two treatments' sign. |
 | `causal/provenance/*.json` | Every intermediate result, including the LLM request/response cache. |
 
-Current state: **17 nodes** (1 latent), **37 edges**, acyclic, against 149 chronologically
-permitted pairs. Sparse by construction — absence of an edge means no evidence was found,
+Current state: **17 nodes** (1 latent), **34 edges** with an effect estimate on 33 of them,
+acyclic, against 141 chronologically permitted pairs. Sparse by construction — absence of an edge means no evidence was found,
 not that no relationship exists.
 
 ---
@@ -95,6 +95,11 @@ python causal/stage11_render_dag.py
 ---
 
 ## Design decisions worth knowing
+
+**Two structural rules need no evidence.** Chronology — an effect cannot precede its cause.
+And measurement semantics — a score cannot cause what the state it scores causes, so `WPI %`
+may only reach `Non-Economic Loss`, where s 4.11 makes the recorded number itself operative.
+Both are declared in [`ctp/columns.yaml`](ctp/columns.yaml) and enforced in stage 9.
 
 **Chronology is the strongest constraint.** Six bands from pre-accident to award; no edge
 may run backwards. That forbids 91 of 240 ordered pairs and does more orientation work
