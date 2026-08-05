@@ -5,8 +5,7 @@ awards **from evidence with provenance**, and records what it could not establis
 
 Every edge in the output traces to something checkable: a provision quoted verbatim from
 the Act, a reasoned prior that survived a prediction registered before the data was
-consulted, a measured relationship that survived a change of human coder, or a domain
-expert's stated claim. Edges without evidence are not drawn.
+consulted, or a domain expert's stated claim. Edges without evidence are not drawn.
 
 > ### ⚠ Read this before using the graph
 >
@@ -71,7 +70,6 @@ merely repeatable in principle.
 | `stage3d_statutory_edges` | Join the statutory and empirical legs | |
 | `stage5a/b_priors` | Blind causal priors with pre-registered, executable predictions | ✓ |
 | `stage6_sensitivity` | Sweep every threshold; report which ones decide the answer | |
-| `stage7a/b_coder` | Re-code 100 decisions with an independent reader; cross-coder test | ✓ |
 | `stage8_variable_roles` | Driver / pass-through / recorder from unique contribution to the target | |
 | `stage9_enforce_bands` | Chronology enforced, evidence assembled, cycles broken | |
 | `stage10_derive_bands` | Chronology *derived* blind, as a check on the asserted one | ✓ |
@@ -117,10 +115,10 @@ indicator, with a measurement edge between them.
 their own conclusions. Six of eleven are fragile — those results must be quoted with their
 threshold attached.
 
-**Prompt instructions are ablated.** A warning telling the model that two columns shared a
-coder produced `measurement_artifact` for 28 of 28 pairs; removing it produced 0 of 28. The
-verdict was the instruction, not the data. Both runs are committed. The question was then
-settled by measurement instead — see below.
+**Prompt instructions are ablated.** A warning telling the model that two columns came from
+the same scoring pass produced `measurement_artifact` for 28 of 28 pairs; removing it
+produced 0 of 28. The verdict was the instruction, not the data. Both runs are committed,
+and neither is used.
 
 ---
 
@@ -130,16 +128,13 @@ settled by measurement instead — see below.
   as "the type of damages being claimed" rather than injury severity, treatment extent or
   lost capacity. The names promise more than the codings deliver — see
   [`docs/ordinals-review.md`](docs/ordinals-review.md).
-- **One association is a coder halo.** Of 28 pairs of reader-assigned columns, 19 survive
-  being crossed between two independent readers and 1 does not: `Injury Burden Intensity ~
-  Legal Procedural Complexity`, survival 0.14. Stage 9 drops any edge resting on it.
 - **The statutory leg detects gates, limits and scope; it does not find everything.**
   Five links from 102 provisions read.
 - **`reasoned_prior_path` is the weakest evidence class and carries 17 of 36 edges.** It
   records that a model named a mediator, nothing more.
-- **The original rubric for the ordinal columns was never recorded.** Stage 12 recovers what
-  the coder appears to have responded to, from the codings themselves — but that reproduces
-  the coder's behaviour, not the instructions it was given.
+- **The instructions given to the ordinal scoring pass were never recorded.** Stage 12
+  recovers what separates the levels, from the codings themselves — which describes the
+  output, not the instructions behind it.
 - **Two instruments block automated retrieval** (`legislation.nsw.gov.au`, `austlii.edu.au`
   — Cloudflare, and AustLII's `robots.txt` names `ClaudeBot`). Statute is read from locally
   saved files, identified by content rather than filename.

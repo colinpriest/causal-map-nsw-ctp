@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-05T11:04:04+00:00",
+  "generated_at": "2026-08-05T12:44:30+00:00",
   "bands": [
     {
       "n": 1,
@@ -330,8 +330,6 @@
           "test": "mediation",
           "mechanism": "Injury burden affects pre-existing condition salience through the variable of injury and treatment evaluations, which might highlight existing conditions.",
           "verdict": "indirect",
-          "coder_survival": 0.82,
-          "coder_verdict": "survives_coder_change",
           "paths": [
             "Pre-existing Condition Salience -> Treatment Burden -> Injury Burden Intensity"
           ],
@@ -351,8 +349,6 @@
           "test": "mediation",
           "mechanism": "Pre-existing conditions affect work impact severity through their influence on WPI % and Future Economic Loss.",
           "verdict": "indirect",
-          "coder_survival": 0.635,
-          "coder_verdict": "survives_coder_change",
           "paths": [
             "Pre-existing Condition Salience -> WPI % -> Work Impact Severity"
           ],
@@ -584,8 +580,6 @@
           "test": "mediation",
           "mechanism": "Treatment Burden affects Causation Complexity through Injury Burden Intensity, as more severe injuries require more treatment and are easier to attribute to the accident.",
           "verdict": "indirect",
-          "coder_survival": 0.94,
-          "coder_verdict": "survives_coder_change",
           "paths": [
             "Treatment Burden -> Injury Burden Intensity -> Causation Complexity"
           ],
@@ -738,8 +732,6 @@
           "test": "mediation",
           "mechanism": "Work Impact Severity affects Causation Complexity through Legal Procedural Complexity, as more severe work impacts may lead to more complex legal proceedings.",
           "verdict": "indirect",
-          "coder_survival": 1.011,
-          "coder_verdict": "survives_coder_change",
           "paths": [
             "Work Impact Severity -> Legal Procedural Complexity -> Causation Complexity"
           ],

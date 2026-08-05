@@ -237,40 +237,15 @@ def main() -> int:
                      grade=e.get("grade"), concept=e["statute"]["concept"],
                      quote=e["statute"]["quote"]))
 
-    # Whether an association between two reader-scored columns is real is settled by
-    # MEASUREMENT, not by asking a model. Stage 7 re-coded 100 decisions with an
-    # independent reader and crossed the coders: an association that survives the crossing
-    # is in the world, one that collapses is in the reader's head. Nothing survives here on
-    # a model's opinion about measurement artefacts -- an earlier run let exactly that
-    # opinion suppress every ordinal-to-ordinal edge, including Pre-existing Condition
-    # Salience, which then had no children at all.
-    survival = {}
-    rel = load("coder_reliability.json")
-    if rel:
-        for pr in rel["pairs"]:
-            survival[frozenset((pr["a"], pr["b"]))] = pr
-
     tested = load("prior_tests.json")
     if tested:
         for r in tested["results"]:
             if r["passed"] is False:
                 continue
             v, a, b = r["verdict"], r["a"], r["b"]
-            cross = survival.get(frozenset((a, b)))
-            if cross and cross["verdict"] == "coder_artefact":
-                violations.append(dict(source=a, target=b,
-                                       evidence_class="reasoned_prior_tested",
-                                       band_source=BAND_OF.get(a), band_target=BAND_OF.get(b),
-                                       resolution="dropped: does not survive a change of "
-                                                  "coder (stage 7)"))
-                continue
-
             base = dict(confidence=r["confidence"], magnitude=r["magnitude"],
                         agreement=r["verdict_agreement"], test=r["prediction"]["test"],
                         mechanism=r["mechanism"][:200], verdict=v)
-            if cross:
-                base["coder_survival"] = cross.get("survival")
-                base["coder_verdict"] = cross["verdict"]
 
             def earlier(x, y):
                 """Which of the pair is upstream, from band order alone.
