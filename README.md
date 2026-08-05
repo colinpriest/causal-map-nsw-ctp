@@ -29,7 +29,7 @@ consulted, or a domain expert's stated claim. Edges without evidence are not dra
 | [`causal/provenance/banded_graph.json`](causal/provenance/banded_graph.json) | The assembled graph: edges, evidence per edge, roles, violations, cycle breaks. |
 | [`ctp/dictionary.md`](ctp/dictionary.md) | Data dictionary, generated from [`ctp/columns.yaml`](ctp/columns.yaml). |
 | [`docs/ordinals-review.md`](docs/ordinals-review.md) | **What the eight ordinal columns actually measure** — only two recover as the construct they are named for. |
-| [`causal/ctp_tabpfn_dml_map.html`](causal/ctp_tabpfn_dml_map.html) | The competing analysis: DoubleML + TabPFN-3 effect sizes, naive vs DAG adjustment. |
+| [`causal/ctp_identification_contrast.html`](causal/ctp_identification_contrast.html) | The competing analysis: what changes when the adjustment set changes. Two treatments change sign. |
 | [`docs/LLM-elicited-vs-TabPFN-causal.md`](docs/LLM-elicited-vs-TabPFN-causal.md) | **The two approaches compared.** Changing only the adjustment set flips two treatments' sign. |
 | `causal/provenance/*.json` | Every intermediate result, including the LLM request/response cache. |
 
@@ -76,7 +76,7 @@ merely repeatable in principle.
 | `stage11_render_dag` | The reviewable page | |
 | `stage12_derive_rubric` | Recover the ordinal coding rubric from the codings themselves | ✓ |
 | `stage13_tabpfn_dml` | Competing analysis: DoubleML + TabPFN-3, naive vs DAG adjustment | |
-| `stage14_render_dml_map` | The DoubleML effect map | |
+| `stage14_render_dml_map` | The identification contrast: naive vs DAG adjustment | |
 
 Plus `check_calibration.py`, which validates the statutory reader against
 [provisions whose correct reading is known](causal/calibration_provisions.yaml) — including

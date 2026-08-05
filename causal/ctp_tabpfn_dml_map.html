@@ -35,7 +35,7 @@ code{background:var(--band);padding:1px 5px;border-radius:4px;font-size:.9em}
 #detail{padding:14px 18px;font-size:13.5px;color:var(--ink2);min-height:70px;border-top:1px solid var(--line)}
 .legend{display:flex;gap:20px;flex-wrap:wrap;font-size:12.5px;color:var(--ink2);padding:0 18px 12px}
 </style></head><body><div class="wrap">
-<h1>NSW CTP — DoubleML + TabPFN causal map</h1>
+<h1 style="color:#898781">NSW CTP — DoubleML + TabPFN causal map <span style="font-size:14px">(superseded)</span></h1><div style="border:1px solid #d03b3b;border-left-width:5px;border-radius:6px;padding:12px 16px;margin:0 0 18px;background:rgba(208,59,59,.08);font-size:14px"><strong>Superseded — kept only as a record.</strong> This page drew a star of arrows from every treatment to <code>Lump Sum</code> and called itself a causal map. It was not one: every arrow&rsquo;s direction was chosen by the analyst, not found by the method, and every magnitude depended on an adjustment set supplied by the DAG. Replaced by <a href="ctp_identification_contrast.html">ctp_identification_contrast.html</a>, which shows the one causal statement these estimates support — that the answer changes with what you condition on.</div>
 <p class="sub">Average Treatment Effect of each discrete column on <code>log(Lump Sum)</code>,
 estimated by double machine learning. An ATE of 0.10 is roughly a 10% change in the award.</p>
 <div class="warn" id="warn"></div>

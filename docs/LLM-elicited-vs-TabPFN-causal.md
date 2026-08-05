@@ -14,10 +14,10 @@ premises and answering different questions. This document sets them against each
 |---|---|---|
 | Question | *what causes what*, then *how large* | *how large is the effect* |
 | Output | 17 nodes, 36 edges, **24 identified effects** | 10 treatment→outcome effect sizes |
-| Shape | a graph | a star: every edge ends at `Lump Sum` |
+| Shape | a graph | not a map at all — a contrast between two adjustment sets |
 | Direction comes from | chronology, statute, domain claims, tested priors | **supplied by the analyst** |
 | Effect sizes | none | ATE with 95% CI, in log-dollars |
-| Artefact | [`ctp_reviewed_dag.html`](../causal/ctp_reviewed_dag.html) | [`ctp_tabpfn_dml_map.html`](../causal/ctp_tabpfn_dml_map.html) |
+| Artefact | [`ctp_reviewed_dag.html`](../causal/ctp_reviewed_dag.html) | [`ctp_identification_contrast.html`](../causal/ctp_identification_contrast.html) |
 | Build | stages 0–11 | [`stage13`](../causal/stage13_tabpfn_dml.py), [`stage14`](../causal/stage14_render_dml_map.py) |
 
 The headline is not that one wins. It is that **each supplies exactly what the other
@@ -31,8 +31,15 @@ sign-wrong answers on this dataset.
 **DoubleML cannot orient an edge.** Give it a treatment and an outcome and it estimates the
 effect. Swap them and it estimates that too, with equal confidence and no complaint. Every
 arrow in its output is a direction the analyst supplied from outside. This is not a
-criticism — it is a semi-parametric estimator, not a discovery algorithm — but it means a
-"DoubleML causal map" is a map only in the sense that someone already drew it.
+criticism — it is a semi-parametric estimator, not a discovery algorithm.
+
+It does mean there is no such thing as a "DoubleML causal map". An earlier version of this
+project rendered one: a star with an arrow from each treatment to `Lump Sum`. Every one of
+those directions was asserted, and every magnitude was conditional on the DAG's adjustment
+set, so the picture displayed nothing the method had established. It has been replaced by
+[`ctp_identification_contrast.html`](../causal/ctp_identification_contrast.html), which shows
+the one thing these estimates do speak to: that the answer depends on what is conditioned on.
+The superseded file is kept, banner-marked, as a record.
 
 **The elicited DAG needs an estimator, but supplies everything else.** On its own it says
 `WPI % → Non-Economic Loss` is a statutory gate quoting s 4.11 and gives no dollars. Attach

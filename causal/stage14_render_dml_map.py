@@ -1,13 +1,18 @@
-"""Stage 14 — render the DoubleML causal map.
+"""Stage 14 — render what the DoubleML estimates do and do not show about cause.
 
 The LLM-elicited map (stage 11) is a graph: nodes, directed edges, and the evidence for
 each. This one cannot be that, and the difference is the point of having both.
 
-DoubleML estimates the effect of ONE treatment on ONE outcome, given a direction and an
-adjustment set that it does not supply. Run it over every discrete column and you get a
-star: the target at the centre, each treatment attached by an edge whose WIDTH and COLOUR
-carry an estimated effect size and its uncertainty. There are no edges between treatments,
-because nothing in the method produces one.
+An earlier version of this page drew a star -- the target at the centre, an arrow from every
+treatment -- and called it a causal map. It was not one. Every arrow's DIRECTION was
+asserted by the analyst, not found by the method, and every magnitude was conditional on an
+adjustment set that came from the DAG. Remove those two borrowed things and a bar chart of
+adjusted associations is left, wearing arrowheads it had not earned.
+
+So the star is gone. What replaces it is the one causal statement these estimates actually
+support: SAME treatment, SAME outcome, SAME learner, SAME data, and the answer changes with
+what you condition on -- with two treatments changing sign. That is a statement about
+IDENTIFICATION, which is the causal part, and it is the reason the graph matters.
 
 Each treatment is drawn twice, once per adjustment set:
 
@@ -19,7 +24,7 @@ Where those two disagree, the disagreement is attributable to identification rat
 to estimation, since the learner and the data are held fixed.
 
 Run:  python causal/stage14_render_dml_map.py
-Out:  causal/ctp_tabpfn_dml_map.html
+Out:  causal/ctp_identification_contrast.html
 """
 
 from __future__ import annotations
@@ -31,7 +36,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 SRC = HERE / "provenance" / "tabpfn_dml.json"
 GRAPH = HERE / "provenance" / "banded_graph.json"
-OUT = HERE / "ctp_tabpfn_dml_map.html"
+OUT = HERE / "ctp_identification_contrast.html"
 
 
 def main() -> int:
@@ -94,7 +99,7 @@ def main() -> int:
 TEMPLATE = r"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>NSW CTP — DoubleML + TabPFN causal map</title>
+<title>NSW CTP — what conditioning changes</title>
 <style>
 :root{color-scheme:light dark;--ink:#0b0b0b;--ink2:#52514e;--muted:#898781;--page:#f9f9f7;
 --surface:#fff;--line:rgba(11,11,11,.12);--pos:#0b7d3e;--neg:#d03b3b;--band:rgba(11,11,11,.03)}
@@ -128,26 +133,27 @@ code{background:var(--band);padding:1px 5px;border-radius:4px;font-size:.9em}
 #detail{padding:14px 18px;font-size:13.5px;color:var(--ink2);min-height:70px;border-top:1px solid var(--line)}
 .legend{display:flex;gap:20px;flex-wrap:wrap;font-size:12.5px;color:var(--ink2);padding:0 18px 12px}
 </style></head><body><div class="wrap">
-<h1>NSW CTP — DoubleML + TabPFN causal map</h1>
-<p class="sub">Average Treatment Effect of each discrete column on <code>log(Lump Sum)</code>,
-estimated by double machine learning. An ATE of 0.10 is roughly a 10% change in the award.</p>
+<h1>NSW CTP — what conditioning changes</h1>
+<p class="sub">Double machine learning estimates the effect of a treatment on
+<code>log(Lump Sum)</code> — but only once someone has said which variable is the treatment and
+what to adjust for. This page shows what changes when that second choice changes. An ATE of
+0.10 is roughly a 10% change in the award.</p>
 <div class="warn" id="warn"></div>
 <div class="tiles" id="tiles"></div>
 
 <div class="panel">
-  <h2>The map</h2>
-  <p class="note">A star, not a graph. Edge width is |ATE|, colour is direction, solid means the
-  95% interval excludes zero. There are no edges between treatments because DoubleML does not
-  produce any — it estimates one treatment against one outcome at a time.</p>
+  <h2>The estimate moves when the adjustment set moves</h2>
+  <p class="note">Same treatment, same outcome, same learner, same 540 rows. The only thing that
+  changes between the two columns is <strong>what is conditioned on</strong> — every other
+  variable on the left, the treatment&rsquo;s parents in the DAG on the right. Lines crossing
+  zero changed sign. This is the causal content of the analysis: identification, not estimation.</p>
   <div class="legend" id="legend"></div>
-  <div class="scroll"><svg id="map" viewBox="0 0 1420 760" preserveAspectRatio="xMidYMid meet"></svg></div>
+  <div class="scroll"><svg id="map" viewBox="0 0 1420 640" preserveAspectRatio="xMidYMid meet"></svg></div>
   <div id="detail">Select a treatment.</div>
 </div>
 
 <div class="panel">
-  <h2>Naive vs DAG adjustment</h2>
-  <p class="note">Same learner, same data, same treatment — only the adjustment set differs.
-  The gap is attributable to identification, not estimation.</p>
+  <h2>The same thing as numbers</h2>
   <div class="scroll"><table id="cmp"></table></div>
 </div>
 
@@ -167,8 +173,10 @@ for(const k in a)e.setAttribute(k,a[k]);return e};
 const fmt=v=>v===undefined||v===null?'—':(v>=0?'+':'')+v.toFixed(3);
 
 document.getElementById('warn').innerHTML=
- `<strong>This is not a causal graph.</strong> DoubleML estimates an effect size given a
-  direction and an adjustment set that it cannot supply. ${D.caveat}`;
+ `<strong>These are not discovered causal relationships.</strong> Every direction here —
+  treatment to outcome — was chosen by the analyst, and every magnitude depends on an
+  adjustment set supplied by the DAG. ${D.caveat} What the page shows is the consequence of
+  that choice, which is the part the method does speak to.`;
 
 const rows=D.rows, est=(r,k,l)=>((r.estimates[k]||{})[l]||{});
 const nSig=rows.filter(r=>est(r,'naive','TabPFN').significant).length;
@@ -180,49 +188,65 @@ const nDag=rows.filter(r=>est(r,'dag','TabPFN').significant).length;
   document.getElementById('tiles').appendChild(t)});
 
 document.getElementById('legend').innerHTML=
- '<span><b style="color:var(--pos)">green</b> = raises the award</span>'+
- '<span><b style="color:var(--neg)">red</b> = lowers it</span>'+
- '<span>solid = 95% CI excludes zero · dashed = does not</span>'+
- '<span>width ∝ |ATE|</span>';
+ '<span><b style="color:var(--neg)">red</b> = the estimate changes sign</span>'+
+ '<span>filled dot = 95% interval excludes zero</span>'+
+ '<span>hollow dot = it does not</span>'+
+ '<span>estimates shown for TabPFN-3</span>';
 
 // Layout must fit the viewBox: nodes are 200 wide, so the furthest node centre can sit
 // at most (1420/2 - 100 - margin) from the centre. An earlier version placed them at
 // 1.55*R from a centre of 690 inside a 900px-min-width svg with no viewBox, which put the
 // right-hand column past the edge where it was simply clipped.
-const svg=document.getElementById('map'),CX=710,CY=380;
-const n=rows.length, RX=580, RY=300;
-svg.appendChild(el('rect',{x:CX-95,y:CY-24,width:190,height:48,rx:9,
-  fill:'var(--band)',stroke:'var(--line)','stroke-width':2}));
-const ct=el('text',{x:CX,y:CY+5,'text-anchor':'middle'});ct.textContent=D.target;
-svg.appendChild(ct);
-const detail=document.getElementById('detail');
-const maxAte=Math.max(...rows.map(r=>Math.abs(est(r,'naive','TabPFN').ate||0)),0.05);
+const svg=document.getElementById('map');
+// A slope chart, not a star. The earlier star drew an arrow from every treatment to the
+// target and called itself a causal map -- but those directions were asserted by the
+// analyst, so the picture claimed what the method had not established. What the estimates
+// genuinely show is that the answer depends on the adjustment set, so that is what is drawn.
+const L=430, R=1010, TOP=60, BOT=590;
+const pairs=rows.map(r=>({name:r.treatment,
+  a:est(r,'naive','TabPFN'), b:est(r,'dag','TabPFN'), parents:r.dag_parents}))
+  .filter(p=>p.a.ate!==undefined||p.b.ate!==undefined);
+const vals=pairs.flatMap(p=>[p.a.ate,p.b.ate]).filter(v=>v!==undefined);
+const lo=Math.min(0,...vals), hi=Math.max(0,...vals), pad=(hi-lo)*0.08||0.1;
+const Y=v=>BOT-((v-(lo-pad))/((hi+pad)-(lo-pad)))*(BOT-TOP);
 
-rows.forEach((r,i)=>{
- const ang=(i/n)*2*Math.PI-Math.PI/2;
- const x=CX+RX*Math.cos(ang), y=CY+RY*Math.sin(ang);
- const e=est(r,'naive','TabPFN'), a=e.ate;
- if(a!==undefined){
-  const w=1+5*Math.abs(a)/maxAte;
-  const p=el('path',{d:`M${x},${y} Q${(x+CX)/2},${(y+CY)/2} ${CX+(x>CX?95:-95)},${CY}`,
-   class:'edge',stroke:a>=0?'var(--pos)':'var(--neg)','stroke-width':w});
-  if(!e.significant)p.setAttribute('stroke-dasharray','6 4');
-  svg.appendChild(p)}
+[[L,'adjust for everything else','(no graph)'],[R,'adjust for the DAG parents','(backdoor set)']]
+ .forEach(([x,t1,t2])=>{
+  svg.appendChild(el('line',{x1:x,y1:TOP-16,x2:x,y2:BOT+10,stroke:'var(--line)','stroke-width':1.5}));
+  const a=el('text',{x:x,y:TOP-34,'text-anchor':'middle'});a.textContent=t1;svg.appendChild(a);
+  const b=el('text',{x:x,y:TOP-20,'text-anchor':'middle',class:'small'});b.textContent=t2;svg.appendChild(b)});
+
+// zero line: the only value where a sign change is visible
+svg.appendChild(el('line',{x1:L-60,y1:Y(0),x2:R+60,y2:Y(0),stroke:'var(--muted)',
+  'stroke-dasharray':'5 4','stroke-width':1}));
+const z=el('text',{x:L-72,y:Y(0)+4,'text-anchor':'end',class:'small'});
+z.textContent='no effect';svg.appendChild(z);
+
+const detail=document.getElementById('detail');
+pairs.forEach(p=>{
+ const flip=(p.a.ate!==undefined&&p.b.ate!==undefined&&Math.sign(p.a.ate)!==Math.sign(p.b.ate));
+ const col=flip?'var(--neg)':'var(--ink2)';
  const g=el('g',{class:'node'});
- g.appendChild(el('rect',{x:x-100,y:y-19,width:200,height:38,rx:7,class:'node'}));
- const t=el('text',{x:x,y:y-2,'text-anchor':'middle'});
- t.textContent=r.treatment.length>27?r.treatment.slice(0,26)+'…':r.treatment;g.appendChild(t);
- const s=el('text',{x:x,y:y+12,'text-anchor':'middle',class:'small'});
- s.textContent=a===undefined?'not estimable':`ATE ${fmt(a)}`;g.appendChild(s);
+ if(p.a.ate!==undefined&&p.b.ate!==undefined){
+  g.appendChild(el('line',{x1:L,y1:Y(p.a.ate),x2:R,y2:Y(p.b.ate),stroke:col,
+   'stroke-width':flip?3:1.6,opacity:flip?1:.6}))}
+ [[L,p.a,'end',-10],[R,p.b,'start',10]].forEach(([x,v,anch,dx])=>{
+  if(v.ate===undefined)return;
+  g.appendChild(el('circle',{cx:x,cy:Y(v.ate),r:v.significant?6:4.5,
+   fill:v.significant?col:'var(--surface)',stroke:col,'stroke-width':1.8}));
+  const lab=el('text',{x:x+dx,y:Y(v.ate)+4,'text-anchor':anch,class:flip?'':'small'});
+  lab.textContent=(anch==='end'?p.name+'  ':'')+fmt(v.ate);
+  lab.setAttribute('fill',flip?'var(--neg)':'var(--ink2)');
+  g.appendChild(lab)});
  g.addEventListener('click',()=>{
-  const nv=est(r,'naive','TabPFN'), dg=est(r,'dag','TabPFN');
-  detail.innerHTML=`<strong>${r.treatment}</strong>`+
-   `<div style="margin-top:6px">naive adjustment (all other columns): ATE ${fmt(nv.ate)} `+
-   (nv.ci?`[${fmt(nv.ci[0])}, ${fmt(nv.ci[1])}]`:'')+
-   (nv.significant?' <span class="sig">significant</span>':' <span class="ns">not significant</span>')+'</div>'+
-   `<div>DAG adjustment (${r.dag_parents.length?r.dag_parents.join(', '):'no parents in the graph'}): `+
-   (dg.ate!==undefined?`ATE ${fmt(dg.ate)} [${fmt(dg.ci[0])}, ${fmt(dg.ci[1])}]`:'not estimated')+'</div>'+
-   (nv.apo?`<div class="small" style="margin-top:6px">APO by level: ${nv.apo.join(' · ')}</div>`:'')});
+  detail.innerHTML=`<strong>${p.name}</strong>`+
+   `<div style="margin-top:6px">adjusting for every other column: ATE ${fmt(p.a.ate)} `+
+   (p.a.ci?`[${fmt(p.a.ci[0])}, ${fmt(p.a.ci[1])}]`:'')+
+   (p.a.significant?' <span class="sig">significant</span>':' <span class="ns">not significant</span>')+
+   ' — conditions on mediators and on the collider at the target</div>'+
+   `<div>adjusting for ${p.parents.length?'the DAG parents ('+p.parents.join(', ')+')':'nothing — the graph makes this exogenous'}: `+
+   (p.b.ate!==undefined?`ATE ${fmt(p.b.ate)} [${fmt(p.b.ci[0])}, ${fmt(p.b.ci[1])}]`:'not estimated')+'</div>'+
+   (flip?'<div style="margin-top:6px;color:var(--neg)"><strong>Sign change.</strong> Nothing about the data or the learner differs — only what was conditioned on.</div>':'')});
  svg.appendChild(g)});
 
 const cmp=document.getElementById('cmp');
