@@ -111,3 +111,23 @@ domain_notes:
     checked_against_data: >-
       Non-economic loss above vs at-or-below the threshold: mean log 12.33 against 0.70,
       p = 2.7e-93. The gate is essentially the entire effect.
+
+  - subject: The award is a litigated outcome, not the output of a formula
+    date: 2026-08-05
+    claim: >-
+      Statutory principles say how a head of damage OUGHT to be assessed. The figure this
+      dataset records is what a proceeding actually produced -- shaped by legal costs, by
+      negotiating position, and by a claimant compromising to reach a settlement. A
+      contested matter and a straightforward one do not arrive at the same number even on
+      identical facts, so how heavily a claim was litigated is a genuine cause of quantum.
+    consequence_for_the_graph: >-
+      Legal Procedural Complexity -> Future Economic Loss is admissible and must not be
+      removed on the ground that the assessment principles do not name it. Nor may
+      Psychological Injury Emphasis -> Non-Economic Loss be removed on the ground that the
+      column measures discussion rather than injury: a court's decision is affected by what
+      is argued in front of it, which is the whole point of a proceeding.
+    why_this_is_recorded: >-
+      Both edges were proposed for deletion on the same faulty reasoning -- that a variable
+      the statute does not list as an input to the calculation cannot affect the outcome.
+      The statute describes the calculation; the data records the litigation. Anything that
+      moves a negotiated figure is in scope for a graph of decided claims.
