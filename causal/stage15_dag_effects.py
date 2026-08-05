@@ -47,6 +47,8 @@ from datetime import datetime, timezone
 from itertools import combinations
 from pathlib import Path
 
+import re
+
 import numpy as np
 import pandas as pd
 
@@ -157,6 +159,25 @@ class Graph:
 
 
 # ---------------------------------------------------------------- estimation
+def operative_thresholds():
+    """Columns whose causal role is a threshold crossing, not their continuous value.
+
+    s 4.11 MAIA bars non-economic loss unless assessed impairment exceeds 10%, and the data
+    says the crossing is the whole of the effect: mean log non-economic loss 12.33 above the
+    threshold against 0.70 at or below it, p = 2.7e-93, while future economic loss is
+    unmoved at p = 0.99. Estimating a per-percent coefficient answers a question the scheme
+    does not pose, so the column is binarised at its declared cut before estimation.
+    """
+    import yaml
+    spec = yaml.safe_load((ROOT / "ctp" / "columns.yaml").read_text(encoding="utf-8"))
+    out = {}
+    for c in spec["columns"]:
+        m = re.search(r"threshold at\s*([0-9.]+)", str(c.get("operative_form") or ""))
+        if m:
+            out[c["name"]] = float(m.group(1))
+    return out
+
+
 def load():
     d = pd.read_csv(CSV)
     d["Claimant Gender"] = (d["Claimant Gender"] == "Male").astype(float)
@@ -168,6 +189,9 @@ def load():
         if d[c].isna().any():
             d[c + "__missing"] = d[c].isna().astype(float)
             d[c] = d[c].fillna(d[c].median())
+    for col, cut in operative_thresholds().items():
+        if col in d.columns:
+            d[col] = (d[col] > cut).astype(float)
     return d
 
 

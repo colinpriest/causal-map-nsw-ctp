@@ -45,6 +45,14 @@ columns:
     # behind it. Any target not listed is forbidden as a matter of measurement semantics.
     operative_for:
       - Non-Economic Loss
+    # And it operates as a THRESHOLD, not as a continuous quantity. s 4.11 bars
+    # non-economic loss unless the assessed degree exceeds 10%; above that the award turns
+    # on the impairment, not on a per-percent multiplier. The data is unambiguous:
+    #   Non-Economic Loss   >10% mean 12.33 vs <=10% mean 0.70   p = 2.7e-93
+    #   Future Economic Loss >10% mean 10.58 vs <=10% mean 10.59  p = 0.99
+    # The threshold is the whole of its effect on non-economic loss and does nothing at all
+    # to future economic loss. Modelling WPI % as a continuous driver misstates both.
+    operative_form: threshold at 10% (s 4.11 MAIA)
 
   - name: Non-Economic Loss
     definition: dollars awarded for pain and suffering, as a component of the payout

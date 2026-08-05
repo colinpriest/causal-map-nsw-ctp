@@ -73,3 +73,41 @@ edges:
     verbatim: >-
       "Causation Complexity is the downstream result of the injuries from the accident
       versus pre-existing conditions."
+
+# ---------------------------------------------------------------------------------------
+# Domain knowledge that is not an edge: how a head of damage is actually assessed. Recorded
+# because it constrains which edges are admissible, and because it was checked against the
+# data rather than taken on trust.
+# ---------------------------------------------------------------------------------------
+domain_notes:
+  - subject: Future Economic Loss
+    date: 2026-08-05
+    claim: >-
+      Future economic loss is assessed on the claimant's most likely future circumstances
+      but for the injury, discounted for contingencies and to present value at the
+      prescribed rate. Its quantum depends on vocational evidence, work history, age and
+      retirement assumptions -- not on WPI %.
+    consequence_for_the_graph: >-
+      WPI % must not be given an edge to Future Economic Loss. The parents of that head are
+      Claimant Weekly Income, Claimant Age and Work Impact Severity, which is what the graph
+      has.
+    checked_against_data: >-
+      Above vs at-or-below the 10% threshold, mean log future economic loss is 10.58 against
+      10.59, p = 0.99. Among claims already above the threshold, continuous WPI against log
+      future economic loss is rho = 0.177 on n = 92. The threshold does nothing to this head.
+
+  - subject: WPI % as an eligibility threshold, not a scale
+    date: 2026-08-05
+    claim: >-
+      WPI is a medical model that does not measure earning capacity, treatment need or
+      labour-market attachment. In practice it defines eligibility -- above 10% enables
+      non-economic loss and longer weekly benefits -- rather than scaling any figure by a
+      per-percent multiplier. Practitioners price by WPI band, anchoring on observed
+      settlement ranges, not by multiplying a percentage.
+    consequence_for_the_graph: >-
+      The causal role of WPI % is the threshold crossing, recorded in ctp/columns.yaml as
+      `operative_form`. Any estimate treating it as a continuous driver is answering a
+      question the scheme does not pose.
+    checked_against_data: >-
+      Non-economic loss above vs at-or-below the threshold: mean log 12.33 against 0.70,
+      p = 2.7e-93. The gate is essentially the entire effect.
