@@ -213,7 +213,15 @@ def main() -> int:
                           f"[{v['ate_ci'][-1][0]:+.3f}, {v['ate_ci'][-1][1]:+.3f}]"
                           f"  {v['seconds']}s")
 
-        if dag_x:
+        # A treatment with NO parents is exogenous: the graph says adjust for nothing, and
+        # the unadjusted contrast is already the causal effect. That is the strongest
+        # identification claim a DAG can make, and an earlier version discarded it by
+        # treating an empty adjustment set as "cannot estimate". Liability Clarity,
+        # Pre-existing Condition Salience and Claimant Gender were all skipped this way.
+        row["dag_adjustment"] = ("no adjustment required: the graph gives this variable no "
+                                 "parents, so it is exogenous"
+                                 if not par else f"backdoor set = parents: {par}")
+        if True:
             r2, err2 = run(dml_pkg, data, t, dag_x, learners, args.n_rep)
             row["dag"] = r2 or dict(skipped=err2)
             if r2:
@@ -221,8 +229,6 @@ def main() -> int:
                     if "ate" in v:
                         print(f"    dag   {k:13} ATE(top vs base) = {v['ate'][-1]:+.3f} "
                               f"[{v['ate_ci'][-1][0]:+.3f}, {v['ate_ci'][-1][1]:+.3f}]")
-        else:
-            row["dag"] = dict(skipped="the assembled graph gives this variable no parents")
         results.append(row)
 
     doc = dict(

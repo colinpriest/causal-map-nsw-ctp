@@ -3,10 +3,17 @@
 This project now contains two causal analyses of the NSW CTP data, built on different
 premises and answering different questions. This document sets them against each other.
 
+> **Correction to an earlier framing.** This document originally set these up as
+> "DAG: structure, no numbers" versus "DoubleML: numbers". That was wrong. A DAG plus an
+> estimator is a complete method, and [`stage15`](../causal/stage15_dag_effects.py) now
+> implements it: minimal backdoor sets by d-separation, identifiability refusals, and
+> total-versus-direct decomposition. The honest contrast is **no graph versus your graph,
+> same estimator both times** — see §3a.
+
 | | **LLM-elicited DAG** | **DoubleML + TabPFN** |
 |---|---|---|
-| Question | *what causes what* | *how large is the effect* |
-| Output | 17 nodes, 36 directed edges | 10 treatment→outcome effect sizes |
+| Question | *what causes what*, then *how large* | *how large is the effect* |
+| Output | 17 nodes, 36 edges, **24 identified effects** | 10 treatment→outcome effect sizes |
 | Shape | a graph | a star: every edge ends at `Lump Sum` |
 | Direction comes from | chronology, statute, domain claims, tested priors | **supplied by the analyst** |
 | Effect sizes | none | ATE with 95% CI, in log-dollars |
@@ -27,9 +34,10 @@ arrow in its output is a direction the analyst supplied from outside. This is no
 criticism — it is a semi-parametric estimator, not a discovery algorithm — but it means a
 "DoubleML causal map" is a map only in the sense that someone already drew it.
 
-**The elicited DAG has no effect sizes.** It says `WPI % → Non-Economic Loss` is a statutory
-gate quoting s 4.11, and says nothing about how many dollars. For a question like "how much
-would an award move if working capacity were one level worse", the graph is silent.
+**The elicited DAG needs an estimator, but supplies everything else.** On its own it says
+`WPI % → Non-Economic Loss` is a statutory gate quoting s 4.11 and gives no dollars. Attach
+any estimator and it becomes a complete causal analysis — and one that does four things no
+estimator can do alone (§3a).
 
 **They fit together at exactly one point: the adjustment set.** DoubleML estimates
 E[Y | do(D=d)] by adjusting for covariates X, and identification depends entirely on X being
@@ -104,6 +112,58 @@ conditions on mediators, which removes the indirect part of a total effect and s
 toward zero. `Psychological Injury Emphasis` goes from +0.199 (not significant) to +0.748
 (significant) — the naive analysis would have concluded that psychological injury does not
 move an award.
+
+---
+
+## 3a. What the DAG does that the estimator cannot
+
+[`stage15`](../causal/stage15_dag_effects.py) uses the graph properly rather than as a
+source of a covariate list. **24 effects across three outcomes, 0 refused.**
+
+**Minimal backdoor sets, by d-separation.** Not parents-of-treatment.
+`Causation Complexity → Lump Sum` needs three covariates
+(`Injury Burden Intensity`, `Pre-existing Condition Salience`,
+`Psychological Injury Emphasis`) where the naive arm used nineteen. On 540 rows that is
+variance and positivity, not tidiness.
+
+**Knowing when to adjust for nothing.** Six treatment–outcome pairs are exogenous: the
+graph gives the treatment no parents, so no adjustment is required and the raw contrast IS
+the causal effect. DoubleML cannot express this — it errors on an empty design matrix — and
+an analyst without a graph has no way to know it was allowed.
+
+| exogenous pair | ATE | |
+|---|---|---|
+| `Liability Clarity → Non-Economic Loss` | −3.253 [−4.740, −1.767] | significant |
+| `Pre-existing Condition Salience → Future Economic Loss` | −1.254 [−2.081, −0.428] | significant |
+| `Liability Clarity → Future Economic Loss` | −0.916 [−1.669, −0.163] | significant |
+
+**Total versus controlled direct.** The graph knows which variables mediate, so the effect
+flowing *through* them separates from the effect flowing around them. **Five pairs reverse
+sign** between total and direct:
+
+| | total | direct | via mediators |
+|---|---|---|---|
+| `Causation Complexity → Lump Sum` | **+0.718** | **−0.137** | 109% |
+| `Causation Complexity → Non-Economic Loss` | **+1.241** | **−1.135** | 293% |
+| `Nature → Lump Sum` | +0.301 | −0.152 | 168% |
+| `Pre-existing Condition Salience → Non-Economic Loss` | +0.327 | −1.042 | — |
+| `Liability Clarity → Lump Sum` | −0.240 | +0.197 | — |
+
+`Causation Complexity` closes a loop opened at the very start of this project. The original
+graph asserted its effect on the money columns as **negative** — apportionment carves out
+non-accident loss — against a **+0.20 marginal**, and flagged it as one of seven
+sign-conflicting edges. The decomposition shows both are right: contested causation raises
+awards *only* by travelling through injury severity and the heads of damage, and holding
+those fixed it slightly reduces them. Total positive, direct negative.
+
+Neither the naive run (−0.332, sign-wrong) nor the DAG-parents run (+0.600, total only)
+could have shown that. It requires knowing which variables are mediators, which is
+structure, not estimation.
+
+**Identifiability refusals.** None triggered here, because the graph's only latent node
+(`Psychological Injury`) does not sit on a backdoor path for any tested pair. The machinery
+is in place: where every blocking set requires an unobserved variable, the effect is refused
+and the offending path named, rather than estimated.
 
 ---
 

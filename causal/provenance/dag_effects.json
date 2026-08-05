@@ -1,0 +1,1337 @@
+{
+  "generated_at": "2026-08-05T12:20:02+00:00",
+  "learner": "LightGBM",
+  "device": "cpu",
+  "seed": 42,
+  "graph": {
+    "nodes": 16,
+    "edges": 36,
+    "latent": [
+      "Psychological Injury"
+    ]
+  },
+  "method": "Minimal backdoor sets from the assembled DAG; effects estimated with DoubleMLAPOS. Outcomes on log scale, so an ATE of 0.10 is about a 10% change.",
+  "decomposition_caveat": "implied_indirect = total - controlled direct. A DESCRIPTIVE decomposition, not a natural indirect effect: that needs cross-world assumptions this design does not support, and on a log outcome the two do not coincide.",
+  "identifiability_note": "An effect is refused when no adjustment set of OBSERVED variables blocks every backdoor path. An estimator without a graph cannot refuse -- it returns a confident number regardless.",
+  "n_estimated": 24,
+  "n_refused": 0,
+  "effects": [
+    {
+      "treatment": "Causation Complexity",
+      "outcome": "Lump Sum",
+      "backdoor_set": [
+        "Injury Burden Intensity",
+        "Pre-existing Condition Salience",
+        "Psychological Injury Emphasis"
+      ],
+      "n_valid_sets": 1,
+      "mediators": [
+        "Future Economic Loss",
+        "Legal Procedural Complexity",
+        "Nature",
+        "Non-Economic Loss"
+      ],
+      "exogenous": false,
+      "total": {
+        "levels": [
+          0.0,
+          1.0,
+          2.0
+        ],
+        "n": 540,
+        "ate": 0.7177083493674044,
+        "ci": [
+          0.3490345106295258,
+          1.0863821881052829
+        ],
+        "se": 0.18810235374013545,
+        "significant": true,
+        "ate_all": [
+          0.3983762859206941,
+          0.7177083493674044
+        ],
+        "seconds": 14.5
+      },
+      "controlled_direct": {
+        "levels": [
+          0.0,
+          1.0,
+          2.0
+        ],
+        "n": 540,
+        "ate": -0.13689821937152047,
+        "ci": [
+          -0.30636556657782166,
+          0.03256912783478072
+        ],
+        "se": 0.08646452105397753,
+        "significant": false,
+        "ate_all": [
+          0.09957399914751974,
+          -0.13689821937152047
+        ],
+        "seconds": 16.3
+      },
+      "implied_indirect": 0.8546,
+      "share_through_mediators": 1.191
+    },
+    {
+      "treatment": "Injury Burden Intensity",
+      "outcome": "Lump Sum",
+      "backdoor_set": [
+        "Claimant Age",
+        "Pre-existing Condition Salience"
+      ],
+      "n_valid_sets": 1,
+      "mediators": [
+        "Causation Complexity",
+        "Future Economic Loss",
+        "Legal Procedural Complexity",
+        "Nature",
+        "Non-Economic Loss",
+        "Psychological Injury Emphasis",
+        "WPI %",
+        "Work Impact Severity"
+      ],
+      "exogenous": false,
+      "total": {
+        "levels": [
+          1.0,
+          2.0,
+          3.0
+        ],
+        "n": 540,
+        "ate": 2.6557805415718185,
+        "ci": [
+          2.216911787629495,
+          3.094649295514142
+        ],
+        "se": 0.22391674408512818,
+        "significant": true,
+        "ate_all": [
+          1.4524680021324627,
+          2.6557805415718185
+        ],
+        "seconds": 11.9
+      },
+      "controlled_direct": {
+        "levels": [
+          1.0,
+          2.0,
+          3.0
+        ],
+        "n": 540,
+        "ate": 2.1068318111738424,
+        "ci": [
+          1.6716268627685276,
+          2.5420367595791573
+        ],
+        "se": 0.22204742119659127,
+        "significant": true,
+        "ate_all": [
+          1.5449054261258404,
+          2.1068318111738424
+        ],
+        "seconds": 16.5
+      },
+      "implied_indirect": 0.5489,
+      "share_through_mediators": 0.207
+    },
+    {
+      "treatment": "Legal Procedural Complexity",
+      "outcome": "Lump Sum",
+      "backdoor_set": [
+        "Causation Complexity",
+        "Pre-existing Condition Salience",
+        "Work Impact Severity"
+      ],
+      "n_valid_sets": 1,
+      "mediators": [
+        "Future Economic Loss",
+        "Non-Economic Loss"
+      ],
+      "exogenous": false,
+      "total": {
+        "levels": [
+          0.0,
+          1.0,
+          2.0
+        ],
+        "n": 540,
+        "ate": 0.39487927933729416,
+        "ci": [
+          0.03838418546511646,
+          0.7513743732094719
+        ],
+        "se": 0.18188859422120288,
+        "significant": true,
+        "ate_all": [
+          0.18118801450505906,
+          0.39487927933729416
+        ],
+        "seconds": 20.6
+      },
+      "controlled_direct": {
+        "levels": [
+          0.0,
+          1.0,
+          2.0
+        ],
+        "n": 540,
+        "ate": 0.02863178298845881,
+        "ci": [
+          -0.12244609934360728,
+          0.1797096653205249
+        ],
+        "se": 0.07708196860949955,
+        "significant": false,
+        "ate_all": [
+          -0.03981786652103381,
+          0.02863178298845881
+        ],
+        "seconds": 19.1
+      },
+      "implied_indirect": 0.3662,
+      "share_through_mediators": 0.927
+    },
+    {
+      "treatment": "Liability Clarity",
+      "outcome": "Lump Sum",
+      "backdoor_set": [],
+      "n_valid_sets": 1,
+      "mediators": [
+        "Future Economic Loss",
+        "Legal Procedural Complexity",
+        "Non-Economic Loss"
+      ],
+      "exogenous": true,
+      "total": {
+        "levels": [
+          1.0,
+          2.0
+        ],
+        "n": 540,
+        "ate": -0.23952543322199205,
+        "ci": [
+          -0.6314502096497268,
+          0.15239934320574272
+        ],
+        "se": 0.19452208332790538,
+        "significant": false,
+        "ate_all": [
+          0.0,
+          -0.2395
+        ],
+        "estimator": "unadjusted contrast (exogenous: no adjustment required)",
+        "seconds": 0.0
+      },
+      "controlled_direct": {
+        "levels": [
+          1.0,
+          2.0
+        ],
+        "n": 540,
+        "ate": 0.1965393137006881,
+        "ci": [
+          -0.27813501685290165,
+          0.6712136442542779
+        ],
+        "se": 0.24218523110514295,
+        "significant": false,
+        "ate_all": [
+          0.1965393137006881
+        ],
+        "seconds": 8.0
+      },
+      "implied_indirect": -0.4361,
+      "share_through_mediators": 1.821
+    },
+    {
+      "treatment": "Nature",
+      "outcome": "Lump Sum",
+      "backdoor_set": [
+        "Causation Complexity",
+        "Work Impact Severity"
+      ],
+      "n_valid_sets": 1,
+      "mediators": [
+        "Future Economic Loss",
+        "Legal Procedural Complexity",
+        "Non-Economic Loss"
+      ],
+      "exogenous": false,
+      "total": {
+        "levels": [
+          0.0,
+          1.0
+        ],
+        "n": 540,
+        "ate": 0.300700614527452,
+        "ci": [
+          0.002818830051645016,
+          0.598582399003259
+        ],
+        "se": 0.1519832950122862,
+        "significant": true,
+        "ate_all": [
+          0.300700614527452
+        ],
+        "seconds": 7.3
+      },
+      "controlled_direct": {
+        "levels": [
+          0.0,
+          1.0
+        ],
+        "n": 540,
+        "ate": -0.1522217412936886,
+        "ci": [
+          -0.2951331949790157,
+          -0.009310287608361528
+        ],
+        "se": 0.0729153468189183,
+        "significant": true,
+        "ate_all": [
+          -0.1522217412936886
+        ],
+        "seconds": 9.2
+      },
+      "implied_indirect": 0.4529,
+      "share_through_mediators": 1.506
+    },
+    {
+      "treatment": "Pre-existing Condition Salience",
+      "outcome": "Lump Sum",
+      "backdoor_set": [],
+      "n_valid_sets": 1,
+      "mediators": [
+        "Causation Complexity",
+        "Future Economic Loss",
+        "Injury Burden Intensity",
+        "Legal Procedural Complexity",
+        "Nature",
+        "Non-Economic Loss",
+        "Psychological Injury Emphasis",
+        "WPI %",
+        "Work Impact Severity"
+      ],
+      "exogenous": true,
+      "total": {
+        "levels": [
+          0.0,
+          1.0,
+          2.0
+        ],
+        "n": 540,
+        "ate": 0.1822218249721974,
+        "ci": [
+          -0.10628130595833568,
+          0.4707249559027305
+        ],
+        "se": 0.1465490438632923,
+        "significant": false,
+        "ate_all": [
+          0.0,
+          0.4257,
+          0.1822
+        ],
+        "estimator": "unadjusted contrast (exogenous: no adjustment required)",
+        "seconds": 0.0
+      },
+      "controlled_direct": {
+        "levels": [
+          0.0,
+          1.0,
+          2.0
+        ],
+        "n": 540,
+        "ate": 0.014349009417843561,
+        "ci": [
+          -0.19727954577763893,
+          0.22597756461332605
+        ],
+        "se": 0.10797573673025705,
+        "significant": false,
+        "ate_all": [
+          0.07884868866333328,
+          0.014349009417843561
+        ],
+        "seconds": 15.7
+      },
+      "implied_indirect": 0.1679,
+      "share_through_mediators": 0.921
+    },
+    {
+      "treatment": "Psychological Injury Emphasis",
+      "outcome": "Lump Sum",
+      "backdoor_set": [
+        "Injury Burden Intensity"
+      ],
+      "n_valid_sets": 1,
+      "mediators": [
+        "Causation Complexity",
+        "Future Economic Loss",
+        "Legal Procedural Complexity",
+        "Nature",
+        "Non-Economic Loss"
+      ],
+      "exogenous": false,
+      "total": {
+        "levels": [
+          0.0,
+          1.0,
+          2.0
+        ],
+        "n": 540,
+        "ate": 0.8744878394489852,
+        "ci": [
+          0.6598895227184267,
+          1.0890861561795437
+        ],
+        "se": 0.10949094902931009,
+        "significant": true,
+        "ate_all": [
+          0.2537042549806525,
+          0.8744878394489852
+        ],
+        "seconds": 8.3
+      },
+      "controlled_direct": {
+        "levels": [
+          0.0,
+          1.0,
+          2.0
+        ],
+        "n": 540,
+        "ate": 0.29480654549044694,
+        "ci": [
+          0.12126719561238766,
+          0.46834589536850624
+        ],
+        "se": 0.08854211161374165,
+        "significant": true,
+        "ate_all": [
+          -0.018571425378036466,
+          0.29480654549044694
+        ],
+        "seconds": 14.8
+      },
+      "implied_indirect": 0.5797,
+      "share_through_mediators": 0.663
+    },
+    {
+      "treatment": "Work Impact Severity",
+      "outcome": "Lump Sum",
+      "backdoor_set": [
+        "Injury Burden Intensity",
+        "WPI %"
+      ],
+      "n_valid_sets": 1,
+      "mediators": [
+        "Future Economic Loss",
+        "Legal Procedural Complexity",
+        "Nature",
+        "Non-Economic Loss"
+      ],
+      "exogenous": false,
+      "total": {
+        "levels": [
+          0.0,
+          1.0,
+          2.0,
+          3.0
+        ],
+        "n": 540,
+        "ate": 1.671825793183384,
+        "ci": [
+          1.2631362406230213,
+          2.0805153457437466
+        ],
+        "se": 0.20851890942081275,
+        "significant": true,
+        "ate_all": [
+          0.2609225925173977,
+          1.1256354810563352,
+          1.671825793183384
+        ],
+        "seconds": 16.0
+      },
+      "controlled_direct": {
+        "levels": [
+          0.0,
+          1.0,
+          2.0,
+          3.0
+        ],
+        "n": 540,
+        "ate": 0.9257632156147153,
+        "ci": [
+          0.46978771232123884,
+          1.3817387189081918
+        ],
+        "se": 0.23264483780832362,
+        "significant": true,
+        "ate_all": [
+          0.3091262486316193,
+          0.7807698061038373,
+          0.9257632156147153
+        ],
+        "seconds": 23.8
+      },
+      "implied_indirect": 0.7461,
+      "share_through_mediators": 0.446
+    },
+    {
+      "treatment": "Causation Complexity",
+      "outcome": "Non-Economic Loss",
+      "backdoor_set": [
+        "Injury Burden Intensity",
+        "Pre-existing Condition Salience",
+        "Psychological Injury Emphasis"
+      ],
+      "n_valid_sets": 1,
+      "mediators": [
+        "Legal Procedural Complexity",
+        "Nature"
+      ],
+      "exogenous": false,
+      "total": {
+        "levels": [
+          0.0,
+          1.0,
+          2.0
+        ],
+        "n": 540,
+        "ate": 1.2409000464352822,
+        "ci": [
+          -0.5127538691730442,
+          2.9945539620436086
+        ],
+        "se": 0.8947378265319795,
+        "significant": false,
+        "ate_all": [
+          0.4007764904871056,
+          1.2409000464352822
+        ],
+        "seconds": 17.6
+      },
+      "controlled_direct": {
+        "levels": [
+          0.0,
+          1.0,
+          2.0
+        ],
+        "n": 540,
+        "ate": -1.1351444504087933,
+        "ci": [
+          -3.810376825969275,
+          1.5400879251516884
+        ],
+        "se": 1.3649395584114674,
+        "significant": false,
+        "ate_all": [
+          -1.335986021475133,
+          -1.1351444504087933
+        ],
+        "seconds": 13.0
+      },
+      "implied_indirect": 2.376,
+      "share_through_mediators": 1.915
+    },
+    {
+      "treatment": "Injury Burden Intensity",
+      "outcome": "Non-Economic Loss",
+      "backdoor_set": [
+        "Claimant Age",
+        "Pre-existing Condition Salience"
+      ],
+      "n_valid_sets": 1,
+      "mediators": [
+        "Causation Complexity",
+        "Legal Procedural Complexity",
+        "Nature",
+        "Psychological Injury Emphasis",
+        "WPI %",
+        "Work Impact Severity"
+      ],
+      "exogenous": false,
+      "total": {
+        "levels": [
+          1.0,
+          2.0,
+          3.0
+        ],
+        "n": 540,
+        "ate": 10.187537177188911,
+        "ci": [
+          8.287961349216374,
+          12.087113005161449
+        ],
+        "se": 0.9691891498803802,
+        "significant": true,
+        "ate_all": [
+          4.705945331337333,
+          10.187537177188911
+        ],
+        "seconds": 12.4
+      },
+      "controlled_direct": {
+        "levels": [
+          1.0,
+          2.0,
+          3.0
+        ],
+        "n": 540,
+        "ate": 8.584362990310979,
+        "ci": [
+          6.556483532159717,
+          10.61224244846224
+        ],
+        "se": 1.0346513885698492,
+        "significant": true,
+        "ate_all": [
+          4.900777819543223,
+          8.584362990310979
+        ],
+        "seconds": 13.9
+      },
+      "implied_indirect": 1.6032,
+      "share_through_mediators": 0.157
+    },
+    {
+      "treatment": "Legal Procedural Complexity",
+      "outcome": "Non-Economic Loss",
+      "backdoor_set": [
+        "Causation Complexity",
+        "Pre-existing Condition Salience",
+        "Work Impact Severity"
+      ],
+      "n_valid_sets": 1,
+      "mediators": [],
+      "exogenous": false,
+      "total": {
+        "levels": [
+          0.0,
+          1.0,
+          2.0
+        ],
+        "n": 540,
+        "ate": 2.9514842407675577,
+        "ci": [
+          0.8170681718518042,
+          5.085900309683311
+        ],
+        "se": 1.089007801037037,
+        "significant": true,
+        "ate_all": [
+          -0.03630290296124539,
+          2.9514842407675577
+        ],
+        "seconds": 10.8
+      }
+    },
+    {
+      "treatment": "Liability Clarity",
+      "outcome": "Non-Economic Loss",
+      "backdoor_set": [],
+      "n_valid_sets": 1,
+      "mediators": [
+        "Legal Procedural Complexity"
+      ],
+      "exogenous": true,
+      "total": {
+        "levels": [
+          1.0,
+          2.0
+        ],
+        "n": 540,
+        "ate": -3.2533107177149247,
+        "ci": [
+          -4.739509470598068,
+          -1.7671119648317812
+        ],
+        "se": 0.7397212228060299,
+        "significant": true,
+        "ate_all": [
+          0.0,
+          -3.2533
+        ],
+        "estimator": "unadjusted contrast (exogenous: no adjustment required)",
+        "seconds": 0.0
+      },
+      "controlled_direct": {
+        "levels": [
+          1.0,
+          2.0
+        ],
+        "n": 540,
+        "ate": -2.4438880508270078,
+        "ci": [
+          -4.388295400045332,
+          -0.4994807016086835
+        ],
+        "se": 0.992062795314384,
+        "significant": true,
+        "ate_all": [
+          -2.4438880508270078
+        ],
+        "seconds": 4.3
+      },
+      "implied_indirect": -0.8094,
+      "share_through_mediators": 0.249
+    },
+    {
+      "treatment": "Nature",
+      "outcome": "Non-Economic Loss",
+      "backdoor_set": [
+        "Causation Complexity",
+        "Work Impact Severity"
+      ],
+      "n_valid_sets": 1,
+      "mediators": [
+        "Legal Procedural Complexity"
+      ],
+      "exogenous": false,
+      "total": {
+        "levels": [
+          0.0,
+          1.0
+        ],
+        "n": 540,
+        "ate": 3.0709365757103537,
+        "ci": [
+          1.8127705150483835,
+          4.329102636372324
+        ],
+        "se": 0.641933255195618,
+        "significant": true,
+        "ate_all": [
+          3.0709365757103537
+        ],
+        "seconds": 7.2
+      },
+      "controlled_direct": {
+        "levels": [
+          0.0,
+          1.0
+        ],
+        "n": 540,
+        "ate": 2.0671991114708534,
+        "ci": [
+          0.6253971087087573,
+          3.50900111423295
+        ],
+        "se": 0.7356267840301385,
+        "significant": true,
+        "ate_all": [
+          2.0671991114708534
+        ],
+        "seconds": 7.3
+      },
+      "implied_indirect": 1.0037,
+      "share_through_mediators": 0.327
+    },
+    {
+      "treatment": "Pre-existing Condition Salience",
+      "outcome": "Non-Economic Loss",
+      "backdoor_set": [],
+      "n_valid_sets": 1,
+      "mediators": [
+        "Causation Complexity",
+        "Injury Burden Intensity",
+        "Legal Procedural Complexity",
+        "Nature",
+        "Psychological Injury Emphasis",
+        "WPI %",
+        "Work Impact Severity"
+      ],
+      "exogenous": true,
+      "total": {
+        "levels": [
+          0.0,
+          1.0,
+          2.0
+        ],
+        "n": 540,
+        "ate": 0.326571148346793,
+        "ci": [
+          -0.991187471899045,
+          1.644329768592631
+        ],
+        "se": 0.6693181128586213,
+        "significant": false,
+        "ate_all": [
+          0.0,
+          1.3638,
+          0.3266
+        ],
+        "estimator": "unadjusted contrast (exogenous: no adjustment required)",
+        "seconds": 0.0
+      },
+      "controlled_direct": {
+        "levels": [
+          0.0,
+          1.0,
+          2.0
+        ],
+        "n": 540,
+        "ate": -1.0419886331679251,
+        "ci": [
+          -2.427980580455311,
+          0.34400331411946117
+        ],
+        "se": 0.7071517426952301,
+        "significant": false,
+        "ate_all": [
+          -0.24216564268001228,
+          -1.0419886331679251
+        ],
+        "seconds": 23.1
+      },
+      "implied_indirect": 1.3686,
+      "share_through_mediators": 4.191
+    },
+    {
+      "treatment": "Psychological Injury Emphasis",
+      "outcome": "Non-Economic Loss",
+      "backdoor_set": [
+        "Injury Burden Intensity"
+      ],
+      "n_valid_sets": 1,
+      "mediators": [
+        "Causation Complexity",
+        "Legal Procedural Complexity",
+        "Nature"
+      ],
+      "exogenous": false,
+      "total": {
+        "levels": [
+          0.0,
+          1.0,
+          2.0
+        ],
+        "n": 540,
+        "ate": 0.48510630059834003,
+        "ci": [
+          -0.8762974393274736,
+          1.8465100405241537
+        ],
+        "se": 0.6946065084177019,
+        "significant": false,
+        "ate_all": [
+          0.6380664907764775,
+          0.48510630059834003
+        ],
+        "seconds": 10.4
+      },
+      "controlled_direct": {
+        "levels": [
+          0.0,
+          1.0,
+          2.0
+        ],
+        "n": 540,
+        "ate": 0.650364152972509,
+        "ci": [
+          -1.0091384717259004,
+          2.3098667776709183
+        ],
+        "se": 0.8467005709229122,
+        "significant": false,
+        "ate_all": [
+          0.7217347740753413,
+          0.650364152972509
+        ],
+        "seconds": 12.5
+      },
+      "implied_indirect": -0.1653,
+      "share_through_mediators": -0.341
+    },
+    {
+      "treatment": "Work Impact Severity",
+      "outcome": "Non-Economic Loss",
+      "backdoor_set": [
+        "Injury Burden Intensity",
+        "WPI %"
+      ],
+      "n_valid_sets": 1,
+      "mediators": [
+        "Legal Procedural Complexity",
+        "Nature"
+      ],
+      "exogenous": false,
+      "total": {
+        "levels": [
+          0.0,
+          1.0,
+          2.0,
+          3.0
+        ],
+        "n": 540,
+        "ate": 1.381318341040557,
+        "ci": [
+          -1.9911224679792494,
+          4.753759150060363
+        ],
+        "se": 1.7206646834437722,
+        "significant": false,
+        "ate_all": [
+          -0.20046383877153495,
+          -0.20087053285209322,
+          1.381318341040557
+        ],
+        "seconds": 16.5
+      },
+      "controlled_direct": {
+        "levels": [
+          0.0,
+          1.0,
+          2.0,
+          3.0
+        ],
+        "n": 540,
+        "ate": 0.09218039918034648,
+        "ci": [
+          -3.702941109925667,
+          3.88730190828636
+        ],
+        "se": 1.9363220646100887,
+        "significant": false,
+        "ate_all": [
+          -0.43845535203844754,
+          -0.649018979327213,
+          0.09218039918034648
+        ],
+        "seconds": 13.9
+      },
+      "implied_indirect": 1.2891,
+      "share_through_mediators": 0.933
+    },
+    {
+      "treatment": "Causation Complexity",
+      "outcome": "Future Economic Loss",
+      "backdoor_set": [
+        "Injury Burden Intensity",
+        "Pre-existing Condition Salience"
+      ],
+      "n_valid_sets": 1,
+      "mediators": [
+        "Legal Procedural Complexity",
+        "Nature"
+      ],
+      "exogenous": false,
+      "total": {
+        "levels": [
+          0.0,
+          1.0,
+          2.0
+        ],
+        "n": 540,
+        "ate": 1.1460166646626053,
+        "ci": [
+          0.4030835539667119,
+          1.8889497753584987
+        ],
+        "se": 0.37905447067193837,
+        "significant": true,
+        "ate_all": [
+          0.16790957447213906,
+          1.1460166646626053
+        ],
+        "seconds": 2.4
+      },
+      "controlled_direct": {
+        "levels": [
+          0.0,
+          1.0,
+          2.0
+        ],
+        "n": 540,
+        "ate": 0.722478622139338,
+        "ci": [
+          0.18333513944208957,
+          1.2616221048365865
+        ],
+        "se": 0.2750782600853605,
+        "significant": true,
+        "ate_all": [
+          -0.284901688786773,
+          0.722478622139338
+        ],
+        "seconds": 19.4
+      },
+      "implied_indirect": 0.4235,
+      "share_through_mediators": 0.37
+    },
+    {
+      "treatment": "Injury Burden Intensity",
+      "outcome": "Future Economic Loss",
+      "backdoor_set": [
+        "Claimant Age",
+        "Pre-existing Condition Salience"
+      ],
+      "n_valid_sets": 1,
+      "mediators": [
+        "Causation Complexity",
+        "Legal Procedural Complexity",
+        "Nature",
+        "Psychological Injury Emphasis",
+        "WPI %",
+        "Work Impact Severity"
+      ],
+      "exogenous": false,
+      "total": {
+        "levels": [
+          1.0,
+          2.0,
+          3.0
+        ],
+        "n": 540,
+        "ate": 2.4779743230011064,
+        "ci": [
+          1.3481238569774359,
+          3.607824789024777
+        ],
+        "se": 0.5764649120778682,
+        "significant": true,
+        "ate_all": [
+          0.9140570950565845,
+          2.4779743230011064
+        ],
+        "seconds": 22.6
+      },
+      "controlled_direct": {
+        "levels": [
+          1.0,
+          2.0,
+          3.0
+        ],
+        "n": 540,
+        "ate": 1.9916398600206087,
+        "ci": [
+          1.1058068563921923,
+          2.877472863649025
+        ],
+        "se": 0.45196391903920385,
+        "significant": true,
+        "ate_all": [
+          1.2013368799293094,
+          1.9916398600206087
+        ],
+        "seconds": 22.7
+      },
+      "implied_indirect": 0.4863,
+      "share_through_mediators": 0.196
+    },
+    {
+      "treatment": "Legal Procedural Complexity",
+      "outcome": "Future Economic Loss",
+      "backdoor_set": [
+        "Causation Complexity",
+        "Pre-existing Condition Salience",
+        "Work Impact Severity"
+      ],
+      "n_valid_sets": 3,
+      "mediators": [],
+      "exogenous": false,
+      "total": {
+        "levels": [
+          0.0,
+          1.0,
+          2.0
+        ],
+        "n": 540,
+        "ate": -0.7930012513761984,
+        "ci": [
+          -2.0083001793084954,
+          0.42229767655609884
+        ],
+        "se": 0.6200618672171633,
+        "significant": false,
+        "ate_all": [
+          -1.043180064328066,
+          -0.7930012513761984
+        ],
+        "seconds": 2.6
+      }
+    },
+    {
+      "treatment": "Liability Clarity",
+      "outcome": "Future Economic Loss",
+      "backdoor_set": [],
+      "n_valid_sets": 1,
+      "mediators": [
+        "Legal Procedural Complexity"
+      ],
+      "exogenous": true,
+      "total": {
+        "levels": [
+          1.0,
+          2.0
+        ],
+        "n": 540,
+        "ate": -0.9161030912988473,
+        "ci": [
+          -1.6694444098285302,
+          -0.16276177276916426
+        ],
+        "se": 0.37534602283213886,
+        "significant": true,
+        "ate_all": [
+          0.0,
+          -0.9161
+        ],
+        "estimator": "unadjusted contrast (exogenous: no adjustment required)",
+        "seconds": 0.0
+      },
+      "controlled_direct": {
+        "levels": [
+          1.0,
+          2.0
+        ],
+        "n": 540,
+        "ate": -0.6710567928120668,
+        "ci": [
+          -1.2755290344906447,
+          -0.06658455113348871
+        ],
+        "se": 0.3084098720418222,
+        "significant": true,
+        "ate_all": [
+          -0.6710567928120668
+        ],
+        "seconds": 1.5
+      },
+      "implied_indirect": -0.245,
+      "share_through_mediators": 0.267
+    },
+    {
+      "treatment": "Nature",
+      "outcome": "Future Economic Loss",
+      "backdoor_set": [
+        "Causation Complexity",
+        "Work Impact Severity"
+      ],
+      "n_valid_sets": 1,
+      "mediators": [
+        "Legal Procedural Complexity"
+      ],
+      "exogenous": false,
+      "total": {
+        "levels": [
+          0.0,
+          1.0
+        ],
+        "n": 540,
+        "ate": -1.9223750697737962,
+        "ci": [
+          -3.7165484219821314,
+          -0.12820171756546128
+        ],
+        "se": 0.9154113883523093,
+        "significant": true,
+        "ate_all": [
+          -1.9223750697737962
+        ],
+        "seconds": 1.9
+      },
+      "controlled_direct": {
+        "levels": [
+          0.0,
+          1.0
+        ],
+        "n": 540,
+        "ate": -1.8071754620249276,
+        "ci": [
+          -2.2974793739145785,
+          -1.3168715501352768
+        ],
+        "se": 0.25015965382889965,
+        "significant": true,
+        "ate_all": [
+          -1.8071754620249276
+        ],
+        "seconds": 1.7
+      },
+      "implied_indirect": -0.1152,
+      "share_through_mediators": 0.06
+    },
+    {
+      "treatment": "Pre-existing Condition Salience",
+      "outcome": "Future Economic Loss",
+      "backdoor_set": [],
+      "n_valid_sets": 1,
+      "mediators": [
+        "Causation Complexity",
+        "Injury Burden Intensity",
+        "Legal Procedural Complexity",
+        "Nature",
+        "Psychological Injury Emphasis",
+        "WPI %",
+        "Work Impact Severity"
+      ],
+      "exogenous": true,
+      "total": {
+        "levels": [
+          0.0,
+          1.0,
+          2.0
+        ],
+        "n": 540,
+        "ate": -1.2544931820131389,
+        "ci": [
+          -2.0807171050953293,
+          -0.42826925893094836
+        ],
+        "se": 0.41858914809488873,
+        "significant": true,
+        "ate_all": [
+          0.0,
+          -0.0299,
+          -1.2545
+        ],
+        "estimator": "unadjusted contrast (exogenous: no adjustment required)",
+        "seconds": 0.0
+      },
+      "controlled_direct": {
+        "levels": [
+          0.0,
+          1.0,
+          2.0
+        ],
+        "n": 540,
+        "ate": -2.1345286531211407,
+        "ci": [
+          -4.76681448610935,
+          0.49775717986706924
+        ],
+        "se": 1.3430276544627069,
+        "significant": false,
+        "ate_all": [
+          -0.39487042585014365,
+          -2.1345286531211407
+        ],
+        "seconds": 2.6
+      },
+      "implied_indirect": 0.88,
+      "share_through_mediators": -0.702
+    },
+    {
+      "treatment": "Psychological Injury Emphasis",
+      "outcome": "Future Economic Loss",
+      "backdoor_set": [
+        "Injury Burden Intensity"
+      ],
+      "n_valid_sets": 1,
+      "mediators": [
+        "Causation Complexity",
+        "Legal Procedural Complexity",
+        "Nature"
+      ],
+      "exogenous": false,
+      "total": {
+        "levels": [
+          0.0,
+          1.0,
+          2.0
+        ],
+        "n": 540,
+        "ate": 0.8680335514281214,
+        "ci": [
+          0.3343274910450592,
+          1.4017396118111836
+        ],
+        "se": 0.27230401404968035,
+        "significant": true,
+        "ate_all": [
+          -0.6366510745080003,
+          0.8680335514281214
+        ],
+        "seconds": 1.8
+      },
+      "controlled_direct": {
+        "levels": [
+          0.0,
+          1.0,
+          2.0
+        ],
+        "n": 540,
+        "ate": 0.7445947111263038,
+        "ci": [
+          0.11489539192993647,
+          1.3742940303226712
+        ],
+        "se": 0.32128106647027965,
+        "significant": true,
+        "ate_all": [
+          -0.5859224871394932,
+          0.7445947111263038
+        ],
+        "seconds": 2.7
+      },
+      "implied_indirect": 0.1234,
+      "share_through_mediators": 0.142
+    },
+    {
+      "treatment": "Work Impact Severity",
+      "outcome": "Future Economic Loss",
+      "backdoor_set": [
+        "Injury Burden Intensity",
+        "WPI %"
+      ],
+      "n_valid_sets": 1,
+      "mediators": [
+        "Legal Procedural Complexity",
+        "Nature"
+      ],
+      "exogenous": false,
+      "total": {
+        "levels": [
+          0.0,
+          1.0,
+          2.0,
+          3.0
+        ],
+        "n": 540,
+        "ate": 1.6969765080312822,
+        "ci": [
+          0.44952331626371933,
+          2.944429699798845
+        ],
+        "se": 0.6364674053234215,
+        "significant": true,
+        "ate_all": [
+          0.1432286472940003,
+          1.5775587227206653,
+          1.6969765080312822
+        ],
+        "seconds": 4.9
+      },
+      "controlled_direct": {
+        "levels": [
+          0.0,
+          1.0,
+          2.0,
+          3.0
+        ],
+        "n": 540,
+        "ate": 2.0218130325864383,
+        "ci": [
+          -1.1488455809568978,
+          5.192471646129775
+        ],
+        "se": 1.6177126919438762,
+        "significant": false,
+        "ate_all": [
+          0.3198762838095419,
+          2.9296121288839334,
+          2.0218130325864383
+        ],
+        "seconds": 4.9
+      },
+      "implied_indirect": -0.3248,
+      "share_through_mediators": -0.191
+    }
+  ],
+  "refused": []
+}
