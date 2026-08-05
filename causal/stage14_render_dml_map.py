@@ -113,7 +113,8 @@ text-transform:uppercase;letter-spacing:.05em;margin-top:2px}
 .panel{background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-bottom:22px}
 .panel h2{font-size:15px;margin:0;padding:14px 18px 0}
 .panel p.note{margin:4px 18px 10px;color:var(--ink2);font-size:13px}
-.scroll{overflow-x:auto}svg{display:block;min-width:900px}
+.scroll{overflow-x:auto}
+svg{display:block;width:100%;height:auto}
 text{font:12px system-ui;fill:var(--ink)}text.small{font-size:10.5px;fill:var(--muted)}
 rect.node{fill:var(--surface);stroke:var(--line);stroke-width:1.3}
 g.node{cursor:pointer}g.node:hover rect{stroke:#2a78d6;stroke-width:2}
@@ -139,7 +140,7 @@ estimated by double machine learning. An ATE of 0.10 is roughly a 10% change in 
   95% interval excludes zero. There are no edges between treatments because DoubleML does not
   produce any — it estimates one treatment against one outcome at a time.</p>
   <div class="legend" id="legend"></div>
-  <div class="scroll"><svg id="map" height="720"></svg></div>
+  <div class="scroll"><svg id="map" viewBox="0 0 1420 760" preserveAspectRatio="xMidYMid meet"></svg></div>
   <div id="detail">Select a treatment.</div>
 </div>
 
@@ -184,8 +185,12 @@ document.getElementById('legend').innerHTML=
  '<span>solid = 95% CI excludes zero · dashed = does not</span>'+
  '<span>width ∝ |ATE|</span>';
 
-const svg=document.getElementById('map'),CX=690,CY=350;
-const n=rows.length, R=250;
+// Layout must fit the viewBox: nodes are 200 wide, so the furthest node centre can sit
+// at most (1420/2 - 100 - margin) from the centre. An earlier version placed them at
+// 1.55*R from a centre of 690 inside a 900px-min-width svg with no viewBox, which put the
+// right-hand column past the edge where it was simply clipped.
+const svg=document.getElementById('map'),CX=710,CY=380;
+const n=rows.length, RX=580, RY=300;
 svg.appendChild(el('rect',{x:CX-95,y:CY-24,width:190,height:48,rx:9,
   fill:'var(--band)',stroke:'var(--line)','stroke-width':2}));
 const ct=el('text',{x:CX,y:CY+5,'text-anchor':'middle'});ct.textContent=D.target;
@@ -194,7 +199,8 @@ const detail=document.getElementById('detail');
 const maxAte=Math.max(...rows.map(r=>Math.abs(est(r,'naive','TabPFN').ate||0)),0.05);
 
 rows.forEach((r,i)=>{
- const ang=(i/n)*2*Math.PI-Math.PI/2, x=CX+R*Math.cos(ang)*1.55, y=CY+R*Math.sin(ang);
+ const ang=(i/n)*2*Math.PI-Math.PI/2;
+ const x=CX+RX*Math.cos(ang), y=CY+RY*Math.sin(ang);
  const e=est(r,'naive','TabPFN'), a=e.ate;
  if(a!==undefined){
   const w=1+5*Math.abs(a)/maxAte;
