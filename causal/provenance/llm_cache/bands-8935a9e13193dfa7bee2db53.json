@@ -1,0 +1,122 @@
+{
+  "meta": {
+    "model": "gpt-4o-2024-08-06",
+    "prompt_sha256": "8935a9e13193dfa7bee2db53",
+    "sample": 4,
+    "cache": "miss",
+    "requested_at": "2026-08-05T09:09:14+00:00"
+  },
+  "system": "You are working out the chronology of a compulsory third party motor accident claim in New South Wales, from a list of things recorded about decided claims.\n\nDivide the life of a claim into ordered PHASES, and place every recorded item in the phase at which the thing it measures COMES INTO EXISTENCE -- not when it is written down, and not when it is used.\n\nEach item is labelled with WHAT IT IS A PROPERTY OF. Use that as the decisive test: an item arises when the entity it is a property of arises. A property of the collision arises at the collision, however long afterwards it is written down. A property of a relationship between two things cannot arise until both of those things exist. A property of the proceeding arises when the proceeding is under way.\n\nThat distinction decides most of the hard cases:\n  * A medical assessment performed years later measures a physical state that arose at the time of the injury. Ask when the QUANTITY was fixed, not when it was measured.\n  * Something recorded in the final decision may describe a fact established long before it.\n  * A procedural fact about how the claim was run belongs to the phase in which the claim was run, not to the injury.\n\nDecide how many phases there are. Use as few as genuinely capture the order and no more; a phase containing one item is fine if that item really stands alone in time. Items that arise at the same stage belong in the same phase, and a phase may contain items that cause one another -- being contemporaneous is not being simultaneous.\n\nFor every item, say in one sentence WHEN the thing it measures came into existence. That sentence is the justification for its placement and will be recorded.",
+  "user": "Recorded about each decided claim:\n  - Lump Sum: the total dollars awarded. The final figure the decision arrives at, made up of the heads of damage plus components the table does not itemise\n  - WPI %: whole person impairment as a percentage. A CLINICAL assessment of the permanent impairment remaining once the condition has stabilised after treatment -- not a measure of injury severity at the moment of impact\n  - Non-Economic Loss: dollars awarded for pain and suffering. A component of the award, quantified in the decision\n  - Future Economic Loss: dollars awarded for loss of future earning capacity. A component of the award, computed from pre-accident earnings, residual working capacity and the years remaining to retirement\n  - Claimant Weekly Income: what the claimant was earning per week BEFORE the collision. A fact about their working life prior to the accident\n  - Claimant Age: the claimant's age at the date of injury. Fixed at birth and unaffected by anything in the claim\n  - Claimant Gender: the claimant's recorded gender. Unaffected by anything in the claim\n  - Nature: which procedural route the claim took: approval of an agreed settlement, or a contested damages assessment. A fact about how the proceeding resolved\n  - Injury Burden Intensity: the overall physical burden of the injuries the claimant sustained. The injuries are inflicted by the collision itself\n  - Treatment Burden: the extent of treatment, surgery and ongoing care the claimant underwent. This care is delivered over the months and years FOLLOWING the injury\n  - Work Impact Severity: how much working capacity the claimant lost. Incapacity emerges as the injury and its treatment run their course after the accident\n  - Legal Procedural Complexity: how procedurally heavy the proceeding was -- interlocutory steps, volume of evidence, hearings. A property of how the claim was litigated. It is driven by what ends up contested: disputed fault, disputed causation, and a prior condition to apportion against all generate argument and evidence\n  - Psychological Injury Emphasis: the SEVERITY of the psychological injury the claimant suffered as a result of the accident. Despite the column name, this measures the injury itself, not how much attention the decision paid to it\n  - Liability Clarity: how clear it is WHO WAS AT FAULT in the collision. Fault is fixed by the circumstances of the accident itself; the claim later establishes it but does not change it. Whether liability is contested is what drives argument later on\n  - Causation Complexity: how hard it is to attribute the claimant's condition to the accident rather than to something else. The difficulty stems from facts present from the outset -- a prior condition, delayed onset of symptoms -- while the argument about it takes place during the claim\n  - Pre-existing Condition Salience: how prominently a condition the claimant ALREADY HAD BEFORE THE ACCIDENT features in the decision. The condition itself pre-dates the collision entirely; only its prominence in the reasons is established later\n\nDefine the ordered phases of a claim, then place every item in one.",
+  "response": {
+    "phases": [
+      {
+        "order": 1,
+        "name": "Pre-collision",
+        "description": "This phase includes properties fixed before the accident, such as the claimant's age, weekly income, and gender."
+      },
+      {
+        "order": 2,
+        "name": "Collision",
+        "description": "This phase covers the collision itself and any facts or circumstances directly arising from the collision, such as the physical injuries and the clarity of liability."
+      },
+      {
+        "order": 3,
+        "name": "Post-collision impact",
+        "description": "This phase includes the ongoing effects and complexities that arise from the collision, like treatment and psychological impact, as these evolve after the initial injury."
+      },
+      {
+        "order": 4,
+        "name": "Claim process",
+        "description": "This phase involves the procedural and legal aspects of handling the claim, such as the complexity of the litigation process and how the claim resolves."
+      },
+      {
+        "order": 5,
+        "name": "Decision",
+        "description": "This phase includes the finalization of the claim, where specific award amounts and percentages are determined based on the overall assessment of damages."
+      }
+    ],
+    "assignments": [
+      {
+        "column": "Lump Sum",
+        "phase_order": 5,
+        "when_it_arises": "This arises during the decision phase when the total compensation amount is finalized in the judgment."
+      },
+      {
+        "column": "WPI %",
+        "phase_order": 3,
+        "when_it_arises": "This arises during the post-collision impact phase, as it depends on the post-treatment condition of the claimant."
+      },
+      {
+        "column": "Non-Economic Loss",
+        "phase_order": 5,
+        "when_it_arises": "This arises during the decision phase when damages for pain and suffering are quantified in the judgment."
+      },
+      {
+        "column": "Future Economic Loss",
+        "phase_order": 5,
+        "when_it_arises": "This arises during the decision phase when future loss of earnings is calculated in the judgment."
+      },
+      {
+        "column": "Claimant Weekly Income",
+        "phase_order": 1,
+        "when_it_arises": "This was fixed before the collision as it reflects the claimant's earnings prior to the accident."
+      },
+      {
+        "column": "Claimant Age",
+        "phase_order": 1,
+        "when_it_arises": "The claimant's age at the date of injury was determined by their date of birth and does not change due to the claim."
+      },
+      {
+        "column": "Claimant Gender",
+        "phase_order": 1,
+        "when_it_arises": "The claimant's gender was recorded prior to the accident and is unaffected by the claim."
+      },
+      {
+        "column": "Nature",
+        "phase_order": 4,
+        "when_it_arises": "This arises during the claim process as it determines whether the case was settled or contested."
+      },
+      {
+        "column": "Injury Burden Intensity",
+        "phase_order": 2,
+        "when_it_arises": "This arises at the time of the collision when the injuries are sustained."
+      },
+      {
+        "column": "Treatment Burden",
+        "phase_order": 3,
+        "when_it_arises": "This emerges in the post-collision impact phase, as treatment occurs over time after the injury."
+      },
+      {
+        "column": "Work Impact Severity",
+        "phase_order": 3,
+        "when_it_arises": "This emerges in the post-collision impact phase as the loss of capacity is realized after the initial injury and treatment."
+      },
+      {
+        "column": "Legal Procedural Complexity",
+        "phase_order": 4,
+        "when_it_arises": "This arises during the claim process, as it reflects how the legal proceedings are managed."
+      },
+      {
+        "column": "Psychological Injury Emphasis",
+        "phase_order": 3,
+        "when_it_arises": "This arises in the post-collision impact phase, as the psychological effects develop following the collision."
+      },
+      {
+        "column": "Liability Clarity",
+        "phase_order": 2,
+        "when_it_arises": "This is determined at the time of the collision based on the accident circumstances."
+      },
+      {
+        "column": "Causation Complexity",
+        "phase_order": 2,
+        "when_it_arises": "This is based on the initial circumstances of the accident, including pre-existing conditions and symptom onset timing."
+      },
+      {
+        "column": "Pre-existing Condition Salience",
+        "phase_order": 2,
+        "when_it_arises": "The condition existed before the accident, but its relevance is noted in the decision phase."
+      }
+    ]
+  }
+}

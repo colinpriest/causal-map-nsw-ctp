@@ -1,0 +1,3274 @@
+{
+  "generated_at": "2026-08-05T08:17:07+00:00",
+  "model": "gpt-4o",
+  "seed": 2026,
+  "n_requested": 100,
+  "n_coded": 100,
+  "n_skipped_short_text": 0,
+  "source_fields": [
+    "Catchwords",
+    "Key Paragraphs"
+  ],
+  "max_chars": 9000,
+  "scales": {
+    "Injury Burden Intensity": {
+      "min": 0,
+      "max": 4,
+      "description": "overall physical burden of the injuries: 0 minimal, 4 catastrophic/multiple major injuries"
+    },
+    "Treatment Burden": {
+      "min": 0,
+      "max": 3,
+      "description": "extent of treatment, surgery and ongoing care: 0 none or minimal, 3 extensive surgery and long-term care"
+    },
+    "Work Impact Severity": {
+      "min": 0,
+      "max": 3,
+      "description": "loss of working capacity: 0 none, 3 total incapacity"
+    },
+    "Legal Procedural Complexity": {
+      "min": 0,
+      "max": 3,
+      "description": "procedural complexity of the proceeding: 0 straightforward, 3 heavily contested"
+    },
+    "Psychological Injury Emphasis": {
+      "min": 0,
+      "max": 2,
+      "description": "weight the decision gives to psychological injury: 0 none, 2 central"
+    },
+    "Liability Clarity": {
+      "min": 0,
+      "max": 2,
+      "description": "how clear fault is: 0 seriously disputed, 2 clear or admitted"
+    },
+    "Causation Complexity": {
+      "min": 0,
+      "max": 2,
+      "description": "difficulty attributing the condition to the accident: 0 straightforward, 2 heavily contested"
+    },
+    "Pre-existing Condition Salience": {
+      "min": 0,
+      "max": 2,
+      "description": "how prominent a prior condition is in the decision: 0 absent, 2 central"
+    }
+  },
+  "rubric_is_reconstructed": true,
+  "limitation": "The original coding rubric is not recorded in this repository. These scale descriptions were reconstructed from column names and observed ranges, so disagreement mixes unreliability with rubric drift. The second reader is also a language model: independent in context and prompt, not in kind.",
+  "system_prompt": "You are coding NSW motor accident decisions for a research dataset. Read the decision text supplied and assign each ordinal score from the text alone.\n\nScore each dimension INDEPENDENTLY. A decision describing a severe case will score high on some dimensions and not others: severe physical injury does not by itself imply a contested proceeding, a disputed liability, or a prominent psychological component. Judge each scale against its own definition and resist letting an overall impression of severity carry across the scales.\n\nIf the text does not support a judgement on a dimension, give the lowest score rather than guessing upward, and say so in `uncertain`.",
+  "codings": [
+    {
+      "row_index": 5,
+      "case": "AAI Limited t/as AAMI v Sessions [2026] NSWPIC 293; \n (25 May 2026)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2026/293.html",
+      "source_chars": 6488,
+      "original": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 1,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 1,
+        "Pre-existing Condition Salience": 2
+      },
+      "recoded": {
+        "Injury Burden Intensity": 1,
+        "Treatment Burden": 0,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Injury Burden Intensity",
+        "Treatment Burden",
+        "Psychological Injury Emphasis",
+        "Causation Complexity",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "a0fe5aa1f97e2f0ecb90fc1d"
+    },
+    {
+      "row_index": 21,
+      "case": "Brewster v Insurance Australia Limited t/as NRMA Insurance [2026] NSWPIC 214; \n (16 April 2026)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2026/214.html",
+      "source_chars": 7442,
+      "original": {
+        "Injury Burden Intensity": 3,
+        "Treatment Burden": 3,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 2,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoded": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 1,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Treatment Burden",
+        "Legal Procedural Complexity",
+        "Causation Complexity",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "a3caa55f574720ef9f5dc371"
+    },
+    {
+      "row_index": 29,
+      "case": "AAI Limited t/as AAMI v Hawthorne [2026] NSWPIC 177; \n (26 March 2026)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2026/177.html",
+      "source_chars": 4243,
+      "original": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 1,
+        "Legal Procedural Complexity": 1,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 1
+      },
+      "recoded": {
+        "Injury Burden Intensity": 1,
+        "Treatment Burden": 0,
+        "Work Impact Severity": 1,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Injury Burden Intensity",
+        "Treatment Burden",
+        "Work Impact Severity",
+        "Psychological Injury Emphasis",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "21722463ea9248b33c25cc25"
+    },
+    {
+      "row_index": 30,
+      "case": "AAI Limited t/as AAMI v Poudel [2026] NSWPIC 172; \n (18 March 2026)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2026/172.html",
+      "source_chars": 6339,
+      "original": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 1,
+        "Legal Procedural Complexity": 1,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoded": {
+        "Injury Burden Intensity": 0,
+        "Treatment Burden": 0,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Injury Burden Intensity",
+        "Treatment Burden",
+        "Psychological Injury Emphasis",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "48091b2c104e1881311a847e"
+    },
+    {
+      "row_index": 37,
+      "case": "Patel v Allianz Australia Insurance Limited [2026] NSWPIC 133; \n (2 March 2026)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2026/133.html",
+      "source_chars": 3698,
+      "original": {
+        "Injury Burden Intensity": 3,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 3,
+        "Legal Procedural Complexity": 2,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 2,
+        "Pre-existing Condition Salience": 2
+      },
+      "recoded": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 1,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 1,
+        "Pre-existing Condition Salience": 1
+      },
+      "recoder_uncertain": [
+        "Psychological Injury Emphasis"
+      ],
+      "prompt_sha256": "2dc8a904771f65f7028a7929"
+    },
+    {
+      "row_index": 39,
+      "case": "AAI Limited t/as Suncorp Insurance v Zhang [2026] NSWPIC 125; \n (25 February 2026)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2026/125.html",
+      "source_chars": 4390,
+      "original": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 2,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 1
+      },
+      "recoded": {
+        "Injury Burden Intensity": 1,
+        "Treatment Burden": 0,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Treatment Burden",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "b83ee0e8c5cbcb0e99ae3cb4"
+    },
+    {
+      "row_index": 44,
+      "case": "AAI Limited t/as GIO v Ellery [2026] NSWPIC 81; \n (10 February 2026)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2026/81.html",
+      "source_chars": 4373,
+      "original": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 1,
+        "Pre-existing Condition Salience": 2
+      },
+      "recoded": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 0,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 1,
+        "Pre-existing Condition Salience": 1
+      },
+      "recoder_uncertain": [
+        "Treatment Burden",
+        "Psychological Injury Emphasis",
+        "Causation Complexity",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "f840abe69c7996455ba6ea59"
+    },
+    {
+      "row_index": 50,
+      "case": "CFB v Insurance Australia Limited t/as NRMA Insurance [2026] NSWPIC 19; \n (15 January 2026)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2026/19.html",
+      "source_chars": 3820,
+      "original": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 1,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 1,
+        "Pre-existing Condition Salience": 1
+      },
+      "recoded": {
+        "Injury Burden Intensity": 1,
+        "Treatment Burden": 0,
+        "Work Impact Severity": 1,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Treatment Burden",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "062cd127b209d7dbbc884ec2"
+    },
+    {
+      "row_index": 54,
+      "case": "AAI Limited t/as Suncorp Insurance v Bentley [2025] NSWPIC 690; \n (19 December 2025)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2025/690.html",
+      "source_chars": 4612,
+      "original": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 3,
+        "Legal Procedural Complexity": 1,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 2
+      },
+      "recoded": {
+        "Injury Burden Intensity": 0,
+        "Treatment Burden": 0,
+        "Work Impact Severity": 1,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Injury Burden Intensity",
+        "Treatment Burden",
+        "Work Impact Severity",
+        "Psychological Injury Emphasis",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "5ed4888f0f216579fbbf20e9"
+    },
+    {
+      "row_index": 56,
+      "case": "Kipa v Insurance Australia Limited t/as NRMA Insurance [2025] NSWPIC 675; \n (12 December 2025)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2025/675.html",
+      "source_chars": 4672,
+      "original": {
+        "Injury Burden Intensity": 3,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 3,
+        "Legal Procedural Complexity": 2,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 1,
+        "Pre-existing Condition Salience": 1
+      },
+      "recoded": {
+        "Injury Burden Intensity": 3,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 0,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 1
+      },
+      "recoder_uncertain": [
+        "Legal Procedural Complexity",
+        "Liability Clarity",
+        "Causation Complexity",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "aa2dc6f01e4d013a8d3bcdc1"
+    },
+    {
+      "row_index": 61,
+      "case": "AAI Limited t/as AAMI v Ul Hassan [2025] NSWPIC 616; \n (19 November 2025)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2025/616.html",
+      "source_chars": 4146,
+      "original": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoded": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 1,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Treatment Burden",
+        "Legal Procedural Complexity",
+        "Causation Complexity",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "f9ac8786a760f0d4b318c840"
+    },
+    {
+      "row_index": 71,
+      "case": "Insurance Australia Limited t/as NRMA Insurance v CTH [2025] NSWPIC 568; \n (22 October 2025)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2025/568.html",
+      "source_chars": 5842,
+      "original": {
+        "Injury Burden Intensity": 3,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 0,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 1,
+        "Pre-existing Condition Salience": 1
+      },
+      "recoded": {
+        "Injury Burden Intensity": 1,
+        "Treatment Burden": 0,
+        "Work Impact Severity": 0,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Injury Burden Intensity",
+        "Treatment Burden",
+        "Work Impact Severity",
+        "Psychological Injury Emphasis",
+        "Causation Complexity",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "7b5e71782ded1db40a2c79e1"
+    },
+    {
+      "row_index": 72,
+      "case": "Papagelou v AAI Ltd t/as AAMI [2025] NSWPIC 567; \n (21 October 2025)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2025/567.html",
+      "source_chars": 6741,
+      "original": {
+        "Injury Burden Intensity": 3,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 2,
+        "Psychological Injury Emphasis": 2,
+        "Liability Clarity": 2,
+        "Causation Complexity": 1,
+        "Pre-existing Condition Salience": 1
+      },
+      "recoded": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 1,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Causation Complexity",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "9b0f11377c09291c637b316c"
+    },
+    {
+      "row_index": 78,
+      "case": "AAI Limited t/as AAMI v Davidson [2025] NSWPIC 483; \n (16 September 2025)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2025/483.html",
+      "source_chars": 8170,
+      "original": {
+        "Injury Burden Intensity": 3,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 0,
+        "Legal Procedural Complexity": 1,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 1,
+        "Pre-existing Condition Salience": 2
+      },
+      "recoded": {
+        "Injury Burden Intensity": 3,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 0,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 2
+      },
+      "recoder_uncertain": [
+        "Work Impact Severity",
+        "Psychological Injury Emphasis"
+      ],
+      "prompt_sha256": "de0abaf5f22aee89e3086be5"
+    },
+    {
+      "row_index": 80,
+      "case": "Tu v Insurance Australia Limited t/as NRMA Insurance [2025] NSWPIC 468; \n (2 September 2025)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2025/468.html",
+      "source_chars": 4816,
+      "original": {
+        "Injury Burden Intensity": 3,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 2,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 1,
+        "Causation Complexity": 1,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoded": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 0,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 1,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 0,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Treatment Burden",
+        "Psychological Injury Emphasis",
+        "Causation Complexity",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "388b4ea035ef6f60dd4c3e53"
+    },
+    {
+      "row_index": 83,
+      "case": "Allianz Australia Insurance Limited v Knapton [2025] NSWPIC 446; \n (29 August 2025)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2025/446.html",
+      "source_chars": 6720,
+      "original": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 1,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoded": {
+        "Injury Burden Intensity": 0,
+        "Treatment Burden": 0,
+        "Work Impact Severity": 1,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Injury Burden Intensity",
+        "Treatment Burden",
+        "Work Impact Severity",
+        "Psychological Injury Emphasis",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "b0bd4152204fdbbb6e22b290"
+    },
+    {
+      "row_index": 84,
+      "case": "QBE Insurance (Australia) Limited v Costa [2025] NSWPIC 435; \n (27 August 2025)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2025/435.html",
+      "source_chars": 3561,
+      "original": {
+        "Injury Burden Intensity": 1,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 1,
+        "Psychological Injury Emphasis": 2,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 2
+      },
+      "recoded": {
+        "Injury Burden Intensity": 0,
+        "Treatment Burden": 0,
+        "Work Impact Severity": 1,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Injury Burden Intensity",
+        "Treatment Burden",
+        "Work Impact Severity",
+        "Psychological Injury Emphasis",
+        "Causation Complexity",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "cc2a743b8315e158bf9cd32e"
+    },
+    {
+      "row_index": 86,
+      "case": "AAI Limited t/as AAMI v Herft [2025] NSWPIC 432; \n (27 August 2025)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2025/432.html",
+      "source_chars": 5430,
+      "original": {
+        "Injury Burden Intensity": 3,
+        "Treatment Burden": 3,
+        "Work Impact Severity": 0,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoded": {
+        "Injury Burden Intensity": 1,
+        "Treatment Burden": 0,
+        "Work Impact Severity": 0,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Injury Burden Intensity",
+        "Treatment Burden",
+        "Work Impact Severity",
+        "Psychological Injury Emphasis",
+        "Causation Complexity",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "18e66302cc3cd3d1bd3bfebc"
+    },
+    {
+      "row_index": 103,
+      "case": "Dolbel v Allianz Australia Insurance Limited [2025] NSWPIC 290; \n (23 June 2025)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2025/290.html",
+      "source_chars": 6119,
+      "original": {
+        "Injury Burden Intensity": 3,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 2,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 1,
+        "Pre-existing Condition Salience": 1
+      },
+      "recoded": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 0,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 1,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Injury Burden Intensity",
+        "Treatment Burden",
+        "Psychological Injury Emphasis",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "397f9d5e4f9776e644e7f77b"
+    },
+    {
+      "row_index": 111,
+      "case": "QBE Insurance (Australia) Limited v Hanang [2025] NSWPIC 226; \n (26 May 2025)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2025/226.html",
+      "source_chars": 5148,
+      "original": {
+        "Injury Burden Intensity": 1,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 1,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoded": {
+        "Injury Burden Intensity": 1,
+        "Treatment Burden": 0,
+        "Work Impact Severity": 1,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Psychological Injury Emphasis",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "0ab69a7032ac9e6a7112be7e"
+    },
+    {
+      "row_index": 113,
+      "case": "Hamlin v QBE Insurance (Australia) Limited [2025] NSWPIC 210; \n (15 May 2025)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2025/210.html",
+      "source_chars": 2470,
+      "original": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 2,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 1
+      },
+      "recoded": {
+        "Injury Burden Intensity": 1,
+        "Treatment Burden": 0,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Injury Burden Intensity",
+        "Treatment Burden",
+        "Psychological Injury Emphasis",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "10b8c4031fb65bb1247f1b6b"
+    },
+    {
+      "row_index": 115,
+      "case": "Maamary v Insurance Australia Limited t/as NRMA Insurance [2025] NSWPIC 202; \n (13 May 2025)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2025/202.html",
+      "source_chars": 4594,
+      "original": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 2,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 2,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoded": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 1,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 1,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Treatment Burden",
+        "Psychological Injury Emphasis",
+        "Causation Complexity",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "295bbb84a5d9b851a84e85de"
+    },
+    {
+      "row_index": 119,
+      "case": "Allianz Australia Insurance Limited v Hunter [2025] NSWPIC 178; \n (30 April 2025)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2025/178.html",
+      "source_chars": 3166,
+      "original": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 1,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoded": {
+        "Injury Burden Intensity": 1,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 1,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Treatment Burden",
+        "Work Impact Severity",
+        "Causation Complexity",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "46642fda8d4b2df548834d52"
+    },
+    {
+      "row_index": 121,
+      "case": "Allianz Australia Insurance Limited v Waters [2025] NSWPIC 177; \n (30 April 2025)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2025/177.html",
+      "source_chars": 4091,
+      "original": {
+        "Injury Burden Intensity": 3,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 2,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 1,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoded": {
+        "Injury Burden Intensity": 3,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 1,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 1,
+        "Causation Complexity": 1,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Liability Clarity",
+        "Causation Complexity",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "d57df50016a59d6b7585e0db"
+    },
+    {
+      "row_index": 130,
+      "case": "Martignago v Insurance Australia Limited t/as NRMA Insurance [2025] NSWPIC 121; \n (1 April 2025)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2025/121.html",
+      "source_chars": 3877,
+      "original": {
+        "Injury Burden Intensity": 3,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 2,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 1,
+        "Causation Complexity": 2,
+        "Pre-existing Condition Salience": 1
+      },
+      "recoded": {
+        "Injury Burden Intensity": 3,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 1,
+        "Legal Procedural Complexity": 1,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Psychological Injury Emphasis",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "d1a8605c3578132967f1e75a"
+    },
+    {
+      "row_index": 134,
+      "case": "Insurance Australia Limited t/as NRMA Insurance v Kundu [2025] NSWPIC 104; \n (7 April 2025)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2025/104.html",
+      "source_chars": 4745,
+      "original": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 3,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 1
+      },
+      "recoded": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 0,
+        "Work Impact Severity": 3,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Injury Burden Intensity",
+        "Treatment Burden",
+        "Psychological Injury Emphasis",
+        "Causation Complexity",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "c92e6358eed2227f1b795c9e"
+    },
+    {
+      "row_index": 141,
+      "case": "Insurance Australia Limited t/as NRMA Insurance v Ho [2026] NSWPIC 108; \n (18 February 2025)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2026/108.html",
+      "source_chars": 8785,
+      "original": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 1,
+        "Legal Procedural Complexity": 1,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 1,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoded": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 1,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Psychological Injury Emphasis",
+        "Causation Complexity",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "67640325aa0ffd62ce5fb9b3"
+    },
+    {
+      "row_index": 144,
+      "case": "AAI Limited t/as GIO v Roach [2025] NSWPIC 35; \n (3 February 2024)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2025/35.html",
+      "source_chars": 7303,
+      "original": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 1,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoded": {
+        "Injury Burden Intensity": 1,
+        "Treatment Burden": 0,
+        "Work Impact Severity": 1,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Psychological Injury Emphasis",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "79934bc39c310c8a04222280"
+    },
+    {
+      "row_index": 145,
+      "case": "AAI Limited t/as AAMI v Lozanov [2025] NSWPIC 31; \n (3 February 2025)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2025/31.html",
+      "source_chars": 8052,
+      "original": {
+        "Injury Burden Intensity": 3,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 3,
+        "Legal Procedural Complexity": 2,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 2,
+        "Pre-existing Condition Salience": 2
+      },
+      "recoded": {
+        "Injury Burden Intensity": 4,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 3,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Psychological Injury Emphasis"
+      ],
+      "prompt_sha256": "d19f0bef4b54dc02410d8458"
+    },
+    {
+      "row_index": 151,
+      "case": "Mourad v QBE Insurance (Australia) Limited [2024] NSWPIC 700; \n (16 December 2024)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2024/700.html",
+      "source_chars": 6081,
+      "original": {
+        "Injury Burden Intensity": 3,
+        "Treatment Burden": 3,
+        "Work Impact Severity": 3,
+        "Legal Procedural Complexity": 2,
+        "Psychological Injury Emphasis": 2,
+        "Liability Clarity": 2,
+        "Causation Complexity": 2,
+        "Pre-existing Condition Salience": 2
+      },
+      "recoded": {
+        "Injury Burden Intensity": 0,
+        "Treatment Burden": 0,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 2,
+        "Liability Clarity": 0,
+        "Causation Complexity": 1,
+        "Pre-existing Condition Salience": 1
+      },
+      "recoder_uncertain": [
+        "Injury Burden Intensity",
+        "Treatment Burden",
+        "Legal Procedural Complexity",
+        "Liability Clarity"
+      ],
+      "prompt_sha256": "7142e09c4fc0a70dbd6c060c"
+    },
+    {
+      "row_index": 154,
+      "case": "Allianz Australia Insurance Limited v Manrique [2024] NSWPIC 692; \n (11 December 2024)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2024/692.html",
+      "source_chars": 3465,
+      "original": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 1,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 2,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoded": {
+        "Injury Burden Intensity": 1,
+        "Treatment Burden": 0,
+        "Work Impact Severity": 1,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [],
+      "prompt_sha256": "b1bc5a8e82b3a83bac997b06"
+    },
+    {
+      "row_index": 165,
+      "case": "Insurance Australia Limited t/as NRMA Insurance v Bakas [2024] NSWPIC 589; \n (21 October 2024)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2024/589.html",
+      "source_chars": 4616,
+      "original": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 2,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 1,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoded": {
+        "Injury Burden Intensity": 1,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 1,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Injury Burden Intensity",
+        "Treatment Burden",
+        "Work Impact Severity",
+        "Legal Procedural Complexity",
+        "Psychological Injury Emphasis",
+        "Causation Complexity",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "5d2216b7b679c7058afccbde"
+    },
+    {
+      "row_index": 168,
+      "case": "Mabbott v AAI Limited t/as GIO [2024] NSWPIC 581; \n (18 October 2024)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2024/581.html",
+      "source_chars": 3695,
+      "original": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 2,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 2,
+        "Pre-existing Condition Salience": 1
+      },
+      "recoded": {
+        "Injury Burden Intensity": 1,
+        "Treatment Burden": 0,
+        "Work Impact Severity": 1,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 1,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Treatment Burden",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "865326be2a7e671321a63a5c"
+    },
+    {
+      "row_index": 173,
+      "case": "AAI Limited t/as GIO v Hamson [2024] NSWPIC 563; \n (11 October 2024)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2024/563.html",
+      "source_chars": 7073,
+      "original": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoded": {
+        "Injury Burden Intensity": 1,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 1,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Psychological Injury Emphasis",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "7e56384ad81af30915950ed7"
+    },
+    {
+      "row_index": 175,
+      "case": "AAI Limited t/as GIO v Francesco [2024] NSWPIC 572; \n (9 October 2024)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2024/572.html",
+      "source_chars": 5978,
+      "original": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 2,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoded": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [],
+      "prompt_sha256": "a554b43f7af67f42ee75f718"
+    },
+    {
+      "row_index": 177,
+      "case": "Allianz Australia Insurance Limited v Khoshaba [2024] NSWPIC 544; \n (2 October 2024)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2024/544.html",
+      "source_chars": 7065,
+      "original": {
+        "Injury Burden Intensity": 1,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 1,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoded": {
+        "Injury Burden Intensity": 1,
+        "Treatment Burden": 0,
+        "Work Impact Severity": 0,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Psychological Injury Emphasis",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "26a98f6e47311314dd6857b2"
+    },
+    {
+      "row_index": 181,
+      "case": "QBE Insurance (Australia) Limited v Rudzis [2024] NSWPIC 534; \n (26 September 2024)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2024/534.html",
+      "source_chars": 3703,
+      "original": {
+        "Injury Burden Intensity": 3,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 0,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 1
+      },
+      "recoded": {
+        "Injury Burden Intensity": 4,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 0,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Work Impact Severity",
+        "Psychological Injury Emphasis",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "6e47db705ce411a453acee61"
+    },
+    {
+      "row_index": 189,
+      "case": "AAI Limited t/as GIO v Pateman [2024] NSWPIC 533; \n (11 September 2024)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2024/533.html",
+      "source_chars": 3369,
+      "original": {
+        "Injury Burden Intensity": 1,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 1,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoded": {
+        "Injury Burden Intensity": 0,
+        "Treatment Burden": 0,
+        "Work Impact Severity": 1,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Injury Burden Intensity",
+        "Treatment Burden",
+        "Psychological Injury Emphasis",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "e3fe439b9dea2a23c9c46d21"
+    },
+    {
+      "row_index": 190,
+      "case": "Insurance Australia Limited t/as NRMA Insurance v Cox [2024] NSWPIC 503; \n (11 September 2024)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2024/503.html",
+      "source_chars": 3667,
+      "original": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 0,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoded": {
+        "Injury Burden Intensity": 3,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 1,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Work Impact Severity"
+      ],
+      "prompt_sha256": "dfb6a2299bddf2214a3e1a27"
+    },
+    {
+      "row_index": 198,
+      "case": "AAI Limited t/as GIO v Harvey [2024] NSWPIC 446; \n (19 August 2024)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2024/446.html",
+      "source_chars": 4085,
+      "original": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoded": {
+        "Injury Burden Intensity": 3,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Psychological Injury Emphasis",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "4442da4fcf4e5f1184f73a82"
+    },
+    {
+      "row_index": 199,
+      "case": "QBE Insurance (Australia) Limited v Houseman [2024] NSWPIC 456; \n (19 August 2024)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2024/456.html",
+      "source_chars": 5993,
+      "original": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 2,
+        "Liability Clarity": 2,
+        "Causation Complexity": 1,
+        "Pre-existing Condition Salience": 1
+      },
+      "recoded": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Treatment Burden",
+        "Causation Complexity",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "6a18223cfe8f90e53624a814"
+    },
+    {
+      "row_index": 200,
+      "case": "AAI Limited t/as GIO v Vidler [2024] NSWPIC 430; \n (12 August 2024)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2024/430.html",
+      "source_chars": 4405,
+      "original": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 1,
+        "Legal Procedural Complexity": 1,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 1,
+        "Pre-existing Condition Salience": 1
+      },
+      "recoded": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 0,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 1
+      },
+      "recoder_uncertain": [
+        "Work Impact Severity",
+        "Psychological Injury Emphasis",
+        "Causation Complexity"
+      ],
+      "prompt_sha256": "c4043e36e81388f8c4b1396f"
+    },
+    {
+      "row_index": 207,
+      "case": "Bellchambers v Allianz Australia Insurance Limited [2024] NSWPIC 384; \n (17 July 2024)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2024/384.html",
+      "source_chars": 1525,
+      "original": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 2,
+        "Psychological Injury Emphasis": 2,
+        "Liability Clarity": 2,
+        "Causation Complexity": 1,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoded": {
+        "Injury Burden Intensity": 1,
+        "Treatment Burden": 0,
+        "Work Impact Severity": 1,
+        "Legal Procedural Complexity": 1,
+        "Psychological Injury Emphasis": 2,
+        "Liability Clarity": 2,
+        "Causation Complexity": 1,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Treatment Burden",
+        "Work Impact Severity",
+        "Legal Procedural Complexity",
+        "Causation Complexity",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "d9a1b5fa0b2ff8e21723be98"
+    },
+    {
+      "row_index": 208,
+      "case": "Aryan v Insurance Australia Limited t/as NRMA Insurance [2024] NSWPIC 383; \n (15 July 2024)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2024/383.html",
+      "source_chars": 4254,
+      "original": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 2,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 1,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoded": {
+        "Injury Burden Intensity": 0,
+        "Treatment Burden": 0,
+        "Work Impact Severity": 1,
+        "Legal Procedural Complexity": 1,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 1,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Injury Burden Intensity",
+        "Treatment Burden",
+        "Psychological Injury Emphasis",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "02dbac293399504af3bba91b"
+    },
+    {
+      "row_index": 211,
+      "case": "AAI Limited t/as AAMI v Mamo [2024] NSWPIC 362; \n (6 July 2024)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2024/362.html",
+      "source_chars": 6663,
+      "original": {
+        "Injury Burden Intensity": 1,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 1,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoded": {
+        "Injury Burden Intensity": 1,
+        "Treatment Burden": 0,
+        "Work Impact Severity": 1,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Psychological Injury Emphasis",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "837a19bc0fe4ca0db4beb9b0"
+    },
+    {
+      "row_index": 234,
+      "case": "Allianz Australia Insurance Limited v McEvoy [2024] NSWPIC 239; \n (2 May 2024)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2024/239.html",
+      "source_chars": 3739,
+      "original": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 0,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 1,
+        "Pre-existing Condition Salience": 1
+      },
+      "recoded": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 0,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 1
+      },
+      "recoder_uncertain": [
+        "Work Impact Severity",
+        "Psychological Injury Emphasis"
+      ],
+      "prompt_sha256": "e99faee739534a17bf29cf5c"
+    },
+    {
+      "row_index": 244,
+      "case": "AAI Limited t/as Suncorp (QLD) v Dowdle [2024] NSWPIC 193; \n (9 April 2024)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2024/193.html",
+      "source_chars": 4019,
+      "original": {
+        "Injury Burden Intensity": 3,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 3,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoded": {
+        "Injury Burden Intensity": 3,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 3,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Treatment Burden",
+        "Psychological Injury Emphasis",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "42cc9a79f4e49d1bcf37af48"
+    },
+    {
+      "row_index": 247,
+      "case": "Polwarth v Allianz Australia Insurance Limited [2024] NSWPIC 161; \n (24 March 2024)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2024/161.html",
+      "source_chars": 3135,
+      "original": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 2,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 1,
+        "Pre-existing Condition Salience": 1
+      },
+      "recoded": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 3,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Treatment Burden",
+        "Psychological Injury Emphasis",
+        "Causation Complexity",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "21e36ddffd4694cf6b56eaae"
+    },
+    {
+      "row_index": 260,
+      "case": "AAI Limited t/as GIO v Morgan [2024] NSWPIC 86; \n (27 February 2024)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2024/86.html",
+      "source_chars": 3475,
+      "original": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 0,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 2
+      },
+      "recoded": {
+        "Injury Burden Intensity": 1,
+        "Treatment Burden": 0,
+        "Work Impact Severity": 0,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 0,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 1
+      },
+      "recoder_uncertain": [
+        "Liability Clarity"
+      ],
+      "prompt_sha256": "e1367da46abc54572ef05104"
+    },
+    {
+      "row_index": 261,
+      "case": "Issa v Insurance Australia Limited t/as NRMA Insurance [2024] NSWPIC 104; \n (22 February 2024)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2024/104.html",
+      "source_chars": 3389,
+      "original": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 1,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 1,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoded": {
+        "Injury Burden Intensity": 1,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Psychological Injury Emphasis",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "d7d178fbecd84ab7e8c06715"
+    },
+    {
+      "row_index": 263,
+      "case": "AAI Limited t/as GIO v Higgins [2024] NSWPIC 73; \n (21 February 2024)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2024/73.html",
+      "source_chars": 4486,
+      "original": {
+        "Injury Burden Intensity": 3,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 0,
+        "Legal Procedural Complexity": 1,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 1,
+        "Pre-existing Condition Salience": 2
+      },
+      "recoded": {
+        "Injury Burden Intensity": 3,
+        "Treatment Burden": 0,
+        "Work Impact Severity": 0,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 2
+      },
+      "recoder_uncertain": [
+        "Treatment Burden",
+        "Psychological Injury Emphasis"
+      ],
+      "prompt_sha256": "461fe30077b02addf69bbd70"
+    },
+    {
+      "row_index": 273,
+      "case": "Insurance Australia Limited t/as NRMA Insurance v Cooper [2023] NSWPIC 654; \n (1 December 2023)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2023/654.html",
+      "source_chars": 4173,
+      "original": {
+        "Injury Burden Intensity": 3,
+        "Treatment Burden": 3,
+        "Work Impact Severity": 0,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoded": {
+        "Injury Burden Intensity": 3,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 0,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Work Impact Severity",
+        "Psychological Injury Emphasis",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "15272a3e01ab225f951a2b29"
+    },
+    {
+      "row_index": 280,
+      "case": "AAI Limited t/as AAMI v Saez [2023] NSWPIC 591; \n (8 November 2023)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2023/591.html",
+      "source_chars": 3954,
+      "original": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 2,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoded": {
+        "Injury Burden Intensity": 3,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Treatment Burden",
+        "Psychological Injury Emphasis",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "66da9af8bc66d32b53841c59"
+    },
+    {
+      "row_index": 282,
+      "case": "QBE Insurance (Australia) Limited v Rix [2023] NSWPIC 574; \n (1 November 2023)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2023/574.html",
+      "source_chars": 3793,
+      "original": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 1,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoded": {
+        "Injury Burden Intensity": 0,
+        "Treatment Burden": 0,
+        "Work Impact Severity": 1,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Treatment Burden",
+        "Psychological Injury Emphasis",
+        "Causation Complexity",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "6f2e8b2975dd99a47cbeafd1"
+    },
+    {
+      "row_index": 285,
+      "case": "QBE Insurance (Australia) Limited v Sultana [2023] NSWPIC 548; \n (17 October 2023)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2023/548.html",
+      "source_chars": 3339,
+      "original": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 1,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoded": {
+        "Injury Burden Intensity": 1,
+        "Treatment Burden": 0,
+        "Work Impact Severity": 1,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Treatment Burden",
+        "Psychological Injury Emphasis",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "cf38a589ea7cdfdc80a33648"
+    },
+    {
+      "row_index": 289,
+      "case": "Scott AAI Limited t/as GIO [2023] NSWPIC 509; \n (28 September 2023)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2023/509.html",
+      "source_chars": 7204,
+      "original": {
+        "Injury Burden Intensity": 3,
+        "Treatment Burden": 3,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 2,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 1,
+        "Causation Complexity": 1,
+        "Pre-existing Condition Salience": 1
+      },
+      "recoded": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 1,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 1,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Treatment Burden",
+        "Causation Complexity",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "f10432933b18e97adb0b119b"
+    },
+    {
+      "row_index": 290,
+      "case": "Schenko v QBE Insurance (Australia) Limited [2023] NSWPIC 507; \n (25 September 2023)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2023/507.html",
+      "source_chars": 4506,
+      "original": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 2,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoded": {
+        "Injury Burden Intensity": 1,
+        "Treatment Burden": 0,
+        "Work Impact Severity": 1,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Treatment Burden",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "5eb420e00a4dcad1811f4ea2"
+    },
+    {
+      "row_index": 314,
+      "case": "Salmon v AAI Ltd t/as GIO [2023] NSWPIC 406; \n (11 August 2023)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2023/406.html",
+      "source_chars": 4201,
+      "original": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 2,
+        "Psychological Injury Emphasis": 2,
+        "Liability Clarity": 2,
+        "Causation Complexity": 2,
+        "Pre-existing Condition Salience": 2
+      },
+      "recoded": {
+        "Injury Burden Intensity": 1,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 1,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 1,
+        "Pre-existing Condition Salience": 1
+      },
+      "recoder_uncertain": [],
+      "prompt_sha256": "bab16e7bd79402443aad71fb"
+    },
+    {
+      "row_index": 322,
+      "case": "Mitchell v Insurance Australia Limited t/as NRMA [2023] NSWPIC 380; \n (1 August 2023)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2023/380.html",
+      "source_chars": 3867,
+      "original": {
+        "Injury Burden Intensity": 1,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 0,
+        "Legal Procedural Complexity": 2,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 2,
+        "Pre-existing Condition Salience": 2
+      },
+      "recoded": {
+        "Injury Burden Intensity": 1,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 0,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 1,
+        "Pre-existing Condition Salience": 2
+      },
+      "recoder_uncertain": [
+        "Work Impact Severity",
+        "Psychological Injury Emphasis"
+      ],
+      "prompt_sha256": "a27b472aa6c50e9cf5e57835"
+    },
+    {
+      "row_index": 329,
+      "case": "Insurance Australia Limited T/as NRMA Insurance v Schubert [2023] NSWPIC 360; \n (17 July 2023)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2023/360.html",
+      "source_chars": 2941,
+      "original": {
+        "Injury Burden Intensity": 3,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 0,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 1,
+        "Pre-existing Condition Salience": 2
+      },
+      "recoded": {
+        "Injury Burden Intensity": 3,
+        "Treatment Burden": 0,
+        "Work Impact Severity": 0,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 2
+      },
+      "recoder_uncertain": [
+        "Treatment Burden",
+        "Work Impact Severity",
+        "Psychological Injury Emphasis"
+      ],
+      "prompt_sha256": "814908d78e95af93680009f1"
+    },
+    {
+      "row_index": 335,
+      "case": "Insurance Australia Limited t/as NRMA Insurance v Lobo [2023] NSWPIC 344; \n (11 July 2023)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2023/344.html",
+      "source_chars": 3976,
+      "original": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoded": {
+        "Injury Burden Intensity": 1,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Psychological Injury Emphasis",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "a047384e7367c3459409736e"
+    },
+    {
+      "row_index": 341,
+      "case": "Rodic v Insurance Australia Limited t/as NRMA Insurance [2023] NSWPIC 273; \n (13 June 2023)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2023/273.html",
+      "source_chars": 4427,
+      "original": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 2,
+        "Psychological Injury Emphasis": 2,
+        "Liability Clarity": 2,
+        "Causation Complexity": 1,
+        "Pre-existing Condition Salience": 2
+      },
+      "recoded": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 0,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 1,
+        "Pre-existing Condition Salience": 1
+      },
+      "recoder_uncertain": [
+        "Treatment Burden"
+      ],
+      "prompt_sha256": "0d9703ab4f41343ba1927dc7"
+    },
+    {
+      "row_index": 343,
+      "case": "Allianz Australia Insurance Limited v Davison [2023] NSWPIC 269; \n (5 June 2023)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2023/269.html",
+      "source_chars": 7243,
+      "original": {
+        "Injury Burden Intensity": 1,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 1,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 1,
+        "Pre-existing Condition Salience": 2
+      },
+      "recoded": {
+        "Injury Burden Intensity": 1,
+        "Treatment Burden": 0,
+        "Work Impact Severity": 1,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 0,
+        "Causation Complexity": 1,
+        "Pre-existing Condition Salience": 1
+      },
+      "recoder_uncertain": [
+        "Treatment Burden",
+        "Work Impact Severity",
+        "Psychological Injury Emphasis"
+      ],
+      "prompt_sha256": "bfc9940262503cad85d8eff8"
+    },
+    {
+      "row_index": 346,
+      "case": "Kindi v AAI Limited t/as GIO [2023] NSWPIC 254; \n (29 May 2023)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2023/254.html",
+      "source_chars": 5111,
+      "original": {
+        "Injury Burden Intensity": 3,
+        "Treatment Burden": 3,
+        "Work Impact Severity": 3,
+        "Legal Procedural Complexity": 2,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 1,
+        "Pre-existing Condition Salience": 2
+      },
+      "recoded": {
+        "Injury Burden Intensity": 3,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 1,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 1,
+        "Pre-existing Condition Salience": 1
+      },
+      "recoder_uncertain": [
+        "Work Impact Severity",
+        "Legal Procedural Complexity",
+        "Causation Complexity",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "88d5a64b2e18e1fcb470c383"
+    },
+    {
+      "row_index": 348,
+      "case": "AAI Limited t/as GIO v Kalantzis [2023] NSWPIC 252; \n (26 May 2023)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2023/252.html",
+      "source_chars": 3619,
+      "original": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 1,
+        "Pre-existing Condition Salience": 2
+      },
+      "recoded": {
+        "Injury Burden Intensity": 1,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 1
+      },
+      "recoder_uncertain": [
+        "Psychological Injury Emphasis"
+      ],
+      "prompt_sha256": "635fea9965469a8383f6f17d"
+    },
+    {
+      "row_index": 356,
+      "case": "AAI Ltd t/as GIO v Axiotis [2023] NSWPIC 223; \n (12 May 2023)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2023/223.html",
+      "source_chars": 3332,
+      "original": {
+        "Injury Burden Intensity": 3,
+        "Treatment Burden": 3,
+        "Work Impact Severity": 0,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 1
+      },
+      "recoded": {
+        "Injury Burden Intensity": 3,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 0,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 1
+      },
+      "recoder_uncertain": [
+        "Work Impact Severity",
+        "Psychological Injury Emphasis",
+        "Causation Complexity",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "b23f89c0ce14f2326ffa49ed"
+    },
+    {
+      "row_index": 367,
+      "case": "Cevik v Insurance Australia Limited t/as NRMA Insurance [2023] NSWPIC 201; \n (18 April 2023)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2023/201.html",
+      "source_chars": 4147,
+      "original": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 1,
+        "Psychological Injury Emphasis": 2,
+        "Liability Clarity": 2,
+        "Causation Complexity": 1,
+        "Pre-existing Condition Salience": 1
+      },
+      "recoded": {
+        "Injury Burden Intensity": 1,
+        "Treatment Burden": 0,
+        "Work Impact Severity": 1,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 2,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Injury Burden Intensity",
+        "Treatment Burden",
+        "Work Impact Severity",
+        "Legal Procedural Complexity",
+        "Causation Complexity",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "1ad5b4c7be0b766de2845c8c"
+    },
+    {
+      "row_index": 371,
+      "case": "Phillips v Insurance Australia Limited t/as NRMA Insurance [2023] NSWPIC 211; \n (12 April 2023)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2023/211.html",
+      "source_chars": 4270,
+      "original": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 1,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 1,
+        "Pre-existing Condition Salience": 1
+      },
+      "recoded": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 0,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Treatment Burden",
+        "Psychological Injury Emphasis",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "326b252005c16d248bb9ba9f"
+    },
+    {
+      "row_index": 375,
+      "case": "Allianz Australia Insurance Limited v Uehling [2023] NSWPIC 136; \n (30 March 2023)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2023/136.html",
+      "source_chars": 3081,
+      "original": {
+        "Injury Burden Intensity": 1,
+        "Treatment Burden": 0,
+        "Work Impact Severity": 0,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoded": {
+        "Injury Burden Intensity": 1,
+        "Treatment Burden": 0,
+        "Work Impact Severity": 0,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Injury Burden Intensity",
+        "Treatment Burden",
+        "Work Impact Severity",
+        "Legal Procedural Complexity",
+        "Psychological Injury Emphasis",
+        "Causation Complexity",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "edfb6560a38d310c4027d0fc"
+    },
+    {
+      "row_index": 388,
+      "case": "Allianz Australia Insurance Limited v Jenkins [2023] NSWPIC 129; \n (8 March 2023)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2023/129.html",
+      "source_chars": 3095,
+      "original": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 1,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 1
+      },
+      "recoded": {
+        "Injury Burden Intensity": 1,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 1,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Psychological Injury Emphasis",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "11fd91ff65fbaa9d7d9a16d4"
+    },
+    {
+      "row_index": 389,
+      "case": "AAI Limited t/as GIO v Husseini [2023] NSWPIC 99; \n (6 March 2023)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2023/99.html",
+      "source_chars": 2590,
+      "original": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 0,
+        "Work Impact Severity": 0,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 1,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 1
+      },
+      "recoded": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 0,
+        "Work Impact Severity": 0,
+        "Legal Procedural Complexity": 1,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 1,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Treatment Burden",
+        "Work Impact Severity",
+        "Psychological Injury Emphasis",
+        "Causation Complexity",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "6315991b634d44c914f21fc0"
+    },
+    {
+      "row_index": 399,
+      "case": "Insurance Australia Limited t/as NRMA Insurance v Hill [2023] NSWPIC 59; \n (15 February 2023)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2023/59.html",
+      "source_chars": 4145,
+      "original": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 1,
+        "Pre-existing Condition Salience": 1
+      },
+      "recoded": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 1,
+        "Legal Procedural Complexity": 1,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 1
+      },
+      "recoder_uncertain": [
+        "Psychological Injury Emphasis",
+        "Causation Complexity"
+      ],
+      "prompt_sha256": "1fca141b6f470b649fac361e"
+    },
+    {
+      "row_index": 403,
+      "case": "Taaga v CIC Allianz Insurance Limited [2023] NSWPIC 49; \n (13 February 2023)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2023/49.html",
+      "source_chars": 3661,
+      "original": {
+        "Injury Burden Intensity": 3,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 2,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 1,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoded": {
+        "Injury Burden Intensity": 0,
+        "Treatment Burden": 0,
+        "Work Impact Severity": 0,
+        "Legal Procedural Complexity": 2,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 1,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Injury Burden Intensity",
+        "Treatment Burden",
+        "Work Impact Severity",
+        "Psychological Injury Emphasis",
+        "Causation Complexity",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "a1e2c1dba6357b1242edc0c6"
+    },
+    {
+      "row_index": 406,
+      "case": "Allianz Australia Insurance Limited v Brain (EOTL) [2023] NSWPIC 38; \n (2 February 2023)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2023/38.html",
+      "source_chars": 4122,
+      "original": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 0,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 1
+      },
+      "recoded": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 0,
+        "Work Impact Severity": 0,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Treatment Burden",
+        "Work Impact Severity",
+        "Psychological Injury Emphasis",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "e65dbc7cdf49722a95c694ae"
+    },
+    {
+      "row_index": 420,
+      "case": "Albrecht v AAI Limited t/as GIO [2022] NSWPIC 701; \n (1 December 2022)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2022/701.html",
+      "source_chars": 7180,
+      "original": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 2,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 1,
+        "Pre-existing Condition Salience": 1
+      },
+      "recoded": {
+        "Injury Burden Intensity": 1,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 1,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 1,
+        "Pre-existing Condition Salience": 1
+      },
+      "recoder_uncertain": [
+        "Injury Burden Intensity",
+        "Treatment Burden",
+        "Psychological Injury Emphasis",
+        "Causation Complexity",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "477f92b1efbd5060127d62a8"
+    },
+    {
+      "row_index": 425,
+      "case": "AAI Limited t/as GIO v Jamenis [2022] NSWPIC 645; \n (21 November 2022)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2022/645.html",
+      "source_chars": 6961,
+      "original": {
+        "Injury Burden Intensity": 3,
+        "Treatment Burden": 3,
+        "Work Impact Severity": 0,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoded": {
+        "Injury Burden Intensity": 3,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 0,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Work Impact Severity",
+        "Psychological Injury Emphasis",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "742cd8554ad69f133c76abca"
+    },
+    {
+      "row_index": 430,
+      "case": "Smythe v CIC Allianz Insurance Limited [2022] NSWPIC 758; \n (13 November 2022)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2022/758.html",
+      "source_chars": 8935,
+      "original": {
+        "Injury Burden Intensity": 3,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 3,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 1,
+        "Causation Complexity": 2,
+        "Pre-existing Condition Salience": 1
+      },
+      "recoded": {
+        "Injury Burden Intensity": 0,
+        "Treatment Burden": 0,
+        "Work Impact Severity": 0,
+        "Legal Procedural Complexity": 2,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 1,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Injury Burden Intensity",
+        "Treatment Burden",
+        "Work Impact Severity",
+        "Psychological Injury Emphasis",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "cd33cc0c705f81ab837ff88e"
+    },
+    {
+      "row_index": 439,
+      "case": "Diener v QBE Insurance (Australia) Limited [2022] NSWPIC 568; \n (4 October 2022)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2022/568.html",
+      "source_chars": 5176,
+      "original": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 2,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 1,
+        "Pre-existing Condition Salience": 1
+      },
+      "recoded": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 1,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 1,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Psychological Injury Emphasis",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "be7dcf3cc962c34da4c5fa50"
+    },
+    {
+      "row_index": 452,
+      "case": "Insurance Australia Limited t/as NRMA Insurance v Warner [2022] NSWPIC 479; \n (31 August 2022)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2022/479.html",
+      "source_chars": 6159,
+      "original": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 1,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 1
+      },
+      "recoded": {
+        "Injury Burden Intensity": 1,
+        "Treatment Burden": 0,
+        "Work Impact Severity": 0,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [],
+      "prompt_sha256": "8ba4b22d4ae0621ee0cde317"
+    },
+    {
+      "row_index": 453,
+      "case": "AAI Limited t as GIO v Catt [2022] NSWPIC 489; \n (29 August 2022)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2022/489.html",
+      "source_chars": 4851,
+      "original": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 1,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 2,
+        "Liability Clarity": 2,
+        "Causation Complexity": 1,
+        "Pre-existing Condition Salience": 1
+      },
+      "recoded": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 1,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Treatment Burden",
+        "Work Impact Severity",
+        "Psychological Injury Emphasis"
+      ],
+      "prompt_sha256": "531357d68a20ed58fe5b5c31"
+    },
+    {
+      "row_index": 457,
+      "case": "Potter v Allianz Australia Insurance Limited [2022] NSWPIC 470; \n (16 August 2022)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2022/470.html",
+      "source_chars": 3506,
+      "original": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 2,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 1,
+        "Causation Complexity": 2,
+        "Pre-existing Condition Salience": 2
+      },
+      "recoded": {
+        "Injury Burden Intensity": 1,
+        "Treatment Burden": 0,
+        "Work Impact Severity": 1,
+        "Legal Procedural Complexity": 2,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 1,
+        "Causation Complexity": 1,
+        "Pre-existing Condition Salience": 1
+      },
+      "recoder_uncertain": [
+        "Injury Burden Intensity",
+        "Treatment Burden",
+        "Work Impact Severity",
+        "Psychological Injury Emphasis"
+      ],
+      "prompt_sha256": "eaff0c7bd3f02be2dd42aa5f"
+    },
+    {
+      "row_index": 458,
+      "case": "Mepani v AAI Limited t/as AAMI [2022] NSWPIC 459; \n (5 August 2022)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2022/459.html",
+      "source_chars": 5174,
+      "original": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 2,
+        "Psychological Injury Emphasis": 2,
+        "Liability Clarity": 2,
+        "Causation Complexity": 2,
+        "Pre-existing Condition Salience": 1
+      },
+      "recoded": {
+        "Injury Burden Intensity": 1,
+        "Treatment Burden": 0,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 1,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 1,
+        "Causation Complexity": 1,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Injury Burden Intensity",
+        "Treatment Burden",
+        "Liability Clarity",
+        "Causation Complexity",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "0bcb14153ab9e85a59ef7e8a"
+    },
+    {
+      "row_index": 461,
+      "case": "Insurance Australia Limited t/as NRMA Insurance v Cox [2022] NSWPIC 415; \n (28 July 2022)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2022/415.html",
+      "source_chars": 4955,
+      "original": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 0,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 1
+      },
+      "recoded": {
+        "Injury Burden Intensity": 1,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 0,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Work Impact Severity",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "8e4170f2e965f5b8b3d26f41"
+    },
+    {
+      "row_index": 464,
+      "case": "AAI Limited t/as AAMI v Stodolka [2022] NSWPIC 397; \n (20 July 2022)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2022/397.html",
+      "source_chars": 5707,
+      "original": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 0,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 1
+      },
+      "recoded": {
+        "Injury Burden Intensity": 3,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 0,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Treatment Burden",
+        "Work Impact Severity",
+        "Psychological Injury Emphasis",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "978864fbaa549be01f87e937"
+    },
+    {
+      "row_index": 469,
+      "case": "Allianz Australia Insurance Limited v Fuchs [2022] NSWPIC 416; \n (6 July 2022)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2022/416.html",
+      "source_chars": 6004,
+      "original": {
+        "Injury Burden Intensity": 1,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 1,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoded": {
+        "Injury Burden Intensity": 1,
+        "Treatment Burden": 0,
+        "Work Impact Severity": 0,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [],
+      "prompt_sha256": "733052a515126a53f74b9b2a"
+    },
+    {
+      "row_index": 470,
+      "case": "AAI Limited trading as GIO v Robertson [2022] NSWPIC 347; \n (24 June 2022)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2022/347.html",
+      "source_chars": 3787,
+      "original": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoded": {
+        "Injury Burden Intensity": 1,
+        "Treatment Burden": 0,
+        "Work Impact Severity": 1,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Treatment Burden",
+        "Psychological Injury Emphasis",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "a1e18628e222bd9930b119d0"
+    },
+    {
+      "row_index": 473,
+      "case": "Farr v IAG Limited t/as NRMA Insurance [2022] NSWPIC 363; \n (23 June 2022)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2022/363.html",
+      "source_chars": 3741,
+      "original": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 2,
+        "Psychological Injury Emphasis": 2,
+        "Liability Clarity": 2,
+        "Causation Complexity": 2,
+        "Pre-existing Condition Salience": 1
+      },
+      "recoded": {
+        "Injury Burden Intensity": 4,
+        "Treatment Burden": 0,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 1,
+        "Psychological Injury Emphasis": 2,
+        "Liability Clarity": 1,
+        "Causation Complexity": 1,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Treatment Burden",
+        "Legal Procedural Complexity",
+        "Liability Clarity",
+        "Causation Complexity",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "79c6a9eaa35b7805b1428a70"
+    },
+    {
+      "row_index": 475,
+      "case": "QBE Insurance (Australia) Limited v Spence [2022] NSWPIC 273; \n (8 June 2022)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2022/273.html",
+      "source_chars": 3221,
+      "original": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 0,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoded": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 0,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Work Impact Severity",
+        "Causation Complexity",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "be1c1030e24edaba446f73a5"
+    },
+    {
+      "row_index": 478,
+      "case": "AAI Limited t/as GIO v Burstow [2022] NSWPIC 343; \n (7 June 2022)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2022/343.html",
+      "source_chars": 3562,
+      "original": {
+        "Injury Burden Intensity": 1,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 1,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 1
+      },
+      "recoded": {
+        "Injury Burden Intensity": 1,
+        "Treatment Burden": 0,
+        "Work Impact Severity": 1,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Treatment Burden",
+        "Psychological Injury Emphasis",
+        "Causation Complexity",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "d2a8f4dda69aa83090fcf3ee"
+    },
+    {
+      "row_index": 486,
+      "case": "Sutovic v AAI Limited t/as GIO [2022] NSWPIC 276; \n (14 April 2022)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2022/276.html",
+      "source_chars": 8011,
+      "original": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 2,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 1,
+        "Pre-existing Condition Salience": 1
+      },
+      "recoded": {
+        "Injury Burden Intensity": 1,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 1,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 1,
+        "Causation Complexity": 1,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Liability Clarity",
+        "Causation Complexity",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "dbef21c69bc46ab5ad521241"
+    },
+    {
+      "row_index": 490,
+      "case": "NRMA v Bevan [2022] NSWPIC 100; \n (8 March 2022)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2022/100.html",
+      "source_chars": 4093,
+      "original": {
+        "Injury Burden Intensity": 0,
+        "Treatment Burden": 0,
+        "Work Impact Severity": 1,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 1
+      },
+      "recoded": {
+        "Injury Burden Intensity": 0,
+        "Treatment Burden": 0,
+        "Work Impact Severity": 1,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Injury Burden Intensity",
+        "Treatment Burden",
+        "Psychological Injury Emphasis",
+        "Causation Complexity",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "079357f8a888b29feff5f34f"
+    },
+    {
+      "row_index": 500,
+      "case": "Judges v AAI Limited t/as GIO [2021] NSWPIC 538; \n (8 December 2021)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2021/538.html",
+      "source_chars": 5066,
+      "original": {
+        "Injury Burden Intensity": 3,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 3,
+        "Legal Procedural Complexity": 2,
+        "Psychological Injury Emphasis": 2,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoded": {
+        "Injury Burden Intensity": 3,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 3,
+        "Legal Procedural Complexity": 1,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Treatment Burden",
+        "Legal Procedural Complexity",
+        "Psychological Injury Emphasis"
+      ],
+      "prompt_sha256": "30d6dd94e4310033a27578ba"
+    },
+    {
+      "row_index": 503,
+      "case": "IAG Limited Trading as NRMA v Naidu [2021] NSWPIC 483; \n (26 November 2021)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2021/483.html",
+      "source_chars": 5104,
+      "original": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 1,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 1,
+        "Pre-existing Condition Salience": 2
+      },
+      "recoded": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 1
+      },
+      "recoder_uncertain": [
+        "Legal Procedural Complexity",
+        "Psychological Injury Emphasis",
+        "Causation Complexity",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "dc16e3c230b07b4ace976f33"
+    },
+    {
+      "row_index": 507,
+      "case": "Parany v Insurance Australia Limited t/as NRMA Insurance [2021] NSWPIC 540; \n (26 October 2021)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2021/540.html",
+      "source_chars": 3023,
+      "original": {
+        "Injury Burden Intensity": 1,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 1,
+        "Legal Procedural Complexity": 2,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 2,
+        "Pre-existing Condition Salience": 2
+      },
+      "recoded": {
+        "Injury Burden Intensity": 0,
+        "Treatment Burden": 0,
+        "Work Impact Severity": 0,
+        "Legal Procedural Complexity": 1,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 2,
+        "Pre-existing Condition Salience": 2
+      },
+      "recoder_uncertain": [
+        "Legal Procedural Complexity"
+      ],
+      "prompt_sha256": "e9397db2a3bb394a19a3b8ae"
+    },
+    {
+      "row_index": 512,
+      "case": "QBE Insurance (Australia) Limited v Mathur [2021] NSWPIC 385; \n (8 September 2021)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2021/385.html",
+      "source_chars": 3150,
+      "original": {
+        "Injury Burden Intensity": 3,
+        "Treatment Burden": 3,
+        "Work Impact Severity": 0,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 1,
+        "Pre-existing Condition Salience": 2
+      },
+      "recoded": {
+        "Injury Burden Intensity": 3,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 0,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 2
+      },
+      "recoder_uncertain": [
+        "Work Impact Severity",
+        "Legal Procedural Complexity",
+        "Psychological Injury Emphasis",
+        "Causation Complexity"
+      ],
+      "prompt_sha256": "b3a6e6ce2f3441719ec975a0"
+    },
+    {
+      "row_index": 517,
+      "case": "Habib v AAI Limited t/as GIO [2021] NSWPIC 311; \n (27 August 2021)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2021/311.html",
+      "source_chars": 5314,
+      "original": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 1,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 2,
+        "Pre-existing Condition Salience": 2
+      },
+      "recoded": {
+        "Injury Burden Intensity": 1,
+        "Treatment Burden": 0,
+        "Work Impact Severity": 1,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 1,
+        "Causation Complexity": 1,
+        "Pre-existing Condition Salience": 1
+      },
+      "recoder_uncertain": [
+        "Treatment Burden",
+        "Psychological Injury Emphasis",
+        "Liability Clarity"
+      ],
+      "prompt_sha256": "51840d3d2c29de56b4ed5e70"
+    },
+    {
+      "row_index": 530,
+      "case": "Oliver v IAG t/as NRMA Limited [2021] NSWPIC 146; \n (27 May 2021)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2021/146.html",
+      "source_chars": 4872,
+      "original": {
+        "Injury Burden Intensity": 3,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 0,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 1
+      },
+      "recoded": {
+        "Injury Burden Intensity": 3,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Treatment Burden",
+        "Work Impact Severity"
+      ],
+      "prompt_sha256": "397adf441221532d3a4ae7cb"
+    },
+    {
+      "row_index": 533,
+      "case": "AAP v NRMA Insurance Ltd [2021] NSWPIC 101; \n (29 April 2021)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2021/101.html",
+      "source_chars": 4436,
+      "original": {
+        "Injury Burden Intensity": 3,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 0,
+        "Legal Procedural Complexity": 2,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 1,
+        "Pre-existing Condition Salience": 1
+      },
+      "recoded": {
+        "Injury Burden Intensity": 3,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 0,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 1,
+        "Pre-existing Condition Salience": 1
+      },
+      "recoder_uncertain": [
+        "Work Impact Severity",
+        "Psychological Injury Emphasis"
+      ],
+      "prompt_sha256": "42384cf1dd3282a9ecd28b4d"
+    },
+    {
+      "row_index": 538,
+      "case": "AAG v IAG Limited [2021] NSWPIC 57; \n (29 March 2021)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2021/57.html",
+      "source_chars": 5279,
+      "original": {
+        "Injury Burden Intensity": 3,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 2,
+        "Psychological Injury Emphasis": 2,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 1
+      },
+      "recoded": {
+        "Injury Burden Intensity": 3,
+        "Treatment Burden": 2,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 1,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Legal Procedural Complexity",
+        "Psychological Injury Emphasis",
+        "Causation Complexity",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "a43c0eb83a5556a1a367e660"
+    },
+    {
+      "row_index": 539,
+      "case": "AAC v NRMA Insurance [2021] NSWPIC 45; \n (23 March 2021)",
+      "url": "https://www.austlii.edu.au/cgi-bin/viewdoc/au/cases/nsw/NSWPIC/2021/45.html",
+      "source_chars": 3932,
+      "original": {
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 2,
+        "Legal Procedural Complexity": 1,
+        "Psychological Injury Emphasis": 1,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 1
+      },
+      "recoded": {
+        "Injury Burden Intensity": 0,
+        "Treatment Burden": 0,
+        "Work Impact Severity": 1,
+        "Legal Procedural Complexity": 0,
+        "Psychological Injury Emphasis": 0,
+        "Liability Clarity": 2,
+        "Causation Complexity": 0,
+        "Pre-existing Condition Salience": 0
+      },
+      "recoder_uncertain": [
+        "Injury Burden Intensity",
+        "Treatment Burden",
+        "Psychological Injury Emphasis",
+        "Pre-existing Condition Salience"
+      ],
+      "prompt_sha256": "198051a3b8fb8cd379476375"
+    }
+  ]
+}

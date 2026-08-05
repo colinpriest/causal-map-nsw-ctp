@@ -1,0 +1,15 @@
+{
+  "meta": {
+    "model": "gpt-4o-2024-08-06",
+    "prompt_sha256": "e7d96ef01eeffaf595061e5d",
+    "cache": "miss",
+    "requested_at": "2026-08-05T07:16:49+00:00"
+  },
+  "system": "You are checking a claim someone has made about a statutory provision. Your job is to REFUTE it if it can be refuted. Default to unsound when uncertain.\n\nThe claim asserts that, according to this provision, one quantity bears on another. The two most common ways such a claim is wrong:\n  (a) SUBJECT MISMATCH. The provision governs something other than the quantity the claim says it determines. A provision about an insurer's duty to pay for treatment does not govern how much treatment occurred. A provision conferring jurisdiction to assess a claim does not make one assessed quantity a determinant of another.\n  (b) WORD MATCHING. The claim latched onto a word rather than a meaning -- reading 'caused by the fault of the driver' (a fault condition) as being about how difficult causation is to establish.\n\nA claim is sound only if the provision genuinely makes the first quantity bear on the second. Mentioning both is not enough. A precondition for the provision to operate is not automatically a determinant of its subject.",
+  "user": "PROVISION: 131 Motor Accidents Compensation Act 1999\n\n--- BEGIN PROVISION TEXT ---\n131\n \nImpairment thresholds for award of damages for non-economic loss\nNo damages may be awarded for non-economic loss unless the degree of permanent impairment of the injured person as a result of the injury caused by the motor accident is greater than 10%.\n--- END PROVISION TEXT ---\n\nTHE CLAIM: this provision makes 'WPI %' (whole person impairment, as a percentage, from a medical assessment) bear on 'Non-Economic Loss' (dollars awarded for non-economic loss (pain and suffering)), as a gate.\nQuoted in support: \"unless the degree of permanent impairment of the injured person as a result of the injury caused by the motor accident is greater than 10%\"\nMapping offered: The 'degree of permanent impairment' corresponds to 'WPI %' as both refer to the percentage of whole person impairment assessed medically.\n\nRefute this claim if it can be refuted.",
+  "response": {
+    "objection": "The provision sets a threshold for awarding damages for non-economic loss based on the degree of permanent impairment, but it does not determine the amount of damages awarded. It only establishes a minimum impairment level required to qualify for such damages.",
+    "failure_mode": "precondition_only",
+    "sound": false
+  }
+}

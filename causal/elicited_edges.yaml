@@ -1,0 +1,75 @@
+# Edges asserted by a human with domain knowledge of the NSW CTP scheme.
+#
+# This is the strongest evidence class in the project and the only one that is not machine
+# generated. Statute is authoritative but reaches barely any of the constructed columns;
+# reasoned priors are a language model's opinion, tested but still an opinion. A claim here
+# is a person who knows the scheme saying how it works.
+#
+# RANK. elicited > statute > reasoned_prior_tested > reasoned_prior_path. Where an elicited
+# edge contradicts a machine-derived one, the machine-derived one is dropped and the
+# conflict recorded. Where a cycle must be broken, an elicited edge is the last to go.
+#
+# WHAT THIS IS NOT. It is not review of the whole graph. An edge absent from this file has
+# not been rejected by anyone -- it has not been looked at. Do not read silence as approval.
+#
+# Each entry needs: source, target, who, when, and the stated mechanism in their words.
+# `verbatim` is what they actually said, so a later reader can judge the paraphrase.
+
+elicited_by: Colin Priest
+project: causal-map-nsw-ctp
+
+edges:
+  - source: Liability Clarity
+    target: Legal Procedural Complexity
+    date: 2026-08-05
+    mechanism: >-
+      Whether liability is contested drives how heavily the claim is litigated. Disputed
+      fault adds a limb of argument that clear fault does not.
+    verbatim: "Whether liability is contested causes legal complexity"
+
+  - source: Pre-existing Condition Salience
+    target: Legal Procedural Complexity
+    date: 2026-08-05
+    mechanism: >-
+      A prior condition to apportion against generates medical evidence and argument,
+      making the proceeding heavier.
+    verbatim: "Pre-existing Condition Salience causes legal complexity"
+
+  - source: Causation Complexity
+    target: Legal Procedural Complexity
+    date: 2026-08-05
+    mechanism: >-
+      Contested causation is what generates the evidence and the interlocutory steps that
+      procedural complexity records. The reverse direction, derived from a model's choice
+      of mediator, is wrong.
+    verbatim: "why aren't you allowing causation complexity to affect legal procedural complexity?"
+
+  - source: Injury Burden Intensity
+    target: Causation Complexity
+    date: 2026-08-05
+    mechanism: >-
+      Causation complexity is the downstream result of weighing the accident's injuries
+      against other explanations, so the physical injury picture is one of its inputs.
+    verbatim: >-
+      "Causation Complexity is the downstream result of the injuries from the accident
+      versus pre-existing conditions. So it should be the result of the injury burden
+      psych emphasis and pre-existing."
+
+  - source: Psychological Injury Emphasis
+    target: Causation Complexity
+    date: 2026-08-05
+    mechanism: >-
+      The psychological component is weighed on the same question of what the accident
+      caused, so it is an input to causation complexity.
+    verbatim: >-
+      "it should be the result of the injury burden psych emphasis and pre-existing"
+
+  - source: Pre-existing Condition Salience
+    target: Causation Complexity
+    date: 2026-08-05
+    mechanism: >-
+      The prior condition is the alternative explanation being weighed against the
+      accident, and is therefore the single biggest driver of causation difficulty.
+    verbatim: >-
+      "Causation Complexity is the downstream result of the injuries from the accident
+      versus pre-existing conditions."

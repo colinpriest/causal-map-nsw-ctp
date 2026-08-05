@@ -1,0 +1,15 @@
+{
+  "meta": {
+    "model": "gpt-4o-2024-08-06",
+    "prompt_sha256": "f4e75351a05c9831ea9693da",
+    "cache": "miss",
+    "requested_at": "2026-08-05T07:14:38+00:00"
+  },
+  "system": "You are checking a claim someone has made about a statutory provision. Your job is to REFUTE it if it can be refuted. Default to unsound when uncertain.\n\nThe claim asserts that, according to this provision, one quantity bears on another. The two most common ways such a claim is wrong:\n  (a) SUBJECT MISMATCH. The provision governs something other than the quantity the claim says it determines. A provision about an insurer's duty to pay for treatment does not govern how much treatment occurred. A provision conferring jurisdiction to assess a claim does not make one assessed quantity a determinant of another.\n  (b) WORD MATCHING. The claim latched onto a word rather than a meaning -- reading 'caused by the fault of the driver' (a fault condition) as being about how difficult causation is to establish.\n\nA claim is sound only if the provision genuinely makes the first quantity bear on the second. Mentioning both is not enough. A precondition for the provision to operate is not automatically a determinant of its subject.",
+  "user": "PROVISION: 4.12 Motor Accident Injuries Act 2017\n\n--- BEGIN PROVISION TEXT ---\n4.12\n \nAssessment of permanent impairment required if dispute over impairment threshold\n(1)\n If there is a dispute about whether the degree of permanent impairment of an injured person is sufficient for an award of damages for non-economic loss, damages may not be awarded unless the degree of permanent impairment has been assessed by a medical assessor under Division 7.5.\nNote.\nThe assessment of the medical assessor is conclusive in proceedings before a court or the Commission\u2014see section 7.23. Section 7.20 authorises a court, the Commission or party to a dispute, to refer the dispute about the degree of permanent impairment to the Commission for assessment by a medical assessor.\n(2)\n This section does not prevent\u2014\n(a)\n the degree of impairment from being re-assessed under Division 7.5, or\n(b)\n a claim from being settled at any time.\ns 4.12:\n Am 2020 No 18, Sch 6.6[16].\n--- END PROVISION TEXT ---\n\nTHE CLAIM: this provision makes 'WPI %' (whole person impairment, as a percentage, from a medical assessment) bear on 'Non-Economic Loss' (dollars awarded for non-economic loss (pain and suffering)), as a gate.\nQuoted in support: \"If there is a dispute about whether the degree of permanent impairment of an injured person is sufficient for an award of damages for non-economic loss\"\nMapping offered: The 'degree of permanent impairment' corresponds to 'WPI %' as it refers to the whole person impairment percentage assessed by a medical professional.\n\nRefute this claim if it can be refuted.",
+  "response": {
+    "objection": "The provision does not make the WPI % directly determine the amount of non-economic loss awarded; it only requires an assessment of impairment to resolve disputes about eligibility for such damages.",
+    "failure_mode": "precondition_only",
+    "sound": false
+  }
+}

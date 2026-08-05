@@ -1,0 +1,168 @@
+{
+  "n_columns": 16,
+  "n_extracted": 8,
+  "n_coded": 8,
+  "columns": {
+    "Lump Sum": {
+      "kind": "extracted",
+      "corroborator": "Result",
+      "note": "Dollar total stated in the decision.",
+      "missing_rate": 0.0,
+      "corroborator_levels": {
+        "Settlement Approved": 352,
+        "Damages Assessed": 90,
+        "Award for Applicant": 26,
+        "Damages assessed": 18,
+        "Damages assessed and awarded": 3,
+        "Damages assessed under s 7.36": 2
+      },
+      "corroborator_fill": 1.0
+    },
+    "WPI %": {
+      "kind": "extracted",
+      "corroborator": null,
+      "note": "Whole Person Impairment from the medical assessment as recorded.",
+      "missing_rate": 0.4685
+    },
+    "Non-Economic Loss": {
+      "kind": "extracted",
+      "corroborator": "Non-Economic Loss Status",
+      "note": "Status separates a statutory Nil from a head never addressed.",
+      "missing_rate": 0.1537,
+      "corroborator_levels": {
+        "Awarded": 256,
+        "Nil": 202,
+        "Not addressed": 82
+      },
+      "corroborator_fill": 1.0
+    },
+    "Future Economic Loss": {
+      "kind": "extracted",
+      "corroborator": "Future Economic Loss Status",
+      "note": "Status separates Nil from not addressed.",
+      "missing_rate": 0.2352,
+      "corroborator_levels": {
+        "Awarded": 378,
+        "Not addressed": 122,
+        "Nil": 40
+      },
+      "corroborator_fill": 1.0
+    },
+    "Claimant Weekly Income": {
+      "kind": "extracted",
+      "corroborator": "Claimant Weekly Income Basis",
+      "note": "Basis records the earnings measure used, or 'Not stated'.",
+      "missing_rate": 0.4185,
+      "corroborator_levels": {
+        "Not stated": 226,
+        "Pre-injury weekly earnings, net, as stated": 9,
+        "Pre-injury weekly earnings, gross, as stated": 3,
+        "Pre-injury net weekly earnings as stated": 3,
+        "Pre-injury average net weekly wage as stated": 2,
+        "Pre-injury weekly earnings, net, weekly as stated": 2
+      },
+      "corroborator_fill": 1.0
+    },
+    "Claimant Age": {
+      "kind": "extracted",
+      "corroborator": "Claimant Age At Decision",
+      "note": "Age at injury; a second age field exists at decision date.",
+      "missing_rate": 0.0815,
+      "corroborator_levels": {
+        "66.0": 14,
+        "56.0": 14,
+        "60.0": 13,
+        "57.0": 13,
+        "50.0": 12,
+        "55.0": 12
+      },
+      "corroborator_fill": 0.9204
+    },
+    "Claimant Gender": {
+      "kind": "extracted",
+      "corroborator": null,
+      "note": "Stated in the decision.",
+      "missing_rate": 0.0
+    },
+    "Nature": {
+      "kind": "extracted",
+      "corroborator": "Result",
+      "note": "Procedural route: settlement approval vs damages assessment.",
+      "missing_rate": 0.0,
+      "corroborator_levels": {
+        "Settlement Approved": 352,
+        "Damages Assessed": 90,
+        "Award for Applicant": 26,
+        "Damages assessed": 18,
+        "Damages assessed and awarded": 3,
+        "Damages assessed under s 7.36": 2
+      },
+      "corroborator_fill": 1.0
+    },
+    "Injury Burden Intensity": {
+      "kind": "coded",
+      "corroborator": null,
+      "note": "LLM ordinal 0-4.",
+      "missing_rate": 0.0
+    },
+    "Treatment Burden": {
+      "kind": "coded",
+      "corroborator": null,
+      "note": "LLM ordinal 0-3.",
+      "missing_rate": 0.0
+    },
+    "Work Impact Severity": {
+      "kind": "coded",
+      "corroborator": null,
+      "note": "LLM ordinal 0-3.",
+      "missing_rate": 0.0
+    },
+    "Legal Procedural Complexity": {
+      "kind": "coded",
+      "corroborator": null,
+      "note": "LLM ordinal 0-3.",
+      "missing_rate": 0.0
+    },
+    "Psychological Injury Emphasis": {
+      "kind": "coded",
+      "corroborator": null,
+      "note": "LLM ordinal 0-2.",
+      "missing_rate": 0.0
+    },
+    "Liability Clarity": {
+      "kind": "coded",
+      "corroborator": null,
+      "note": "LLM ordinal 0-2.",
+      "missing_rate": 0.0
+    },
+    "Causation Complexity": {
+      "kind": "coded",
+      "corroborator": null,
+      "note": "LLM ordinal 0-2.",
+      "missing_rate": 0.0
+    },
+    "Pre-existing Condition Salience": {
+      "kind": "coded",
+      "corroborator": null,
+      "note": "LLM ordinal 0-2.",
+      "missing_rate": 0.0
+    }
+  },
+  "missingness_is_recorded": {
+    "Non-Economic Loss": {
+      "csv_blank": 83,
+      "raw_not_addressed": 82,
+      "raw_nil": 202
+    },
+    "Future Economic Loss": {
+      "csv_blank": 127,
+      "raw_not_addressed": 122,
+      "raw_nil": 40
+    },
+    "Claimant Weekly Income": {
+      "csv_blank": 226,
+      "raw_not_stated": 226
+    }
+  },
+  "caveat": "8 of 16 columns are LLM-assigned ordinals derived from the same decision text by the same pass. Associations between two coded columns are confounded by the coder and must not be read as scheme mechanism without independent evidence."
+}

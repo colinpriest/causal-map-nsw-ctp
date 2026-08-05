@@ -1,0 +1,484 @@
+{
+  "generated_at": "2026-08-05T09:45:58+00:00",
+  "model": "gpt-4o",
+  "samples_requested": 5,
+  "samples_accepted": 5,
+  "samples_rejected": [],
+  "blindness": "The model saw column names, definitions, and how each was recorded. It was not shown the hand-written bands, their count, or any statistic.",
+  "latent": {
+    "Psychological Injury": "the psychological injury the claimant suffered as a result of the accident -- its actual severity, as distinct from how much it was discussed"
+  },
+  "indicator_of": {
+    "Psychological Injury Emphasis": "Psychological Injury"
+  },
+  "phase_counts_proposed": {
+    "5": 4,
+    "4": 1
+  },
+  "derived_order": [
+    {
+      "rank": 1,
+      "column": "Claimant Weekly Income",
+      "mean_position": 0.05,
+      "agreement": 0.8,
+      "observed": true,
+      "asserted_band": 1
+    },
+    {
+      "rank": 2,
+      "column": "Claimant Age",
+      "mean_position": 0.05,
+      "agreement": 0.8,
+      "observed": true,
+      "asserted_band": 1
+    },
+    {
+      "rank": 3,
+      "column": "Claimant Gender",
+      "mean_position": 0.05,
+      "agreement": 0.8,
+      "observed": true,
+      "asserted_band": 1
+    },
+    {
+      "rank": 4,
+      "column": "Pre-existing Condition Salience",
+      "mean_position": 0.05,
+      "agreement": 0.8,
+      "observed": true,
+      "asserted_band": 1
+    },
+    {
+      "rank": 5,
+      "column": "Injury Burden Intensity",
+      "mean_position": 0.217,
+      "agreement": 0.6,
+      "observed": true,
+      "asserted_band": 2
+    },
+    {
+      "rank": 6,
+      "column": "Psychological Injury",
+      "mean_position": 0.217,
+      "agreement": 0.6,
+      "observed": false,
+      "asserted_band": null
+    },
+    {
+      "rank": 7,
+      "column": "Treatment Burden",
+      "mean_position": 0.383,
+      "agreement": 0.4,
+      "observed": true,
+      "asserted_band": 3
+    },
+    {
+      "rank": 8,
+      "column": "Work Impact Severity",
+      "mean_position": 0.483,
+      "agreement": 0.4,
+      "observed": true,
+      "asserted_band": 3
+    },
+    {
+      "rank": 9,
+      "column": "WPI %",
+      "mean_position": 0.583,
+      "agreement": 0.6,
+      "observed": true,
+      "asserted_band": 3
+    },
+    {
+      "rank": 10,
+      "column": "Liability Clarity",
+      "mean_position": 0.617,
+      "agreement": 0.6,
+      "observed": true,
+      "asserted_band": 2
+    },
+    {
+      "rank": 11,
+      "column": "Causation Complexity",
+      "mean_position": 0.75,
+      "agreement": 0.6,
+      "observed": true,
+      "asserted_band": 4
+    },
+    {
+      "rank": 12,
+      "column": "Nature",
+      "mean_position": 0.8,
+      "agreement": 0.8,
+      "observed": true,
+      "asserted_band": 4
+    },
+    {
+      "rank": 13,
+      "column": "Legal Procedural Complexity",
+      "mean_position": 0.8,
+      "agreement": 0.8,
+      "observed": true,
+      "asserted_band": 4
+    },
+    {
+      "rank": 14,
+      "column": "Psychological Injury Emphasis",
+      "mean_position": 0.8,
+      "agreement": 0.8,
+      "observed": true,
+      "asserted_band": 2
+    },
+    {
+      "rank": 15,
+      "column": "Lump Sum",
+      "mean_position": 1.0,
+      "agreement": 1.0,
+      "observed": true,
+      "asserted_band": 6
+    },
+    {
+      "rank": 16,
+      "column": "Non-Economic Loss",
+      "mean_position": 1.0,
+      "agreement": 1.0,
+      "observed": true,
+      "asserted_band": 5
+    },
+    {
+      "rank": 17,
+      "column": "Future Economic Loss",
+      "mean_position": 1.0,
+      "agreement": 1.0,
+      "observed": true,
+      "asserted_band": 5
+    }
+  ],
+  "spearman_vs_asserted": 0.866,
+  "event_log_consistency": [
+    {
+      "observed": "Treatment Burden before Legal Procedural Complexity",
+      "share": 0.88,
+      "n": 142,
+      "derived_agrees": true
+    }
+  ],
+  "per_sample": [
+    {
+      "n_phases": 5,
+      "phases": [
+        {
+          "order": 1,
+          "name": "Pre-Accident"
+        },
+        {
+          "order": 2,
+          "name": "Accident"
+        },
+        {
+          "order": 3,
+          "name": "Post-Accident Stabilisation"
+        },
+        {
+          "order": 4,
+          "name": "Claim Processing"
+        },
+        {
+          "order": 5,
+          "name": "Decision"
+        }
+      ],
+      "assigned": {
+        "Claimant Weekly Income": 1,
+        "Claimant Age": 1,
+        "Claimant Gender": 1,
+        "Pre-existing Condition Salience": 1,
+        "Injury Burden Intensity": 2,
+        "Psychological Injury": 2,
+        "Treatment Burden": 3,
+        "Work Impact Severity": 3,
+        "WPI %": 3,
+        "Causation Complexity": 4,
+        "Liability Clarity": 4,
+        "Legal Procedural Complexity": 4,
+        "Psychological Injury Emphasis": 4,
+        "Nature": 4,
+        "Lump Sum": 5,
+        "Non-Economic Loss": 5,
+        "Future Economic Loss": 5
+      },
+      "reasons": {
+        "Claimant Weekly Income": "The claimant's weekly income is determined by their earnings before the accident.",
+        "Claimant Age": "The claimant's age is fixed at the date of the accident.",
+        "Claimant Gender": "The claimant's gender is a pre-existing characteristic.",
+        "Pre-existing Condition Salience": "Pre-existing conditions are those the claimant had before the accident.",
+        "Injury Burden Intensity": "The injury burden intensity is determined by the injuries sustained at the time of the accident.",
+        "Psychological Injury": "The psychological injury arises as a result of the accident.",
+        "Treatment Burden": "The treatment burden arises from the extent of treatment required after the accident.",
+        "Work Impact Severity": "The work impact severity is determined by the loss of capacity to work after the accident.",
+        "WPI %": "The WPI % is assessed once the claimant's condition has stabilised post-accident.",
+        "Causation Complexity": "Causation complexity arises during the claim processing when determining the link between the accident and the claimant's condition.",
+        "Liability Clarity": "Liability clarity is determined during the claim processing phase.",
+        "Legal Procedural Complexity": "Legal procedural complexity arises during the claim processing phase.",
+        "Psychological Injury Emphasis": "The emphasis on psychological injury is determined during the claim processing phase.",
+        "Nature": "The nature of the claim is determined during the claim processing phase.",
+        "Lump Sum": "The lump sum is determined in the final decision of the claim.",
+        "Non-Economic Loss": "The non-economic loss is determined in the final decision of the claim.",
+        "Future Economic Loss": "The future economic loss is determined in the final decision of the claim."
+      },
+      "prompt_sha256": "94cb142a85bc6d58f47ae1f9"
+    },
+    {
+      "n_phases": 5,
+      "phases": [
+        {
+          "order": 1,
+          "name": "Pre-Accident Conditions"
+        },
+        {
+          "order": 2,
+          "name": "Accident and Injury"
+        },
+        {
+          "order": 3,
+          "name": "Claim Initiation"
+        },
+        {
+          "order": 4,
+          "name": "Claim Assessment"
+        },
+        {
+          "order": 5,
+          "name": "Claim Decision"
+        }
+      ],
+      "assigned": {
+        "Claimant Weekly Income": 1,
+        "Claimant Age": 1,
+        "Claimant Gender": 1,
+        "Pre-existing Condition Salience": 1,
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 2,
+        "Psychological Injury": 2,
+        "Liability Clarity": 3,
+        "Causation Complexity": 3,
+        "WPI %": 4,
+        "Work Impact Severity": 4,
+        "Legal Procedural Complexity": 4,
+        "Psychological Injury Emphasis": 4,
+        "Nature": 4,
+        "Lump Sum": 5,
+        "Non-Economic Loss": 5,
+        "Future Economic Loss": 5
+      },
+      "reasons": {
+        "Claimant Weekly Income": "The claimant's weekly income existed before the accident.",
+        "Claimant Age": "The claimant's age is determined at the date of injury, which is a pre-existing condition.",
+        "Claimant Gender": "The claimant's gender is a constant attribute existing before the accident.",
+        "Pre-existing Condition Salience": "Pre-existing conditions are those existing before the accident.",
+        "Injury Burden Intensity": "The intensity of the injury burden arises at the time of the accident.",
+        "Treatment Burden": "The treatment burden arises following the injuries sustained in the accident.",
+        "Psychological Injury": "The psychological injury itself arises at the time of the accident.",
+        "Liability Clarity": "Liability clarity arises in the initial stages of claim processing.",
+        "Causation Complexity": "Causation complexity is identified at the stage of assessing claim validity and setting up the claim.",
+        "WPI %": "The WPI % is determined once the claimant's condition stabilizes, which is during the assessment phase.",
+        "Work Impact Severity": "The severity of the work impact is assessed during claim evaluation.",
+        "Legal Procedural Complexity": "Legal procedural complexity is assessed during the claim processing and assessment phase.",
+        "Psychological Injury Emphasis": "The emphasis on psychological injury is determined during the assessment phase when evaluating the claims and case.",
+        "Nature": "The procedural route is determined during the claim assessment phase.",
+        "Lump Sum": "The lump sum as the total payout is decided in the final decision phase.",
+        "Non-Economic Loss": "The non-economic loss is awarded as part of the final decision on compensation.",
+        "Future Economic Loss": "The future economic loss is calculated and awarded during the final decision phase."
+      },
+      "prompt_sha256": "ec5459beea6380faa686c031"
+    },
+    {
+      "n_phases": 4,
+      "phases": [
+        {
+          "order": 1,
+          "name": "Pre-Injury"
+        },
+        {
+          "order": 2,
+          "name": "Injury Event"
+        },
+        {
+          "order": 3,
+          "name": "Post-Injury Adaptation and Stabilisation"
+        },
+        {
+          "order": 4,
+          "name": "Claim Processing and Resolution"
+        }
+      ],
+      "assigned": {
+        "Claimant Age": 1,
+        "Claimant Gender": 1,
+        "Claimant Weekly Income": 1,
+        "Pre-existing Condition Salience": 1,
+        "Injury Burden Intensity": 2,
+        "Psychological Injury": 2,
+        "Liability Clarity": 2,
+        "Nature": 4,
+        "WPI %": 3,
+        "Treatment Burden": 3,
+        "Work Impact Severity": 3,
+        "Psychological Injury Emphasis": 4,
+        "Legal Procedural Complexity": 4,
+        "Causation Complexity": 4,
+        "Lump Sum": 4,
+        "Non-Economic Loss": 4,
+        "Future Economic Loss": 4
+      },
+      "reasons": {
+        "Claimant Age": "The claimant's age is fixed by their date of birth, which pre-exists the accident.",
+        "Claimant Gender": "Gender as recorded is pre-existing before the accident.",
+        "Claimant Weekly Income": "The claimant's weekly income is their earnings before the accident.",
+        "Pre-existing Condition Salience": "Conditions pre-existing the accident arise before the injury event.",
+        "Injury Burden Intensity": "The intensity of the injury burden is determined by the accident itself.",
+        "Psychological Injury": "Psychological injury arises from the accident and exists from that time, even if it's discussed later.",
+        "Liability Clarity": "Liability clarity is apparent from the accident facts when it occurs.",
+        "Nature": "The procedural route the claim takes is determined during claim processing.",
+        "WPI %": "The WPI % is assessed once the claimant's condition has stabilised, which occurs post-injury.",
+        "Treatment Burden": "The treatment burden arises from the claimant's course of treatment post-injury as they recover and adapt.",
+        "Work Impact Severity": "The severity of work impact becomes apparent as the claimant recovers and adapts post-injury.",
+        "Psychological Injury Emphasis": "The emphasis on psychological injury is determined by the discussion in the court case, which occurs during claim processing.",
+        "Legal Procedural Complexity": "The complexity arises during claim processing as the claim is being resolved.",
+        "Causation Complexity": "The complexity of determining causation arises during the claim processing.",
+        "Lump Sum": "The lump sum awarded is determined in the final decision, which concludes the claim processing.",
+        "Non-Economic Loss": "The award for non-economic loss is established in the final decision of the claim processing phase.",
+        "Future Economic Loss": "The compensation for future economic loss is determined in the final decision during claim processing."
+      },
+      "prompt_sha256": "269267627d4d3868f00827ff"
+    },
+    {
+      "n_phases": 5,
+      "phases": [
+        {
+          "order": 1,
+          "name": "Accident Occurrence"
+        },
+        {
+          "order": 2,
+          "name": "Baseline Information Establishment"
+        },
+        {
+          "order": 3,
+          "name": "Injury Evaluation and Stabilization"
+        },
+        {
+          "order": 4,
+          "name": "Claim Processing and Determination"
+        },
+        {
+          "order": 5,
+          "name": "Decision Finalization"
+        }
+      ],
+      "assigned": {
+        "Lump Sum": 5,
+        "WPI %": 3,
+        "Non-Economic Loss": 5,
+        "Future Economic Loss": 5,
+        "Claimant Weekly Income": 2,
+        "Claimant Age": 2,
+        "Claimant Gender": 2,
+        "Nature": 4,
+        "Injury Burden Intensity": 1,
+        "Treatment Burden": 1,
+        "Work Impact Severity": 1,
+        "Legal Procedural Complexity": 4,
+        "Psychological Injury Emphasis": 4,
+        "Liability Clarity": 4,
+        "Causation Complexity": 4,
+        "Pre-existing Condition Salience": 2,
+        "Psychological Injury": 1
+      },
+      "reasons": {
+        "Lump Sum": "The total payout to the claimant is determined in the final decision phase.",
+        "WPI %": "The WPI percentage is established when the claimant's condition stabilizes and is assessed.",
+        "Non-Economic Loss": "The financial compensation for pain and suffering is determined in the final payout decision.",
+        "Future Economic Loss": "The compensation for future earning capacity loss is part of the final financial determination.",
+        "Claimant Weekly Income": "The claimant's pre-accident earnings are established based on their financial situation before the accident.",
+        "Claimant Age": "The claimant's age is fixed at the time of injury.",
+        "Claimant Gender": "The claimant's gender is an inherent characteristic known before or at the accident.",
+        "Nature": "The procedural path of the claim is determined during the processing of the claim.",
+        "Injury Burden Intensity": "The physical severity of the injuries arises at the accident occurrence.",
+        "Treatment Burden": "The need for treatment arises from the injuries sustained in the accident.",
+        "Work Impact Severity": "The impact on work capacity begins with the injuries from the accident.",
+        "Legal Procedural Complexity": "The complexity in determining payout components arises during claim processing.",
+        "Psychological Injury Emphasis": "The emphasis on psychological injury is based on its discussion during claim processing.",
+        "Liability Clarity": "How clear liability is is assessed during the processing of the claim.",
+        "Causation Complexity": "The complexity of causation is evaluated in the claim processing phase.",
+        "Pre-existing Condition Salience": "Pre-existing conditions are those present before the accident occurs.",
+        "Psychological Injury": "The psychological injuries sustained originate at the time of the accident."
+      },
+      "prompt_sha256": "4445d9ee58041b855436aecd"
+    },
+    {
+      "n_phases": 5,
+      "phases": [
+        {
+          "order": 1,
+          "name": "Pre-Injury State"
+        },
+        {
+          "order": 2,
+          "name": "Accident and Injury"
+        },
+        {
+          "order": 3,
+          "name": "Post-Accident Recovery"
+        },
+        {
+          "order": 4,
+          "name": "Claim Process"
+        },
+        {
+          "order": 5,
+          "name": "Claim Resolution"
+        }
+      ],
+      "assigned": {
+        "Lump Sum": 5,
+        "WPI %": 3,
+        "Non-Economic Loss": 5,
+        "Future Economic Loss": 5,
+        "Claimant Weekly Income": 1,
+        "Claimant Age": 1,
+        "Claimant Gender": 1,
+        "Nature": 4,
+        "Injury Burden Intensity": 2,
+        "Treatment Burden": 3,
+        "Work Impact Severity": 3,
+        "Legal Procedural Complexity": 4,
+        "Psychological Injury Emphasis": 4,
+        "Liability Clarity": 4,
+        "Causation Complexity": 4,
+        "Pre-existing Condition Salience": 1,
+        "Psychological Injury": 2
+      },
+      "reasons": {
+        "Lump Sum": "The total dollars awarded to the claimant are determined during the claim resolution.",
+        "WPI %": "Whole person impairment becomes assessable once the claimant's condition has stabilized post-recovery.",
+        "Non-Economic Loss": "The component of payout for pain and suffering is decided during claim resolution.",
+        "Future Economic Loss": "The component of payout for future earning capacity loss is decided during claim resolution.",
+        "Claimant Weekly Income": "The claimant's earnings are established by their pre-accident financial situation.",
+        "Claimant Age": "The claimant's age is fixed at the date of injury.",
+        "Claimant Gender": "The claimant's recorded gender predates the accident and is a pre-existing attribute.",
+        "Nature": "The procedural route is followed during the claim process.",
+        "Injury Burden Intensity": "The severity of physical injuries arises when the accident occurs.",
+        "Treatment Burden": "Treatment requirements emerge following the accident and during recovery.",
+        "Work Impact Severity": "Loss of work capacity is identified during recovery post-accident.",
+        "Legal Procedural Complexity": "The complexity of legal proceedings is determined during the claim process.",
+        "Psychological Injury Emphasis": "Discussion about psychological damage occurs during the claim process.",
+        "Liability Clarity": "Fault determination happens during the claim process assessment.",
+        "Causation Complexity": "Complexity in linking health outcomes to the accident is assessed during the claim process.",
+        "Pre-existing Condition Salience": "The claimant's pre-existing conditions are their health state before the accident.",
+        "Psychological Injury": "The psychological injury occurs at the time of the accident."
+      },
+      "prompt_sha256": "db0bbe008e5af68af75809b9"
+    }
+  ],
+  "note": "mean_position is the column's average place in the ordering, rescaled to 0-1 so samples proposing different phase counts can be pooled. Agreement is the share of samples placing it at its modal position."
+}

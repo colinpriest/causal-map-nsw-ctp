@@ -1,0 +1,809 @@
+{
+  "generated_at": "2026-08-05T10:45:09+00:00",
+  "method": "Leg 1: provision text names the concept (verbatim quote + recorded semantic mapping). Leg 2: cases citing that provision differ on the variable. Stage 3c was blind to stage 3a.",
+  "n_confirmed": 3,
+  "n_statute_only": 2,
+  "n_edges": 5,
+  "n_data_only_variables": 16,
+  "confirmed": [
+    {
+      "source": "WPI %",
+      "target": "Non-Economic Loss",
+      "relation": "gate",
+      "provision": "4.11 Motor Accident Injuries Act 2017",
+      "act": "Motor Accident Injuries Act 2017",
+      "section": "4.11",
+      "grade": "confirmed",
+      "corroboration": "corroborated",
+      "n_citing": 26,
+      "statute": {
+        "concept": "degree of permanent impairment",
+        "quote": "unless the degree of permanent impairment of the injured person as a result of the injury caused by a motor accident is greater than 10%",
+        "quote_match": "exact",
+        "mapping_rationale": "The 'degree of permanent impairment' corresponds to 'WPI %', which measures whole person impairment as a percentage.",
+        "confidence": "high",
+        "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+        "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5"
+      },
+      "data": {
+        "on_source": {
+          "kind": "value",
+          "effect": 0.375,
+          "p": 0.0117,
+          "n_citing": 26
+        },
+        "on_target": {
+          "kind": "value",
+          "effect": 0.323,
+          "p": 0.0045,
+          "n_citing": 26
+        }
+      },
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "dc4c801b2e58a289475b355e"
+      }
+    },
+    {
+      "source": "Claimant Weekly Income",
+      "target": "Future Economic Loss",
+      "relation": "defines_scope",
+      "provision": "4.5 Motor Accident Injuries Act 2017",
+      "act": "Motor Accident Injuries Act 2017",
+      "section": "4.5",
+      "grade": "confirmed",
+      "corroboration": "corroborated",
+      "n_citing": 70,
+      "statute": {
+        "concept": "loss of earnings",
+        "quote": "damages for past or future economic loss due to loss of earnings",
+        "quote_match": "exact",
+        "mapping_rationale": "'Loss of earnings' refers to the claimant's weekly earnings before the accident, which is what 'Claimant Weekly Income' measures.",
+        "confidence": "high",
+        "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+        "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5"
+      },
+      "data": {
+        "on_source": {
+          "kind": "recorded",
+          "effect": -0.235,
+          "p": 0.000153,
+          "n_citing": 70
+        },
+        "on_target": {
+          "kind": "value",
+          "effect": 0.379,
+          "p": 1.91e-06,
+          "n_citing": 70
+        }
+      },
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "42fb9280f41b3913dee969ca"
+      }
+    },
+    {
+      "source": "Work Impact Severity",
+      "target": "Future Economic Loss",
+      "relation": "defines_scope",
+      "provision": "4.5 Motor Accident Injuries Act 2017",
+      "act": "Motor Accident Injuries Act 2017",
+      "section": "4.5",
+      "grade": "confirmed",
+      "corroboration": "corroborated",
+      "n_citing": 70,
+      "statute": {
+        "concept": "deprivation or impairment of earning capacity",
+        "quote": "damages for past or future economic loss due to ... the deprivation or impairment of earning capacity",
+        "quote_match": "elided",
+        "mapping_rationale": "'Deprivation or impairment of earning capacity' corresponds to 'Work Impact Severity', which measures how much of the claimant's capacity to work was lost.",
+        "confidence": "high",
+        "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+        "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5"
+      },
+      "data": {
+        "on_source": {
+          "kind": "value",
+          "effect": 0.422,
+          "p": 2.01e-09,
+          "n_citing": 70
+        },
+        "on_target": {
+          "kind": "value",
+          "effect": 0.379,
+          "p": 1.91e-06,
+          "n_citing": 70
+        }
+      },
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "42fb9280f41b3913dee969ca"
+      }
+    }
+  ],
+  "statute_only": [
+    {
+      "source": "Claimant Weekly Income",
+      "target": "Future Economic Loss",
+      "relation": "limit",
+      "provision": "4.6 Motor Accident Injuries Act 2017",
+      "act": "Motor Accident Injuries Act 2017",
+      "section": "4.6",
+      "grade": "statute_only",
+      "corroboration": "untestable",
+      "n_citing": 0,
+      "statute": {
+        "concept": "net weekly earnings",
+        "quote": "the injured or deceased person\u2019s net weekly earnings would (but for the injury or death) have exceeded the maximum weekly statutory benefits amount",
+        "quote_match": "exact",
+        "mapping_rationale": "The provision refers to 'net weekly earnings', which corresponds to 'Claimant Weekly Income' as it involves the claimant's earnings before the accident.",
+        "confidence": "high",
+        "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+        "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5"
+      },
+      "data": {
+        "on_source": null,
+        "on_target": null
+      },
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "7f163e26d205152b5989128f"
+      }
+    },
+    {
+      "source": "WPI %",
+      "target": "Non-Economic Loss",
+      "relation": "gate",
+      "provision": "131 Motor Accidents Compensation Act 1999",
+      "act": "Motor Accidents Compensation Act 1999",
+      "section": "131",
+      "grade": "statute_only",
+      "corroboration": "untestable",
+      "n_citing": 0,
+      "statute": {
+        "concept": "degree of permanent impairment",
+        "quote": "the degree of permanent impairment of the injured person as a result of the injury caused by the motor accident is greater than 10%",
+        "quote_match": "exact",
+        "mapping_rationale": "The 'degree of permanent impairment' corresponds to 'WPI %', which measures whole person impairment as a percentage.",
+        "confidence": "high",
+        "source_file": "Motor Accidents Compensation Act 1999 No 41 - NSW Legislation.html",
+        "source_sha256": "7f2d5c1043c9af4ef5bc571afd524059fbd932f1840fac6da9563066bee01d13"
+      },
+      "data": {
+        "on_source": null,
+        "on_target": null
+      },
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "0740078db72c545703357888"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "WPI %",
+      "target": "Non-Economic Loss",
+      "relation": "gate",
+      "provision": "4.11 Motor Accident Injuries Act 2017",
+      "act": "Motor Accident Injuries Act 2017",
+      "section": "4.11",
+      "grade": "confirmed",
+      "corroboration": "corroborated",
+      "n_citing": 26,
+      "statute": {
+        "concept": "degree of permanent impairment",
+        "quote": "unless the degree of permanent impairment of the injured person as a result of the injury caused by a motor accident is greater than 10%",
+        "quote_match": "exact",
+        "mapping_rationale": "The 'degree of permanent impairment' corresponds to 'WPI %', which measures whole person impairment as a percentage.",
+        "confidence": "high",
+        "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+        "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5"
+      },
+      "data": {
+        "on_source": {
+          "kind": "value",
+          "effect": 0.375,
+          "p": 0.0117,
+          "n_citing": 26
+        },
+        "on_target": {
+          "kind": "value",
+          "effect": 0.323,
+          "p": 0.0045,
+          "n_citing": 26
+        }
+      },
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "dc4c801b2e58a289475b355e"
+      }
+    },
+    {
+      "source": "Claimant Weekly Income",
+      "target": "Future Economic Loss",
+      "relation": "defines_scope",
+      "provision": "4.5 Motor Accident Injuries Act 2017",
+      "act": "Motor Accident Injuries Act 2017",
+      "section": "4.5",
+      "grade": "confirmed",
+      "corroboration": "corroborated",
+      "n_citing": 70,
+      "statute": {
+        "concept": "loss of earnings",
+        "quote": "damages for past or future economic loss due to loss of earnings",
+        "quote_match": "exact",
+        "mapping_rationale": "'Loss of earnings' refers to the claimant's weekly earnings before the accident, which is what 'Claimant Weekly Income' measures.",
+        "confidence": "high",
+        "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+        "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5"
+      },
+      "data": {
+        "on_source": {
+          "kind": "recorded",
+          "effect": -0.235,
+          "p": 0.000153,
+          "n_citing": 70
+        },
+        "on_target": {
+          "kind": "value",
+          "effect": 0.379,
+          "p": 1.91e-06,
+          "n_citing": 70
+        }
+      },
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "42fb9280f41b3913dee969ca"
+      }
+    },
+    {
+      "source": "Work Impact Severity",
+      "target": "Future Economic Loss",
+      "relation": "defines_scope",
+      "provision": "4.5 Motor Accident Injuries Act 2017",
+      "act": "Motor Accident Injuries Act 2017",
+      "section": "4.5",
+      "grade": "confirmed",
+      "corroboration": "corroborated",
+      "n_citing": 70,
+      "statute": {
+        "concept": "deprivation or impairment of earning capacity",
+        "quote": "damages for past or future economic loss due to ... the deprivation or impairment of earning capacity",
+        "quote_match": "elided",
+        "mapping_rationale": "'Deprivation or impairment of earning capacity' corresponds to 'Work Impact Severity', which measures how much of the claimant's capacity to work was lost.",
+        "confidence": "high",
+        "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+        "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5"
+      },
+      "data": {
+        "on_source": {
+          "kind": "value",
+          "effect": 0.422,
+          "p": 2.01e-09,
+          "n_citing": 70
+        },
+        "on_target": {
+          "kind": "value",
+          "effect": 0.379,
+          "p": 1.91e-06,
+          "n_citing": 70
+        }
+      },
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "42fb9280f41b3913dee969ca"
+      }
+    },
+    {
+      "source": "Claimant Weekly Income",
+      "target": "Future Economic Loss",
+      "relation": "limit",
+      "provision": "4.6 Motor Accident Injuries Act 2017",
+      "act": "Motor Accident Injuries Act 2017",
+      "section": "4.6",
+      "grade": "statute_only",
+      "corroboration": "untestable",
+      "n_citing": 0,
+      "statute": {
+        "concept": "net weekly earnings",
+        "quote": "the injured or deceased person\u2019s net weekly earnings would (but for the injury or death) have exceeded the maximum weekly statutory benefits amount",
+        "quote_match": "exact",
+        "mapping_rationale": "The provision refers to 'net weekly earnings', which corresponds to 'Claimant Weekly Income' as it involves the claimant's earnings before the accident.",
+        "confidence": "high",
+        "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+        "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5"
+      },
+      "data": {
+        "on_source": null,
+        "on_target": null
+      },
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "7f163e26d205152b5989128f"
+      }
+    },
+    {
+      "source": "WPI %",
+      "target": "Non-Economic Loss",
+      "relation": "gate",
+      "provision": "131 Motor Accidents Compensation Act 1999",
+      "act": "Motor Accidents Compensation Act 1999",
+      "section": "131",
+      "grade": "statute_only",
+      "corroboration": "untestable",
+      "n_citing": 0,
+      "statute": {
+        "concept": "degree of permanent impairment",
+        "quote": "the degree of permanent impairment of the injured person as a result of the injury caused by the motor accident is greater than 10%",
+        "quote_match": "exact",
+        "mapping_rationale": "The 'degree of permanent impairment' corresponds to 'WPI %', which measures whole person impairment as a percentage.",
+        "confidence": "high",
+        "source_file": "Motor Accidents Compensation Act 1999 No 41 - NSW Legislation.html",
+        "source_sha256": "7f2d5c1043c9af4ef5bc571afd524059fbd932f1840fac6da9563066bee01d13"
+      },
+      "data": {
+        "on_source": null,
+        "on_target": null
+      },
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "0740078db72c545703357888"
+      }
+    }
+  ],
+  "data_only": {
+    "Causation Complexity": [
+      {
+        "provision": "94 Motor Accidents Compensation Act 1999",
+        "n_citing": 26,
+        "kind": "value",
+        "effect": 0.657
+      },
+      {
+        "provision": "83 Motor Accidents Compensation Act 1999",
+        "n_citing": 24,
+        "kind": "value",
+        "effect": 0.656
+      },
+      {
+        "provision": "6.23 Motor Accident Injuries Act 2017",
+        "n_citing": 353,
+        "kind": "value",
+        "effect": -0.643
+      },
+      {
+        "provision": "7.36 Motor Accident Injuries Act 2017",
+        "n_citing": 126,
+        "kind": "value",
+        "effect": 0.505
+      },
+      {
+        "provision": "7.38 Motor Accident Guidelines 2017",
+        "n_citing": 64,
+        "kind": "value",
+        "effect": -0.365
+      }
+    ],
+    "Claimant Age": [
+      {
+        "provision": "6.23 Motor Accident Injuries Act 2017",
+        "n_citing": 353,
+        "kind": "value",
+        "effect": 0.355
+      },
+      {
+        "provision": "7.36 Motor Accident Injuries Act 2017",
+        "n_citing": 126,
+        "kind": "value",
+        "effect": -0.307
+      },
+      {
+        "provision": "14A Personal Injury Commission Regulation 2020",
+        "n_citing": 29,
+        "kind": "value",
+        "effect": 0.272
+      },
+      {
+        "provision": "4.7 Motor Accident Injuries Act 2017",
+        "n_citing": 111,
+        "kind": "value",
+        "effect": -0.258
+      },
+      {
+        "provision": "7.38 Motor Accident Guidelines 2017",
+        "n_citing": 64,
+        "kind": "value",
+        "effect": 0.25
+      }
+    ],
+    "Claimant Gender": [
+      {
+        "provision": "94 Motor Accidents Compensation Act 1999",
+        "n_citing": 26,
+        "kind": "value",
+        "effect": 0.263
+      },
+      {
+        "provision": "83 Motor Accidents Compensation Act 1999",
+        "n_citing": 24,
+        "kind": "value",
+        "effect": 0.245
+      }
+    ],
+    "Claimant Weekly Income": [
+      {
+        "provision": "4.7 Motor Accident Injuries Act 2017",
+        "n_citing": 111,
+        "kind": "recorded",
+        "effect": -0.391
+      },
+      {
+        "provision": "7.38 Motor Accident Guidelines 2017",
+        "n_citing": 64,
+        "kind": "recorded",
+        "effect": 0.376
+      },
+      {
+        "provision": "6.23 Motor Accident Injuries Act 2017",
+        "n_citing": 353,
+        "kind": "recorded",
+        "effect": 0.354
+      },
+      {
+        "provision": "7.36 Motor Accident Injuries Act 2017",
+        "n_citing": 126,
+        "kind": "recorded",
+        "effect": -0.318
+      },
+      {
+        "provision": "3.40 Motor Accident Injuries Act 2017",
+        "n_citing": 75,
+        "kind": "recorded",
+        "effect": -0.223
+      }
+    ],
+    "Future Economic Loss": [
+      {
+        "provision": "6.23 Motor Accident Injuries Act 2017",
+        "n_citing": 353,
+        "kind": "value",
+        "effect": -0.472
+      },
+      {
+        "provision": "7.37 Motor Accident Injuries Regulation 2017",
+        "n_citing": 21,
+        "kind": "value",
+        "effect": -0.463
+      },
+      {
+        "provision": "1.4 Motor Accident Injuries Act 2017",
+        "n_citing": 66,
+        "kind": "value",
+        "effect": 0.449
+      },
+      {
+        "provision": "7.36 Motor Accident Injuries Act 2017",
+        "n_citing": 126,
+        "kind": "value",
+        "effect": 0.445
+      },
+      {
+        "provision": "95 Personal Injury Commission Rules 2021",
+        "n_citing": 31,
+        "kind": "value",
+        "effect": -0.319
+      }
+    ],
+    "Injury Burden Intensity": [
+      {
+        "provision": "1.4 Motor Accident Injuries Act 2017",
+        "n_citing": 66,
+        "kind": "value",
+        "effect": 0.388
+      },
+      {
+        "provision": "7.36 Motor Accident Injuries Act 2017",
+        "n_citing": 126,
+        "kind": "value",
+        "effect": 0.259
+      },
+      {
+        "provision": "4.13 Motor Accident Injuries Act 2017",
+        "n_citing": 30,
+        "kind": "value",
+        "effect": 0.245
+      },
+      {
+        "provision": "6.23 Motor Accident Injuries Act 2017",
+        "n_citing": 353,
+        "kind": "value",
+        "effect": -0.24
+      },
+      {
+        "provision": "4.5 Motor Accident Injuries Act 2017",
+        "n_citing": 70,
+        "kind": "value",
+        "effect": 0.155
+      }
+    ],
+    "Legal Procedural Complexity": [
+      {
+        "provision": "7.36 Motor Accident Injuries Act 2017",
+        "n_citing": 126,
+        "kind": "value",
+        "effect": 0.767
+      },
+      {
+        "provision": "94 Motor Accidents Compensation Act 1999",
+        "n_citing": 26,
+        "kind": "value",
+        "effect": 0.669
+      },
+      {
+        "provision": "83 Motor Accidents Compensation Act 1999",
+        "n_citing": 24,
+        "kind": "value",
+        "effect": 0.648
+      },
+      {
+        "provision": "7.38 Motor Accident Guidelines 2017",
+        "n_citing": 64,
+        "kind": "value",
+        "effect": -0.439
+      },
+      {
+        "provision": "7.37 Motor Accident Injuries Regulation 2017",
+        "n_citing": 21,
+        "kind": "value",
+        "effect": -0.419
+      }
+    ],
+    "Liability Clarity": [
+      {
+        "provision": "7.37 Motor Accident Injuries Regulation 2017",
+        "n_citing": 21,
+        "kind": "value",
+        "effect": -0.164
+      }
+    ],
+    "Lump Sum": [
+      {
+        "provision": "4.13 Motor Accident Injuries Act 2017",
+        "n_citing": 30,
+        "kind": "value",
+        "effect": 0.475
+      },
+      {
+        "provision": "7.36 Motor Accident Injuries Act 2017",
+        "n_citing": 126,
+        "kind": "value",
+        "effect": 0.469
+      },
+      {
+        "provision": "6.23 Motor Accident Injuries Act 2017",
+        "n_citing": 353,
+        "kind": "value",
+        "effect": -0.461
+      },
+      {
+        "provision": "1.4 Motor Accident Injuries Act 2017",
+        "n_citing": 66,
+        "kind": "value",
+        "effect": 0.419
+      },
+      {
+        "provision": "4.5 Motor Accident Injuries Act 2017",
+        "n_citing": 70,
+        "kind": "value",
+        "effect": 0.342
+      }
+    ],
+    "Nature": [
+      {
+        "provision": "7.36 Motor Accident Injuries Act 2017",
+        "n_citing": 126,
+        "kind": "value",
+        "effect": 0.767
+      },
+      {
+        "provision": "94 Motor Accidents Compensation Act 1999",
+        "n_citing": 26,
+        "kind": "value",
+        "effect": 0.685
+      },
+      {
+        "provision": "83 Motor Accidents Compensation Act 1999",
+        "n_citing": 24,
+        "kind": "value",
+        "effect": 0.682
+      },
+      {
+        "provision": "7.37 Motor Accident Guidelines",
+        "n_citing": 67,
+        "kind": "value",
+        "effect": -0.397
+      },
+      {
+        "provision": "7.38 Motor Accident Guidelines 2017",
+        "n_citing": 64,
+        "kind": "value",
+        "effect": -0.395
+      }
+    ],
+    "Non-Economic Loss": [
+      {
+        "provision": "4.13 Motor Accident Injuries Act 2017",
+        "n_citing": 30,
+        "kind": "value",
+        "effect": 0.625
+      },
+      {
+        "provision": "1.4 Motor Accident Injuries Act 2017",
+        "n_citing": 66,
+        "kind": "value",
+        "effect": 0.54
+      },
+      {
+        "provision": "7.36 Motor Accident Injuries Act 2017",
+        "n_citing": 126,
+        "kind": "value",
+        "effect": 0.402
+      },
+      {
+        "provision": "7.37 Motor Accident Injuries Regulation 2017",
+        "n_citing": 21,
+        "kind": "recorded",
+        "effect": 0.336
+      },
+      {
+        "provision": "6.23 Motor Accident Injuries Act 2017",
+        "n_citing": 353,
+        "kind": "value",
+        "effect": -0.331
+      }
+    ],
+    "Pre-existing Condition Salience": [
+      {
+        "provision": "83 Motor Accidents Compensation Act 1999",
+        "n_citing": 24,
+        "kind": "value",
+        "effect": 0.377
+      },
+      {
+        "provision": "94 Motor Accidents Compensation Act 1999",
+        "n_citing": 26,
+        "kind": "value",
+        "effect": 0.364
+      },
+      {
+        "provision": "6.23 Motor Accident Injuries Act 2017",
+        "n_citing": 353,
+        "kind": "value",
+        "effect": -0.361
+      },
+      {
+        "provision": "7.36 Motor Accident Injuries Act 2017",
+        "n_citing": 126,
+        "kind": "value",
+        "effect": 0.3
+      },
+      {
+        "provision": "4.11 Motor Accident Injuries Act 2017",
+        "n_citing": 26,
+        "kind": "value",
+        "effect": 0.278
+      }
+    ],
+    "Psychological Injury Emphasis": [
+      {
+        "provision": "6.23 Motor Accident Injuries Act 2017",
+        "n_citing": 353,
+        "kind": "value",
+        "effect": -0.551
+      },
+      {
+        "provision": "7.36 Motor Accident Injuries Act 2017",
+        "n_citing": 126,
+        "kind": "value",
+        "effect": 0.472
+      },
+      {
+        "provision": "7.38 Motor Accident Guidelines 2017",
+        "n_citing": 64,
+        "kind": "value",
+        "effect": -0.355
+      },
+      {
+        "provision": "4.11 Motor Accident Injuries Act 2017",
+        "n_citing": 26,
+        "kind": "value",
+        "effect": 0.347
+      },
+      {
+        "provision": "4.13 Motor Accident Injuries Act 2017",
+        "n_citing": 30,
+        "kind": "value",
+        "effect": 0.335
+      }
+    ],
+    "Treatment Burden": [
+      {
+        "provision": "1.4 Motor Accident Injuries Act 2017",
+        "n_citing": 66,
+        "kind": "value",
+        "effect": 0.364
+      },
+      {
+        "provision": "4.13 Motor Accident Injuries Act 2017",
+        "n_citing": 30,
+        "kind": "value",
+        "effect": 0.304
+      },
+      {
+        "provision": "4.11 Motor Accident Injuries Act 2017",
+        "n_citing": 26,
+        "kind": "value",
+        "effect": 0.265
+      },
+      {
+        "provision": "7.36 Motor Accident Injuries Act 2017",
+        "n_citing": 126,
+        "kind": "value",
+        "effect": 0.164
+      }
+    ],
+    "WPI %": [
+      {
+        "provision": "1.4 Motor Accident Injuries Act 2017",
+        "n_citing": 66,
+        "kind": "value",
+        "effect": 0.519
+      },
+      {
+        "provision": "4.13 Motor Accident Injuries Act 2017",
+        "n_citing": 30,
+        "kind": "value",
+        "effect": 0.374
+      },
+      {
+        "provision": "7.37 Motor Accident Injuries Regulation 2017",
+        "n_citing": 21,
+        "kind": "recorded",
+        "effect": 0.355
+      }
+    ],
+    "Work Impact Severity": [
+      {
+        "provision": "7.36 Motor Accident Injuries Act 2017",
+        "n_citing": 126,
+        "kind": "value",
+        "effect": 0.596
+      },
+      {
+        "provision": "6.23 Motor Accident Injuries Act 2017",
+        "n_citing": 353,
+        "kind": "value",
+        "effect": -0.581
+      },
+      {
+        "provision": "4.7 Motor Accident Injuries Act 2017",
+        "n_citing": 111,
+        "kind": "value",
+        "effect": 0.493
+      },
+      {
+        "provision": "7.37 Motor Accident Injuries Regulation 2017",
+        "n_citing": 21,
+        "kind": "value",
+        "effect": -0.455
+      },
+      {
+        "provision": "7.38 Motor Accident Guidelines",
+        "n_citing": 21,
+        "kind": "value",
+        "effect": -0.364
+      }
+    ]
+  },
+  "caveat": "A confirmed edge is grounded, not verified. The semantic mapping from statutory concept to dataset column is a model's interpretation, recorded in `statute.mapping_rationale` so it can be disputed. No practitioner has reviewed any of it."
+}

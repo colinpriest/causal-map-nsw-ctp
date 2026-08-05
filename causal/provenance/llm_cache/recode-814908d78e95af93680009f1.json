@@ -1,0 +1,26 @@
+{
+  "meta": {
+    "model": "gpt-4o-2024-08-06",
+    "prompt_sha256": "814908d78e95af93680009f1",
+    "cache": "miss",
+    "case": "Insurance Australia Limited T/as NRMA Insurance v Schubert [2023] NSWPIC 360; \n ",
+    "requested_at": "2026-08-05T08:15:50+00:00"
+  },
+  "system": "You are coding NSW motor accident decisions for a research dataset. Read the decision text supplied and assign each ordinal score from the text alone.\n\nScore each dimension INDEPENDENTLY. A decision describing a severe case will score high on some dimensions and not others: severe physical injury does not by itself imply a contested proceeding, a disputed liability, or a prominent psychological component. Judge each scale against its own definition and resist letting an overall impression of severity carry across the scales.\n\nIf the text does not support a judgement on a dimension, give the lowest score rather than guessing upward, and say so in `uncertain`.",
+  "user": "DECISION TEXT:\n--- Catchwords ---\nMOTOR ACCIDENTS - Motor Accident Injuries Act 2017 ; section 6.23 ; 50-year-old female; head on collision; fractured cervical spine; multiple rib fractures; fractured right tibia, fractured right thumb; pre-existing physical psychiatric disabilities; ongoing pain and discomfort; no paid employment previous 10 years; non-economic loss; Motor Accident Injuries Regulation 2017\n\nsection 7.37; Held \u2013 settlement approved.\n\n--- Key Paragraphs ---\n[para 1] Sets out age, accident mechanism, date, and liability admission without contributory negligence.\n1. The claimant is a 50 year old woman who was seriously injured whilst a passenger in a motor vehicle which, on 6 June 2022, crossed onto the wrong side of the road and collided with a bus. The insurer has admitted breach of duty of care on the part of their insured driver with no allegation of contributory negligence.\n\n[para 2] Identifies the settlement amount and that it is solely for non-economic loss.\n2. The figure of the proposed resolution of $250,000 is, by agreement of both parties, compensation for non-economic loss.\n\n[para 4] Details the significant injuries forming the basis for non-economic loss.\n4. The claimant suffered significant injuries in the accident including a fracture to her cervical spine, multiple rib fractures, a fractured right tibia and a fractured right thumb.\n\n[para 5] Describes extensive pre-existing disabilities impacting economic loss assessment.\n5. The claimant has a long history of pre-existing physical and psychiatric disabilities such that she has been in receipt of Centrelink payments for the pre-existing disability for about 10 years.\n\n[para 6] Confirms no paid employment for at least 10 years, relevant to economic loss.\n6. The claimant confirmed at the assessment conference that she has not been in any paid employment for at least 10 years and, since that time has been dealing with significant physical and psychological difficulties.\n\n[para 8] Expressly finds no basis for economic loss; frames the only issue as NEL reasonableness.\n8. Accordingly, I have no hesitation in accepting that there is no basis upon which any claim can be made for economic loss arising from the subject motor vehicle accident. Thus the only matter to be determined is whether a figure of $250,000 is reasonable compensation for non-economic loss.\n\n[para 9] Approves settlement; characterizes amount as at the higher end of the range.\n9. Noting all the material in this matter, together with the somewhat inexact science behind assessment of non-economic loss, I approve this settlement. Indeed, I consider the figure of $250,000 to be \"the higher end of the range\".\n\n[para 11] Lists the statutory provisions applied: s 6.23 and s 7.37.\n11. In making my decision I have considered the following legislation and guidelines:\n\nMotor Accident Injuries Act\n\n2017 , Section 6.23 (3)\n\nMotor Accident Injuries Regulation 2017 , Section 7.37\n\nAssign each score:\n  Injury Burden Intensity (0-4): overall physical burden of the injuries: 0 minimal, 4 catastrophic/multiple major injuries\n  Treatment Burden (0-3): extent of treatment, surgery and ongoing care: 0 none or minimal, 3 extensive surgery and long-term care\n  Work Impact Severity (0-3): loss of working capacity: 0 none, 3 total incapacity\n  Legal Procedural Complexity (0-3): procedural complexity of the proceeding: 0 straightforward, 3 heavily contested\n  Psychological Injury Emphasis (0-2): weight the decision gives to psychological injury: 0 none, 2 central\n  Liability Clarity (0-2): how clear fault is: 0 seriously disputed, 2 clear or admitted\n  Causation Complexity (0-2): difficulty attributing the condition to the accident: 0 straightforward, 2 heavily contested\n  Pre-existing Condition Salience (0-2): how prominent a prior condition is in the decision: 0 absent, 2 central",
+  "response": {
+    "Injury Burden Intensity": 3,
+    "Treatment Burden": 0,
+    "Work Impact Severity": 0,
+    "Legal Procedural Complexity": 0,
+    "Psychological Injury Emphasis": 0,
+    "Liability Clarity": 2,
+    "Causation Complexity": 0,
+    "Pre-existing Condition Salience": 2,
+    "uncertain": [
+      "Treatment Burden",
+      "Work Impact Severity",
+      "Psychological Injury Emphasis"
+    ]
+  }
+}

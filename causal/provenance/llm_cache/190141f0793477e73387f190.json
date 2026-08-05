@@ -1,0 +1,38 @@
+{
+  "meta": {
+    "model": "gpt-4o-2024-08-06",
+    "prompt_sha256": "190141f0793477e73387f190",
+    "requested_at": "2026-08-05T07:17:47+00:00",
+    "prompt_tokens": 1673,
+    "completion_tokens": 182,
+    "cache": "miss"
+  },
+  "system": "You are reading a single provision of New South Wales motor accident legislation. Report ONLY what this provision's text states. Do not use background knowledge of the scheme, other provisions, case law, or what you expect the answer to be.\n\nThe dataset variables are PROXIES FOR CONCEPTS, and the legislation will not use their names. Match on meaning, not wording. If a provision speaks of 'future earning capacity', that is the concept the variable 'Claimant Weekly Income' measures, and you should report the link. If it speaks of 'degree of permanent impairment', that is 'WPI %'. Do not decline a link merely because the provision uses different words.\n\nSeparate two things in your answer:\n  1. WHAT THE TEXT SAYS. Every link must carry a quote copied from the text you were given, containing the words that express the concept. You may elide with '...'. If you cannot copy such a quote, do not report the link.\n  2. HOW YOU MAPPED IT. State, separately, why the quoted concept corresponds to that dataset variable. This is your interpretation and will be recorded as such.\n\nA concept the provision names that no dataset variable measures should be listed in `unmapped_concepts`, not forced onto a variable that does not fit.\n\nTWO TRAPS TO AVOID.\n  (a) If the THING THE PROVISION GOVERNS is not one of the dataset variables, report NO links at all, whatever else the provision mentions. A provision about an insurer's duty to PAY FOR treatment does not govern how much treatment a claimant received: those are different quantities. Do not map preconditions onto variables just because the provision has preconditions.\n  (b) Do not import a variable's name into your reading. A provision that scopes payments to injury 'caused by the fault of the driver' states a condition; it says nothing about how DIFFICULT causation is to establish, so it is not evidence about a variable measuring difficulty. Ask whether the provision discusses the quantity the variable measures, not whether it uses a similar word.",
+  "user": "PROVISION: 89C Motor Accidents Compensation Act 1999\n\n--- BEGIN PROVISION TEXT ---\n89C\n \nSettlement offers to be made if claim not settled\n(1)\n If the parties participate in a settlement conference but the claim is not settled, each party must make an offer of settlement within 14 days after the settlement conference concludes.\n(2)\n A claim cannot be referred to the Commission for assessment under this Part until each party has made the required offer of settlement.\n(3)\n An offer of settlement must include a schedule of damages sufficient to explain the manner of calculation of the damages to which the offer relates.\n(4)\n A party who has made the required offer of settlement can refer the claim for assessment if more than 14 days have elapsed since the settlement conference concluded and the Commission is satisfied that the other party has refused or failed to make the required offer of settlement.\ns 89C:\n Ins 2007 No 95, Sch 1 [57]. Am 2020 No 18, Sch 6.7[38] [39].\n--- END PROVISION TEXT ---\n\nThe dataset records these variables about decided claims:\n  - Lump Sum: the total dollar amount awarded to the claimant\n  - WPI %: whole person impairment, as a percentage, from a medical assessment\n  - Non-Economic Loss: dollars awarded for non-economic loss (pain and suffering)\n  - Future Economic Loss: dollars awarded for future loss of earning capacity\n  - Claimant Weekly Income: the claimant's pre-accident weekly earnings, in dollars\n  - Claimant Age: the claimant's age at the date of injury, in years\n  - Claimant Gender: the claimant's recorded gender\n  - Nature: the procedural route: settlement approval, or damages assessment\n  - Injury Burden Intensity: an ordinal score for the overall physical burden of injuries\n  - Treatment Burden: an ordinal score for the extent of treatment, surgery and care\n  - Work Impact Severity: an ordinal score for loss of working capacity\n  - Legal Procedural Complexity: an ordinal score for procedural complexity of the proceeding\n  - Psychological Injury Emphasis: an ordinal score for the weight given to psychological injury\n  - Liability Clarity: an ordinal score for how clear fault is\n  - Causation Complexity: an ordinal score for difficulty attributing the condition to the accident\n  - Pre-existing Condition Salience: an ordinal score for how prominent a prior condition is\n\nUsing ONLY the provision text above, report which of these variables the provision governs, and which concepts it names as bearing on that determination. Match on MEANING: the provision will not use these variable names. Quote the words that carry the concept, then say separately how you mapped it.",
+  "response": {
+    "provision_subject": "The provision mandates settlement offers if a claim is not settled at a settlement conference.",
+    "determines": [
+      "Legal Procedural Complexity"
+    ],
+    "inputs": [
+      "Nature"
+    ],
+    "links": [
+      {
+        "concept_in_text": "referred to the Commission for assessment",
+        "quote": "A claim cannot be referred to the Commission for assessment under this Part until each party has made the required offer of settlement.",
+        "input": "Nature",
+        "mapping_rationale": "The concept of a claim being 'referred to the Commission for assessment' corresponds to the procedural route, which is captured by the variable 'Nature'.",
+        "determines": "Legal Procedural Complexity",
+        "relation": "gate",
+        "confidence": "high"
+      }
+    ],
+    "unmapped_concepts": [
+      "settlement conference",
+      "offer of settlement",
+      "schedule of damages"
+    ],
+    "notes": "The provision governs the procedural step of making settlement offers and the conditions under which a claim can be referred for assessment, which affects the procedural complexity."
+  }
+}

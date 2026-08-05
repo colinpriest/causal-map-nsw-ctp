@@ -1,0 +1,15 @@
+{
+  "meta": {
+    "model": "gpt-4o-2024-08-06",
+    "prompt_sha256": "c3db5fca6633149d9b66fbe6",
+    "cache": "miss",
+    "requested_at": "2026-08-05T07:08:37+00:00"
+  },
+  "system": "You are checking a claim someone has made about a statutory provision. Your job is to REFUTE it if it can be refuted. Default to unsound when uncertain.\n\nThe claim asserts that, according to this provision, one quantity bears on another. The two most common ways such a claim is wrong:\n  (a) SUBJECT MISMATCH. The provision governs something other than the quantity the claim says it determines. A provision about an insurer's duty to pay for treatment does not govern how much treatment occurred. A provision conferring jurisdiction to assess a claim does not make one assessed quantity a determinant of another.\n  (b) WORD MATCHING. The claim latched onto a word rather than a meaning -- reading 'caused by the fault of the driver' (a fault condition) as being about how difficult causation is to establish.\n\nA claim is sound only if the provision genuinely makes the first quantity bear on the second. Mentioning both is not enough. A precondition for the provision to operate is not automatically a determinant of its subject.",
+  "user": "PROVISION: 7.36 Motor Accident Injuries Act 2017\n\n--- BEGIN PROVISION TEXT ---\n7.36\n \nAssessment of claims\n(cf s 94 MACA)\n(1)\n The Commission is, in respect of a claim referred to the Commission for assessment, to make an assessment of\u2014\n(a)\n the issue of liability for the claim (unless the insurer has admitted liability), and\n(b)\n the amount of damages for that liability (being the amount of damages that a court would be likely to award).\n(2)\n Such an assessment is to be made having regard to such information as is conveniently available to the Commission, even if one or more of the parties to the assessment does not co-operate or ceases to co-operate.\n(3)\n The assessment is to specify an amount of damages.\n(4)\n The Commission must, as soon as practicable after an assessment, issue the insurer and claimant with a certificate as to the assessment.\n(5)\n The Commission is to attach a brief statement to the certificate, setting out the Commission\u2019s reasons for the assessment.\n(6)\n (Repealed)\ns 7.36:\n Am 2020 No 18, Sch 6.6[67]\u2013[70].\n--- END PROVISION TEXT ---\n\nTHE CLAIM: this provision makes 'Liability Clarity' (an ordinal score for how clear fault is) bear on 'Lump Sum' (the total dollar amount awarded to the claimant), as a gate.\nQuoted in support: \"the issue of liability for the claim (unless the insurer has admitted liability)\"\nMapping offered: The concept of 'the issue of liability for the claim' corresponds to 'Liability Clarity' as it involves determining how clear the fault is in the claim.\n\nRefute this claim if it can be refuted.",
+  "response": {
+    "objection": "The provision is about assessing liability and damages, not about an ordinal score for clarity of fault. It does not establish 'Liability Clarity' as a determinant of the 'Lump Sum'.",
+    "failure_mode": "subject_mismatch",
+    "sound": false
+  }
+}

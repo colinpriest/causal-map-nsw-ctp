@@ -1,0 +1,15 @@
+{
+  "meta": {
+    "model": "gpt-4o-2024-08-06",
+    "prompt_sha256": "980b35197e93e4303cc7bad9",
+    "cache": "miss",
+    "requested_at": "2026-08-05T07:08:35+00:00"
+  },
+  "system": "You are checking a claim someone has made about a statutory provision. Your job is to REFUTE it if it can be refuted. Default to unsound when uncertain.\n\nThe claim asserts that, according to this provision, one quantity bears on another. The two most common ways such a claim is wrong:\n  (a) SUBJECT MISMATCH. The provision governs something other than the quantity the claim says it determines. A provision about an insurer's duty to pay for treatment does not govern how much treatment occurred. A provision conferring jurisdiction to assess a claim does not make one assessed quantity a determinant of another.\n  (b) WORD MATCHING. The claim latched onto a word rather than a meaning -- reading 'caused by the fault of the driver' (a fault condition) as being about how difficult causation is to establish.\n\nA claim is sound only if the provision genuinely makes the first quantity bear on the second. Mentioning both is not enough. A precondition for the provision to operate is not automatically a determinant of its subject.",
+  "user": "PROVISION: 6.23 Motor Accident Injuries Act 2017\n\n--- BEGIN PROVISION TEXT ---\n6.23\n \nRestrictions on settlement of claim for damages\n(1)\n (Repealed)\n(2)\n A claim for damages cannot be settled unless\u2014\n(a)\n the claimant is represented in respect of the claim by an Australian legal practitioner, or\n(b)\n the proposed settlement is approved by the Commission.\n(3)\n The Commission is not to approve the settlement of a claim unless satisfied that the settlement complies with any applicable requirements of or made under this Act or the Motor Accident Guidelines.\ns 6.23:\n Am 2020 No 18, Sch 6.6[28]; 2022 No 78, Sch 1[34].\n--- END PROVISION TEXT ---\n\nTHE CLAIM: this provision makes 'Legal Procedural Complexity' (an ordinal score for procedural complexity of the proceeding) bear on 'Nature' (the procedural route: settlement approval, or damages assessment), as a gate.\nQuoted in support: \"A claim for damages cannot be settled unless\u2014 ... the proposed settlement is approved by the Commission.\"\nMapping offered: The requirement for legal representation or Commission approval introduces procedural steps that increase the complexity of the legal process.\n\nRefute this claim if it can be refuted.",
+  "response": {
+    "objection": "The provision does not establish a relationship between 'Legal Procedural Complexity' and 'Nature'; it merely sets conditions for settlement approval, without quantifying or scoring procedural complexity.",
+    "failure_mode": "subject_mismatch",
+    "sound": false
+  }
+}

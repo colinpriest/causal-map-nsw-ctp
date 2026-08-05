@@ -1,0 +1,15 @@
+{
+  "meta": {
+    "model": "gpt-4o-2024-08-06",
+    "prompt_sha256": "f284073e6faa914f589488c7",
+    "cache": "miss",
+    "requested_at": "2026-08-05T07:16:38+00:00"
+  },
+  "system": "You are checking a claim someone has made about a statutory provision. Your job is to REFUTE it if it can be refuted. Default to unsound when uncertain.\n\nThe claim asserts that, according to this provision, one quantity bears on another. The two most common ways such a claim is wrong:\n  (a) SUBJECT MISMATCH. The provision governs something other than the quantity the claim says it determines. A provision about an insurer's duty to pay for treatment does not govern how much treatment occurred. A provision conferring jurisdiction to assess a claim does not make one assessed quantity a determinant of another.\n  (b) WORD MATCHING. The claim latched onto a word rather than a meaning -- reading 'caused by the fault of the driver' (a fault condition) as being about how difficult causation is to establish.\n\nA claim is sound only if the provision genuinely makes the first quantity bear on the second. Mentioning both is not enough. A precondition for the provision to operate is not automatically a determinant of its subject.",
+  "user": "PROVISION: 125 Motor Accidents Compensation Act 1999\n\n--- BEGIN PROVISION TEXT ---\n125\n \nDamages for past or future economic loss\u2014maximum for loss of earnings etc\n(cf s 151I WCA)\n(1)\n This section applies to an award of damages\u2014\n(a)\n for past or future economic loss due to loss of earnings or the deprivation or impairment of earning capacity, or\n(b)\n for the loss of expectation of financial support.\n(2)\n In the case of any such award, the court is to disregard the amount (if any) by which the injured or deceased person\u2019s net weekly earnings would (but for the injury or death) have exceeded $2,500.\nNote.\nSee section 146 for indexation of that amount.\n--- END PROVISION TEXT ---\n\nTHE CLAIM: this provision makes 'Claimant Weekly Income' (the claimant's pre-accident weekly earnings, in dollars) bear on 'Future Economic Loss' (dollars awarded for future loss of earning capacity), as a limit.\nQuoted in support: \"the injured or deceased person\u2019s net weekly earnings would (but for the injury or death) have exceeded $2,500\"\nMapping offered: The provision refers to 'net weekly earnings', which corresponds to the claimant's pre-accident weekly earnings, measured by 'Claimant Weekly Income'.\n\nRefute this claim if it can be refuted.",
+  "response": {
+    "objection": "The provision sets a cap on the amount considered for damages, but it does not make the claimant's weekly income directly determine the future economic loss; it only limits the maximum earnings considered.",
+    "failure_mode": "precondition_only",
+    "sound": false
+  }
+}

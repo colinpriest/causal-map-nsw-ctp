@@ -1,0 +1,101 @@
+# ---------------------------------------------------------------------------
+# Secrets
+# ---------------------------------------------------------------------------
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets.json
+
+# ---------------------------------------------------------------------------
+# Not distributed with this repository
+# ---------------------------------------------------------------------------
+# Third-party papers (arXiv PDFs) — cited in the docs, fetch them yourself.
+papers/*
+!papers/README.md
+
+# Internal working specifications.
+specs/*
+!specs/README.md
+
+# ---------------------------------------------------------------------------
+# Python
+# ---------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+.python-version
+
+# Testing / typing / linting caches
+.pytest_cache/
+.mypy_cache/
+.pyre/
+.pytype/
+.ruff_cache/
+.tox/
+.nox/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+*.cover
+
+# Notebooks
+.ipynb_checkpoints/
+
+# ---------------------------------------------------------------------------
+# Editors / OS
+# ---------------------------------------------------------------------------
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ---------------------------------------------------------------------------
+# Statute source: keep the saved page, drop the "Save page as complete" assets
+# ---------------------------------------------------------------------------
+causal/provenance/statute_source/*_files/
+
+# ---------------------------------------------------------------------------
+# Local scratch
+# ---------------------------------------------------------------------------
+scratch/
+tmp/
+*.log
+
+# Statute downloads that turned out to be the wrong instrument. Both came from
+# identifiers constructed by hand and unverifiable behind Cloudflare: sl-2017-0431
+# resolved to the Architects Regulation, sl-2020-0736 to a Criminal Procedure fees
+# regulation. The content guard in stage 3b caught both; they are excluded so they
+# cannot be mistaken for source.
+causal/provenance/statute_source/Architects*
+causal/provenance/statute_source/a8616745-*

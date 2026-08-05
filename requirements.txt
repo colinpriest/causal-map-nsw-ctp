@@ -1,0 +1,11 @@
+# Runtime requirements for causal/build_ctp_causal_dag.py and causal/build_dashboard.py
+#
+#   python -m pip install -r requirements.txt
+#
+# Python 3.10+ (developed on 3.12). Everything else the build scripts use --
+# json, pathlib -- is standard library, and the dashboard is a single self-contained
+# HTML file with no JavaScript dependencies.
+
+pandas>=2.0
+numpy>=1.24
+scipy>=1.10

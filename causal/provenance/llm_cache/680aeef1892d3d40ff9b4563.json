@@ -1,0 +1,40 @@
+{
+  "meta": {
+    "model": "gpt-4o-2024-08-06",
+    "prompt_sha256": "680aeef1892d3d40ff9b4563",
+    "requested_at": "2026-08-05T06:48:01+00:00",
+    "prompt_tokens": 1705,
+    "completion_tokens": 168,
+    "cache": "miss"
+  },
+  "system": "You are reading a single provision of New South Wales motor accident legislation. Report ONLY what this provision's text states. Do not use background knowledge of the scheme, other provisions, case law, or what you expect the answer to be. If the provision does not mention something, say it does not. Every link you report must be supported by a quote copied exactly from the text you were given; if you cannot copy such a quote, do not report the link.",
+  "user": "PROVISION: 83 Motor Accidents Compensation Act 1999\n\n--- BEGIN PROVISION TEXT ---\n83\n \nDuty of insurer to make hospital, medical and other payments\n(cf s 45 (2)\u2013(4) MAA)\n(1)\n Once liability has been admitted (wholly or in part) or determined (wholly or in part) against the person against whom the claim is made, it is the duty of an insurer to make payments to or on behalf of the claimant in respect of\u2014\n(a)\n hospital, medical and pharmaceutical expenses, and\n(b)\n rehabilitation expenses, and\n(c)\n respite care expenses in respect of a claimant who is seriously injured and in need of constant care over a long term, and\n(d)\n attendant care services expenses in respect of a claimant who is seriously injured and in need of constant care over a long term (being services provided by a person with appropriate training to provide those services, but not including services provided by a person who is related to the claimant or any services for which the claimant has not paid and is not liable to pay),\nas incurred.\n(2)\n The duty of an insurer under this section to make payments applies only to the extent to which those payments\u2014\n(a)\n are reasonable and necessary in the circumstances, and\n(b)\n are properly verified, and\n(c)\n relate to the injury caused by the fault of the owner or driver of the motor vehicle to which the third-party policy taken to have been issued by the insurer relates.\nNote.\nMedical disputes about payments under this section may be referred by the insurer or claimant to a medical assessor for assessment under Part 3.4. Other disputes may be referred to the Commission under section 96 for assessment.\n(2A)\n If the Motor Accidents Medical Guidelines approve particular treatment as appropriate treatment, or particular procedures as appropriate procedures with respect to the provision of rehabilitation services or attendant care services, in respect of any matter, any treatment, rehabilitation services or attendant care services provided to the injured person that accords with the approved treatment or procedures is taken to be reasonable in the circumstances for the purposes of subsection (2) (a).\nNote.\nSubsection (2) (a) also requires that treatment and services be necessary in the circumstances.\n(3)\n An insurer may agree to make payments to or on behalf of the claimant in respect of attendant care services provided by a person who is related to the claimant or by a person other than a person with appropriate training to provide those services.\n(4)\n It is a condition of an insurer\u2019s licence under Part 7.1 that the insurer must comply with this section.\n(5)\n A payment made under this section to or on behalf of a claimant before the claimant obtains judgment for damages against the defendant is, to the extent of its amount, a defence to proceedings by the claimant against the defendant for damages.\n(6)\n The amount of a payment made under this section to or on behalf of a claimant is to be included in the damages recoverable by the claimant for the purposes of any reduction of those damages by reason of the contributory negligence of the deceased or injured person.\nNote.\nIf damages are to be reduced by reason of contributory negligence, subsection (6) ensures that the reduction extends to amounts paid by an insurer under this section.\ns 83:\n Am 2007 No 95, Sch 1 [47] [48]; 2015 No 19, Sch 7 [6]; 2020 No 18, Sch 6.7[27].\n--- END PROVISION TEXT ---\n\nThe dataset records these variables about decided claims:\n  - Lump Sum: the total dollar amount awarded to the claimant\n  - WPI %: whole person impairment, as a percentage, from a medical assessment\n  - Non-Economic Loss: dollars awarded for non-economic loss (pain and suffering)\n  - Future Economic Loss: dollars awarded for future loss of earning capacity\n  - Claimant Weekly Income: the claimant's pre-accident weekly earnings, in dollars\n  - Claimant Age: the claimant's age at the date of injury, in years\n  - Claimant Gender: the claimant's recorded gender\n  - Nature: the procedural route: settlement approval, or damages assessment\n  - Injury Burden Intensity: an ordinal score for the overall physical burden of injuries\n  - Treatment Burden: an ordinal score for the extent of treatment, surgery and care\n  - Work Impact Severity: an ordinal score for loss of working capacity\n  - Legal Procedural Complexity: an ordinal score for procedural complexity of the proceeding\n  - Psychological Injury Emphasis: an ordinal score for the weight given to psychological injury\n  - Liability Clarity: an ordinal score for how clear fault is\n  - Causation Complexity: an ordinal score for difficulty attributing the condition to the accident\n  - Pre-existing Condition Salience: an ordinal score for how prominent a prior condition is\n\nUsing ONLY the provision text above, report which of these variables the provision governs, and which it names as bearing on that. Quote exactly.",
+  "response": {
+    "provision_subject": "The duty of insurers to make payments for certain expenses once liability is admitted or determined.",
+    "determines": [
+      "Liability Clarity",
+      "Treatment Burden"
+    ],
+    "inputs": [
+      "Liability Clarity",
+      "Treatment Burden"
+    ],
+    "links": [
+      {
+        "input": "Liability Clarity",
+        "determines": "Liability Clarity",
+        "relation": "gate",
+        "quote": "Once liability has been admitted (wholly or in part) or determined (wholly or in part)",
+        "confidence": "high"
+      },
+      {
+        "input": "Treatment Burden",
+        "determines": "Treatment Burden",
+        "relation": "gate",
+        "quote": "hospital, medical and pharmaceutical expenses, and rehabilitation expenses, and respite care expenses",
+        "confidence": "high"
+      }
+    ],
+    "notes": "The provision specifies the insurer's duty to pay for certain expenses once liability is admitted or determined, and these expenses relate to the treatment burden."
+  }
+}

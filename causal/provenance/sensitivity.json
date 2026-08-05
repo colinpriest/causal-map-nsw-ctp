@@ -1,0 +1,427 @@
+{
+  "generated_at": "2026-08-05T08:11:50+00:00",
+  "fragile_fraction": 0.25,
+  "n_parameters": 11,
+  "n_fragile": 6,
+  "fragile_parameters": [
+    "stage1.tail_promotion",
+    "stage2.link_min",
+    "stage3a.effect_min",
+    "stage3a.gate_min",
+    "stage3a.definitional",
+    "stage3a.min_cites"
+  ],
+  "prompt_ablation": {
+    "instruction": "stage5a coder warning",
+    "pairs": 28,
+    "verdicts_unchanged": 0,
+    "fragile": true,
+    "note": "The warning tells the model both columns came from one reader and to weigh measurement_artifact seriously. Removing it changes this many verdicts, which bounds how much of the verdict is the instruction."
+  },
+  "parameters": [
+    {
+      "parameter": "stage1.materiality_cut",
+      "current": 0.1,
+      "unit": "pairs researched",
+      "count_at_current": 57,
+      "sweep": [
+        {
+          "value": 0.04,
+          "count": 64
+        },
+        {
+          "value": 0.06,
+          "count": 61
+        },
+        {
+          "value": 0.08,
+          "count": 59
+        },
+        {
+          "value": 0.1,
+          "count": 57
+        },
+        {
+          "value": 0.15,
+          "count": 49
+        },
+        {
+          "value": 0.2,
+          "count": 42
+        },
+        {
+          "value": 0.3,
+          "count": 42
+        }
+      ],
+      "fragile": false,
+      "span": [
+        42,
+        64
+      ]
+    },
+    {
+      "parameter": "stage1.tail_promotion",
+      "current": 0.08,
+      "unit": "pairs promoted on tail alone",
+      "count_at_current": 23,
+      "sweep": [
+        {
+          "value": 0.04,
+          "count": 25
+        },
+        {
+          "value": 0.06,
+          "count": 25
+        },
+        {
+          "value": 0.08,
+          "count": 23
+        },
+        {
+          "value": 0.12,
+          "count": 17
+        },
+        {
+          "value": 0.16,
+          "count": 11
+        },
+        {
+          "value": 0.2,
+          "count": 3
+        }
+      ],
+      "fragile": true,
+      "span": [
+        3,
+        25
+      ]
+    },
+    {
+      "parameter": "stage2.link_min",
+      "current": 0.35,
+      "unit": "event->variable links",
+      "count_at_current": 4,
+      "sweep": [
+        {
+          "value": 0.15,
+          "count": 17
+        },
+        {
+          "value": 0.2,
+          "count": 13
+        },
+        {
+          "value": 0.25,
+          "count": 10
+        },
+        {
+          "value": 0.3,
+          "count": 7
+        },
+        {
+          "value": 0.35,
+          "count": 4
+        },
+        {
+          "value": 0.4,
+          "count": 4
+        },
+        {
+          "value": 0.5,
+          "count": 1
+        }
+      ],
+      "fragile": true,
+      "span": [
+        1,
+        17
+      ]
+    },
+    {
+      "parameter": "stage3a.effect_min",
+      "current": 0.15,
+      "unit": "value links",
+      "count_at_current": 132,
+      "sweep": [
+        {
+          "value": 0.05,
+          "count": 139
+        },
+        {
+          "value": 0.1,
+          "count": 137
+        },
+        {
+          "value": 0.15,
+          "count": 132
+        },
+        {
+          "value": 0.2,
+          "count": 113
+        },
+        {
+          "value": 0.3,
+          "count": 72
+        },
+        {
+          "value": 0.4,
+          "count": 32
+        }
+      ],
+      "fragile": true,
+      "span": [
+        32,
+        139
+      ]
+    },
+    {
+      "parameter": "stage3a.gate_min",
+      "current": 0.1,
+      "unit": "gate links",
+      "count_at_current": 21,
+      "sweep": [
+        {
+          "value": 0.05,
+          "count": 24
+        },
+        {
+          "value": 0.08,
+          "count": 22
+        },
+        {
+          "value": 0.1,
+          "count": 21
+        },
+        {
+          "value": 0.15,
+          "count": 19
+        },
+        {
+          "value": 0.2,
+          "count": 15
+        },
+        {
+          "value": 0.3,
+          "count": 6
+        }
+      ],
+      "fragile": true,
+      "span": [
+        6,
+        24
+      ]
+    },
+    {
+      "parameter": "stage3a.definitional",
+      "current": 0.9,
+      "unit": "pairs excluded as definitional",
+      "count_at_current": 2,
+      "sweep": [
+        {
+          "value": 0.8,
+          "count": 2
+        },
+        {
+          "value": 0.85,
+          "count": 2
+        },
+        {
+          "value": 0.9,
+          "count": 2
+        },
+        {
+          "value": 0.95,
+          "count": 2
+        },
+        {
+          "value": 0.99,
+          "count": 1
+        }
+      ],
+      "fragile": true,
+      "span": [
+        1,
+        2
+      ]
+    },
+    {
+      "parameter": "stage3a.min_cites",
+      "current": 20,
+      "unit": "provisions statistically testable",
+      "count_at_current": 17,
+      "sweep": [
+        {
+          "value": 1,
+          "count": 203
+        },
+        {
+          "value": 2,
+          "count": 105
+        },
+        {
+          "value": 5,
+          "count": 47
+        },
+        {
+          "value": 10,
+          "count": 30
+        },
+        {
+          "value": 20,
+          "count": 17
+        },
+        {
+          "value": 30,
+          "count": 11
+        },
+        {
+          "value": 50,
+          "count": 9
+        }
+      ],
+      "fragile": true,
+      "span": [
+        9,
+        203
+      ]
+    },
+    {
+      "parameter": "stage5b.trend",
+      "current": 0.7,
+      "unit": "priors passing",
+      "count_at_current": 36,
+      "sweep": [
+        {
+          "value": 0.4,
+          "count": 36
+        },
+        {
+          "value": 0.5,
+          "count": 36
+        },
+        {
+          "value": 0.6,
+          "count": 36
+        },
+        {
+          "value": 0.7,
+          "count": 36
+        },
+        {
+          "value": 0.8,
+          "count": 34
+        },
+        {
+          "value": 0.9,
+          "count": 29
+        }
+      ],
+      "fragile": false,
+      "span": [
+        29,
+        36
+      ]
+    },
+    {
+      "parameter": "stage5b.min_rho",
+      "current": 0.05,
+      "unit": "priors passing",
+      "count_at_current": 36,
+      "sweep": [
+        {
+          "value": 0.02,
+          "count": 37
+        },
+        {
+          "value": 0.05,
+          "count": 36
+        },
+        {
+          "value": 0.1,
+          "count": 32
+        },
+        {
+          "value": 0.15,
+          "count": 28
+        },
+        {
+          "value": 0.2,
+          "count": 28
+        }
+      ],
+      "fragile": false,
+      "span": [
+        28,
+        37
+      ]
+    },
+    {
+      "parameter": "stage5b.attenuation",
+      "current": 0.5,
+      "unit": "priors passing",
+      "count_at_current": 36,
+      "sweep": [
+        {
+          "value": 0.3,
+          "count": 36
+        },
+        {
+          "value": 0.4,
+          "count": 36
+        },
+        {
+          "value": 0.5,
+          "count": 36
+        },
+        {
+          "value": 0.6,
+          "count": 35
+        },
+        {
+          "value": 0.7,
+          "count": 34
+        }
+      ],
+      "fragile": false,
+      "span": [
+        34,
+        36
+      ]
+    },
+    {
+      "parameter": "stage5b.margin",
+      "current": 0.15,
+      "unit": "priors passing",
+      "count_at_current": 36,
+      "sweep": [
+        {
+          "value": 0.05,
+          "count": 36
+        },
+        {
+          "value": 0.1,
+          "count": 36
+        },
+        {
+          "value": 0.15,
+          "count": 36
+        },
+        {
+          "value": 0.2,
+          "count": 36
+        },
+        {
+          "value": 0.3,
+          "count": 36
+        }
+      ],
+      "fragile": false,
+      "span": [
+        36,
+        36
+      ]
+    }
+  ],
+  "note": "Fragile means a conclusion moves materially within the swept range, not that it is wrong. A fragile parameter's result must be quoted with its threshold attached."
+}

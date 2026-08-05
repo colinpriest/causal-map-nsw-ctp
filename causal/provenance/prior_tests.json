@@ -1,0 +1,2371 @@
+{
+  "generated_at": "2026-08-05T09:56:13+00:00",
+  "thresholds": {
+    "min_n": 40,
+    "min_rho": 0.05,
+    "attenuation": 0.5,
+    "margin": 0.15
+  },
+  "n": 77,
+  "counts": {
+    "untestable": 26,
+    "pass": 26,
+    "fail": 25
+  },
+  "by_verdict": {
+    "a_causes_b|False": 5,
+    "a_causes_b|None": 2,
+    "a_causes_b|True": 2,
+    "b_causes_a|False": 3,
+    "b_causes_a|None": 2,
+    "b_causes_a|True": 9,
+    "common_cause|False": 4,
+    "common_cause|True": 8,
+    "indirect|False": 13,
+    "indirect|None": 22,
+    "indirect|True": 7
+  },
+  "note": "Predictions were fixed by stage 5a before any data was consulted. A failed prediction does not disprove the mechanism -- n is 540 and several tests are low-powered -- but it removes the only external support a reasoned prior has, and such an edge should not be drawn on this evidence alone.",
+  "results": [
+    {
+      "a": "Lump Sum",
+      "b": "Future Economic Loss",
+      "verdict": "indirect",
+      "verdict_agreement": 1.0,
+      "confidence": 5,
+      "magnitude": 5,
+      "both_llm_coded": false,
+      "prediction": {
+        "test": "mediation",
+        "var_a": "Lump Sum",
+        "var_b": "Future Economic Loss",
+        "outcome": "Lump Sum",
+        "mediator": "Future Economic Loss",
+        "direction": "attenuates",
+        "rationale": "If Future Economic Loss is a component of the Lump Sum, then controlling for Future Economic Loss should significantly reduce the association between Lump Sum and other factors, demonstrating that Future Economic Loss mediates the relationship."
+      },
+      "passed": null,
+      "detail": {
+        "reason": "degenerate: mediator or outcome repeats the pair",
+        "outcome": "Lump Sum",
+        "mediator": "Future Economic Loss"
+      },
+      "mechanism": "Future Economic Loss is a component of the Lump Sum, affecting it through its contribution to the total award."
+    },
+    {
+      "a": "Lump Sum",
+      "b": "Non-Economic Loss",
+      "verdict": "indirect",
+      "verdict_agreement": 0.67,
+      "confidence": 4,
+      "magnitude": 4,
+      "both_llm_coded": false,
+      "prediction": {
+        "test": "mediation",
+        "var_a": "Lump Sum",
+        "var_b": "Non-Economic Loss",
+        "outcome": "Lump Sum",
+        "mediator": "Injury Burden Intensity",
+        "direction": "attenuates",
+        "rationale": "If Injury Burden Intensity mediates the relationship, then once it is controlled for, the relationship between Lump Sum and Non-Economic Loss should weaken significantly."
+      },
+      "passed": null,
+      "detail": {
+        "reason": "degenerate: mediator or outcome repeats the pair",
+        "outcome": "Lump Sum",
+        "mediator": "Injury Burden Intensity"
+      },
+      "mechanism": "Severity of the injury affects both Lump Sum and Non-Economic Loss, with Non-Economic Loss through Injury Burden Intensity."
+    },
+    {
+      "a": "WPI %",
+      "b": "Non-Economic Loss",
+      "verdict": "a_causes_b",
+      "verdict_agreement": 1.0,
+      "confidence": 5,
+      "magnitude": 4,
+      "both_llm_coded": false,
+      "prediction": {
+        "test": "monotone",
+        "var_a": "WPI %",
+        "var_b": "Non-Economic Loss",
+        "outcome": null,
+        "mediator": null,
+        "direction": "increasing",
+        "rationale": "If WPI % causes Non-Economic Loss, we would expect to see a consistent increase in Non-Economic Loss awards as WPI % increases, reflecting the direct relationship between impairment severity and compensation for pain and suffering."
+      },
+      "passed": true,
+      "detail": {
+        "binned_on": "WPI %",
+        "median_of": "Non-Economic Loss",
+        "oriented_by_verdict": false,
+        "trend": 0.949,
+        "trend_threshold": 0.7,
+        "medians": [
+          0.0,
+          0.0,
+          12.301,
+          12.612,
+          12.612
+        ],
+        "levels": [
+          "(0.999, 4.0]",
+          "(4.0, 8.0]",
+          "(8.0, 14.0]",
+          "(14.0, 20.0]",
+          "(20.0, 48.0]"
+        ],
+        "peak_at": 3,
+        "trough_at": 0,
+        "n_levels": 5
+      },
+      "mechanism": "Higher WPI % indicates greater impairment, leading to higher Non-Economic Loss awards for pain and suffering."
+    },
+    {
+      "a": "Non-Economic Loss",
+      "b": "Future Economic Loss",
+      "verdict": "indirect",
+      "verdict_agreement": 1.0,
+      "confidence": 4,
+      "magnitude": 3,
+      "both_llm_coded": false,
+      "prediction": {
+        "test": "mediation",
+        "var_a": "Non-Economic Loss",
+        "var_b": "Future Economic Loss",
+        "outcome": "Future Economic Loss",
+        "mediator": "Injury Burden Intensity",
+        "direction": "attenuates",
+        "rationale": "If Injury Burden Intensity mediates the relationship, then controlling for it should reduce the association between Non-Economic Loss and Future Economic Loss, indicating that the severity of the injury is the underlying factor affecting both awards."
+      },
+      "passed": true,
+      "detail": {
+        "rho_base": 0.513,
+        "rho_given_mediator": 0.242,
+        "attenuation": 0.528,
+        "threshold": 0.5,
+        "n": 348,
+        "mediator": "Injury Burden Intensity",
+        "outcome": "Future Economic Loss"
+      },
+      "mechanism": "Both awards are likely influenced by the severity of the injury, which affects both pain and suffering and future earning capacity."
+    },
+    {
+      "a": "Non-Economic Loss",
+      "b": "Injury Burden Intensity",
+      "verdict": "b_causes_a",
+      "verdict_agreement": 0.67,
+      "confidence": 5,
+      "magnitude": 4,
+      "both_llm_coded": false,
+      "prediction": {
+        "test": "monotone",
+        "var_a": "Non-Economic Loss",
+        "var_b": "Injury Burden Intensity",
+        "outcome": null,
+        "mediator": null,
+        "direction": "increasing",
+        "rationale": "If Injury Burden Intensity causes Non-Economic Loss, we would expect a consistent increase in non-economic loss awards as the injury burden intensity increases. This test would distinguish this causal direction from the alternative, where non-economic loss would not consistently increase with injury burden intensity."
+      },
+      "passed": true,
+      "detail": {
+        "binned_on": "Injury Burden Intensity",
+        "median_of": "Non-Economic Loss",
+        "oriented_by_verdict": true,
+        "trend": 0.894,
+        "trend_threshold": 0.7,
+        "medians": [
+          0.0,
+          0.0,
+          0.0,
+          12.612,
+          12.899
+        ],
+        "levels": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "peak_at": 4,
+        "trough_at": 0,
+        "n_levels": 5
+      },
+      "mechanism": "The severity of the injury burden directly influences the amount awarded for non-economic loss, as it reflects the claimant's pain and suffering."
+    },
+    {
+      "a": "Lump Sum",
+      "b": "WPI %",
+      "verdict": "b_causes_a",
+      "verdict_agreement": 0.67,
+      "confidence": 5,
+      "magnitude": 5,
+      "both_llm_coded": false,
+      "prediction": {
+        "test": "monotone",
+        "var_a": "Lump Sum",
+        "var_b": "WPI %",
+        "outcome": null,
+        "mediator": null,
+        "direction": "increasing",
+        "rationale": "If WPI % increases, the Lump Sum should consistently increase since higher impairment ratings usually lead to larger compensation to cover the broad range of associated losses."
+      },
+      "passed": true,
+      "detail": {
+        "binned_on": "WPI %",
+        "median_of": "Lump Sum",
+        "oriented_by_verdict": true,
+        "trend": 0.9,
+        "trend_threshold": 0.7,
+        "medians": [
+          11.553,
+          11.736,
+          12.435,
+          13.032,
+          12.899
+        ],
+        "levels": [
+          "(0.999, 4.0]",
+          "(4.0, 7.0]",
+          "(7.0, 12.0]",
+          "(12.0, 19.0]",
+          "(19.0, 48.0]"
+        ],
+        "peak_at": 3,
+        "trough_at": 0,
+        "n_levels": 5
+      },
+      "mechanism": "WPI %, as a metric of impairment, directly influences the calculation of the Lump Sum awarded for compensation."
+    },
+    {
+      "a": "WPI %",
+      "b": "Injury Burden Intensity",
+      "verdict": "a_causes_b",
+      "verdict_agreement": 1.0,
+      "confidence": 4,
+      "magnitude": 3,
+      "both_llm_coded": false,
+      "prediction": {
+        "test": "monotone",
+        "var_a": "WPI %",
+        "var_b": "Injury Burden Intensity",
+        "outcome": null,
+        "mediator": null,
+        "direction": "increasing",
+        "rationale": "If WPI % directly causes Injury Burden Intensity, we would expect to see a consistent increase in Injury Burden Intensity as WPI % increases, reflecting the direct impact of greater impairment on the physical burden."
+      },
+      "passed": true,
+      "detail": {
+        "binned_on": "WPI %",
+        "median_of": "Injury Burden Intensity",
+        "oriented_by_verdict": false,
+        "trend": 0.707,
+        "trend_threshold": 0.7,
+        "medians": [
+          2.0,
+          2.0,
+          2.0,
+          2.0,
+          3.0
+        ],
+        "levels": [
+          "(0.999, 4.0]",
+          "(4.0, 7.0]",
+          "(7.0, 12.0]",
+          "(12.0, 19.0]",
+          "(19.0, 48.0]"
+        ],
+        "peak_at": 4,
+        "trough_at": 0,
+        "n_levels": 5
+      },
+      "mechanism": "A higher WPI % indicates more severe impairment, which directly increases the Injury Burden Intensity score."
+    },
+    {
+      "a": "Nature",
+      "b": "Legal Procedural Complexity",
+      "verdict": "a_causes_b",
+      "verdict_agreement": 1.0,
+      "confidence": 4,
+      "magnitude": 3,
+      "both_llm_coded": false,
+      "prediction": {
+        "test": "monotone",
+        "var_a": "Nature",
+        "var_b": "Legal Procedural Complexity",
+        "outcome": null,
+        "mediator": null,
+        "direction": "increasing",
+        "rationale": "If the procedural route directly influences the complexity, we would expect a consistent increase in procedural complexity scores as we move from settlement approvals to damages assessments."
+      },
+      "passed": null,
+      "detail": {
+        "reason": "too few levels or rows"
+      },
+      "mechanism": "The procedural route determines the inherent complexity of the legal process involved, with damages assessments likely being more complex than settlement approvals."
+    },
+    {
+      "a": "Lump Sum",
+      "b": "Injury Burden Intensity",
+      "verdict": "indirect",
+      "verdict_agreement": 0.67,
+      "confidence": 5,
+      "magnitude": 4,
+      "both_llm_coded": false,
+      "prediction": {
+        "test": "mediation",
+        "var_a": "Lump Sum",
+        "var_b": "Injury Burden Intensity",
+        "outcome": "Lump Sum",
+        "mediator": "WPI %",
+        "direction": "attenuates",
+        "rationale": "If injury burden intensity affects the lump sum through WPI %, then controlling for WPI % should significantly reduce the association between injury burden intensity and the lump sum. This would demonstrate that the effect of injury burden intensity on the lump sum is mediated by WPI %."
+      },
+      "passed": null,
+      "detail": {
+        "reason": "degenerate: mediator or outcome repeats the pair",
+        "outcome": "Lump Sum",
+        "mediator": "WPI %"
+      },
+      "mechanism": "Injury burden intensity affects the lump sum through its impact on WPI %, Non-Economic Loss, and Future Economic Loss."
+    },
+    {
+      "a": "Future Economic Loss",
+      "b": "Work Impact Severity",
+      "verdict": "b_causes_a",
+      "verdict_agreement": 1.0,
+      "confidence": 5,
+      "magnitude": 5,
+      "both_llm_coded": false,
+      "prediction": {
+        "test": "monotone",
+        "var_a": "Future Economic Loss",
+        "var_b": "Work Impact Severity",
+        "outcome": null,
+        "mediator": null,
+        "direction": "increasing",
+        "rationale": "If Work Impact Severity causes Future Economic Loss, we would expect the median Future Economic Loss to increase consistently with higher levels of Work Impact Severity, reflecting the direct impact of work capacity loss on economic compensation."
+      },
+      "passed": true,
+      "detail": {
+        "binned_on": "Work Impact Severity",
+        "median_of": "Future Economic Loss",
+        "oriented_by_verdict": true,
+        "trend": 1.0,
+        "trend_threshold": 0.7,
+        "medians": [
+          0.0,
+          10.597,
+          11.918,
+          12.899
+        ],
+        "levels": [
+          "0",
+          "1",
+          "2",
+          "3"
+        ],
+        "peak_at": 3,
+        "trough_at": 0,
+        "n_levels": 4
+      },
+      "mechanism": "Work Impact Severity directly informs the calculation of Future Economic Loss by indicating the extent of lost earning capacity."
+    },
+    {
+      "a": "Future Economic Loss",
+      "b": "Injury Burden Intensity",
+      "verdict": "indirect",
+      "verdict_agreement": 1.0,
+      "confidence": 4,
+      "magnitude": 4,
+      "both_llm_coded": false,
+      "prediction": {
+        "test": "mediation",
+        "var_a": "Future Economic Loss",
+        "var_b": "Injury Burden Intensity",
+        "outcome": "Future Economic Loss",
+        "mediator": "Work Impact Severity",
+        "direction": "attenuates",
+        "rationale": "If Injury Burden Intensity affects Future Economic Loss through Work Impact Severity, then controlling for Work Impact Severity should significantly reduce the association between Injury Burden Intensity and Future Economic Loss."
+      },
+      "passed": null,
+      "detail": {
+        "reason": "degenerate: mediator or outcome repeats the pair",
+        "outcome": "Future Economic Loss",
+        "mediator": "Work Impact Severity"
+      },
+      "mechanism": "Injury Burden Intensity affects Future Economic Loss through Work Impact Severity, as more severe injuries likely reduce work capacity, leading to higher economic loss awards."
+    },
+    {
+      "a": "Lump Sum",
+      "b": "Work Impact Severity",
+      "verdict": "indirect",
+      "verdict_agreement": 0.67,
+      "confidence": 5,
+      "magnitude": 4,
+      "both_llm_coded": false,
+      "prediction": {
+        "test": "mediation",
+        "var_a": "Lump Sum",
+        "var_b": "Work Impact Severity",
+        "outcome": "Lump Sum",
+        "mediator": "Future Economic Loss",
+        "direction": "attenuates",
+        "rationale": "If Work Impact Severity affects Lump Sum awards through Future Economic Loss, then controlling for Future Economic Loss should significantly reduce the correlation between Work Impact Severity and Lump Sum awards, indicating that Future Economic Loss is a mediator."
+      },
+      "passed": null,
+      "detail": {
+        "reason": "degenerate: mediator or outcome repeats the pair",
+        "outcome": "Lump Sum",
+        "mediator": "Future Economic Loss"
+      },
+      "mechanism": "Work Impact Severity affects the Lump Sum through Future Economic Loss, reflecting the predicted future loss of earnings due to incapacity."
+    },
+    {
+      "a": "WPI %",
+      "b": "Future Economic Loss",
+      "verdict": "indirect",
+      "verdict_agreement": 0.67,
+      "confidence": 5,
+      "magnitude": 4,
+      "both_llm_coded": false,
+      "prediction": {
+        "test": "mediation",
+        "var_a": "WPI %",
+        "var_b": "Future Economic Loss",
+        "outcome": "Future Economic Loss",
+        "mediator": "Work Impact Severity",
+        "direction": "attenuates",
+        "rationale": "Mediation by Work Impact Severity will show that the effect of WPI % on Future Economic Loss is largely explained through the impact of WPI % on the claimant's ability to work, rather than a direct effect on Future Economic Loss."
+      },
+      "passed": true,
+      "detail": {
+        "rho_base": 0.358,
+        "rho_given_mediator": -0.004,
+        "attenuation": 0.989,
+        "threshold": 0.5,
+        "n": 234,
+        "mediator": "Work Impact Severity",
+        "outcome": "Future Economic Loss"
+      },
+      "mechanism": "WPI % affects working capacity, influencing Future Economic Loss through Work Impact Severity."
+    },
+    {
+      "a": "Injury Burden Intensity",
+      "b": "Treatment Burden",
+      "verdict": "a_causes_b",
+      "verdict_agreement": 1.0,
+      "confidence": 4,
+      "magnitude": 3,
+      "both_llm_coded": true,
+      "prediction": {
+        "test": "monotone",
+        "var_a": "Injury Burden Intensity",
+        "var_b": "Treatment Burden",
+        "outcome": null,
+        "mediator": null,
+        "direction": "increasing",
+        "rationale": "If Injury Burden Intensity directly causes Treatment Burden, we would expect to see a consistent increase in Treatment Burden as Injury Burden Intensity increases. This would be reflected in a monotonic relationship where higher levels of injury burden correspond to higher levels of treatment burden."
+      },
+      "passed": false,
+      "detail": {
+        "binned_on": "Injury Burden Intensity",
+        "median_of": "Treatment Burden",
+        "oriented_by_verdict": false,
+        "trend": 0.158,
+        "trend_threshold": 0.7,
+        "medians": [
+          0.0,
+          1.0,
+          1.0,
+          2.0,
+          0.0
+        ],
+        "levels": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "peak_at": 3,
+        "trough_at": 0,
+        "n_levels": 5
+      },
+      "mechanism": "More severe injuries require more extensive treatment, increasing the treatment burden."
+    },
+    {
+      "a": "Nature",
+      "b": "Work Impact Severity",
+      "verdict": "b_causes_a",
+      "verdict_agreement": 0.33,
+      "confidence": 4,
+      "magnitude": 3,
+      "both_llm_coded": false,
+      "prediction": {
+        "test": "monotone",
+        "var_a": "Nature",
+        "var_b": "Work Impact Severity",
+        "outcome": null,
+        "mediator": null,
+        "direction": "increasing",
+        "rationale": "If Work Impact Severity influences the procedural route, we would expect that as the severity increases, the likelihood of the case going through a more formal damages assessment route also increases. This would result in a monotonic increase in the procedural route's formality with increasing work impact severity."
+      },
+      "passed": true,
+      "detail": {
+        "binned_on": "Work Impact Severity",
+        "median_of": "Nature",
+        "oriented_by_verdict": true,
+        "trend": 0.894,
+        "trend_threshold": 0.7,
+        "medians": [
+          0.0,
+          0.0,
+          1.0,
+          1.0
+        ],
+        "levels": [
+          "0",
+          "1",
+          "2",
+          "3"
+        ],
+        "peak_at": 2,
+        "trough_at": 0,
+        "n_levels": 4
+      },
+      "mechanism": "Higher Work Impact Severity may necessitate a more formal procedural route, such as damages assessment, due to the complexity and potential size of the claim."
+    },
+    {
+      "a": "Work Impact Severity",
+      "b": "Legal Procedural Complexity",
+      "verdict": "indirect",
+      "verdict_agreement": 0.67,
+      "confidence": 4,
+      "magnitude": 3,
+      "both_llm_coded": true,
+      "prediction": {
+        "test": "mediation",
+        "var_a": "Work Impact Severity",
+        "var_b": "Legal Procedural Complexity",
+        "outcome": "Legal Procedural Complexity",
+        "mediator": "Future Economic Loss",
+        "direction": "attenuates",
+        "rationale": "If Work Impact Severity affects Legal Procedural Complexity through Future Economic Loss, then controlling for Future Economic Loss should reduce the association between Work Impact Severity and Legal Procedural Complexity."
+      },
+      "passed": false,
+      "detail": {
+        "rho_base": 0.5,
+        "rho_given_mediator": 0.299,
+        "attenuation": 0.402,
+        "threshold": 0.5,
+        "n": 413,
+        "mediator": "Future Economic Loss",
+        "outcome": "Legal Procedural Complexity"
+      },
+      "mechanism": "Work Impact Severity affects Legal Procedural Complexity through the mediator of Future Economic Loss."
+    },
+    {
+      "a": "Nature",
+      "b": "Psychological Injury Emphasis",
+      "verdict": "a_causes_b",
+      "verdict_agreement": 0.67,
+      "confidence": 3,
+      "magnitude": 2,
+      "both_llm_coded": false,
+      "prediction": {
+        "test": "monotone",
+        "var_a": "Nature",
+        "var_b": "Psychological Injury Emphasis",
+        "outcome": null,
+        "mediator": null,
+        "direction": "increasing",
+        "rationale": "If the procedural route influences the emphasis on psychological injury, we would expect a consistent increase in the emphasis as we move from damages assessment to settlement approval, reflecting the greater flexibility and negotiation in settlements."
+      },
+      "passed": null,
+      "detail": {
+        "reason": "too few levels or rows"
+      },
+      "mechanism": "The procedural route determines the flexibility and criteria for evaluating psychological injuries, influencing their emphasis."
+    },
+    {
+      "a": "Non-Economic Loss",
+      "b": "Treatment Burden",
+      "verdict": "indirect",
+      "verdict_agreement": 0.67,
+      "confidence": 4,
+      "magnitude": 3,
+      "both_llm_coded": false,
+      "prediction": {
+        "test": "mediation",
+        "var_a": "Non-Economic Loss",
+        "var_b": "Treatment Burden",
+        "outcome": "Non-Economic Loss",
+        "mediator": "Injury Burden Intensity",
+        "direction": "attenuates",
+        "rationale": "If treatment burden affects non-economic loss through injury burden intensity, then controlling for injury burden intensity should reduce the association between treatment burden and non-economic loss."
+      },
+      "passed": null,
+      "detail": {
+        "reason": "degenerate: mediator or outcome repeats the pair",
+        "outcome": "Non-Economic Loss",
+        "mediator": "Injury Burden Intensity"
+      },
+      "mechanism": "Treatment burden affects non-economic loss through the injury burden intensity, which reflects the severity of the injuries and the associated pain and suffering."
+    },
+    {
+      "a": "Legal Procedural Complexity",
+      "b": "Psychological Injury Emphasis",
+      "verdict": "indirect",
+      "verdict_agreement": 0.67,
+      "confidence": 3,
+      "magnitude": 2,
+      "both_llm_coded": true,
+      "prediction": {
+        "test": "mediation",
+        "var_a": "Legal Procedural Complexity",
+        "var_b": "Psychological Injury Emphasis",
+        "outcome": "Psychological Injury Emphasis",
+        "mediator": "Legal Procedural Complexity",
+        "direction": "a_is_upstream",
+        "rationale": "If legal procedural complexity influences psychological injury emphasis through the need for detailed substantiation, then controlling for legal procedural complexity should reduce the association between procedural complexity and psychological injury emphasis."
+      },
+      "passed": null,
+      "detail": {
+        "reason": "degenerate: mediator or outcome repeats the pair",
+        "outcome": "Psychological Injury Emphasis",
+        "mediator": "Legal Procedural Complexity"
+      },
+      "mechanism": "Legal procedural complexity affects psychological injury emphasis through the need for detailed substantiation in complex cases."
+    },
+    {
+      "a": "Work Impact Severity",
+      "b": "Psychological Injury Emphasis",
+      "verdict": "indirect",
+      "verdict_agreement": 0.67,
+      "confidence": 4,
+      "magnitude": 2,
+      "both_llm_coded": true,
+      "prediction": {
+        "test": "mediation",
+        "var_a": "Work Impact Severity",
+        "var_b": "Psychological Injury Emphasis",
+        "outcome": "Psychological Injury Emphasis",
+        "mediator": "Injury Burden Intensity",
+        "direction": "attenuates",
+        "rationale": "If Work Impact Severity affects Psychological Injury Emphasis through Injury Burden Intensity, then controlling for Injury Burden Intensity should reduce the association between Work Impact Severity and Psychological Injury Emphasis."
+      },
+      "passed": false,
+      "detail": {
+        "rho_base": 0.406,
+        "rho_given_mediator": 0.393,
+        "attenuation": 0.034,
+        "threshold": 0.5,
+        "n": 540,
+        "mediator": "Injury Burden Intensity",
+        "outcome": "Psychological Injury Emphasis"
+      },
+      "mechanism": "Work Impact Severity affects Psychological Injury Emphasis through the Injury Burden Intensity, as severe work impact may increase the overall injury burden, which in turn emphasizes psychological injuries."
+    },
+    {
+      "a": "Lump Sum",
+      "b": "Psychological Injury Emphasis",
+      "verdict": "indirect",
+      "verdict_agreement": 1.0,
+      "confidence": 4,
+      "magnitude": 3,
+      "both_llm_coded": false,
+      "prediction": {
+        "test": "mediation",
+        "var_a": "Lump Sum",
+        "var_b": "Psychological Injury Emphasis",
+        "outcome": "Lump Sum",
+        "mediator": "Non-Economic Loss",
+        "direction": "attenuates",
+        "rationale": "If Psychological Injury Emphasis affects Lump Sum through Non-Economic Loss, then controlling for Non-Economic Loss should reduce the association between Psychological Injury Emphasis and Lump Sum."
+      },
+      "passed": null,
+      "detail": {
+        "reason": "degenerate: mediator or outcome repeats the pair",
+        "outcome": "Lump Sum",
+        "mediator": "Non-Economic Loss"
+      },
+      "mechanism": "Psychological Injury Emphasis affects Lump Sum through Non-Economic Loss and Future Economic Loss."
+    },
+    {
+      "a": "Future Economic Loss",
+      "b": "Legal Procedural Complexity",
+      "verdict": "indirect",
+      "verdict_agreement": 0.67,
+      "confidence": 4,
+      "magnitude": 3,
+      "both_llm_coded": false,
+      "prediction": {
+        "test": "mediation",
+        "var_a": "Future Economic Loss",
+        "var_b": "Legal Procedural Complexity",
+        "outcome": "Future Economic Loss",
+        "mediator": "Work Impact Severity",
+        "direction": "attenuates",
+        "rationale": "If Legal Procedural Complexity affects Future Economic Loss through Work Impact Severity, then controlling for Work Impact Severity should reduce the association between Legal Procedural Complexity and Future Economic Loss."
+      },
+      "passed": null,
+      "detail": {
+        "reason": "degenerate: mediator or outcome repeats the pair",
+        "outcome": "Future Economic Loss",
+        "mediator": "Work Impact Severity"
+      },
+      "mechanism": "Legal Procedural Complexity affects Future Economic Loss through Work Impact Severity and other factors that determine the loss."
+    },
+    {
+      "a": "Future Economic Loss",
+      "b": "Psychological Injury Emphasis",
+      "verdict": "indirect",
+      "verdict_agreement": 1.0,
+      "confidence": 4,
+      "magnitude": 3,
+      "both_llm_coded": false,
+      "prediction": {
+        "test": "mediation",
+        "var_a": "Future Economic Loss",
+        "var_b": "Psychological Injury Emphasis",
+        "outcome": "Future Economic Loss",
+        "mediator": "Work Impact Severity",
+        "direction": "attenuates",
+        "rationale": "If Psychological Injury Emphasis affects Future Economic Loss through Work Impact Severity, then controlling for Work Impact Severity should reduce the association between Psychological Injury Emphasis and Future Economic Loss."
+      },
+      "passed": null,
+      "detail": {
+        "reason": "degenerate: mediator or outcome repeats the pair",
+        "outcome": "Future Economic Loss",
+        "mediator": "Work Impact Severity"
+      },
+      "mechanism": "Psychological Injury Emphasis affects Future Economic Loss through Work Impact Severity."
+    },
+    {
+      "a": "Future Economic Loss",
+      "b": "Nature",
+      "verdict": "indirect",
+      "verdict_agreement": 0.67,
+      "confidence": 4,
+      "magnitude": 3,
+      "both_llm_coded": false,
+      "prediction": {
+        "test": "mediation",
+        "var_a": "Future Economic Loss",
+        "var_b": "Nature",
+        "outcome": "Future Economic Loss",
+        "mediator": "Legal Procedural Complexity",
+        "direction": "attenuates",
+        "rationale": "If Legal Procedural Complexity mediates the relationship, then controlling for it should reduce the association between Nature and Future Economic Loss, indicating that the procedural route affects the thoroughness of evaluation, which in turn affects the award."
+      },
+      "passed": null,
+      "detail": {
+        "reason": "degenerate: mediator or outcome repeats the pair",
+        "outcome": "Future Economic Loss",
+        "mediator": "Legal Procedural Complexity"
+      },
+      "mechanism": "The procedural route affects the thoroughness of evaluation, which in turn affects the Future Economic Loss awarded."
+    },
+    {
+      "a": "Lump Sum",
+      "b": "Treatment Burden",
+      "verdict": "indirect",
+      "verdict_agreement": 0.67,
+      "confidence": 4,
+      "magnitude": 2,
+      "both_llm_coded": false,
+      "prediction": {
+        "test": "mediation",
+        "var_a": "Lump Sum",
+        "var_b": "Treatment Burden",
+        "outcome": "Lump Sum",
+        "mediator": "Injury Burden Intensity",
+        "direction": "attenuates",
+        "rationale": "If the indirect pathway is correct, controlling for Injury Burden Intensity should reduce the observed link between Treatment Burden and Lump Sum, indicating that the relationship is largely explained by the severity of injuries impacting both treatment requirements and compensation."
+      },
+      "passed": null,
+      "detail": {
+        "reason": "degenerate: mediator or outcome repeats the pair",
+        "outcome": "Lump Sum",
+        "mediator": "Injury Burden Intensity"
+      },
+      "mechanism": "Treatment Burden affects Lump Sum awards through the Injury Burden Intensity and Work Impact Severity, which drive the losses addressed in awards."
+    },
+    {
+      "a": "Legal Procedural Complexity",
+      "b": "Causation Complexity",
+      "verdict": "common_cause",
+      "verdict_agreement": 1.0,
+      "confidence": 4,
+      "magnitude": 3,
+      "both_llm_coded": true,
+      "prediction": {
+        "test": "sign",
+        "var_a": "Legal Procedural Complexity",
+        "var_b": "Causation Complexity",
+        "outcome": null,
+        "mediator": null,
+        "direction": "positive",
+        "rationale": "If both Legal Procedural Complexity and Causation Complexity are driven by the same underlying factors, such as the severity of the injury or the clarity of liability, they should be positively correlated. A positive Spearman correlation would support the common cause hypothesis."
+      },
+      "passed": true,
+      "detail": {
+        "rho": 0.612,
+        "n": 540,
+        "threshold": 0.05
+      },
+      "mechanism": "Both Legal Procedural Complexity and Causation Complexity are likely influenced by the inherent complexity of the case, such as the severity of the injury or the clarity of liability."
+    },
+    {
+      "a": "Lump Sum",
+      "b": "Nature",
+      "verdict": "b_causes_a",
+      "verdict_agreement": 1.0,
+      "confidence": 4,
+      "magnitude": 3,
+      "both_llm_coded": false,
+      "prediction": {
+        "test": "monotone",
+        "var_a": "Lump Sum",
+        "var_b": "Nature",
+        "outcome": null,
+        "mediator": null,
+        "direction": "increasing",
+        "rationale": "If the procedural route (Nature) influences the lump sum, we would expect the median lump sum to increase consistently from settlement approval to damages assessment, reflecting the more thorough evaluation and potentially higher awards in the latter."
+      },
+      "passed": null,
+      "detail": {
+        "reason": "too few levels or rows"
+      },
+      "mechanism": "The procedural route determines the thoroughness of the evaluation, affecting the lump sum awarded."
+    },
+    {
+      "a": "Lump Sum",
+      "b": "Legal Procedural Complexity",
+      "verdict": "indirect",
+      "verdict_agreement": 0.33,
+      "confidence": 4,
+      "magnitude": 3,
+      "both_llm_coded": false,
+      "prediction": {
+        "test": "mediation",
+        "var_a": "Lump Sum",
+        "var_b": "Legal Procedural Complexity",
+        "outcome": "Lump Sum",
+        "mediator": "Non-Economic Loss",
+        "direction": "attenuates",
+        "rationale": "If legal procedural complexity affects the lump sum through its impact on Non-Economic Loss, then controlling for Non-Economic Loss should reduce the association between legal procedural complexity and the lump sum."
+      },
+      "passed": null,
+      "detail": {
+        "reason": "degenerate: mediator or outcome repeats the pair",
+        "outcome": "Lump Sum",
+        "mediator": "Non-Economic Loss"
+      },
+      "mechanism": "Legal procedural complexity affects the lump sum through its impact on Non-Economic Loss and Future Economic Loss awards."
+    },
+    {
+      "a": "Nature",
+      "b": "Causation Complexity",
+      "verdict": "b_causes_a",
+      "verdict_agreement": 0.67,
+      "confidence": 4,
+      "magnitude": 3,
+      "both_llm_coded": false,
+      "prediction": {
+        "test": "monotone",
+        "var_a": "Nature",
+        "var_b": "Causation Complexity",
+        "outcome": null,
+        "mediator": null,
+        "direction": "increasing",
+        "rationale": "If Causation Complexity influences the procedural route, we would expect that as causation complexity increases, the likelihood of the case going through a more formal procedural route (damages assessment) also increases. This would result in a monotonic increase in the procedural route's formality with increasing causation complexity."
+      },
+      "passed": true,
+      "detail": {
+        "binned_on": "Causation Complexity",
+        "median_of": "Nature",
+        "oriented_by_verdict": true,
+        "trend": 0.866,
+        "trend_threshold": 0.7,
+        "medians": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "levels": [
+          "0",
+          "1",
+          "2"
+        ],
+        "peak_at": 2,
+        "trough_at": 0,
+        "n_levels": 3
+      },
+      "mechanism": "Higher causation complexity necessitates a more formal procedural route like damages assessment."
+    },
+    {
+      "a": "Non-Economic Loss",
+      "b": "Psychological Injury Emphasis",
+      "verdict": "b_causes_a",
+      "verdict_agreement": 0.67,
+      "confidence": 4,
+      "magnitude": 3,
+      "both_llm_coded": false,
+      "prediction": {
+        "test": "monotone",
+        "var_a": "Non-Economic Loss",
+        "var_b": "Psychological Injury Emphasis",
+        "outcome": null,
+        "mediator": null,
+        "direction": "increasing",
+        "rationale": "If psychological injury emphasis causes higher non-economic loss, we would expect to see a consistent increase in non-economic loss awards as the emphasis on psychological injury increases."
+      },
+      "passed": true,
+      "detail": {
+        "binned_on": "Psychological Injury Emphasis",
+        "median_of": "Non-Economic Loss",
+        "oriented_by_verdict": true,
+        "trend": 1.0,
+        "trend_threshold": 0.7,
+        "medians": [
+          0.0,
+          12.206,
+          12.525
+        ],
+        "levels": [
+          "0",
+          "1",
+          "2"
+        ],
+        "peak_at": 2,
+        "trough_at": 0,
+        "n_levels": 3
+      },
+      "mechanism": "Emphasis on psychological injury increases the perceived severity of pain and suffering, leading to higher non-economic loss awards."
+    },
+    {
+      "a": "WPI %",
+      "b": "Treatment Burden",
+      "verdict": "a_causes_b",
+      "verdict_agreement": 0.67,
+      "confidence": 4,
+      "magnitude": 3,
+      "both_llm_coded": false,
+      "prediction": {
+        "test": "monotone",
+        "var_a": "WPI %",
+        "var_b": "Treatment Burden",
+        "outcome": null,
+        "mediator": null,
+        "direction": "increasing",
+        "rationale": "If WPI % causes Treatment Burden, we would expect that as WPI % increases, the Treatment Burden would also increase consistently, reflecting the need for more extensive treatment for more severe impairments."
+      },
+      "passed": false,
+      "detail": {
+        "binned_on": "WPI %",
+        "median_of": "Treatment Burden",
+        "oriented_by_verdict": false,
+        "trend": 0.354,
+        "trend_threshold": 0.7,
+        "medians": [
+          2.0,
+          1.0,
+          2.0,
+          2.0,
+          2.0
+        ],
+        "levels": [
+          "(0.999, 4.0]",
+          "(4.0, 7.0]",
+          "(7.0, 12.0]",
+          "(12.0, 19.0]",
+          "(19.0, 48.0]"
+        ],
+        "peak_at": 0,
+        "trough_at": 1,
+        "n_levels": 5
+      },
+      "mechanism": "Higher WPI % indicates more severe injuries, necessitating more extensive treatment, thus increasing Treatment Burden."
+    },
+    {
+      "a": "Future Economic Loss",
+      "b": "Treatment Burden",
+      "verdict": "indirect",
+      "verdict_agreement": 1.0,
+      "confidence": 4,
+      "magnitude": 3,
+      "both_llm_coded": false,
+      "prediction": {
+        "test": "mediation",
+        "var_a": "Future Economic Loss",
+        "var_b": "Treatment Burden",
+        "outcome": "Future Economic Loss",
+        "mediator": "Injury Burden Intensity",
+        "direction": "attenuates",
+        "rationale": "If Treatment Burden affects Future Economic Loss through Injury Burden Intensity, then controlling for Injury Burden Intensity should reduce the association between Treatment Burden and Future Economic Loss."
+      },
+      "passed": null,
+      "detail": {
+        "reason": "degenerate: mediator or outcome repeats the pair",
+        "outcome": "Future Economic Loss",
+        "mediator": "Injury Burden Intensity"
+      },
+      "mechanism": "Treatment Burden affects Future Economic Loss through Injury Burden Intensity, which reflects the severity of the injury and impacts earning capacity."
+    },
+    {
+      "a": "Non-Economic Loss",
+      "b": "Nature",
+      "verdict": "b_causes_a",
+      "verdict_agreement": 1.0,
+      "confidence": 4,
+      "magnitude": 3,
+      "both_llm_coded": false,
+      "prediction": {
+        "test": "monotone",
+        "var_a": "Non-Economic Loss",
+        "var_b": "Nature",
+        "outcome": null,
+        "mediator": null,
+        "direction": "increasing",
+        "rationale": "If the Nature of the procedural route influences Non-Economic Loss, we would expect the median non-economic loss to increase consistently from settlement approval to damages assessment, reflecting the more formal and potentially higher awards in the latter."
+      },
+      "passed": null,
+      "detail": {
+        "reason": "too few levels or rows"
+      },
+      "mechanism": "The procedural route determines how the non-economic loss is evaluated and agreed upon, affecting the final award amount."
+    },
+    {
+      "a": "Psychological Injury Emphasis",
+      "b": "Causation Complexity",
+      "verdict": "common_cause",
+      "verdict_agreement": 0.33,
+      "confidence": 4,
+      "magnitude": 3,
+      "both_llm_coded": true,
+      "prediction": {
+        "test": "sign",
+        "var_a": "Psychological Injury Emphasis",
+        "var_b": "Causation Complexity",
+        "outcome": null,
+        "mediator": null,
+        "direction": "positive",
+        "rationale": "If both Psychological Injury Emphasis and Causation Complexity are driven by Legal Procedural Complexity, they should be positively correlated. A positive Spearman correlation would support the common cause hypothesis."
+      },
+      "passed": true,
+      "detail": {
+        "rho": 0.444,
+        "n": 540,
+        "threshold": 0.05
+      },
+      "mechanism": "Both Psychological Injury Emphasis and Causation Complexity are likely influenced by the nature of the injury and the legal procedural complexity."
+    },
+    {
+      "a": "Nature",
+      "b": "Injury Burden Intensity",
+      "verdict": "b_causes_a",
+      "verdict_agreement": 0.67,
+      "confidence": 4,
+      "magnitude": 3,
+      "both_llm_coded": false,
+      "prediction": {
+        "test": "monotone",
+        "var_a": "Nature",
+        "var_b": "Injury Burden Intensity",
+        "outcome": null,
+        "mediator": null,
+        "direction": "increasing",
+        "rationale": "If injury burden intensity drives the procedural route, we would expect that as the injury burden intensity increases, the likelihood of cases going through damages assessment rather than settlement approval also increases. This would result in a monotonic relationship between injury burden intensity and the procedural route."
+      },
+      "passed": false,
+      "detail": {
+        "binned_on": "Injury Burden Intensity",
+        "median_of": "Nature",
+        "oriented_by_verdict": true,
+        "trend": NaN,
+        "trend_threshold": 0.7,
+        "medians": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "levels": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "peak_at": 0,
+        "trough_at": 0,
+        "n_levels": 5
+      },
+      "mechanism": "Higher injury burden intensity necessitates a more detailed procedural route, such as damages assessment, due to the complexity and potential compensation involved."
+    },
+    {
+      "a": "Injury Burden Intensity",
+      "b": "Psychological Injury Emphasis",
+      "verdict": "indirect",
+      "verdict_agreement": 1.0,
+      "confidence": 3,
+      "magnitude": 2,
+      "both_llm_coded": true,
+      "prediction": {
+        "test": "mediation",
+        "var_a": "Injury Burden Intensity",
+        "var_b": "Psychological Injury Emphasis",
+        "outcome": "Psychological Injury Emphasis",
+        "mediator": "Treatment Burden",
+        "direction": "attenuates",
+        "rationale": "If Injury Burden Intensity affects Psychological Injury Emphasis through Treatment Burden, then controlling for Treatment Burden should reduce the association between Injury Burden Intensity and Psychological Injury Emphasis."
+      },
+      "passed": false,
+      "detail": {
+        "rho_base": 0.206,
+        "rho_given_mediator": 0.209,
+        "attenuation": -0.012,
+        "threshold": 0.5,
+        "n": 540,
+        "mediator": "Treatment Burden",
+        "outcome": "Psychological Injury Emphasis"
+      },
+      "mechanism": "Injury Burden Intensity affects Psychological Injury Emphasis through the mediator of Treatment Burden, as more severe injuries require more treatment, which can highlight psychological impacts."
+    },
+    {
+      "a": "Work Impact Severity",
+      "b": "Causation Complexity",
+      "verdict": "indirect",
+      "verdict_agreement": 0.67,
+      "confidence": 3,
+      "magnitude": 2,
+      "both_llm_coded": true,
+      "prediction": {
+        "test": "mediation",
+        "var_a": "Work Impact Severity",
+        "var_b": "Causation Complexity",
+        "outcome": "Causation Complexity",
+        "mediator": "Legal Procedural Complexity",
+        "direction": "attenuates",
+        "rationale": "If Work Impact Severity affects Causation Complexity through Legal Procedural Complexity, then controlling for Legal Procedural Complexity should reduce the association between Work Impact Severity and Causation Complexity."
+      },
+      "passed": true,
+      "detail": {
+        "rho_base": 0.326,
+        "rho_given_mediator": -0.059,
+        "attenuation": 0.819,
+        "threshold": 0.5,
+        "n": 540,
+        "mediator": "Legal Procedural Complexity",
+        "outcome": "Causation Complexity"
+      },
+      "mechanism": "Work Impact Severity affects Causation Complexity through Legal Procedural Complexity, as more severe work impacts may lead to more complex legal proceedings."
+    },
+    {
+      "a": "Injury Burden Intensity",
+      "b": "Legal Procedural Complexity",
+      "verdict": "indirect",
+      "verdict_agreement": 1.0,
+      "confidence": 4,
+      "magnitude": 2,
+      "both_llm_coded": true,
+      "prediction": {
+        "test": "mediation",
+        "var_a": "Injury Burden Intensity",
+        "var_b": "Legal Procedural Complexity",
+        "outcome": "Legal Procedural Complexity",
+        "mediator": "Treatment Burden",
+        "direction": "attenuates",
+        "rationale": "If Injury Burden Intensity affects Legal Procedural Complexity through Treatment Burden, then controlling for Treatment Burden should reduce the association between Injury Burden Intensity and Legal Procedural Complexity."
+      },
+      "passed": false,
+      "detail": {
+        "rho_base": 0.201,
+        "rho_given_mediator": 0.129,
+        "attenuation": 0.356,
+        "threshold": 0.5,
+        "n": 540,
+        "mediator": "Treatment Burden",
+        "outcome": "Legal Procedural Complexity"
+      },
+      "mechanism": "Injury Burden Intensity affects Legal Procedural Complexity through the Treatment Burden, as more severe injuries require more extensive treatment, which complicates legal proceedings."
+    },
+    {
+      "a": "Non-Economic Loss",
+      "b": "Work Impact Severity",
+      "verdict": "indirect",
+      "verdict_agreement": 1.0,
+      "confidence": 4,
+      "magnitude": 3,
+      "both_llm_coded": false,
+      "prediction": {
+        "test": "mediation",
+        "var_a": "Non-Economic Loss",
+        "var_b": "Work Impact Severity",
+        "outcome": "Work Impact Severity",
+        "mediator": "Injury Burden Intensity",
+        "direction": "attenuates",
+        "rationale": "If Injury Burden Intensity mediates the relationship, then controlling for it should reduce the association between Non-Economic Loss and Work Impact Severity, indicating that the effect of non-economic loss on work impact is largely through the severity of the injury."
+      },
+      "passed": true,
+      "detail": {
+        "rho_base": 0.161,
+        "rho_given_mediator": -0.063,
+        "attenuation": 0.611,
+        "threshold": 0.5,
+        "n": 457,
+        "mediator": "Injury Burden Intensity",
+        "outcome": "Work Impact Severity"
+      },
+      "mechanism": "Non-Economic Loss affects Work Impact Severity through the Injury Burden Intensity, as more severe injuries lead to both higher non-economic loss awards and greater work impact."
+    },
+    {
+      "a": "Injury Burden Intensity",
+      "b": "Work Impact Severity",
+      "verdict": "a_causes_b",
+      "verdict_agreement": 1.0,
+      "confidence": 4,
+      "magnitude": 3,
+      "both_llm_coded": true,
+      "prediction": {
+        "test": "monotone",
+        "var_a": "Injury Burden Intensity",
+        "var_b": "Work Impact Severity",
+        "outcome": null,
+        "mediator": null,
+        "direction": "increasing",
+        "rationale": "If Injury Burden Intensity directly causes Work Impact Severity, we would expect to see a consistent increase in Work Impact Severity as Injury Burden Intensity increases. This would be reflected in a monotonic relationship where higher levels of injury burden correspond to higher levels of work impact."
+      },
+      "passed": false,
+      "detail": {
+        "binned_on": "Injury Burden Intensity",
+        "median_of": "Work Impact Severity",
+        "oriented_by_verdict": false,
+        "trend": -0.051,
+        "trend_threshold": 0.7,
+        "medians": [
+          0.5,
+          1.0,
+          2.0,
+          2.0,
+          0.0
+        ],
+        "levels": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "peak_at": 2,
+        "trough_at": 4,
+        "n_levels": 5
+      },
+      "mechanism": "Severe physical injuries limit the ability to perform work tasks, reducing working capacity."
+    },
+    {
+      "a": "WPI %",
+      "b": "Psychological Injury Emphasis",
+      "verdict": "indirect",
+      "verdict_agreement": 1.0,
+      "confidence": 4,
+      "magnitude": 2,
+      "both_llm_coded": false,
+      "prediction": {
+        "test": "mediation",
+        "var_a": "WPI %",
+        "var_b": "Psychological Injury Emphasis",
+        "outcome": "Psychological Injury Emphasis",
+        "mediator": "Injury Burden Intensity",
+        "direction": "attenuates",
+        "rationale": "If WPI % affects Psychological Injury Emphasis through Injury Burden Intensity, then controlling for Injury Burden Intensity should reduce the association between WPI % and Psychological Injury Emphasis."
+      },
+      "passed": true,
+      "detail": {
+        "rho_base": 0.138,
+        "rho_given_mediator": 0.036,
+        "attenuation": 0.737,
+        "threshold": 0.5,
+        "n": 287,
+        "mediator": "Injury Burden Intensity",
+        "outcome": "Psychological Injury Emphasis"
+      },
+      "mechanism": "WPI % affects Psychological Injury Emphasis through Injury Burden Intensity, as higher impairment suggests more severe injuries, which may include psychological aspects."
+    },
+    {
+      "a": "Causation Complexity",
+      "b": "Pre-existing Condition Salience",
+      "verdict": "common_cause",
+      "verdict_agreement": 0.67,
+      "confidence": 4,
+      "magnitude": 3,
+      "both_llm_coded": true,
+      "prediction": {
+        "test": "sign",
+        "var_a": "Causation Complexity",
+        "var_b": "Pre-existing Condition Salience",
+        "outcome": null,
+        "mediator": null,
+        "direction": "positive",
+        "rationale": "A positive correlation would support the idea that both variables are influenced by the presence of a pre-existing condition, which complicates both the attribution of injuries to the accident and the prominence of pre-existing conditions in the assessment."
+      },
+      "passed": true,
+      "detail": {
+        "rho": 0.635,
+        "n": 540,
+        "threshold": 0.05
+      },
+      "mechanism": "Both Causation Complexity and Pre-existing Condition Salience are influenced by the presence of a pre-existing condition, which complicates the attribution of injuries to the accident."
+    },
+    {
+      "a": "Treatment Burden",
+      "b": "Work Impact Severity",
+      "verdict": "indirect",
+      "verdict_agreement": 1.0,
+      "confidence": 4,
+      "magnitude": 3,
+      "both_llm_coded": true,
+      "prediction": {
+        "test": "mediation",
+        "var_a": "Treatment Burden",
+        "var_b": "Work Impact Severity",
+        "outcome": "Work Impact Severity",
+        "mediator": "Injury Burden Intensity",
+        "direction": "attenuates",
+        "rationale": "If Treatment Burden affects Work Impact Severity through Injury Burden Intensity, then controlling for Injury Burden Intensity should reduce the association between Treatment Burden and Work Impact Severity."
+      },
+      "passed": true,
+      "detail": {
+        "rho_base": 0.128,
+        "rho_given_mediator": 0.016,
+        "attenuation": 0.876,
+        "threshold": 0.5,
+        "n": 540,
+        "mediator": "Injury Burden Intensity",
+        "outcome": "Work Impact Severity"
+      },
+      "mechanism": "Treatment Burden affects Work Impact Severity through Injury Burden Intensity, as more severe injuries require more treatment and also impact work capacity."
+    },
+    {
+      "a": "Claimant Age",
+      "b": "Work Impact Severity",
+      "verdict": "indirect",
+      "verdict_agreement": 1.0,
+      "confidence": 4,
+      "magnitude": 3,
+      "both_llm_coded": false,
+      "prediction": {
+        "test": "mediation",
+        "var_a": "Claimant Age",
+        "var_b": "Work Impact Severity",
+        "outcome": "Work Impact Severity",
+        "mediator": "Injury Burden Intensity",
+        "direction": "attenuates",
+        "rationale": "If claimant age affects work impact severity through injury burden intensity, then controlling for injury burden intensity should reduce the association between age and work impact severity."
+      },
+      "passed": false,
+      "detail": {
+        "rho_base": -0.388,
+        "rho_given_mediator": -0.384,
+        "attenuation": 0.01,
+        "threshold": 0.5,
+        "n": 496,
+        "mediator": "Injury Burden Intensity",
+        "outcome": "Work Impact Severity"
+      },
+      "mechanism": "Older age may lead to higher work impact severity through increased Injury Burden Intensity and Treatment Burden."
+    },
+    {
+      "a": "Nature",
+      "b": "Treatment Burden",
+      "verdict": "indirect",
+      "verdict_agreement": 0.67,
+      "confidence": 4,
+      "magnitude": 3,
+      "both_llm_coded": false,
+      "prediction": {
+        "test": "mediation",
+        "var_a": "Nature",
+        "var_b": "Treatment Burden",
+        "outcome": "Treatment Burden",
+        "mediator": "Injury Burden Intensity",
+        "direction": "attenuates",
+        "rationale": "If the procedural route affects Treatment Burden through Injury Burden Intensity, then controlling for Injury Burden Intensity should reduce the association between Nature and Treatment Burden."
+      },
+      "passed": false,
+      "detail": {
+        "rho_base": 0.096,
+        "rho_given_mediator": -0.084,
+        "attenuation": 0.125,
+        "threshold": 0.5,
+        "n": 540,
+        "mediator": "Injury Burden Intensity",
+        "outcome": "Treatment Burden"
+      },
+      "mechanism": "The procedural route affects the Treatment Burden through the Injury Burden Intensity, as more severe injuries require more treatment and influence the procedural route."
+    },
+    {
+      "a": "Future Economic Loss",
+      "b": "Claimant Age",
+      "verdict": "b_causes_a",
+      "verdict_agreement": 0.67,
+      "confidence": 5,
+      "magnitude": 3,
+      "both_llm_coded": false,
+      "prediction": {
+        "test": "monotone",
+        "var_a": "Future Economic Loss",
+        "var_b": "Claimant Age",
+        "outcome": null,
+        "mediator": null,
+        "direction": "decreasing",
+        "rationale": "If claimant age directly affects future economic loss, older ages should monotonically decrease the amount awarded for future economic loss, as the number of working years and hence potential earnings lost decreases."
+      },
+      "passed": true,
+      "detail": {
+        "binned_on": "Claimant Age",
+        "median_of": "Future Economic Loss",
+        "oriented_by_verdict": true,
+        "trend": -0.7,
+        "trend_threshold": 0.7,
+        "medians": [
+          11.918,
+          11.763,
+          11.935,
+          11.329,
+          10.402
+        ],
+        "levels": [
+          "(12.999, 29.0]",
+          "(29.0, 41.0]",
+          "(41.0, 50.0]",
+          "(50.0, 59.8]",
+          "(59.8, 88.0]"
+        ],
+        "peak_at": 2,
+        "trough_at": 4,
+        "n_levels": 5
+      },
+      "mechanism": "Younger claimants have more potential future earnings over more years, increasing their future economic loss claims."
+    },
+    {
+      "a": "Injury Burden Intensity",
+      "b": "Causation Complexity",
+      "verdict": "a_causes_b",
+      "verdict_agreement": 0.67,
+      "confidence": 4,
+      "magnitude": 2,
+      "both_llm_coded": true,
+      "prediction": {
+        "test": "monotone",
+        "var_a": "Injury Burden Intensity",
+        "var_b": "Causation Complexity",
+        "outcome": null,
+        "mediator": null,
+        "direction": "increasing",
+        "rationale": "If injury burden intensity leads to increased causation complexity, we would expect to see a monotonic increase in complexity scores as injury burden intensity increases, reflecting the added difficulty in establishing causation with more severe injuries."
+      },
+      "passed": false,
+      "detail": {
+        "binned_on": "Injury Burden Intensity",
+        "median_of": "Causation Complexity",
+        "oriented_by_verdict": false,
+        "trend": 0.289,
+        "trend_threshold": 0.7,
+        "medians": [
+          0.0,
+          0.0,
+          1.0,
+          1.0,
+          0.0
+        ],
+        "levels": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "peak_at": 2,
+        "trough_at": 0,
+        "n_levels": 5
+      },
+      "mechanism": "Higher injury burden intensity complicates attributing injuries directly to the accident due to multiple potential contributing factors or alternative causes."
+    },
+    {
+      "a": "Treatment Burden",
+      "b": "Legal Procedural Complexity",
+      "verdict": "common_cause",
+      "verdict_agreement": 0.67,
+      "confidence": 4,
+      "magnitude": 3,
+      "both_llm_coded": true,
+      "prediction": {
+        "test": "sign",
+        "var_a": "Treatment Burden",
+        "var_b": "Legal Procedural Complexity",
+        "outcome": null,
+        "mediator": null,
+        "direction": "positive",
+        "rationale": "If both Treatment Burden and Legal Procedural Complexity are driven by the severity of the injury, they should be positively correlated. This test will help determine if there is a general association between the two variables, which would be expected if they share a common cause."
+      },
+      "passed": true,
+      "detail": {
+        "rho": 0.075,
+        "n": 540,
+        "threshold": 0.05
+      },
+      "mechanism": "Both Treatment Burden and Legal Procedural Complexity are likely influenced by the severity of the injury and the clarity of liability."
+    },
+    {
+      "a": "Legal Procedural Complexity",
+      "b": "Pre-existing Condition Salience",
+      "verdict": "common_cause",
+      "verdict_agreement": 0.33,
+      "confidence": 4,
+      "magnitude": 3,
+      "both_llm_coded": true,
+      "prediction": {
+        "test": "sign",
+        "var_a": "Legal Procedural Complexity",
+        "var_b": "Pre-existing Condition Salience",
+        "outcome": null,
+        "mediator": null,
+        "direction": "positive",
+        "rationale": "If Causation Complexity is a common cause, both Legal Procedural Complexity and Pre-existing Condition Salience should be positively correlated, as more complex causation issues would increase both."
+      },
+      "passed": true,
+      "detail": {
+        "rho": 0.323,
+        "n": 540,
+        "threshold": 0.05
+      },
+      "mechanism": "Both Legal Procedural Complexity and Pre-existing Condition Salience are likely influenced by Causation Complexity, as difficulty in attributing conditions to the accident can complicate legal procedures and highlight pre-existing conditions."
+    },
+    {
+      "a": "WPI %",
+      "b": "Work Impact Severity",
+      "verdict": "a_causes_b",
+      "verdict_agreement": 0.67,
+      "confidence": 4,
+      "magnitude": 3,
+      "both_llm_coded": false,
+      "prediction": {
+        "test": "monotone",
+        "var_a": "WPI %",
+        "var_b": "Work Impact Severity",
+        "outcome": null,
+        "mediator": null,
+        "direction": "increasing",
+        "rationale": "If WPI % causes Work Impact Severity, we would expect to see a consistent increase in Work Impact Severity as WPI % increases, reflecting the direct impact of impairment on work capacity."
+      },
+      "passed": false,
+      "detail": {
+        "binned_on": "WPI %",
+        "median_of": "Work Impact Severity",
+        "oriented_by_verdict": false,
+        "trend": NaN,
+        "trend_threshold": 0.7,
+        "medians": [
+          2.0,
+          2.0,
+          2.0,
+          2.0,
+          2.0
+        ],
+        "levels": [
+          "(0.999, 4.0]",
+          "(4.0, 7.0]",
+          "(7.0, 12.0]",
+          "(12.0, 19.0]",
+          "(19.0, 48.0]"
+        ],
+        "peak_at": 0,
+        "trough_at": 0,
+        "n_levels": 5
+      },
+      "mechanism": "Higher WPI % indicates greater impairment, leading to increased Work Impact Severity due to reduced work capacity."
+    },
+    {
+      "a": "Psychological Injury Emphasis",
+      "b": "Pre-existing Condition Salience",
+      "verdict": "common_cause",
+      "verdict_agreement": 1.0,
+      "confidence": 4,
+      "magnitude": 2,
+      "both_llm_coded": true,
+      "prediction": {
+        "test": "sign",
+        "var_a": "Psychological Injury Emphasis",
+        "var_b": "Pre-existing Condition Salience",
+        "outcome": null,
+        "mediator": null,
+        "direction": "positive",
+        "rationale": "A positive correlation would suggest that both variables are influenced by a common factor, such as the complexity of the case, which would affect both the emphasis on psychological injury and the salience of pre-existing conditions."
+      },
+      "passed": true,
+      "detail": {
+        "rho": 0.265,
+        "n": 540,
+        "threshold": 0.05
+      },
+      "mechanism": "Both Psychological Injury Emphasis and Pre-existing Condition Salience are likely influenced by the complexity of the case, including factors like Causation Complexity and Legal Procedural Complexity."
+    },
+    {
+      "a": "WPI %",
+      "b": "Claimant Age",
+      "verdict": "b_causes_a",
+      "verdict_agreement": 1.0,
+      "confidence": 4,
+      "magnitude": 3,
+      "both_llm_coded": false,
+      "prediction": {
+        "test": "monotone",
+        "var_a": "WPI %",
+        "var_b": "Claimant Age",
+        "outcome": null,
+        "mediator": null,
+        "direction": "increasing",
+        "rationale": "If Claimant Age causes WPI %, we would expect to see a consistent increase in WPI % with increasing age, as older individuals are more likely to have higher impairment due to age-related factors."
+      },
+      "passed": true,
+      "detail": {
+        "binned_on": "Claimant Age",
+        "median_of": "WPI %",
+        "oriented_by_verdict": true,
+        "trend": 0.821,
+        "trend_threshold": 0.7,
+        "medians": [
+          6.0,
+          10.0,
+          7.0,
+          10.0,
+          14.5
+        ],
+        "levels": [
+          "(12.999, 31.0]",
+          "(31.0, 46.0]",
+          "(46.0, 56.0]",
+          "(56.0, 66.0]",
+          "(66.0, 92.0]"
+        ],
+        "peak_at": 4,
+        "trough_at": 0,
+        "n_levels": 5
+      },
+      "mechanism": "Older age increases the likelihood of higher WPI % due to pre-existing conditions and slower recovery."
+    },
+    {
+      "a": "Lump Sum",
+      "b": "Claimant Weekly Income",
+      "verdict": "indirect",
+      "verdict_agreement": 0.67,
+      "confidence": 5,
+      "magnitude": 4,
+      "both_llm_coded": false,
+      "prediction": {
+        "test": "mediation",
+        "var_a": "Lump Sum",
+        "var_b": "Claimant Weekly Income",
+        "outcome": "Lump Sum",
+        "mediator": "Future Economic Loss",
+        "direction": "attenuates",
+        "rationale": "If the claimant's weekly income influences Lump Sum awards indirectly through its impact on Future Economic Loss, holding Future Economic Loss constant should substantially attenuate the association between weekly income and Lump Sum. Conversely, if Lump Sum directly influences perceived income, the mediation effect should be less pronounced."
+      },
+      "passed": null,
+      "detail": {
+        "reason": "degenerate: mediator or outcome repeats the pair",
+        "outcome": "Lump Sum",
+        "mediator": "Future Economic Loss"
+      },
+      "mechanism": "The claimant's weekly income affects the Lump Sum award through Future Economic Loss, reflecting the loss of earnings capacity."
+    },
+    {
+      "a": "WPI %",
+      "b": "Claimant Weekly Income",
+      "verdict": "indirect",
+      "verdict_agreement": 0.67,
+      "confidence": 4,
+      "magnitude": 3,
+      "both_llm_coded": false,
+      "prediction": {
+        "test": "mediation",
+        "var_a": "WPI %",
+        "var_b": "Claimant Weekly Income",
+        "outcome": "Claimant Weekly Income",
+        "mediator": "Work Impact Severity",
+        "direction": "attenuates",
+        "rationale": "If WPI % affects Claimant Weekly Income through Work Impact Severity, then controlling for Work Impact Severity should reduce the association between WPI % and Claimant Weekly Income."
+      },
+      "passed": false,
+      "detail": {
+        "rho_base": 0.124,
+        "rho_given_mediator": 0.15,
+        "attenuation": -0.204,
+        "threshold": 0.5,
+        "n": 184,
+        "mediator": "Work Impact Severity",
+        "outcome": "Claimant Weekly Income"
+      },
+      "mechanism": "WPI % affects Claimant Weekly Income through Work Impact Severity, as impairment affects work capacity."
+    },
+    {
+      "a": "Claimant Age",
+      "b": "Injury Burden Intensity",
+      "verdict": "indirect",
+      "verdict_agreement": 1.0,
+      "confidence": 4,
+      "magnitude": 3,
+      "both_llm_coded": false,
+      "prediction": {
+        "test": "mediation",
+        "var_a": "Claimant Age",
+        "var_b": "Injury Burden Intensity",
+        "outcome": "Injury Burden Intensity",
+        "mediator": "Treatment Burden",
+        "direction": "attenuates",
+        "rationale": "If claimant age affects injury burden intensity through treatment burden, then controlling for treatment burden should reduce the association between age and injury burden intensity."
+      },
+      "passed": false,
+      "detail": {
+        "rho_base": 0.177,
+        "rho_given_mediator": 0.146,
+        "attenuation": 0.177,
+        "threshold": 0.5,
+        "n": 496,
+        "mediator": "Treatment Burden",
+        "outcome": "Injury Burden Intensity"
+      },
+      "mechanism": "Older age may lead to higher injury burden intensity through increased treatment burden and work impact severity."
+    },
+    {
+      "a": "Claimant Weekly Income",
+      "b": "Psychological Injury Emphasis",
+      "verdict": "indirect",
+      "verdict_agreement": 1.0,
+      "confidence": 3,
+      "magnitude": 2,
+      "both_llm_coded": false,
+      "prediction": {
+        "test": "mediation",
+        "var_a": "Claimant Weekly Income",
+        "var_b": "Psychological Injury Emphasis",
+        "outcome": "Psychological Injury Emphasis",
+        "mediator": "Work Impact Severity",
+        "direction": "attenuates",
+        "rationale": "If Claimant Weekly Income affects Psychological Injury Emphasis through Work Impact Severity, then controlling for Work Impact Severity should attenuate the relationship between Claimant Weekly Income and Psychological Injury Emphasis."
+      },
+      "passed": false,
+      "detail": {
+        "rho_base": -0.123,
+        "rho_given_mediator": -0.09,
+        "attenuation": 0.27,
+        "threshold": 0.5,
+        "n": 314,
+        "mediator": "Work Impact Severity",
+        "outcome": "Psychological Injury Emphasis"
+      },
+      "mechanism": "Claimant Weekly Income affects Psychological Injury Emphasis through Work Impact Severity."
+    },
+    {
+      "a": "Claimant Age",
+      "b": "Psychological Injury Emphasis",
+      "verdict": "indirect",
+      "verdict_agreement": 0.67,
+      "confidence": 3,
+      "magnitude": 2,
+      "both_llm_coded": false,
+      "prediction": {
+        "test": "mediation",
+        "var_a": "Claimant Age",
+        "var_b": "Psychological Injury Emphasis",
+        "outcome": "Psychological Injury Emphasis",
+        "mediator": "Injury Burden Intensity",
+        "direction": "attenuates",
+        "rationale": "If Claimant Age affects Psychological Injury Emphasis through Injury Burden Intensity, then controlling for Injury Burden Intensity should reduce the association between Claimant Age and Psychological Injury Emphasis."
+      },
+      "passed": false,
+      "detail": {
+        "rho_base": -0.154,
+        "rho_given_mediator": -0.21,
+        "attenuation": -0.365,
+        "threshold": 0.5,
+        "n": 496,
+        "mediator": "Injury Burden Intensity",
+        "outcome": "Psychological Injury Emphasis"
+      },
+      "mechanism": "Claimant Age affects Psychological Injury Emphasis through Injury Burden Intensity and Pre-existing Condition Salience."
+    },
+    {
+      "a": "Claimant Weekly Income",
+      "b": "Treatment Burden",
+      "verdict": "indirect",
+      "verdict_agreement": 0.67,
+      "confidence": 4,
+      "magnitude": 3,
+      "both_llm_coded": false,
+      "prediction": {
+        "test": "mediation",
+        "var_a": "Claimant Weekly Income",
+        "var_b": "Treatment Burden",
+        "outcome": "Treatment Burden",
+        "mediator": "Injury Burden Intensity",
+        "direction": "attenuates",
+        "rationale": "If claimant weekly income affects treatment burden through injury burden intensity, then controlling for injury burden intensity should attenuate the relationship between weekly income and treatment burden."
+      },
+      "passed": false,
+      "detail": {
+        "rho_base": 0.096,
+        "rho_given_mediator": 0.122,
+        "attenuation": -0.275,
+        "threshold": 0.5,
+        "n": 314,
+        "mediator": "Injury Burden Intensity",
+        "outcome": "Treatment Burden"
+      },
+      "mechanism": "Claimant weekly income affects treatment burden through Injury Burden Intensity, as higher income allows for more comprehensive treatment of severe injuries."
+    },
+    {
+      "a": "Treatment Burden",
+      "b": "Causation Complexity",
+      "verdict": "indirect",
+      "verdict_agreement": 1.0,
+      "confidence": 4,
+      "magnitude": 2,
+      "both_llm_coded": true,
+      "prediction": {
+        "test": "mediation",
+        "var_a": "Treatment Burden",
+        "var_b": "Causation Complexity",
+        "outcome": "Causation Complexity",
+        "mediator": "Injury Burden Intensity",
+        "direction": "attenuates",
+        "rationale": "If Treatment Burden affects Causation Complexity through Injury Burden Intensity, then controlling for Injury Burden Intensity should reduce the association between Treatment Burden and Causation Complexity."
+      },
+      "passed": null,
+      "detail": {
+        "reason": "no baseline association to attenuate",
+        "rho_base": 0.045358796402861244,
+        "n": 540
+      },
+      "mechanism": "Treatment Burden affects Causation Complexity through Injury Burden Intensity, as more severe injuries require more treatment and are easier to attribute to the accident."
+    },
+    {
+      "a": "Claimant Weekly Income",
+      "b": "Work Impact Severity",
+      "verdict": "indirect",
+      "verdict_agreement": 0.67,
+      "confidence": 4,
+      "magnitude": 3,
+      "both_llm_coded": false,
+      "prediction": {
+        "test": "mediation",
+        "var_a": "Claimant Weekly Income",
+        "var_b": "Work Impact Severity",
+        "outcome": "Work Impact Severity",
+        "mediator": "Future Economic Loss",
+        "direction": "attenuates",
+        "rationale": "If Claimant Weekly Income affects Work Impact Severity through Future Economic Loss, then controlling for Future Economic Loss should reduce the association between Claimant Weekly Income and Work Impact Severity."
+      },
+      "passed": false,
+      "detail": {
+        "rho_base": -0.077,
+        "rho_given_mediator": -0.132,
+        "attenuation": -0.72,
+        "threshold": 0.5,
+        "n": 301,
+        "mediator": "Future Economic Loss",
+        "outcome": "Work Impact Severity"
+      },
+      "mechanism": "Claimant Weekly Income affects Work Impact Severity through Future Economic Loss, as higher income leads to higher perceived loss of capacity."
+    },
+    {
+      "a": "Legal Procedural Complexity",
+      "b": "Liability Clarity",
+      "verdict": "b_causes_a",
+      "verdict_agreement": 0.67,
+      "confidence": 4,
+      "magnitude": 3,
+      "both_llm_coded": true,
+      "prediction": {
+        "test": "monotone",
+        "var_a": "Legal Procedural Complexity",
+        "var_b": "Liability Clarity",
+        "outcome": null,
+        "mediator": null,
+        "direction": "increasing",
+        "rationale": "If liability clarity influences procedural complexity, we would expect that as liability clarity decreases (becomes less clear), procedural complexity increases."
+      },
+      "passed": false,
+      "detail": {
+        "binned_on": "Liability Clarity",
+        "median_of": "Legal Procedural Complexity",
+        "oriented_by_verdict": true,
+        "trend": -0.866,
+        "trend_threshold": 0.7,
+        "medians": [
+          2.0,
+          2.0,
+          0.0
+        ],
+        "levels": [
+          "0",
+          "1",
+          "2"
+        ],
+        "peak_at": 0,
+        "trough_at": 2,
+        "n_levels": 3
+      },
+      "mechanism": "Unclear liability leads to more complex legal procedures due to increased debate and evidence requirements."
+    },
+    {
+      "a": "Claimant Age",
+      "b": "Treatment Burden",
+      "verdict": "indirect",
+      "verdict_agreement": 1.0,
+      "confidence": 4,
+      "magnitude": 2,
+      "both_llm_coded": false,
+      "prediction": {
+        "test": "mediation",
+        "var_a": "Claimant Age",
+        "var_b": "Treatment Burden",
+        "outcome": "Treatment Burden",
+        "mediator": "Injury Burden Intensity",
+        "direction": "attenuates",
+        "rationale": "If Injury Burden Intensity mediates the relationship between Claimant Age and Treatment Burden, then controlling for Injury Burden Intensity should reduce the association between Claimant Age and Treatment Burden."
+      },
+      "passed": true,
+      "detail": {
+        "rho_base": 0.095,
+        "rho_given_mediator": -0.0,
+        "attenuation": 0.995,
+        "threshold": 0.5,
+        "n": 496,
+        "mediator": "Injury Burden Intensity",
+        "outcome": "Treatment Burden"
+      },
+      "mechanism": "Older claimants may have a higher Injury Burden Intensity, which in turn increases the Treatment Burden."
+    },
+    {
+      "a": "Lump Sum",
+      "b": "Claimant Age",
+      "verdict": "indirect",
+      "verdict_agreement": 1.0,
+      "confidence": 5,
+      "magnitude": 4,
+      "both_llm_coded": false,
+      "prediction": {
+        "test": "mediation",
+        "var_a": "Lump Sum",
+        "var_b": "Claimant Age",
+        "outcome": "Lump Sum",
+        "mediator": "Future Economic Loss",
+        "direction": "attenuates",
+        "rationale": "If claimant age affects the lump sum primarily through its impact on future economic loss, then controlling for future economic loss should significantly reduce the association between age and the lump sum."
+      },
+      "passed": null,
+      "detail": {
+        "reason": "degenerate: mediator or outcome repeats the pair",
+        "outcome": "Lump Sum",
+        "mediator": "Future Economic Loss"
+      },
+      "mechanism": "Claimant age affects the lump sum through Future Economic Loss and Non-Economic Loss calculations."
+    },
+    {
+      "a": "Injury Burden Intensity",
+      "b": "Pre-existing Condition Salience",
+      "verdict": "indirect",
+      "verdict_agreement": 0.67,
+      "confidence": 3,
+      "magnitude": 2,
+      "both_llm_coded": true,
+      "prediction": {
+        "test": "mediation",
+        "var_a": "Injury Burden Intensity",
+        "var_b": "Pre-existing Condition Salience",
+        "outcome": null,
+        "mediator": "Treatment Burden",
+        "direction": "attenuates",
+        "rationale": "If injury burden increases pre-existing condition salience due to more intensive evaluations, controlling for treatment burden may attenuate the observed relationship between injury burden and pre-existing condition salience."
+      },
+      "passed": null,
+      "detail": {
+        "reason": "mediation needs outcome and mediator"
+      },
+      "mechanism": "Injury burden affects pre-existing condition salience through the variable of injury and treatment evaluations, which might highlight existing conditions."
+    },
+    {
+      "a": "Claimant Weekly Income",
+      "b": "Claimant Age",
+      "verdict": "b_causes_a",
+      "verdict_agreement": 0.67,
+      "confidence": 4,
+      "magnitude": 3,
+      "both_llm_coded": false,
+      "prediction": {
+        "test": "monotone",
+        "var_a": "Claimant Weekly Income",
+        "var_b": "Claimant Age",
+        "outcome": null,
+        "mediator": null,
+        "direction": "increasing",
+        "rationale": "If age influences income through career progression, we would expect to see a consistent increase in median income with increasing age, reflecting the accumulation of experience and seniority."
+      },
+      "passed": false,
+      "detail": {
+        "binned_on": "Claimant Age",
+        "median_of": "Claimant Weekly Income",
+        "oriented_by_verdict": true,
+        "trend": 0.1,
+        "trend_threshold": 0.7,
+        "medians": [
+          6.692,
+          7.126,
+          6.931,
+          7.026,
+          6.824
+        ],
+        "levels": [
+          "(12.999, 28.2]",
+          "(28.2, 41.0]",
+          "(41.0, 50.0]",
+          "(50.0, 58.0]",
+          "(58.0, 80.0]"
+        ],
+        "peak_at": 1,
+        "trough_at": 0,
+        "n_levels": 5
+      },
+      "mechanism": "Age influences income through career progression and accumulated work experience."
+    },
+    {
+      "a": "Treatment Burden",
+      "b": "Psychological Injury Emphasis",
+      "verdict": "indirect",
+      "verdict_agreement": 0.33,
+      "confidence": 4,
+      "magnitude": 3,
+      "both_llm_coded": true,
+      "prediction": {
+        "test": "mediation",
+        "var_a": "Treatment Burden",
+        "var_b": "Psychological Injury Emphasis",
+        "outcome": "Psychological Injury Emphasis",
+        "mediator": "Injury Burden Intensity",
+        "direction": "attenuates",
+        "rationale": "If Treatment Burden affects Psychological Injury Emphasis through Injury Burden Intensity, then controlling for Injury Burden Intensity should reduce the association between Treatment Burden and Psychological Injury Emphasis."
+      },
+      "passed": null,
+      "detail": {
+        "reason": "no baseline association to attenuate",
+        "rho_base": 0.019151099349883002,
+        "n": 540
+      },
+      "mechanism": "Treatment Burden affects Psychological Injury Emphasis through Injury Burden Intensity, as more severe injuries require more treatment and also lead to greater psychological impact."
+    },
+    {
+      "a": "Work Impact Severity",
+      "b": "Pre-existing Condition Salience",
+      "verdict": "indirect",
+      "verdict_agreement": 1.0,
+      "confidence": 4,
+      "magnitude": 3,
+      "both_llm_coded": true,
+      "prediction": {
+        "test": "mediation",
+        "var_a": "Work Impact Severity",
+        "var_b": "Pre-existing Condition Salience",
+        "outcome": "Work Impact Severity",
+        "mediator": "WPI %",
+        "direction": "attenuates",
+        "rationale": "If Pre-existing Condition Salience affects Work Impact Severity through WPI %, then controlling for WPI % should reduce the association between Pre-existing Condition Salience and Work Impact Severity."
+      },
+      "passed": null,
+      "detail": {
+        "reason": "degenerate: mediator or outcome repeats the pair",
+        "outcome": "Work Impact Severity",
+        "mediator": "WPI %"
+      },
+      "mechanism": "Pre-existing conditions affect work impact severity through their influence on WPI % and Future Economic Loss."
+    },
+    {
+      "a": "WPI %",
+      "b": "Pre-existing Condition Salience",
+      "verdict": "indirect",
+      "verdict_agreement": 1.0,
+      "confidence": 3,
+      "magnitude": 2,
+      "both_llm_coded": false,
+      "prediction": {
+        "test": "mediation",
+        "var_a": "WPI %",
+        "var_b": "Pre-existing Condition Salience",
+        "outcome": "WPI %",
+        "mediator": "Injury Burden Intensity",
+        "direction": "attenuates",
+        "rationale": "If Injury Burden Intensity mediates the relationship, controlling for it should reduce the association between Pre-existing Condition Salience and WPI %."
+      },
+      "passed": null,
+      "detail": {
+        "reason": "degenerate: mediator or outcome repeats the pair",
+        "outcome": "WPI %",
+        "mediator": "Injury Burden Intensity"
+      },
+      "mechanism": "Pre-existing conditions affect WPI % through Injury Burden Intensity, as more salient conditions may increase the perceived burden."
+    },
+    {
+      "a": "Liability Clarity",
+      "b": "Pre-existing Condition Salience",
+      "verdict": "common_cause",
+      "verdict_agreement": 0.67,
+      "confidence": 4,
+      "magnitude": 2,
+      "both_llm_coded": true,
+      "prediction": {
+        "test": "sign",
+        "var_a": "Liability Clarity",
+        "var_b": "Pre-existing Condition Salience",
+        "outcome": null,
+        "mediator": null,
+        "direction": "positive",
+        "rationale": "If both variables are influenced by a common cause like causation complexity, they should show a positive correlation, as more complex cases would likely have both lower liability clarity and higher pre-existing condition salience."
+      },
+      "passed": true,
+      "detail": {
+        "rho": 0.096,
+        "n": 540,
+        "threshold": 0.05
+      },
+      "mechanism": "Both liability clarity and pre-existing condition salience are influenced by the complexity of the case, including factors like causation complexity and legal procedural complexity."
+    },
+    {
+      "a": "Treatment Burden",
+      "b": "Pre-existing Condition Salience",
+      "verdict": "common_cause",
+      "verdict_agreement": 0.67,
+      "confidence": 4,
+      "magnitude": 3,
+      "both_llm_coded": true,
+      "prediction": {
+        "test": "sign",
+        "var_a": "Treatment Burden",
+        "var_b": "Pre-existing Condition Salience",
+        "outcome": null,
+        "mediator": null,
+        "direction": "positive",
+        "rationale": "If both Treatment Burden and Pre-existing Condition Salience are driven by Injury Burden Intensity, they should be positively correlated. A positive Spearman correlation would support the common cause hypothesis."
+      },
+      "passed": true,
+      "detail": {
+        "rho": 0.068,
+        "n": 540,
+        "threshold": 0.05
+      },
+      "mechanism": "Both Treatment Burden and Pre-existing Condition Salience are likely influenced by the overall Injury Burden Intensity, which dictates the extent of treatment needed and the relevance of pre-existing conditions."
+    },
+    {
+      "a": "Non-Economic Loss",
+      "b": "Claimant Age",
+      "verdict": "b_causes_a",
+      "verdict_agreement": 1.0,
+      "confidence": 4,
+      "magnitude": 3,
+      "both_llm_coded": false,
+      "prediction": {
+        "test": "monotone",
+        "var_a": "Non-Economic Loss",
+        "var_b": "Claimant Age",
+        "outcome": null,
+        "mediator": null,
+        "direction": "increasing",
+        "rationale": "If claimant age influences non-economic loss, we would expect to see a consistent increase in non-economic loss awards with increasing claimant age."
+      },
+      "passed": true,
+      "detail": {
+        "binned_on": "Claimant Age",
+        "median_of": "Non-Economic Loss",
+        "oriented_by_verdict": true,
+        "trend": 0.894,
+        "trend_threshold": 0.7,
+        "medians": [
+          0.0,
+          0.0,
+          0.0,
+          12.153,
+          12.206
+        ],
+        "levels": [
+          "(15.999, 33.0]",
+          "(33.0, 47.0]",
+          "(47.0, 57.0]",
+          "(57.0, 68.2]",
+          "(68.2, 100.0]"
+        ],
+        "peak_at": 4,
+        "trough_at": 0,
+        "n_levels": 5
+      },
+      "mechanism": "Older claimants may receive higher non-economic loss awards due to perceived reduced recovery capacity and greater life impact."
+    },
+    {
+      "a": "Injury Burden Intensity",
+      "b": "Liability Clarity",
+      "verdict": "indirect",
+      "verdict_agreement": 0.67,
+      "confidence": 3,
+      "magnitude": 2,
+      "both_llm_coded": true,
+      "prediction": {
+        "test": "mediation",
+        "var_a": "Injury Burden Intensity",
+        "var_b": "Liability Clarity",
+        "outcome": "Liability Clarity",
+        "mediator": "Causation Complexity",
+        "direction": "attenuates",
+        "rationale": "If liability clarity is influenced by injury burden intensity, but mainly through the complexity of establishing causation, then controlling for causation complexity should reduce the direct impact of injury burden intensity on liability clarity."
+      },
+      "passed": false,
+      "detail": {
+        "rho_base": -0.086,
+        "rho_given_mediator": -0.29,
+        "attenuation": -2.35,
+        "threshold": 0.5,
+        "n": 540,
+        "mediator": "Causation Complexity",
+        "outcome": "Liability Clarity"
+      },
+      "mechanism": "Higher injury burden intensifies investigations and affects liability clarity indirectly through factors like causation complexity and legal procedural complexity."
+    },
+    {
+      "a": "Work Impact Severity",
+      "b": "Liability Clarity",
+      "verdict": "common_cause",
+      "verdict_agreement": 0.67,
+      "confidence": 4,
+      "magnitude": 3,
+      "both_llm_coded": true,
+      "prediction": {
+        "test": "sign",
+        "var_a": "Work Impact Severity",
+        "var_b": "Liability Clarity",
+        "outcome": null,
+        "mediator": null,
+        "direction": "positive",
+        "rationale": "A positive correlation would suggest that both variables are influenced by a common factor, such as the complexity of the legal case, which affects both the clarity of liability and the severity of work impact."
+      },
+      "passed": false,
+      "detail": {
+        "rho": -0.085,
+        "n": 540,
+        "threshold": 0.05
+      },
+      "mechanism": "Both Work Impact Severity and Liability Clarity are likely influenced by the complexity of the case, including factors like Legal Procedural Complexity and Causation Complexity."
+    },
+    {
+      "a": "Claimant Weekly Income",
+      "b": "Injury Burden Intensity",
+      "verdict": "indirect",
+      "verdict_agreement": 0.67,
+      "confidence": 3,
+      "magnitude": 2,
+      "both_llm_coded": false,
+      "prediction": {
+        "test": "mediation",
+        "var_a": "Claimant Weekly Income",
+        "var_b": "Injury Burden Intensity",
+        "outcome": "Injury Burden Intensity",
+        "mediator": "Treatment Burden",
+        "direction": "attenuates",
+        "rationale": "If Claimant Weekly Income affects Injury Burden Intensity through Treatment Burden, then controlling for Treatment Burden should reduce the association between income and injury burden."
+      },
+      "passed": null,
+      "detail": {
+        "reason": "no baseline association to attenuate",
+        "rho_base": 0.021784321990187032,
+        "n": 314
+      },
+      "mechanism": "Claimant Weekly Income affects Injury Burden Intensity through access to healthcare and rehabilitation services."
+    },
+    {
+      "a": "Treatment Burden",
+      "b": "Liability Clarity",
+      "verdict": "common_cause",
+      "verdict_agreement": 0.33,
+      "confidence": 4,
+      "magnitude": 3,
+      "both_llm_coded": true,
+      "prediction": {
+        "test": "sign",
+        "var_a": "Treatment Burden",
+        "var_b": "Liability Clarity",
+        "outcome": null,
+        "mediator": null,
+        "direction": "positive",
+        "rationale": "A positive correlation would support the idea that both Treatment Burden and Liability Clarity are influenced by a common factor, such as the severity of the accident, which affects both the extent of treatment needed and the clarity of fault."
+      },
+      "passed": false,
+      "detail": {
+        "rho": -0.021,
+        "n": 540,
+        "threshold": 0.05
+      },
+      "mechanism": "The severity of the accident could drive both the need for extensive treatment and the clarity of liability."
+    },
+    {
+      "a": "Liability Clarity",
+      "b": "Causation Complexity",
+      "verdict": "common_cause",
+      "verdict_agreement": 1.0,
+      "confidence": 4,
+      "magnitude": 3,
+      "both_llm_coded": true,
+      "prediction": {
+        "test": "sign",
+        "var_a": "Liability Clarity",
+        "var_b": "Causation Complexity",
+        "outcome": null,
+        "mediator": null,
+        "direction": "positive",
+        "rationale": "If both liability clarity and causation complexity are influenced by the same underlying factors, such as legal procedural complexity, they should show a positive correlation."
+      },
+      "passed": false,
+      "detail": {
+        "rho": -0.013,
+        "n": 540,
+        "threshold": 0.05
+      },
+      "mechanism": "Both liability clarity and causation complexity are influenced by the inherent complexity of the case, including factors like the nature of the accident and the presence of pre-existing conditions."
+    },
+    {
+      "a": "Psychological Injury Emphasis",
+      "b": "Liability Clarity",
+      "verdict": "common_cause",
+      "verdict_agreement": 0.67,
+      "confidence": 4,
+      "magnitude": 2,
+      "both_llm_coded": true,
+      "prediction": {
+        "test": "sign",
+        "var_a": "Psychological Injury Emphasis",
+        "var_b": "Liability Clarity",
+        "outcome": null,
+        "mediator": null,
+        "direction": "positive",
+        "rationale": "If both Psychological Injury Emphasis and Liability Clarity are influenced by Legal Procedural Complexity, they might show a positive correlation, as more complex cases could lead to both higher emphasis on psychological injuries and lower clarity in liability."
+      },
+      "passed": false,
+      "detail": {
+        "rho": 0.002,
+        "n": 540,
+        "threshold": 0.05
+      },
+      "mechanism": "Both Psychological Injury Emphasis and Liability Clarity could be influenced by the complexity of the case, such as Legal Procedural Complexity or Causation Complexity."
+    }
+  ]
+}

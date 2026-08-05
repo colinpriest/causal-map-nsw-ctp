@@ -1,0 +1,3784 @@
+{
+  "generated_at": "2026-08-05T10:44:53+00:00",
+  "model": "gpt-4o",
+  "n_provisions": 102,
+  "n_links_verbatim": 5,
+  "n_links_rejected": 34,
+  "blindness": "The model saw only one provision's verbatim text plus neutral variable descriptions. It saw no correlations, no case data, no other provision and no part of the existing DAG.",
+  "variables": {
+    "Lump Sum": "the total dollars awarded to the claimant",
+    "WPI %": "whole person impairment as a percentage: a clinical assessment of the permanent impairment remaining once the claimant's condition has stabilised",
+    "Non-Economic Loss": "dollars awarded for pain and suffering, as a component of the payout",
+    "Future Economic Loss": "dollars awarded for loss of future earning capacity, as a component of the payout",
+    "Claimant Weekly Income": "the claimant's weekly earnings before the accident",
+    "Claimant Age": "the claimant's age in years at the date of injury",
+    "Claimant Gender": "the claimant's recorded gender",
+    "Nature": "which procedural route the claim took: approval of an agreed settlement, or a contested damages assessment",
+    "Injury Burden Intensity": "the overall physical severity of the injuries the claimant sustained in the accident",
+    "Treatment Burden": "the extent of treatment, surgery and ongoing care the claimant underwent for those injuries",
+    "Work Impact Severity": "how much of the claimant's capacity to work was lost",
+    "Legal Procedural Complexity": "how straightforward or contested the components of the payout were to determine",
+    "Psychological Injury Emphasis": "how much the psychological damage was discussed in the court case",
+    "Liability Clarity": "how obvious it is who was at fault in the accident",
+    "Causation Complexity": "how straightforward it is to determine how much of the claimant's current physical health, psychological health, and ability to earn an income is due to the accident rather than to other causes",
+    "Pre-existing Condition Salience": "the physical and psychological health conditions the claimant had before the accident"
+  },
+  "system_prompt": "You are reading a single provision of New South Wales motor accident legislation. Report ONLY what this provision's text states. Do not use background knowledge of the scheme, other provisions, case law, or what you expect the answer to be.\n\nThe dataset variables are PROXIES FOR CONCEPTS, and the legislation will not use their names. Match on meaning, not wording. If a provision speaks of 'future earning capacity', that is the concept the variable 'Claimant Weekly Income' measures, and you should report the link. If it speaks of 'degree of permanent impairment', that is 'WPI %'. Do not decline a link merely because the provision uses different words.\n\nSeparate two things in your answer:\n  1. WHAT THE TEXT SAYS. Every link must carry a quote copied from the text you were given, containing the words that express the concept. You may elide with '...'. If you cannot copy such a quote, do not report the link.\n  2. HOW YOU MAPPED IT. State, separately, why the quoted concept corresponds to that dataset variable. This is your interpretation and will be recorded as such.\n\nA provision that says what a head of damage is FOR is stating an input to that head. An Act writes this as a list of what may be awarded -- 'the only damages that may be awarded for economic loss are ... damages for the deprivation or impairment of earning capacity' -- and that sentence makes impairment of earning capacity an input, with relation `defines_scope`. Do not pass over these because they read as definitions rather than rules; defining what a payment compensates IS specifying what determines it.\n\nA quoted phrase often names SEVERAL distinct quantities joined by 'or' or 'and'. Report one link per quantity, not one for the phrase. 'economic loss due to loss of earnings OR the deprivation or impairment of earning capacity' names two different things -- what the claimant was earning, and how much earning capacity was lost -- and different dataset variables measure each. Collapsing them into a single link silently drops one of the statutory inputs.\n\nA concept the provision names that no dataset variable measures should be listed in `unmapped_concepts`, not forced onto a variable that does not fit.\n\nTWO TRAPS TO AVOID.\n  (a) If the THING THE PROVISION GOVERNS is not one of the dataset variables, report NO links at all, whatever else the provision mentions. A provision about an insurer's duty to PAY FOR treatment does not govern how much treatment a claimant received: those are different quantities. Do not map preconditions onto variables just because the provision has preconditions.\n  (b) Do not import a variable's name into your reading. A provision that scopes payments to injury 'caused by the fault of the driver' states a condition; it says nothing about how DIFFICULT causation is to establish, so it is not evidence about a variable measuring difficulty. Ask whether the provision discusses the quantity the variable measures, not whether it uses a similar word.",
+  "schema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "provision_subject",
+      "determines",
+      "inputs",
+      "links",
+      "notes",
+      "unmapped_concepts"
+    ],
+    "properties": {
+      "provision_subject": {
+        "type": "string",
+        "description": "One sentence: what this provision is about, in its own terms."
+      },
+      "determines": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "enum": [
+            "Lump Sum",
+            "WPI %",
+            "Non-Economic Loss",
+            "Future Economic Loss",
+            "Claimant Weekly Income",
+            "Claimant Age",
+            "Claimant Gender",
+            "Nature",
+            "Injury Burden Intensity",
+            "Treatment Burden",
+            "Work Impact Severity",
+            "Legal Procedural Complexity",
+            "Psychological Injury Emphasis",
+            "Liability Clarity",
+            "Causation Complexity",
+            "Pre-existing Condition Salience"
+          ]
+        },
+        "description": "Variables whose value or availability this provision governs. Empty if none."
+      },
+      "inputs": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "enum": [
+            "Lump Sum",
+            "WPI %",
+            "Non-Economic Loss",
+            "Future Economic Loss",
+            "Claimant Weekly Income",
+            "Claimant Age",
+            "Claimant Gender",
+            "Nature",
+            "Injury Burden Intensity",
+            "Treatment Burden",
+            "Work Impact Severity",
+            "Legal Procedural Complexity",
+            "Psychological Injury Emphasis",
+            "Liability Clarity",
+            "Causation Complexity",
+            "Pre-existing Condition Salience"
+          ]
+        },
+        "description": "Variables this provision names as bearing on that determination. Empty if none."
+      },
+      "links": {
+        "type": "array",
+        "description": "One entry per input->determined pair the text supports, matching on MEANING rather than wording.",
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "concept_in_text",
+            "quote",
+            "input",
+            "mapping_rationale",
+            "determines",
+            "relation",
+            "confidence"
+          ],
+          "properties": {
+            "concept_in_text": {
+              "type": "string",
+              "description": "The concept as the provision expresses it, e.g. 'future earning capacity'."
+            },
+            "quote": {
+              "type": "string",
+              "description": "Copied from the provision text and containing the words of concept_in_text. Elide with '...' if long."
+            },
+            "input": {
+              "type": "string",
+              "enum": [
+                "Lump Sum",
+                "WPI %",
+                "Non-Economic Loss",
+                "Future Economic Loss",
+                "Claimant Weekly Income",
+                "Claimant Age",
+                "Claimant Gender",
+                "Nature",
+                "Injury Burden Intensity",
+                "Treatment Burden",
+                "Work Impact Severity",
+                "Legal Procedural Complexity",
+                "Psychological Injury Emphasis",
+                "Liability Clarity",
+                "Causation Complexity",
+                "Pre-existing Condition Salience"
+              ]
+            },
+            "mapping_rationale": {
+              "type": "string",
+              "description": "Why that concept corresponds to that dataset variable. Your interpretation, recorded as such."
+            },
+            "determines": {
+              "type": "string",
+              "enum": [
+                "Lump Sum",
+                "WPI %",
+                "Non-Economic Loss",
+                "Future Economic Loss",
+                "Claimant Weekly Income",
+                "Claimant Age",
+                "Claimant Gender",
+                "Nature",
+                "Injury Burden Intensity",
+                "Treatment Burden",
+                "Work Impact Severity",
+                "Legal Procedural Complexity",
+                "Psychological Injury Emphasis",
+                "Liability Clarity",
+                "Causation Complexity",
+                "Pre-existing Condition Salience"
+              ]
+            },
+            "relation": {
+              "type": "string",
+              "enum": [
+                "defines_scope",
+                "gate",
+                "formula_input",
+                "limit",
+                "adjustment",
+                "other"
+              ],
+              "description": "defines_scope: the provision states that this head of damage IS FOR the input -- it compensates that thing. This is the commonest statutory shape and the easiest to miss, because an Act states it as an enumeration of what may be awarded rather than as a rule about what determines what. 'The only damages that may be awarded for economic loss are ... damages for impairment of earning capacity' MAKES impairment of earning capacity an input to that head. gate: decides whether the head is available at all. formula_input: enters a calculation of the amount. limit: caps or floors it. adjustment: discounts or increases it."
+            },
+            "confidence": {
+              "type": "string",
+              "enum": [
+                "high",
+                "medium",
+                "low"
+              ]
+            }
+          }
+        }
+      },
+      "unmapped_concepts": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Concepts the provision names that no dataset variable measures."
+      },
+      "notes": {
+        "type": "string",
+        "description": "Anything ambiguous. May be empty."
+      }
+    }
+  },
+  "readings": [
+    {
+      "provision": "1.2 Motor Accident Injuries Act 2017",
+      "section": "1.2",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "The commencement of the Motor Accident Injuries Act 2017.",
+      "determines": [],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "commencement",
+        "proclamation"
+      ],
+      "notes": "The provision is about the commencement of the Act and does not govern any of the dataset variables related to claims.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "ca4143622cc8c82c4abd8caa",
+        "requested_at": "2026-08-05T10:41:02+00:00",
+        "prompt_tokens": 1846,
+        "completion_tokens": 65,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "1.3 Motor Accident Injuries Act 2017",
+      "section": "1.3",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "The provision outlines the objects of the Motor Accident Injuries Act 2017.",
+      "determines": [],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "early and appropriate treatment and care",
+        "optimum recovery",
+        "return to work or other activities",
+        "early and ongoing financial support",
+        "compulsory third-party insurance",
+        "affordable premiums",
+        "profits achieved by insurers",
+        "soft tissue injuries",
+        "psychological or psychiatric injuries",
+        "promote competition and innovation",
+        "sustainability and affordability",
+        "deter fraud",
+        "early resolution of claims",
+        "cost effective and just resolution of disputes",
+        "collection and use of data",
+        "shared and integrated roles",
+        "overall costs of the scheme",
+        "restrict access to non-economic loss compensation",
+        "serious injuries",
+        "premium pool",
+        "stability and predictability",
+        "consistent and stable application of the law",
+        "accountability of insurers"
+      ],
+      "notes": "The provision is about the overarching goals and principles of the Act, not specific claim variables.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "cb53a7eb88c937e4ffa6d0f6",
+        "requested_at": "2026-08-05T10:41:04+00:00",
+        "prompt_tokens": 2503,
+        "completion_tokens": 188,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "1.4 Motor Accident Injuries Act 2017",
+      "section": "1.4",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "Definitions of terms used in the Motor Accident Injuries Act 2017.",
+      "determines": [],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "attendant care services",
+        "Authority",
+        "claim",
+        "claimant",
+        "commencement of this Act",
+        "Commission",
+        "Commission rules",
+        "damages",
+        "driver",
+        "employment",
+        "fault",
+        "function",
+        "hire vehicle",
+        "hospital",
+        "injured person",
+        "injury",
+        "Insurance Industry Deed",
+        "insured motor vehicle",
+        "insured person",
+        "insurer",
+        "licensed insurer",
+        "medical assessor",
+        "merit reviewer",
+        "motor accident",
+        "Motor Accident Guidelines",
+        "motor vehicle",
+        "Nominal Defendant",
+        "Nominal Defendant\u2019s Fund",
+        "non-economic loss",
+        "owner",
+        "passenger service",
+        "person under legal incapacity",
+        "President",
+        "provider",
+        "registration",
+        "rehabilitation",
+        "relevant insurer",
+        "road",
+        "SIRA Fund",
+        "spouse",
+        "statutory benefits",
+        "taxi",
+        "TfNSW",
+        "third-party policy",
+        "threshold injury",
+        "trader\u2019s plate",
+        "trailer",
+        "treatment and care",
+        "use or operation of a motor vehicle",
+        "Workers Compensation Acts"
+      ],
+      "notes": "This provision is purely definitional and does not govern any of the dataset variables directly. It provides definitions for terms used throughout the Act.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "5c8d2ff77562be8aec9220a1",
+        "requested_at": "2026-08-05T10:41:06+00:00",
+        "prompt_tokens": 4081,
+        "completion_tokens": 240,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "1.6 Motor Accident Injuries Act 2017",
+      "section": "1.6",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "The provision defines what constitutes a 'threshold injury' under the Act.",
+      "determines": [],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "threshold injury",
+        "soft tissue injury",
+        "psychological or psychiatric injury",
+        "recognised psychiatric illness"
+      ],
+      "notes": "The provision defines 'threshold injury' but does not directly govern any of the dataset variables. It specifies types of injuries that qualify as 'threshold injuries' but does not link these to any specific compensation or assessment criteria in the dataset.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "e349f2d20a3ed9d520c6eaa5",
+        "requested_at": "2026-08-05T10:41:08+00:00",
+        "prompt_tokens": 2143,
+        "completion_tokens": 102,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "3.11 Motor Accident Injuries Act 2017",
+      "section": "3.11",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "Cessation of weekly payments after 52 weeks for certain injured persons.",
+      "determines": [],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "weekly payments of statutory benefits",
+        "fault of the person",
+        "threshold injuries",
+        "contributory negligence"
+      ],
+      "notes": "The provision governs the cessation of weekly payments, which is not directly related to any dataset variable. It sets conditions for stopping payments but does not determine or input any of the listed variables.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "cdc414438710735220de3578",
+        "requested_at": "2026-08-05T10:41:09+00:00",
+        "prompt_tokens": 2026,
+        "completion_tokens": 95,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "3.2 Motor Accident Injuries Act 2017",
+      "section": "3.2",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "This provision is about determining the relevant insurer responsible for paying statutory benefits under the Motor Accident Injuries Act 2017.",
+      "determines": [],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "relevant insurer",
+        "statutory benefits",
+        "motor accident",
+        "at-fault motor vehicle",
+        "Nominal Defendant",
+        "Lifetime Care and Support Authority of New South Wales",
+        "non-licensed insurer"
+      ],
+      "notes": "The provision focuses on identifying the insurer responsible for paying statutory benefits, not on the specifics of the benefits themselves or the claimant's circumstances.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "9f204144ff591527b1ea7854",
+        "requested_at": "2026-08-05T10:41:11+00:00",
+        "prompt_tokens": 2459,
+        "completion_tokens": 112,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "3.24 Motor Accident Injuries Act 2017",
+      "section": "3.24",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "Entitlement to statutory benefits for treatment and care expenses incurred by an injured person.",
+      "determines": [],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "reasonable cost of treatment and care",
+        "reasonable and necessary travel and accommodation expenses",
+        "reasonable and necessary treatment and care",
+        "injury resulting from the motor accident"
+      ],
+      "notes": "The provision is about entitlement to statutory benefits for treatment and care expenses, not about the variables listed in the dataset.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "cacf57a7ab36e4f83171ef77",
+        "requested_at": "2026-08-05T10:41:12+00:00",
+        "prompt_tokens": 2145,
+        "completion_tokens": 93,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "3.26 Motor Accident Injuries Act 2017",
+      "section": "3.26",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "Statutory benefits for loss of capacity to provide gratuitous domestic services to dependants.",
+      "determines": [],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "loss of capacity to provide gratuitous domestic services",
+        "reasonable expenses incurred",
+        "dependants",
+        "reasonable expectation",
+        "need for the services",
+        "assisted care",
+        "gratuitous domestic services"
+      ],
+      "notes": "The provision is about statutory benefits for expenses incurred in employing someone to provide domestic services to dependants, not about any of the dataset variables directly.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "9c911776088413d7ba62ab53",
+        "requested_at": "2026-08-05T10:41:14+00:00",
+        "prompt_tokens": 2738,
+        "completion_tokens": 106,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "3.28 Motor Accident Injuries Act 2017",
+      "section": "3.28",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "Cessation of statutory benefits after 52 weeks for certain injured persons.",
+      "determines": [],
+      "inputs": [
+        "Claimant Age",
+        "Liability Clarity",
+        "Injury Burden Intensity"
+      ],
+      "links": [
+        {
+          "concept_in_text": "the person was over 16 years of age at the time of the motor accident",
+          "quote": "the person was over 16 years of age at the time of the motor accident",
+          "input": "Claimant Age",
+          "mapping_rationale": "The provision specifies an age condition for cessation of benefits, which directly relates to the claimant's age.",
+          "determines": "Liability Clarity",
+          "relation": "gate",
+          "confidence": "high",
+          "quote_verbatim": false,
+          "quote_match": "refuted:subject_mismatch",
+          "quote_fragments": [
+            "the person was over 16 years of age at the time of the motor accident"
+          ],
+          "challenge": {
+            "objection": "The provision uses claimant age to determine eligibility for benefits, not to assess how clear liability is.",
+            "failure_mode": "subject_mismatch",
+            "sound": false
+          },
+          "rejected": "refuted:subject_mismatch"
+        },
+        {
+          "concept_in_text": "the motor accident was caused wholly or mostly by the fault of the person",
+          "quote": "the motor accident was caused wholly or mostly by the fault of the person",
+          "input": "Liability Clarity",
+          "mapping_rationale": "This phrase relates to the clarity of who was at fault in the accident, which corresponds to the liability clarity variable.",
+          "determines": "Liability Clarity",
+          "relation": "gate",
+          "confidence": "high",
+          "quote_verbatim": false,
+          "quote_match": "self-loop",
+          "quote_fragments": [
+            "the motor accident was caused wholly or mostly by the fault of the person"
+          ],
+          "challenge": null,
+          "rejected": "self-loop"
+        },
+        {
+          "concept_in_text": "the person\u2019s only injuries resulting from the motor accident were threshold injuries",
+          "quote": "the person\u2019s only injuries resulting from the motor accident were threshold injuries",
+          "input": "Injury Burden Intensity",
+          "mapping_rationale": "Threshold injuries imply a certain level of injury severity, which relates to the injury burden intensity variable.",
+          "determines": "Liability Clarity",
+          "relation": "gate",
+          "confidence": "high",
+          "quote_verbatim": false,
+          "quote_match": "refuted:subject_mismatch",
+          "quote_fragments": [
+            "the person's only injuries resulting from the motor accident were threshold injuries"
+          ],
+          "challenge": {
+            "objection": "The provision does not make 'Injury Burden Intensity' bear on 'Liability Clarity'; it only uses the severity of injuries to determine eligibility for benefits, not to clarify fault.",
+            "failure_mode": "subject_mismatch",
+            "sound": false
+          },
+          "rejected": "refuted:subject_mismatch"
+        }
+      ],
+      "unmapped_concepts": [
+        "statutory benefits",
+        "treatment and care expenses",
+        "threshold injuries"
+      ],
+      "notes": "The provision is about the cessation of benefits, not the determination of any specific payout amount or component.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "36dab265cf51098fd524e959",
+        "requested_at": "2026-08-05T10:41:17+00:00",
+        "prompt_tokens": 2015,
+        "completion_tokens": 347,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "3.33 Motor Accident Injuries Act 2017",
+      "section": "3.33",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "Entitlement to statutory benefits for treatment and care provided outside Australia for non-citizens or non-permanent residents.",
+      "determines": [],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "statutory benefits",
+        "treatment and care provided outside Australia",
+        "Australian citizen",
+        "permanent resident"
+      ],
+      "notes": "The provision is about eligibility for benefits based on residency status and location of treatment, not about the amount or type of benefits.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "58616b3605c81b5db63ef044",
+        "requested_at": "2026-08-05T10:41:23+00:00",
+        "prompt_tokens": 1885,
+        "completion_tokens": 92,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "3.35 Motor Accident Injuries Act 2017",
+      "section": "3.35",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "The provision governs the entitlement to statutory benefits when workers compensation is payable.",
+      "determines": [],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "statutory benefits",
+        "workers compensation",
+        "injured person",
+        "relevant insurer",
+        "claim for workers compensation",
+        "successful claim",
+        "liability for workers compensation",
+        "funeral expenses",
+        "treatment and care"
+      ],
+      "notes": "The provision primarily addresses the conditions under which statutory benefits are not payable if workers compensation is involved, but it does not directly determine or input any of the dataset variables.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "0968c6f266ab4f689ad1fb5b",
+        "requested_at": "2026-08-05T10:41:25+00:00",
+        "prompt_tokens": 2409,
+        "completion_tokens": 110,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "3.38 Motor Accident Injuries Act 2017",
+      "section": "3.38",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "Reduction of weekly statutory benefits after 12 months for contributory negligence.",
+      "determines": [
+        "Claimant Weekly Income"
+      ],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "contributory negligence",
+        "weekly payments of statutory benefits",
+        "period of loss of earnings or earning capacity",
+        "fixed percentage",
+        "just and equitable"
+      ],
+      "notes": "The provision governs the reduction of weekly statutory benefits due to contributory negligence, but it does not specify any dataset variables as inputs for this determination.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "6a82c80238a323e78fd301ee",
+        "requested_at": "2026-08-05T10:41:27+00:00",
+        "prompt_tokens": 2662,
+        "completion_tokens": 99,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "3.40 Motor Accident Injuries Act 2017",
+      "section": "3.40",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "The effect of recovering damages on entitlement to statutory benefits and the deduction of statutory benefits from damages.",
+      "determines": [
+        "Lump Sum"
+      ],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "statutory benefits",
+        "damages",
+        "injury",
+        "death",
+        "fault",
+        "owner or driver of a motor vehicle",
+        "use or operation of the vehicle",
+        "Compensation to Relatives Act 1897",
+        "Workers Compensation Act 1987"
+      ],
+      "notes": "The provision discusses the interaction between damages and statutory benefits, specifically how statutory benefits affect the amount of damages (Lump Sum) by requiring deductions. However, it does not specify any dataset variables as inputs to this determination.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "0a893895293af982ceb5f6d0",
+        "requested_at": "2026-08-05T10:41:28+00:00",
+        "prompt_tokens": 2251,
+        "completion_tokens": 138,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "3.44 Motor Accident Injuries Act 2017",
+      "section": "3.44",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "The provision states that determinations made for statutory benefits regarding fault or contributory negligence are not binding for common law claims.",
+      "determines": [],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "fault of the owner or driver",
+        "contributory negligence"
+      ],
+      "notes": "The provision does not govern any of the dataset variables directly. It addresses the non-binding nature of certain determinations for statutory benefits in relation to common law claims, but does not specify any variables related to the claim itself.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "3006ad474fc2773bf6c67793",
+        "requested_at": "2026-08-05T10:41:30+00:00",
+        "prompt_tokens": 1965,
+        "completion_tokens": 104,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "3.6 Motor Accident Injuries Act 2017",
+      "section": "3.6",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "Weekly payments of statutory benefits during the first 13 weeks after a motor accident for earners who suffer a loss of earnings.",
+      "determines": [
+        "Claimant Weekly Income"
+      ],
+      "inputs": [
+        "Claimant Weekly Income",
+        "Work Impact Severity"
+      ],
+      "links": [
+        {
+          "concept_in_text": "pre-accident weekly earnings",
+          "quote": "95% of the difference between the person\u2019s pre-accident weekly earnings and the person\u2019s post-accident earning capacity",
+          "input": "Claimant Weekly Income",
+          "mapping_rationale": "The provision uses 'pre-accident weekly earnings' to determine the rate of weekly payments, which corresponds to the claimant's weekly income before the accident.",
+          "determines": "Claimant Weekly Income",
+          "relation": "formula_input",
+          "confidence": "high",
+          "quote_verbatim": false,
+          "quote_match": "self-loop",
+          "quote_fragments": [
+            "95% of the difference between the person's pre-accident weekly earnings and the person's post-accident earning capacity"
+          ],
+          "challenge": null,
+          "rejected": "self-loop"
+        },
+        {
+          "concept_in_text": "post-accident earning capacity",
+          "quote": "95% of the difference between the person\u2019s pre-accident weekly earnings and the person\u2019s post-accident earning capacity",
+          "input": "Work Impact Severity",
+          "mapping_rationale": "The provision refers to 'post-accident earning capacity', which relates to how much of the claimant's capacity to work was lost, corresponding to Work Impact Severity.",
+          "determines": "Claimant Weekly Income",
+          "relation": "formula_input",
+          "confidence": "high",
+          "quote_verbatim": false,
+          "quote_match": "refuted:subject_mismatch",
+          "quote_fragments": [
+            "95% of the difference between the person's pre-accident weekly earnings and the person's post-accident earning capacity"
+          ],
+          "challenge": {
+            "objection": "The provision does not use 'Work Impact Severity' as an input in a formula for 'Claimant Weekly Income'; rather, it uses 'pre-accident weekly earnings' and 'post-accident earning capacity' to calculate the weekly payment amount.",
+            "failure_mode": "subject_mismatch",
+            "sound": false
+          },
+          "rejected": "refuted:subject_mismatch"
+        }
+      ],
+      "unmapped_concepts": [
+        "maximum weekly statutory benefits amount",
+        "minimum weekly statutory benefits amount"
+      ],
+      "notes": "",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "98460c2fe83fcb3a24601fbf",
+        "requested_at": "2026-08-05T10:41:32+00:00",
+        "prompt_tokens": 2161,
+        "completion_tokens": 274,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "3.9 Motor Accident Injuries Act 2017",
+      "section": "3.9",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "The provision sets the maximum weekly statutory benefits amount for motor accident claims.",
+      "determines": [
+        "Lump Sum"
+      ],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "maximum weekly statutory benefits amount"
+      ],
+      "notes": "The provision specifies the maximum amount for weekly statutory benefits, which indirectly affects the total payout (Lump Sum) a claimant can receive, but it does not directly mention any dataset variables as inputs.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "6dfa4d788fc7dffa138d1a73",
+        "requested_at": "2026-08-05T10:41:35+00:00",
+        "prompt_tokens": 2137,
+        "completion_tokens": 87,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "4.1 Motor Accident Injuries Act 2017",
+      "section": "4.1",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "This provision outlines the applicability of the Part to awards of damages related to motor accidents caused by the fault of a vehicle owner or driver.",
+      "determines": [],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "award of damages",
+        "death",
+        "injury",
+        "fault of the owner or driver",
+        "use or operation of the vehicle"
+      ],
+      "notes": "The provision is about the applicability of the Part to certain awards of damages, not about the determination of specific variables related to claims.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "312046ef5ae8227fbd9221f8",
+        "requested_at": "2026-08-05T10:41:37+00:00",
+        "prompt_tokens": 2075,
+        "completion_tokens": 100,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "4.10 Motor Accident Injuries Act 2017",
+      "section": "4.10",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "Reduction of economic loss damages in motor accident claims by prescribed amounts.",
+      "determines": [
+        "Future Economic Loss"
+      ],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "amount of economic loss",
+        "amount of a kind prescribed by the regulations"
+      ],
+      "notes": "The provision discusses reducing the amount of economic loss, which relates to Future Economic Loss, but it does not specify what inputs determine the reduction.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "f484b6bb75dc17563721b352",
+        "requested_at": "2026-08-05T10:41:39+00:00",
+        "prompt_tokens": 1900,
+        "completion_tokens": 83,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "4.11 Motor Accident Injuries Act 2017",
+      "section": "4.11",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "The provision sets a threshold for awarding damages for non-economic loss based on the degree of permanent impairment.",
+      "determines": [
+        "Non-Economic Loss"
+      ],
+      "inputs": [
+        "WPI %"
+      ],
+      "links": [
+        {
+          "concept_in_text": "degree of permanent impairment",
+          "quote": "unless the degree of permanent impairment of the injured person as a result of the injury caused by a motor accident is greater than 10%",
+          "input": "WPI %",
+          "mapping_rationale": "The 'degree of permanent impairment' corresponds to 'WPI %', which measures whole person impairment as a percentage.",
+          "determines": "Non-Economic Loss",
+          "relation": "gate",
+          "confidence": "high",
+          "quote_verbatim": true,
+          "quote_match": "exact",
+          "quote_fragments": [
+            "unless the degree of permanent impairment of the injured person as a result of the injury caused by a motor accident is greater than 10%"
+          ],
+          "challenge": {
+            "objection": "The provision clearly states that non-economic loss damages are contingent on the degree of permanent impairment exceeding a threshold, which aligns with the claim that WPI % acts as a gate for Non-Economic Loss.",
+            "failure_mode": "none",
+            "sound": true
+          },
+          "rejected": null
+        }
+      ],
+      "unmapped_concepts": [
+        "impairment threshold"
+      ],
+      "notes": "",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "dc4c801b2e58a289475b355e",
+        "requested_at": "2026-08-05T10:41:41+00:00",
+        "prompt_tokens": 1882,
+        "completion_tokens": 148,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "4.12 Motor Accident Injuries Act 2017",
+      "section": "4.12",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "The provision is about the requirement for assessment of permanent impairment if there is a dispute over the impairment threshold for non-economic loss damages.",
+      "determines": [
+        "Non-Economic Loss"
+      ],
+      "inputs": [
+        "WPI %"
+      ],
+      "links": [
+        {
+          "concept_in_text": "degree of permanent impairment",
+          "quote": "If there is a dispute about whether the degree of permanent impairment of an injured person is sufficient for an award of damages for non-economic loss",
+          "input": "WPI %",
+          "mapping_rationale": "The 'degree of permanent impairment' corresponds to 'WPI %', which measures whole person impairment as a percentage.",
+          "determines": "Non-Economic Loss",
+          "relation": "defines_scope",
+          "confidence": "high",
+          "quote_verbatim": false,
+          "quote_match": "refuted:subject_mismatch",
+          "quote_fragments": [
+            "if there is a dispute about whether the degree of permanent impairment of an injured person is sufficient for an award of damages for non-economic loss"
+          ],
+          "challenge": {
+            "objection": "The provision establishes a gate, not a defines_scope, as it requires an assessment of permanent impairment to determine eligibility for non-economic loss damages, rather than defining what those damages compensate for.",
+            "failure_mode": "subject_mismatch",
+            "sound": false
+          },
+          "rejected": "refuted:subject_mismatch"
+        }
+      ],
+      "unmapped_concepts": [],
+      "notes": "",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "abfa59bd45c055f9bd4182ba",
+        "requested_at": "2026-08-05T10:41:43+00:00",
+        "prompt_tokens": 2022,
+        "completion_tokens": 150,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "4.13 Motor Accident Injuries Act 2017",
+      "section": "4.13",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "The provision sets a maximum limit on the amount of damages for non-economic loss.",
+      "determines": [
+        "Non-Economic Loss"
+      ],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "Indexation of maximum for non-economic loss damages"
+      ],
+      "notes": "",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "d17ce7c623d4b8457dcab975",
+        "requested_at": "2026-08-05T10:41:46+00:00",
+        "prompt_tokens": 1911,
+        "completion_tokens": 56,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "4.14 Motor Accident Injuries Act 2017",
+      "section": "4.14",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "The provision is about the publication of information to assist in determining non-economic loss damages for motor accidents.",
+      "determines": [
+        "Non-Economic Loss"
+      ],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "appropriate level of damages"
+      ],
+      "notes": "The provision allows for the publication of information to assist in determining non-economic loss, but it does not specify any particular inputs or factors that influence this determination.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "3a1a567210269c1254b46fb7",
+        "requested_at": "2026-08-05T10:41:48+00:00",
+        "prompt_tokens": 1939,
+        "completion_tokens": 85,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "4.15 Motor Accident Injuries Act 2017",
+      "section": "4.15",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "The duty of an injured person to mitigate damages and the considerations in assessing such mitigation.",
+      "determines": [],
+      "inputs": [
+        "Treatment Burden",
+        "Work Impact Severity"
+      ],
+      "links": [
+        {
+          "concept_in_text": "undergoing medical treatment",
+          "quote": "undergoing medical treatment",
+          "input": "Treatment Burden",
+          "mapping_rationale": "The concept of 'undergoing medical treatment' corresponds to 'Treatment Burden' as it involves the extent of treatment the claimant underwent.",
+          "determines": "Lump Sum",
+          "relation": "defines_scope",
+          "confidence": "high",
+          "quote_verbatim": false,
+          "quote_match": "refuted:subject_mismatch",
+          "quote_fragments": [
+            "undergoing medical treatment"
+          ],
+          "challenge": {
+            "objection": "The provision governs the duty to mitigate damages and the consideration of steps taken to mitigate, not the scope of what the lump sum compensates for.",
+            "failure_mode": "subject_mismatch",
+            "sound": false
+          },
+          "rejected": "refuted:subject_mismatch"
+        },
+        {
+          "concept_in_text": "pursuing alternative employment opportunities",
+          "quote": "pursuing alternative employment opportunities",
+          "input": "Work Impact Severity",
+          "mapping_rationale": "The concept of 'pursuing alternative employment opportunities' relates to 'Work Impact Severity' as it involves the claimant's capacity to work and efforts to mitigate loss of earning capacity.",
+          "determines": "Future Economic Loss",
+          "relation": "defines_scope",
+          "confidence": "high",
+          "quote_verbatim": false,
+          "quote_match": "refuted:subject_mismatch",
+          "quote_fragments": [
+            "pursuing alternative employment opportunities"
+          ],
+          "challenge": {
+            "objection": "The provision governs the duty to mitigate damages, not the specific scope of 'Future Economic Loss'. It addresses actions to reduce damages, not what 'Future Economic Loss' compensates for.",
+            "failure_mode": "subject_mismatch",
+            "sound": false
+          },
+          "rejected": "refuted:subject_mismatch"
+        }
+      ],
+      "unmapped_concepts": [
+        "mitigation of damages",
+        "rehabilitation",
+        "earliest practicable notice",
+        "onus of proving",
+        "written report",
+        "insurer assistance"
+      ],
+      "notes": "The provision discusses the duty to mitigate damages, which affects the assessment of damages but does not directly determine any specific variable in the dataset.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "30fb6563fbaf16b480d86267",
+        "requested_at": "2026-08-05T10:41:51+00:00",
+        "prompt_tokens": 2088,
+        "completion_tokens": 255,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "4.16 Motor Accident Injuries Act 2017",
+      "section": "4.16",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "The provision governs the payment of interest on damages related to motor accidents.",
+      "determines": [],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "interest on damages",
+        "non-economic loss",
+        "offer of settlement",
+        "reasonable opportunity",
+        "proper assessment",
+        "highest amount offered",
+        "unreasonable offer",
+        "calculation of interest",
+        "rate of interest",
+        "judgment debts"
+      ],
+      "notes": "The provision is about the conditions under which interest on damages can be paid, not about the damages themselves or their components.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "0826f50817ea89ae55e91410",
+        "requested_at": "2026-08-05T10:41:55+00:00",
+        "prompt_tokens": 2405,
+        "completion_tokens": 101,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "4.17 Motor Accident Injuries Act 2017",
+      "section": "4.17",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "The provision addresses the application of contributory negligence to an award of damages in motor accident cases.",
+      "determines": [
+        "Lump Sum"
+      ],
+      "inputs": [
+        "Liability Clarity"
+      ],
+      "links": [
+        {
+          "concept_in_text": "contributory negligence",
+          "quote": "The damages recoverable in respect of the motor accident are to be reduced on account of contributory negligence",
+          "input": "Liability Clarity",
+          "mapping_rationale": "Contributory negligence affects the clarity of liability, as it involves the injured party's own fault contributing to the accident.",
+          "determines": "Lump Sum",
+          "relation": "adjustment",
+          "confidence": "high",
+          "quote_verbatim": false,
+          "quote_match": "refuted:word_matching",
+          "quote_fragments": [
+            "the damages recoverable in respect of the motor accident are to be reduced on account of contributory negligence"
+          ],
+          "challenge": {
+            "objection": "The provision adjusts damages based on contributory negligence, not on the clarity of liability. Contributory negligence is about the claimant's own fault, not how obvious the fault is.",
+            "failure_mode": "word_matching",
+            "sound": false
+          },
+          "rejected": "refuted:word_matching"
+        }
+      ],
+      "unmapped_concepts": [
+        "alcohol or other drug-related offence",
+        "voluntary passenger",
+        "impaired ability to drive",
+        "seat belt",
+        "protective helmet",
+        "conduct prescribed by the regulations"
+      ],
+      "notes": "The provision primarily deals with how contributory negligence affects the reduction of damages, which impacts the Lump Sum awarded.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "5421756891741418d8cf061e",
+        "requested_at": "2026-08-05T10:41:58+00:00",
+        "prompt_tokens": 2621,
+        "completion_tokens": 189,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "4.19 Motor Accident Injuries Act 2017",
+      "section": "4.19",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "The provision addresses the standard of care required of a driver in motor accident claims, irrespective of the driver's skill or experience.",
+      "determines": [],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "standard of care",
+        "knowledge of driver\u2019s skill and experience",
+        "contributory negligence",
+        "voluntary assumption of risk"
+      ],
+      "notes": "The provision is about the standard of care in legal proceedings, not about any specific variable related to the claimant's injury or compensation.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "90c9e5b85b25c275cc610ba7",
+        "requested_at": "2026-08-05T10:42:00+00:00",
+        "prompt_tokens": 1968,
+        "completion_tokens": 97,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "4.2 Motor Accident Injuries Act 2017",
+      "section": "4.2",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "The provision regulates the award of damages in respect of motor accidents under New South Wales law.",
+      "determines": [],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "damages",
+        "substantive law",
+        "motor accident",
+        "court",
+        "jurisdiction",
+        "Commission"
+      ],
+      "notes": "The provision is about the general regulation of awarding damages and ensuring compliance with the Part, but it does not specify any particular variables or inputs related to the dataset.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "3c1e9abdeed0568e23c1e731",
+        "requested_at": "2026-08-05T10:42:02+00:00",
+        "prompt_tokens": 2051,
+        "completion_tokens": 92,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "4.20 Motor Accident Injuries Act 2017",
+      "section": "4.20",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "The provision prohibits the awarding of exemplary or punitive damages in respect of a motor accident.",
+      "determines": [],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "Exemplary or punitive damages"
+      ],
+      "notes": "The provision is about the prohibition of a specific type of damages (exemplary or punitive) and does not relate to any of the dataset variables, which are about compensatory damages and claimant characteristics.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "6970f24740286bbae7eda57c",
+        "requested_at": "2026-08-05T10:42:03+00:00",
+        "prompt_tokens": 1861,
+        "completion_tokens": 88,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "4.21 Motor Accident Injuries Act 2017",
+      "section": "4.21",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "Apportionment of damages in court judgments for motor vehicle accidents.",
+      "determines": [],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "portion of the sum awarded",
+        "costs awarded"
+      ],
+      "notes": "The provision is about how a court should apportion damages and costs in a judgment, but it does not specify any of the dataset variables directly.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "c3d3e4acc47dd87ebefbd694",
+        "requested_at": "2026-08-05T10:42:05+00:00",
+        "prompt_tokens": 1948,
+        "completion_tokens": 76,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "4.22 Motor Accident Injuries Act 2017",
+      "section": "4.22",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "Indexation of the maximum amount for non-economic loss damages.",
+      "determines": [
+        "Non-Economic Loss"
+      ],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "percentage change in the amounts estimated by the Australian Statistician of the average weekly total earnings of adults in full-time employment in New South Wales"
+      ],
+      "notes": "The provision discusses the adjustment of the maximum amount for non-economic loss damages based on statistical data, but does not specify any dataset variables as inputs for this adjustment.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "d41042c7410fd5240f007eb8",
+        "requested_at": "2026-08-05T10:42:06+00:00",
+        "prompt_tokens": 2122,
+        "completion_tokens": 101,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "4.3 Motor Accident Injuries Act 2017",
+      "section": "4.3",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "The provision specifies the types of damages that may be awarded under the Motor Accident Injuries Act 2017.",
+      "determines": [
+        "Non-Economic Loss",
+        "Future Economic Loss"
+      ],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "damages for economic loss",
+        "damages for non-economic loss"
+      ],
+      "notes": "The provision defines the scope of damages that can be awarded, but does not specify inputs for determining the amounts of Non-Economic Loss or Future Economic Loss.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "2e3ed442beac668ea11c04ff",
+        "requested_at": "2026-08-05T10:42:08+00:00",
+        "prompt_tokens": 1910,
+        "completion_tokens": 99,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "4.4 Motor Accident Injuries Act 2017",
+      "section": "4.4",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "The provision is about the non-award of damages for threshold injuries resulting from a motor accident.",
+      "determines": [],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "threshold injuries"
+      ],
+      "notes": "The provision states a condition under which no damages may be awarded, but it does not govern any of the dataset variables directly. 'Threshold injuries' is a concept mentioned but not mapped to any dataset variable.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "bcf08aaa6cec6b8bab81ca4c",
+        "requested_at": "2026-08-05T10:42:09+00:00",
+        "prompt_tokens": 1893,
+        "completion_tokens": 87,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "4.5 Motor Accident Injuries Act 2017",
+      "section": "4.5",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "Limits on the types of damages that may be awarded for economic loss in motor accident claims.",
+      "determines": [
+        "Future Economic Loss"
+      ],
+      "inputs": [
+        "Claimant Weekly Income",
+        "Work Impact Severity"
+      ],
+      "links": [
+        {
+          "concept_in_text": "loss of earnings",
+          "quote": "damages for past or future economic loss due to loss of earnings",
+          "input": "Claimant Weekly Income",
+          "mapping_rationale": "'Loss of earnings' refers to the claimant's weekly earnings before the accident, which is what 'Claimant Weekly Income' measures.",
+          "determines": "Future Economic Loss",
+          "relation": "defines_scope",
+          "confidence": "high",
+          "quote_verbatim": true,
+          "quote_match": "exact",
+          "quote_fragments": [
+            "damages for past or future economic loss due to loss of earnings"
+          ],
+          "challenge": {
+            "objection": "The provision defines the scope of economic loss damages as including future economic loss due to loss of earnings, which inherently involves the claimant's weekly earnings before the accident.",
+            "failure_mode": "none",
+            "sound": true
+          },
+          "rejected": null
+        },
+        {
+          "concept_in_text": "deprivation or impairment of earning capacity",
+          "quote": "damages for past or future economic loss due to ... the deprivation or impairment of earning capacity",
+          "input": "Work Impact Severity",
+          "mapping_rationale": "'Deprivation or impairment of earning capacity' corresponds to 'Work Impact Severity', which measures how much of the claimant's capacity to work was lost.",
+          "determines": "Future Economic Loss",
+          "relation": "defines_scope",
+          "confidence": "high",
+          "quote_verbatim": true,
+          "quote_match": "elided",
+          "quote_fragments": [
+            "damages for past or future economic loss due to",
+            "the deprivation or impairment of earning capacity"
+          ],
+          "challenge": {
+            "objection": "The provision defines the scope of economic loss damages as including loss due to impairment of earning capacity, which corresponds to 'Work Impact Severity'.",
+            "failure_mode": "none",
+            "sound": true
+          },
+          "rejected": null
+        }
+      ],
+      "unmapped_concepts": [
+        "costs relating to accommodation or travel",
+        "cost of the financial management of damages",
+        "re-imbursement for income tax paid or payable"
+      ],
+      "notes": "",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "42fb9280f41b3913dee969ca",
+        "requested_at": "2026-08-05T10:42:12+00:00",
+        "prompt_tokens": 2060,
+        "completion_tokens": 250,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "4.6 Motor Accident Injuries Act 2017",
+      "section": "4.6",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "This provision sets maximum limits for damages awarded for economic loss due to loss of earnings or earning capacity, and for loss of employer superannuation contributions.",
+      "determines": [
+        "Future Economic Loss"
+      ],
+      "inputs": [
+        "Claimant Weekly Income",
+        "Future Economic Loss"
+      ],
+      "links": [
+        {
+          "concept_in_text": "future economic loss due to loss of earnings",
+          "quote": "for past or future economic loss due to loss of earnings or the deprivation or impairment of earning capacity",
+          "input": "Future Economic Loss",
+          "mapping_rationale": "The provision explicitly mentions 'future economic loss due to loss of earnings', which corresponds to the variable 'Future Economic Loss' as it involves loss of future earning capacity.",
+          "determines": "Future Economic Loss",
+          "relation": "defines_scope",
+          "confidence": "high",
+          "quote_verbatim": false,
+          "quote_match": "self-loop",
+          "quote_fragments": [
+            "for past or future economic loss due to loss of earnings or the deprivation or impairment of earning capacity"
+          ],
+          "challenge": null,
+          "rejected": "self-loop"
+        },
+        {
+          "concept_in_text": "net weekly earnings",
+          "quote": "the injured or deceased person\u2019s net weekly earnings would (but for the injury or death) have exceeded the maximum weekly statutory benefits amount",
+          "input": "Claimant Weekly Income",
+          "mapping_rationale": "The provision refers to 'net weekly earnings', which corresponds to 'Claimant Weekly Income' as it involves the claimant's earnings before the accident.",
+          "determines": "Future Economic Loss",
+          "relation": "limit",
+          "confidence": "high",
+          "quote_verbatim": true,
+          "quote_match": "exact",
+          "quote_fragments": [
+            "the injured or deceased person's net weekly earnings would (but for the injury or death) have exceeded the maximum weekly statutory benefits amount"
+          ],
+          "challenge": {
+            "objection": "The provision limits the amount of damages by disregarding earnings above a certain threshold, which directly relates to the claimant's weekly income before the accident, thus supporting the claim as a limit.",
+            "failure_mode": "none",
+            "sound": true
+          },
+          "rejected": null
+        }
+      ],
+      "unmapped_concepts": [
+        "loss of expectation of financial support",
+        "maximum weekly statutory benefits amount",
+        "loss of employer superannuation contributions",
+        "relevant percentage",
+        "minimum percentage required by law"
+      ],
+      "notes": "",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "7f163e26d205152b5989128f",
+        "requested_at": "2026-08-05T10:42:18+00:00",
+        "prompt_tokens": 2050,
+        "completion_tokens": 286,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "4.7 Motor Accident Injuries Act 2017",
+      "section": "4.7",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "This provision governs the awarding of damages for future economic loss based on the claimant's future earning capacity and adjustments for the likelihood of events occurring but for the injury.",
+      "determines": [
+        "Future Economic Loss"
+      ],
+      "inputs": [
+        "Future Economic Loss",
+        "Work Impact Severity"
+      ],
+      "links": [
+        {
+          "concept_in_text": "future economic loss",
+          "quote": "Damages may not be awarded for future economic loss unless the claimant first satisfies the court or Commission that the assumptions about future earning capacity or other events on which the award is to be based accord with the claimant\u2019s most likely future circumstances but for the injury.",
+          "input": "Future Economic Loss",
+          "mapping_rationale": "The provision explicitly states that damages for future economic loss are based on assumptions about future earning capacity, which directly relates to the concept of future economic loss.",
+          "determines": "Future Economic Loss",
+          "relation": "defines_scope",
+          "confidence": "high",
+          "quote_verbatim": false,
+          "quote_match": "self-loop",
+          "quote_fragments": [
+            "damages may not be awarded for future economic loss unless the claimant first satisfies the court or commission that the assumptions about future earning capacity or other events on which the award is to be based accord with the claimant's most likely future circumstances but for the injury."
+          ],
+          "challenge": null,
+          "rejected": "self-loop"
+        },
+        {
+          "concept_in_text": "future earning capacity",
+          "quote": "Damages may not be awarded for future economic loss unless the claimant first satisfies the court or Commission that the assumptions about future earning capacity or other events on which the award is to be based accord with the claimant\u2019s most likely future circumstances but for the injury.",
+          "input": "Work Impact Severity",
+          "mapping_rationale": "Future earning capacity is directly related to the claimant's capacity to work, which is measured by Work Impact Severity.",
+          "determines": "Future Economic Loss",
+          "relation": "defines_scope",
+          "confidence": "high",
+          "quote_verbatim": false,
+          "quote_match": "refuted:subject_mismatch",
+          "quote_fragments": [
+            "damages may not be awarded for future economic loss unless the claimant first satisfies the court or commission that the assumptions about future earning capacity or other events on which the award is to be based accord with the claimant's most likely future circumstances but for the injury."
+          ],
+          "challenge": {
+            "objection": "The provision does not define the scope of future economic loss by reference to Work Impact Severity; it sets a condition for awarding damages based on assumptions about future earning capacity.",
+            "failure_mode": "subject_mismatch",
+            "sound": false
+          },
+          "rejected": "refuted:subject_mismatch"
+        }
+      ],
+      "unmapped_concepts": [
+        "assumptions about future earning capacity",
+        "percentage possibility that the events concerned might have occurred"
+      ],
+      "notes": "",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "0de92571102de4d93f776913",
+        "requested_at": "2026-08-05T10:42:23+00:00",
+        "prompt_tokens": 2002,
+        "completion_tokens": 314,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "4.8 Motor Accident Injuries Act 2017",
+      "section": "4.8",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "The provision is about the assessment of impairment of earning capacity when there is a dispute over the degree of impairment.",
+      "determines": [],
+      "inputs": [
+        "Work Impact Severity"
+      ],
+      "links": [
+        {
+          "concept_in_text": "degree of impairment of an injured person\u2019s earning capacity",
+          "quote": "If there is a dispute about the degree of impairment of an injured person\u2019s earning capacity...",
+          "input": "Work Impact Severity",
+          "mapping_rationale": "The 'degree of impairment of an injured person\u2019s earning capacity' corresponds to 'Work Impact Severity' as it refers to how much of the claimant's capacity to work was lost.",
+          "determines": "Future Economic Loss",
+          "relation": "defines_scope",
+          "confidence": "high",
+          "quote_verbatim": false,
+          "quote_match": "refuted:subject_mismatch",
+          "quote_fragments": [
+            "if there is a dispute about the degree of impairment of an injured person's earning capacity"
+          ],
+          "challenge": {
+            "objection": "The provision addresses the process for resolving disputes about the degree of impairment, not the criteria for determining the scope of Future Economic Loss.",
+            "failure_mode": "subject_mismatch",
+            "sound": false
+          },
+          "rejected": "refuted:subject_mismatch"
+        }
+      ],
+      "unmapped_concepts": [
+        "medical assessor",
+        "dispute",
+        "assessment"
+      ],
+      "notes": "The provision does not directly determine any of the dataset variables but mentions the assessment process for disputes over impairment of earning capacity, which relates to 'Work Impact Severity' and 'Future Economic Loss.'",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "57186b8d4ec58df81bf53116",
+        "requested_at": "2026-08-05T10:42:27+00:00",
+        "prompt_tokens": 1982,
+        "completion_tokens": 196,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "4.9 Motor Accident Injuries Act 2017",
+      "section": "4.9",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "This provision is about the discount rate applied to damages for future economic loss in motor accident claims.",
+      "determines": [
+        "Future Economic Loss"
+      ],
+      "inputs": [
+        "Lump Sum"
+      ],
+      "links": [
+        {
+          "concept_in_text": "compensation, assessed as a lump sum",
+          "quote": "If an award of damages is to include compensation, assessed as a lump sum, in respect of damages for future economic loss",
+          "input": "Lump Sum",
+          "mapping_rationale": "The provision refers to the compensation being assessed as a 'lump sum', which corresponds to the dataset variable 'Lump Sum'.",
+          "determines": "Future Economic Loss",
+          "relation": "formula_input",
+          "confidence": "high",
+          "quote_verbatim": false,
+          "quote_match": "refuted:subject_mismatch",
+          "quote_fragments": [
+            "if an award of damages is to include compensation, assessed as a lump sum, in respect of damages for future economic loss"
+          ],
+          "challenge": {
+            "objection": "The provision does not make 'Lump Sum' a formula input for 'Future Economic Loss'; instead, it prescribes a discount rate to adjust the present value of future economic loss, which is a component of the lump sum.",
+            "failure_mode": "subject_mismatch",
+            "sound": false
+          },
+          "rejected": "refuted:subject_mismatch"
+        }
+      ],
+      "unmapped_concepts": [
+        "deprivation or impairment of earning capacity",
+        "loss of expectation of financial support",
+        "prescribed discount rate"
+      ],
+      "notes": "The provision specifies the application of a discount rate to the present value of future economic loss, but does not directly govern the calculation of the 'Future Economic Loss' itself beyond this adjustment.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "e45375230846ed2bddc67226",
+        "requested_at": "2026-08-05T10:42:31+00:00",
+        "prompt_tokens": 1988,
+        "completion_tokens": 202,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "5.1 Motor Accident Injuries Act 2017",
+      "section": "5.1",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "Definition of 'no-fault motor accident'.",
+      "determines": [],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "no-fault motor accident"
+      ],
+      "notes": "The provision defines 'no-fault motor accident' but does not govern any of the dataset variables directly. It does not discuss any quantities measured by the dataset variables.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "19315bc125a133b7343bb852",
+        "requested_at": "2026-08-05T10:42:34+00:00",
+        "prompt_tokens": 1899,
+        "completion_tokens": 73,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "5.2 Motor Accident Injuries Act 2017",
+      "section": "5.2",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "Liability determination in no-fault motor accidents for claims purposes.",
+      "determines": [],
+      "inputs": [
+        "Liability Clarity"
+      ],
+      "links": [
+        {
+          "concept_in_text": "deemed to have been caused by the fault of the owner or driver",
+          "quote": "deemed to have been caused by the fault of the owner or driver of the motor vehicle",
+          "input": "Liability Clarity",
+          "mapping_rationale": "The provision states that in no-fault motor accidents, liability is automatically assigned to the owner or driver, which directly affects how clear liability is in these cases.",
+          "determines": "Liability Clarity",
+          "relation": "defines_scope",
+          "confidence": "high",
+          "quote_verbatim": false,
+          "quote_match": "self-loop",
+          "quote_fragments": [
+            "deemed to have been caused by the fault of the owner or driver of the motor vehicle"
+          ],
+          "challenge": null,
+          "rejected": "self-loop"
+        }
+      ],
+      "unmapped_concepts": [
+        "no-fault motor accident",
+        "motor accident insurance cover"
+      ],
+      "notes": "The provision does not determine any of the dataset variables directly but affects the clarity of liability in no-fault accidents.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "2e81e5e627ea24c68d4f9836",
+        "requested_at": "2026-08-05T10:42:36+00:00",
+        "prompt_tokens": 2030,
+        "completion_tokens": 177,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "5.3 Motor Accident Injuries Act 2017",
+      "section": "5.3",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "Presumption that a motor accident is no-fault in claims for damages.",
+      "determines": [],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "no-fault motor accident"
+      ],
+      "notes": "The provision establishes a presumption about the nature of the accident (no-fault) but does not directly govern any of the dataset variables.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "c04b13d2af70fbfacc073451",
+        "requested_at": "2026-08-05T10:42:38+00:00",
+        "prompt_tokens": 1933,
+        "completion_tokens": 73,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "5.5 Motor Accident Injuries Act 2017",
+      "section": "5.5",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "This provision addresses the reduction of damages due to contributory negligence.",
+      "determines": [
+        "Lump Sum"
+      ],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "contributory negligence"
+      ],
+      "notes": "The provision allows for the reduction of damages based on contributory negligence, but does not specify which variables contribute to determining contributory negligence.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "7a6158e03280b66f1927b66a",
+        "requested_at": "2026-08-05T10:42:39+00:00",
+        "prompt_tokens": 1886,
+        "completion_tokens": 73,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "6.14 Motor Accident Injuries Act 2017",
+      "section": "6.14",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "Time limits and conditions for making claims for damages related to motor accidents.",
+      "determines": [],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "claim for damages",
+        "full and satisfactory explanation for the delay",
+        "delay in the onset of symptoms",
+        "insurer",
+        "late claim",
+        "right to reject the claim",
+        "certificate of exemption from assessment",
+        "court",
+        "proceedings dismissed"
+      ],
+      "notes": "The provision is about procedural rules for making claims, not about the determination of any specific variable related to the claim's outcome or assessment.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "91a31115296483e64953d443",
+        "requested_at": "2026-08-05T10:42:41+00:00",
+        "prompt_tokens": 2337,
+        "completion_tokens": 109,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "6.20 Motor Accident Injuries Act 2017",
+      "section": "6.20",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "The provision outlines the insurer's duty to admit or deny liability for a claim for damages.",
+      "determines": [],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "admission or denial of liability",
+        "notice to the claimant",
+        "extent to which liability is admitted",
+        "admission of fault",
+        "element of liability",
+        "insurer's licence"
+      ],
+      "notes": "The provision is about the procedural duty of the insurer regarding liability admission or denial, not about the determination of any specific claim-related variables.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "9cb209c53f4dc1553f40625d",
+        "requested_at": "2026-08-05T10:42:43+00:00",
+        "prompt_tokens": 2067,
+        "completion_tokens": 102,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "6.21 Motor Accident Injuries Act 2017",
+      "section": "6.21",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "The provision is about imposing a costs penalty on insurers for unreasonable denial of liability.",
+      "determines": [],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "costs penalty",
+        "unreasonable denial of liability",
+        "reasonable basis for denial",
+        "provable facts",
+        "reasonably arguable view of the law"
+      ],
+      "notes": "The provision governs the imposition of a costs penalty on insurers, which is not directly related to any of the dataset variables about the claimant or the claim's outcome.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "aedc281ba7fe95725359aedc",
+        "requested_at": "2026-08-05T10:42:45+00:00",
+        "prompt_tokens": 2034,
+        "completion_tokens": 101,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "6.22 Motor Accident Injuries Act 2017",
+      "section": "6.22",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "The duty of an insurer to make a reasonable offer of settlement on a claim for damages.",
+      "determines": [],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "reasonable offer of settlement",
+        "amount of damages",
+        "extent to which liability is admitted",
+        "degree of permanent impairment"
+      ],
+      "notes": "The provision is about the insurer's duty to make a settlement offer, not about determining the amount of damages or any specific variable related to the claimant's condition or circumstances.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "5756d4c65a3b50d59e8bbda4",
+        "requested_at": "2026-08-05T10:42:47+00:00",
+        "prompt_tokens": 2139,
+        "completion_tokens": 97,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "6.23 Motor Accident Injuries Act 2017",
+      "section": "6.23",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "Restrictions on settlement of a claim for damages.",
+      "determines": [
+        "Nature"
+      ],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "Australian legal practitioner",
+        "Commission",
+        "applicable requirements",
+        "Motor Accident Guidelines"
+      ],
+      "notes": "The provision governs the conditions under which a claim for damages can be settled, which relates to the procedural route of the claim, but it does not specify any dataset variables as inputs to this determination.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "4fbd24e4169b0809ce6bd7c0",
+        "requested_at": "2026-08-05T10:42:48+00:00",
+        "prompt_tokens": 1956,
+        "completion_tokens": 88,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "6.3 Motor Accident Injuries Act 2017",
+      "section": "6.3",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "The duty of claimants and insurers to act with good faith in connection with a claim.",
+      "determines": [],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "good faith",
+        "duty to act honestly",
+        "duty to disclose all relevant information",
+        "duty to facilitate resolution of disputes",
+        "duty to provide information about entitlements",
+        "duty to provide relevant information",
+        "duty to provide written reasons",
+        "duty to advise on review rights",
+        "duty to make prompt payment"
+      ],
+      "notes": "The provision outlines duties of good faith for both claimants and insurers, but does not directly govern any of the dataset variables.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "bb10270cfe283bba39e235e6",
+        "requested_at": "2026-08-05T10:42:50+00:00",
+        "prompt_tokens": 2093,
+        "completion_tokens": 130,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "6.34 Motor Accident Injuries Act 2017",
+      "section": "6.34",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "The provision is about remitting a matter for further claims assessment when significant new evidence is produced in court proceedings.",
+      "determines": [],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "significant evidence",
+        "court proceedings",
+        "further claims assessment",
+        "certificate under section 7.36"
+      ],
+      "notes": "The provision governs procedural steps when new evidence is introduced, but does not determine or input any of the dataset variables directly.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "bfc64c4bedc9cbbb568ad067",
+        "requested_at": "2026-08-05T10:42:52+00:00",
+        "prompt_tokens": 2038,
+        "completion_tokens": 90,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "7.20 Motor Accident Injuries Act 2017",
+      "section": "7.20",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "Medical assessment procedures for motor accident claims.",
+      "determines": [],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "medical dispute",
+        "degree of permanent impairment",
+        "medical assessor",
+        "timely and cost effective assessment"
+      ],
+      "notes": "The provision outlines procedures for medical assessment of disputes but does not directly govern any of the dataset variables. It mentions 'degree of permanent impairment' but does not determine WPI % itself.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "aaa6fc72de94e4ff0577278b",
+        "requested_at": "2026-08-05T10:42:53+00:00",
+        "prompt_tokens": 2201,
+        "completion_tokens": 87,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "7.21 Motor Accident Injuries Act 2017",
+      "section": "7.21",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "Assessment of the degree of permanent impairment for injured persons under the Motor Accident Injuries Act 2017.",
+      "determines": [
+        "WPI %"
+      ],
+      "inputs": [
+        "Psychological Injury Emphasis"
+      ],
+      "links": [
+        {
+          "concept_in_text": "degree of permanent impairment",
+          "quote": "The assessment of the degree of permanent impairment of an injured person for the purposes of this Act is to be made in accordance with the Motor Accident Guidelines.",
+          "input": "Psychological Injury Emphasis",
+          "mapping_rationale": "The provision specifies that psychiatric or psychological injury should not be considered in the assessment of permanent impairment unless the assessment is solely for psychiatric or psychological injury, indicating the emphasis on psychological injury affects the assessment process.",
+          "determines": "WPI %",
+          "relation": "defines_scope",
+          "confidence": "high",
+          "quote_verbatim": false,
+          "quote_match": "refuted:subject_mismatch",
+          "quote_fragments": [
+            "the assessment of the degree of permanent impairment of an injured person for the purposes of this act is to be made in accordance with the motor accident guidelines."
+          ],
+          "challenge": {
+            "objection": "The provision governs the inclusion or exclusion of psychiatric or psychological injuries in the assessment of permanent impairment, not the emphasis on psychological injury in court discussions.",
+            "failure_mode": "subject_mismatch",
+            "sound": false
+          },
+          "rejected": "refuted:subject_mismatch"
+        }
+      ],
+      "unmapped_concepts": [
+        "Motor Accident Guidelines"
+      ],
+      "notes": "The provision specifies that the assessment of permanent impairment should not consider psychological injuries unless they are the sole focus, which implies that psychological injury emphasis affects the assessment process.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "74b1acc962d6ef0891f988ca",
+        "requested_at": "2026-08-05T10:42:56+00:00",
+        "prompt_tokens": 2008,
+        "completion_tokens": 201,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "7.23 Motor Accident Injuries Act 2017",
+      "section": "7.23",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "The status and evidentiary role of medical assessment certificates in legal proceedings related to motor accident injuries.",
+      "determines": [],
+      "inputs": [
+        "WPI %",
+        "Work Impact Severity"
+      ],
+      "links": [
+        {
+          "concept_in_text": "degree of permanent impairment",
+          "quote": "the degree of permanent impairment of the injured person",
+          "input": "WPI %",
+          "mapping_rationale": "The 'degree of permanent impairment' corresponds to 'WPI %' as it is a clinical assessment of the permanent impairment remaining once the claimant's condition has stabilised.",
+          "determines": "WPI %",
+          "relation": "defines_scope",
+          "confidence": "high",
+          "quote_verbatim": false,
+          "quote_match": "self-loop",
+          "quote_fragments": [
+            "the degree of permanent impairment of the injured person"
+          ],
+          "challenge": null,
+          "rejected": "self-loop"
+        },
+        {
+          "concept_in_text": "degree of impairment of earning capacity",
+          "quote": "degree of impairment of earning capacity of the injured person as a result of the injury concerned",
+          "input": "Work Impact Severity",
+          "mapping_rationale": "The 'degree of impairment of earning capacity' corresponds to 'Work Impact Severity' as it measures how much of the claimant's capacity to work was lost due to the injury.",
+          "determines": "Work Impact Severity",
+          "relation": "defines_scope",
+          "confidence": "high",
+          "quote_verbatim": false,
+          "quote_match": "self-loop",
+          "quote_fragments": [
+            "degree of impairment of earning capacity of the injured person as a result of the injury concerned"
+          ],
+          "challenge": null,
+          "rejected": "self-loop"
+        }
+      ],
+      "unmapped_concepts": [
+        "prima facie evidence",
+        "conclusive evidence",
+        "procedural fairness",
+        "substantial injustice",
+        "obvious error"
+      ],
+      "notes": "The provision primarily addresses the evidentiary status of medical certificates in legal proceedings, not the determination of specific compensation amounts.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "9f9b5ddd2bc19dd63eb3da41",
+        "requested_at": "2026-08-05T10:43:01+00:00",
+        "prompt_tokens": 2442,
+        "completion_tokens": 272,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "7.24 Motor Accident Injuries Act 2017",
+      "section": "7.24",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "The provision is about the conditions and process for further medical assessment of a medical dispute after an initial assessment.",
+      "determines": [],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "medical dispute",
+        "initial medical assessment",
+        "further medical assessment",
+        "degree of permanent impairment",
+        "interim assessment",
+        "final assessment"
+      ],
+      "notes": "The provision does not govern any of the dataset variables directly. It outlines procedural rules for further medical assessments, which may indirectly affect assessments like WPI %, but it does not specify how these assessments are determined or calculated.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "d7e0685a6f04e158bad9a807",
+        "requested_at": "2026-08-05T10:43:02+00:00",
+        "prompt_tokens": 2091,
+        "completion_tokens": 112,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "7.32 Motor Accident Injuries Act 2017",
+      "section": "7.32",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "The provision is about the referral of a claim for damages to the Commission for assessment.",
+      "determines": [],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "claim for damages",
+        "assessment",
+        "settle the claim"
+      ],
+      "notes": "The provision discusses the process of referring a claim for assessment and the requirement for parties to attempt settlement before referral. It does not directly govern any of the dataset variables.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "a1aa4cbe057cc7d1ceb37189",
+        "requested_at": "2026-08-05T10:43:04+00:00",
+        "prompt_tokens": 1923,
+        "completion_tokens": 85,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "7.33 Motor Accident Injuries Act 2017",
+      "section": "7.33",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "Provision 7.33 of the Motor Accident Injuries Act 2017 has been repealed.",
+      "determines": [],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [],
+      "notes": "The provision is repealed, so it does not currently govern any variables or concepts.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "d6f16bdf2405701f9171cfe8",
+        "requested_at": "2026-08-05T10:43:05+00:00",
+        "prompt_tokens": 1868,
+        "completion_tokens": 61,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "7.34 Motor Accident Injuries Act 2017",
+      "section": "7.34",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "Exemption of claims from assessment under this Division.",
+      "determines": [
+        "Legal Procedural Complexity"
+      ],
+      "inputs": [
+        "Nature"
+      ],
+      "links": [
+        {
+          "concept_in_text": "claim is exempt from assessment",
+          "quote": "A claim is exempt from assessment under this Division if\u2014",
+          "input": "Nature",
+          "mapping_rationale": "The provision discusses claims that are exempt from assessment, which affects the procedural route the claim takes, corresponding to the 'Nature' variable.",
+          "determines": "Legal Procedural Complexity",
+          "relation": "defines_scope",
+          "confidence": "high",
+          "quote_verbatim": false,
+          "quote_match": "refuted:subject_mismatch",
+          "quote_fragments": [
+            "a claim is exempt from assessment under this division if-"
+          ],
+          "challenge": {
+            "objection": "The provision governs whether a claim is exempt from assessment, not the procedural complexity of determining payout components.",
+            "failure_mode": "subject_mismatch",
+            "sound": false
+          },
+          "rejected": "refuted:subject_mismatch"
+        }
+      ],
+      "unmapped_concepts": [
+        "regulations",
+        "preliminary assessment",
+        "approval of the President",
+        "certificate",
+        "court proceedings"
+      ],
+      "notes": "The provision determines whether a claim is exempt from assessment, which affects the procedural complexity of the claim, as it allows for court proceedings to be commenced.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "ce1d692962a6f178d45f71f4",
+        "requested_at": "2026-08-05T10:43:07+00:00",
+        "prompt_tokens": 1995,
+        "completion_tokens": 165,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "7.35 Motor Accident Injuries Act 2017",
+      "section": "7.35",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "The provision 7.35 of the Motor Accident Injuries Act 2017 has been repealed.",
+      "determines": [],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [],
+      "notes": "The provision is repealed, so it does not currently govern any variables or concepts.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "b8659d60b5fa69c84bf06fd3",
+        "requested_at": "2026-08-05T10:43:09+00:00",
+        "prompt_tokens": 1854,
+        "completion_tokens": 62,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "7.36 Motor Accident Injuries Act 2017",
+      "section": "7.36",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "The provision is about the Commission's assessment of claims referred to it, including liability and damages.",
+      "determines": [
+        "Liability Clarity",
+        "Lump Sum"
+      ],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "amount of damages that a court would be likely to award",
+        "issue of liability for the claim"
+      ],
+      "notes": "The provision discusses the assessment of liability and damages but does not specify inputs for these determinations.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "a1bdad1ef972c0128b19635b",
+        "requested_at": "2026-08-05T10:43:11+00:00",
+        "prompt_tokens": 2054,
+        "completion_tokens": 90,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "7.37 Motor Accident Injuries Act 2017",
+      "section": "7.37",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "The provision is about the Commission's authority to assess costs related to a motor accident claim.",
+      "determines": [],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "claimant\u2019s costs",
+        "legal services",
+        "medico-legal services",
+        "written offer of settlement",
+        "regulations under Part 8",
+        "principles and matters referred to in section 200 of the Legal Profession Uniform Law (NSW)"
+      ],
+      "notes": "The provision focuses on the assessment of costs, not on the determination of any of the dataset variables related to the claimant's injury or compensation.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "a7e8b2819ed8aeaa4dc6eb87",
+        "requested_at": "2026-08-05T10:43:14+00:00",
+        "prompt_tokens": 2172,
+        "completion_tokens": 117,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "7.38 Motor Accident Injuries Act 2017",
+      "section": "7.38",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "The provision outlines the binding status of assessments on liability and damages for motor accident claims.",
+      "determines": [
+        "Lump Sum"
+      ],
+      "inputs": [
+        "Liability Clarity"
+      ],
+      "links": [
+        {
+          "concept_in_text": "liability under the claim",
+          "quote": "the insurer admits that liability under the claim",
+          "input": "Liability Clarity",
+          "mapping_rationale": "The phrase 'liability under the claim' corresponds to 'Liability Clarity' as it refers to the insurer's admission of liability, which indicates how clear or obvious the liability is.",
+          "determines": "Lump Sum",
+          "relation": "gate",
+          "confidence": "high",
+          "quote_verbatim": false,
+          "quote_match": "refuted:subject_mismatch",
+          "quote_fragments": [
+            "the insurer admits that liability under the claim"
+          ],
+          "challenge": {
+            "objection": "The provision governs the insurer's obligation to pay the assessed damages if liability is admitted, not the clarity of liability itself. It does not make the clarity of liability a gate for the lump sum awarded.",
+            "failure_mode": "subject_mismatch",
+            "sound": false
+          },
+          "rejected": "refuted:subject_mismatch"
+        }
+      ],
+      "unmapped_concepts": [
+        "amount of damages",
+        "certificate of assessment",
+        "interest",
+        "insurer\u2019s licence"
+      ],
+      "notes": "The provision specifies conditions under which the assessment of damages becomes binding on the insurer, particularly when liability is admitted and the claimant accepts the damages amount. It does not directly determine the amount of damages but governs the conditions under which the assessed amount becomes binding.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "e945a948a8fa7a87de07912f",
+        "requested_at": "2026-08-05T10:43:17+00:00",
+        "prompt_tokens": 2079,
+        "completion_tokens": 201,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "7.42 Motor Accident Injuries Act 2017",
+      "section": "7.42",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "Assessment of miscellaneous disputes in connection with claims for statutory benefits.",
+      "determines": [],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "miscellaneous disputes",
+        "assessment",
+        "statutory benefits"
+      ],
+      "notes": "The provision is about the process of assessing disputes related to claims for statutory benefits, but it does not specify any particular variables or factors that influence the assessment of claims or benefits.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "2c1ea8e04e2766169b3ed97e",
+        "requested_at": "2026-08-05T10:43:20+00:00",
+        "prompt_tokens": 1987,
+        "completion_tokens": 82,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "7.52 Motor Accident Injuries Act 2017",
+      "section": "7.52",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "Restriction on admissibility of health practitioner evidence in court and other proceedings related to motor accident claims.",
+      "determines": [],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "health practitioner",
+        "medical matter",
+        "degree of permanent impairment",
+        "medical assessment matter"
+      ],
+      "notes": "The provision governs who may give evidence, not the determination of any dataset variable.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "df75407e75096fccd5f2e068",
+        "requested_at": "2026-08-05T10:43:21+00:00",
+        "prompt_tokens": 2123,
+        "completion_tokens": 74,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "8.10 Motor Accident Injuries Act 2017",
+      "section": "8.10",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "Recovery of costs and expenses in relation to claims for statutory benefits.",
+      "determines": [],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "reasonable and necessary legal costs",
+        "cost of medical and other tests and reports",
+        "maximum costs and expenses recoverable",
+        "exceptional circumstances",
+        "person under legal incapacity"
+      ],
+      "notes": "The provision governs the recovery of costs and expenses related to claims for statutory benefits, but does not directly determine or input any of the dataset variables. It focuses on the conditions under which costs can be recovered, which are not captured by the dataset variables.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "1b1e4ff8d9247e6d93716a92",
+        "requested_at": "2026-08-05T10:43:23+00:00",
+        "prompt_tokens": 2118,
+        "completion_tokens": 119,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "8.3 Motor Accident Injuries Act 2017",
+      "section": "8.3",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "Regulations fixing maximum costs recoverable by Australian legal practitioners in motor accidents matters.",
+      "determines": [],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "maximum costs for legal services",
+        "maximum costs for matters related to proceedings",
+        "amount recovered by the claimant",
+        "legal costs legislation"
+      ],
+      "notes": "The provision is about regulating legal costs, not about determining any of the dataset variables related to claims.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "e56a206d18c5effe0e3467e6",
+        "requested_at": "2026-08-05T10:43:24+00:00",
+        "prompt_tokens": 2305,
+        "completion_tokens": 84,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "8.4 Motor Accident Injuries Act 2017",
+      "section": "8.4",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "The provision is about setting maximum fees for medico-legal services provided by health practitioners.",
+      "determines": [],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "maximum fees",
+        "medico-legal services",
+        "health practitioners",
+        "medical report",
+        "court proceedings",
+        "medical assessment",
+        "merit review",
+        "appearance as a witness"
+      ],
+      "notes": "The provision governs the fees health practitioners can charge for specific medico-legal services, but it does not directly relate to any of the dataset variables about decided claims.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "b70b622f80b1caa371b92977",
+        "requested_at": "2026-08-05T10:43:26+00:00",
+        "prompt_tokens": 2076,
+        "completion_tokens": 103,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "8.5 Motor Accident Injuries Act 2017",
+      "section": "8.5",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "This provision is about the costs payable in court proceedings where no claims assessment has been made under Division 7.6.",
+      "determines": [],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "costs payable",
+        "court proceedings",
+        "offers of compromise",
+        "rules of court"
+      ],
+      "notes": "The provision discusses procedural aspects of court proceedings and costs, which do not directly relate to the dataset variables about the claimant or the damages awarded.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "8be1682899d9376bfa588bfd",
+        "requested_at": "2026-08-05T10:43:27+00:00",
+        "prompt_tokens": 1948,
+        "completion_tokens": 91,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "8.6 Motor Accident Injuries Act 2017",
+      "section": "8.6",
+      "act": "Motor Accident Injuries Act 2017",
+      "source_file": "Motor Accident Injuries Act 2017 No 10 - NSW Legislation.html",
+      "source_sha256": "90d51fd943b59ad1aad3877650f7cf4551db1c03f96d3bd87458903b3b4324a5",
+      "subject": "The provision addresses matters related to the costs of legal proceedings in motor accident claims.",
+      "determines": [],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "costs",
+        "amount recovered",
+        "maximum costs and fees",
+        "assessment or taxation of costs"
+      ],
+      "notes": "The provision is about legal costs and does not govern any of the dataset variables directly. It discusses how costs are determined and adjusted, but not the amounts awarded to claimants or the factors affecting those awards.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "077381b08903e96ff1b5e45f",
+        "requested_at": "2026-08-05T10:43:30+00:00",
+        "prompt_tokens": 2031,
+        "completion_tokens": 98,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "122 Motor Accidents Compensation Act 1999",
+      "section": "122",
+      "act": "Motor Accidents Compensation Act 1999",
+      "source_file": "Motor Accidents Compensation Act 1999 No 41 - NSW Legislation.html",
+      "source_sha256": "7f2d5c1043c9af4ef5bc571afd524059fbd932f1840fac6da9563066bee01d13",
+      "subject": "This provision outlines the applicability of the Chapter to awards of damages related to motor accidents caused by the fault of a vehicle owner or driver.",
+      "determines": [],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "award of damages",
+        "death of or injury to a person",
+        "fault of the owner or driver of a motor vehicle",
+        "use or operation of the vehicle",
+        "motor accident insurance cover",
+        "work injury claim"
+      ],
+      "notes": "The provision is about the applicability of the Chapter to certain motor accident claims, not about determining specific variables related to damages.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "629077cb100fdf4be74a39e9",
+        "requested_at": "2026-08-05T10:43:32+00:00",
+        "prompt_tokens": 2120,
+        "completion_tokens": 114,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "124 Motor Accidents Compensation Act 1999",
+      "section": "124",
+      "act": "Motor Accidents Compensation Act 1999",
+      "source_file": "Motor Accidents Compensation Act 1999 No 41 - NSW Legislation.html",
+      "source_sha256": "7f2d5c1043c9af4ef5bc571afd524059fbd932f1840fac6da9563066bee01d13",
+      "subject": "Provision 124 of the Motor Accidents Compensation Act 1999 has been repealed.",
+      "determines": [],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [],
+      "notes": "The provision has been repealed, so it does not currently govern any variables or concepts.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "7aaf381c9db7ac2bda9041d1",
+        "requested_at": "2026-08-05T10:43:33+00:00",
+        "prompt_tokens": 1846,
+        "completion_tokens": 60,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "125 Motor Accidents Compensation Act 1999",
+      "section": "125",
+      "act": "Motor Accidents Compensation Act 1999",
+      "source_file": "Motor Accidents Compensation Act 1999 No 41 - NSW Legislation.html",
+      "source_sha256": "7f2d5c1043c9af4ef5bc571afd524059fbd932f1840fac6da9563066bee01d13",
+      "subject": "This provision sets a maximum limit on damages for past or future economic loss due to loss of earnings or impairment of earning capacity.",
+      "determines": [
+        "Future Economic Loss"
+      ],
+      "inputs": [
+        "Claimant Weekly Income"
+      ],
+      "links": [
+        {
+          "concept_in_text": "past or future economic loss due to loss of earnings",
+          "quote": "for past or future economic loss due to loss of earnings or the deprivation or impairment of earning capacity",
+          "input": "Claimant Weekly Income",
+          "mapping_rationale": "The provision refers to 'loss of earnings', which corresponds to the claimant's weekly income before the accident, as it is the baseline for calculating lost earnings.",
+          "determines": "Future Economic Loss",
+          "relation": "defines_scope",
+          "confidence": "high",
+          "quote_verbatim": false,
+          "quote_match": "refuted:subject_mismatch",
+          "quote_fragments": [
+            "for past or future economic loss due to loss of earnings or the deprivation or impairment of earning capacity"
+          ],
+          "challenge": {
+            "objection": "The provision limits the amount of earnings considered in calculating economic loss, but it does not define the scope of what future economic loss compensates for.",
+            "failure_mode": "subject_mismatch",
+            "sound": false
+          },
+          "rejected": "refuted:subject_mismatch"
+        }
+      ],
+      "unmapped_concepts": [
+        "loss of expectation of financial support"
+      ],
+      "notes": "",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "3f3a23e0c35067323fba760b",
+        "requested_at": "2026-08-05T10:43:35+00:00",
+        "prompt_tokens": 1957,
+        "completion_tokens": 162,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "126 Motor Accidents Compensation Act 1999",
+      "section": "126",
+      "act": "Motor Accidents Compensation Act 1999",
+      "source_file": "Motor Accidents Compensation Act 1999 No 41 - NSW Legislation.html",
+      "source_sha256": "7f2d5c1043c9af4ef5bc571afd524059fbd932f1840fac6da9563066bee01d13",
+      "subject": "The provision governs the award of damages for future economic loss, focusing on the claimant's prospects and necessary adjustments.",
+      "determines": [
+        "Future Economic Loss"
+      ],
+      "inputs": [
+        "Future Economic Loss",
+        "Work Impact Severity"
+      ],
+      "links": [
+        {
+          "concept_in_text": "future earning capacity",
+          "quote": "assumptions about future earning capacity or other events on which the award is to be based",
+          "input": "Work Impact Severity",
+          "mapping_rationale": "The concept of 'future earning capacity' corresponds to 'Work Impact Severity' as it involves the claimant's capacity to work and earn in the future, which is impacted by the injury.",
+          "determines": "Future Economic Loss",
+          "relation": "defines_scope",
+          "confidence": "high",
+          "quote_verbatim": false,
+          "quote_match": "refuted:subject_mismatch",
+          "quote_fragments": [
+            "assumptions about future earning capacity or other events on which the award is to be based"
+          ],
+          "challenge": {
+            "objection": "The provision does not define the scope of 'Future Economic Loss' by reference to 'Work Impact Severity'; it requires the court to base the award on assumptions about future earning capacity, which is a broader concept.",
+            "failure_mode": "subject_mismatch",
+            "sound": false
+          },
+          "rejected": "refuted:subject_mismatch"
+        },
+        {
+          "concept_in_text": "damages for future economic loss",
+          "quote": "adjust the amount of damages for future economic loss that would have been sustained on those assumptions",
+          "input": "Future Economic Loss",
+          "mapping_rationale": "The provision directly discusses adjusting the amount of 'damages for future economic loss', which corresponds to the 'Future Economic Loss' variable as it involves the calculation of this component of the payout.",
+          "determines": "Future Economic Loss",
+          "relation": "adjustment",
+          "confidence": "high",
+          "quote_verbatim": false,
+          "quote_match": "self-loop",
+          "quote_fragments": [
+            "adjust the amount of damages for future economic loss that would have been sustained on those assumptions"
+          ],
+          "challenge": null,
+          "rejected": "self-loop"
+        }
+      ],
+      "unmapped_concepts": [
+        "assumptions about future earning capacity",
+        "percentage possibility",
+        "most likely future circumstances"
+      ],
+      "notes": "The provision requires the court to adjust the award based on the likelihood of future events, but this concept does not directly map to any dataset variable.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "08badd026d4841f2e408ff50",
+        "requested_at": "2026-08-05T10:43:39+00:00",
+        "prompt_tokens": 1988,
+        "completion_tokens": 291,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "127 Motor Accidents Compensation Act 1999",
+      "section": "127",
+      "act": "Motor Accidents Compensation Act 1999",
+      "source_file": "Motor Accidents Compensation Act 1999 No 41 - NSW Legislation.html",
+      "source_sha256": "7f2d5c1043c9af4ef5bc571afd524059fbd932f1840fac6da9563066bee01d13",
+      "subject": "This provision is about the discount rate applied to damages for future economic loss in motor accident claims.",
+      "determines": [
+        "Future Economic Loss"
+      ],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "deprivation or impairment of earning capacity",
+        "loss of expectation of financial support",
+        "value of future services of a domestic nature or services relating to nursing and attendance",
+        "liability to incur expenditure in the future",
+        "prescribed discount rate"
+      ],
+      "notes": "The provision specifies that the present value of future economic loss is adjusted by a discount rate, but it does not specify any dataset variables as inputs to this determination.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "79de4370d8eba64c80746888",
+        "requested_at": "2026-08-05T10:43:43+00:00",
+        "prompt_tokens": 2018,
+        "completion_tokens": 124,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "130 Motor Accidents Compensation Act 1999",
+      "section": "130",
+      "act": "Motor Accidents Compensation Act 1999",
+      "source_file": "Motor Accidents Compensation Act 1999 No 41 - NSW Legislation.html",
+      "source_sha256": "7f2d5c1043c9af4ef5bc571afd524059fbd932f1840fac6da9563066bee01d13",
+      "subject": "Reduction of damages for economic loss due to other payments received or payable.",
+      "determines": [
+        "Future Economic Loss"
+      ],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "entitlement to or payment of compensation for expenses",
+        "payments made to or on behalf of the claimant by an insurer or Nominal Defendant",
+        "any other amount of a kind prescribed by the regulations"
+      ],
+      "notes": "The provision mandates a reduction in economic loss damages but does not specify inputs from the dataset variables.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "481fe0596a44a6a261669787",
+        "requested_at": "2026-08-05T10:43:44+00:00",
+        "prompt_tokens": 1972,
+        "completion_tokens": 99,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "131 Motor Accidents Compensation Act 1999",
+      "section": "131",
+      "act": "Motor Accidents Compensation Act 1999",
+      "source_file": "Motor Accidents Compensation Act 1999 No 41 - NSW Legislation.html",
+      "source_sha256": "7f2d5c1043c9af4ef5bc571afd524059fbd932f1840fac6da9563066bee01d13",
+      "subject": "Impairment thresholds for award of damages for non-economic loss.",
+      "determines": [
+        "Non-Economic Loss"
+      ],
+      "inputs": [
+        "WPI %"
+      ],
+      "links": [
+        {
+          "concept_in_text": "degree of permanent impairment",
+          "quote": "the degree of permanent impairment of the injured person as a result of the injury caused by the motor accident is greater than 10%",
+          "input": "WPI %",
+          "mapping_rationale": "The 'degree of permanent impairment' corresponds to 'WPI %', which measures whole person impairment as a percentage.",
+          "determines": "Non-Economic Loss",
+          "relation": "gate",
+          "confidence": "high",
+          "quote_verbatim": true,
+          "quote_match": "exact",
+          "quote_fragments": [
+            "the degree of permanent impairment of the injured person as a result of the injury caused by the motor accident is greater than 10%"
+          ],
+          "challenge": {
+            "objection": "The provision explicitly states that damages for non-economic loss are contingent on the degree of permanent impairment exceeding 10%, which aligns with the claim that WPI % acts as a gate for Non-Economic Loss.",
+            "failure_mode": "none",
+            "sound": true
+          },
+          "rejected": null
+        }
+      ],
+      "unmapped_concepts": [],
+      "notes": "",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "0740078db72c545703357888",
+        "requested_at": "2026-08-05T10:43:46+00:00",
+        "prompt_tokens": 1873,
+        "completion_tokens": 136,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "133 Motor Accidents Compensation Act 1999",
+      "section": "133",
+      "act": "Motor Accidents Compensation Act 1999",
+      "source_file": "Motor Accidents Compensation Act 1999 No 41 - NSW Legislation.html",
+      "source_sha256": "7f2d5c1043c9af4ef5bc571afd524059fbd932f1840fac6da9563066bee01d13",
+      "subject": "The method of assessing the degree of permanent impairment of an injured person as a result of a motor accident.",
+      "determines": [
+        "WPI %"
+      ],
+      "inputs": [
+        "Psychological Injury Emphasis"
+      ],
+      "links": [
+        {
+          "concept_in_text": "degree of permanent impairment",
+          "quote": "The assessment of the degree of permanent impairment of an injured person as a result of the injury caused by a motor accident is to be expressed as a percentage",
+          "input": "Psychological Injury Emphasis",
+          "mapping_rationale": "The provision specifies that psychiatric or psychological injury, impairment or symptoms must not be considered unless the assessment is solely for psychiatric or psychological injury, indicating the emphasis on psychological injury in the assessment process.",
+          "determines": "WPI %",
+          "relation": "defines_scope",
+          "confidence": "high",
+          "quote_verbatim": false,
+          "quote_match": "refuted:subject_mismatch",
+          "quote_fragments": [
+            "the assessment of the degree of permanent impairment of an injured person as a result of the injury caused by a motor accident is to be expressed as a percentage"
+          ],
+          "challenge": {
+            "objection": "The provision governs the method of assessing permanent impairment and excludes psychiatric or psychological factors unless the assessment is solely for such injuries, but it does not define the scope of 'Psychological Injury Emphasis' in court discussions.",
+            "failure_mode": "subject_mismatch",
+            "sound": false
+          },
+          "rejected": "refuted:subject_mismatch"
+        }
+      ],
+      "unmapped_concepts": [
+        "Motor Accidents Medical Guidelines",
+        "American Medical Association\u2019s Guides to the Evaluation of Permanent Impairment, Fourth Edition"
+      ],
+      "notes": "",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "bca8add94e10301ed57ceea6",
+        "requested_at": "2026-08-05T10:43:49+00:00",
+        "prompt_tokens": 2022,
+        "completion_tokens": 188,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "134 Motor Accidents Compensation Act 1999",
+      "section": "134",
+      "act": "Motor Accidents Compensation Act 1999",
+      "source_file": "Motor Accidents Compensation Act 1999 No 41 - NSW Legislation.html",
+      "source_sha256": "7f2d5c1043c9af4ef5bc571afd524059fbd932f1840fac6da9563066bee01d13",
+      "subject": "The provision sets a maximum limit on the amount of damages for non-economic loss that a court may award.",
+      "determines": [
+        "Non-Economic Loss"
+      ],
+      "inputs": [],
+      "links": [
+        {
+          "concept_in_text": "maximum amount that a court may award for non-economic loss",
+          "quote": "The maximum amount that a court may award for non-economic loss is $284,000.",
+          "input": "Non-Economic Loss",
+          "mapping_rationale": "The provision explicitly states the maximum amount that can be awarded for non-economic loss, which corresponds to the dataset variable 'Non-Economic Loss'.",
+          "determines": "Non-Economic Loss",
+          "relation": "limit",
+          "confidence": "high",
+          "quote_verbatim": false,
+          "quote_match": "self-loop",
+          "quote_fragments": [
+            "the maximum amount that a court may award for non-economic loss is $284,000."
+          ],
+          "challenge": null,
+          "rejected": "self-loop"
+        }
+      ],
+      "unmapped_concepts": [
+        "Indexation of amounts relating to award of damages"
+      ],
+      "notes": "",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "21cc18dc9a285b91ad07f4bc",
+        "requested_at": "2026-08-05T10:43:52+00:00",
+        "prompt_tokens": 1930,
+        "completion_tokens": 154,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "136 Motor Accidents Compensation Act 1999",
+      "section": "136",
+      "act": "Motor Accidents Compensation Act 1999",
+      "source_file": "Motor Accidents Compensation Act 1999 No 41 - NSW Legislation.html",
+      "source_sha256": "7f2d5c1043c9af4ef5bc571afd524059fbd932f1840fac6da9563066bee01d13",
+      "subject": "The duty of an injured person to mitigate damages in a motor accident claim.",
+      "determines": [
+        "Lump Sum",
+        "Future Economic Loss",
+        "Non-Economic Loss"
+      ],
+      "inputs": [
+        "Treatment Burden",
+        "Work Impact Severity"
+      ],
+      "links": [
+        {
+          "concept_in_text": "undergoing medical treatment",
+          "quote": "undergoing medical treatment",
+          "input": "Treatment Burden",
+          "mapping_rationale": "'undergoing medical treatment' corresponds to the extent of treatment, surgery, and ongoing care the claimant underwent, which is measured by the 'Treatment Burden' variable.",
+          "determines": "Lump Sum",
+          "relation": "defines_scope",
+          "confidence": "high",
+          "quote_verbatim": false,
+          "quote_match": "refuted:subject_mismatch",
+          "quote_fragments": [
+            "undergoing medical treatment"
+          ],
+          "challenge": {
+            "objection": "The provision governs the duty to mitigate damages and the consideration of steps taken to mitigate, not the scope of damages themselves.",
+            "failure_mode": "subject_mismatch",
+            "sound": false
+          },
+          "rejected": "refuted:subject_mismatch"
+        },
+        {
+          "concept_in_text": "undergoing medical treatment",
+          "quote": "undergoing medical treatment",
+          "input": "Treatment Burden",
+          "mapping_rationale": "'undergoing medical treatment' corresponds to the extent of treatment, surgery, and ongoing care the claimant underwent, which is measured by the 'Treatment Burden' variable.",
+          "determines": "Future Economic Loss",
+          "relation": "defines_scope",
+          "confidence": "high",
+          "quote_verbatim": false,
+          "quote_match": "refuted:subject_mismatch",
+          "quote_fragments": [
+            "undergoing medical treatment"
+          ],
+          "challenge": {
+            "objection": "The provision governs the duty to mitigate damages and the consideration of steps taken to mitigate, not the scope of future economic loss itself.",
+            "failure_mode": "subject_mismatch",
+            "sound": false
+          },
+          "rejected": "refuted:subject_mismatch"
+        },
+        {
+          "concept_in_text": "undergoing medical treatment",
+          "quote": "undergoing medical treatment",
+          "input": "Treatment Burden",
+          "mapping_rationale": "'undergoing medical treatment' corresponds to the extent of treatment, surgery, and ongoing care the claimant underwent, which is measured by the 'Treatment Burden' variable.",
+          "determines": "Non-Economic Loss",
+          "relation": "defines_scope",
+          "confidence": "high",
+          "quote_verbatim": false,
+          "quote_match": "refuted:subject_mismatch",
+          "quote_fragments": [
+            "undergoing medical treatment"
+          ],
+          "challenge": {
+            "objection": "The provision governs the duty to mitigate damages and the consideration of steps taken to mitigate, not the scope of non-economic loss awards.",
+            "failure_mode": "subject_mismatch",
+            "sound": false
+          },
+          "rejected": "refuted:subject_mismatch"
+        },
+        {
+          "concept_in_text": "pursuing alternative employment opportunities",
+          "quote": "pursuing alternative employment opportunities",
+          "input": "Work Impact Severity",
+          "mapping_rationale": "'pursuing alternative employment opportunities' relates to how much of the claimant's capacity to work was lost, which is measured by the 'Work Impact Severity' variable.",
+          "determines": "Lump Sum",
+          "relation": "defines_scope",
+          "confidence": "high",
+          "quote_verbatim": false,
+          "quote_match": "refuted:subject_mismatch",
+          "quote_fragments": [
+            "pursuing alternative employment opportunities"
+          ],
+          "challenge": {
+            "objection": "The provision governs the duty to mitigate damages and the steps taken to do so, not the scope of the 'Lump Sum' award itself.",
+            "failure_mode": "subject_mismatch",
+            "sound": false
+          },
+          "rejected": "refuted:subject_mismatch"
+        },
+        {
+          "concept_in_text": "pursuing alternative employment opportunities",
+          "quote": "pursuing alternative employment opportunities",
+          "input": "Work Impact Severity",
+          "mapping_rationale": "'pursuing alternative employment opportunities' relates to how much of the claimant's capacity to work was lost, which is measured by the 'Work Impact Severity' variable.",
+          "determines": "Future Economic Loss",
+          "relation": "defines_scope",
+          "confidence": "high",
+          "quote_verbatim": false,
+          "quote_match": "refuted:subject_mismatch",
+          "quote_fragments": [
+            "pursuing alternative employment opportunities"
+          ],
+          "challenge": {
+            "objection": "The provision governs the duty to mitigate damages, not the scope of future economic loss, which is about the amount awarded for loss of future earning capacity.",
+            "failure_mode": "subject_mismatch",
+            "sound": false
+          },
+          "rejected": "refuted:subject_mismatch"
+        },
+        {
+          "concept_in_text": "pursuing alternative employment opportunities",
+          "quote": "pursuing alternative employment opportunities",
+          "input": "Work Impact Severity",
+          "mapping_rationale": "'pursuing alternative employment opportunities' relates to how much of the claimant's capacity to work was lost, which is measured by the 'Work Impact Severity' variable.",
+          "determines": "Non-Economic Loss",
+          "relation": "defines_scope",
+          "confidence": "high",
+          "quote_verbatim": false,
+          "quote_match": "refuted:subject_mismatch",
+          "quote_fragments": [
+            "pursuing alternative employment opportunities"
+          ],
+          "challenge": {
+            "objection": "The provision governs the duty to mitigate damages and the steps taken to do so, not the scope of non-economic loss awards.",
+            "failure_mode": "subject_mismatch",
+            "sound": false
+          },
+          "rejected": "refuted:subject_mismatch"
+        }
+      ],
+      "unmapped_concepts": [
+        "rehabilitation",
+        "earliest practicable notice of the claim",
+        "insurer failed to assist in mitigating damages"
+      ],
+      "notes": "The provision discusses the duty to mitigate damages, which affects the assessment of damages, including Lump Sum, Future Economic Loss, and Non-Economic Loss. It specifies actions like medical treatment and pursuing employment, which relate to Treatment Burden and Work Impact Severity.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "dab3b63affa64236eaf1b86a",
+        "requested_at": "2026-08-05T10:43:58+00:00",
+        "prompt_tokens": 2098,
+        "completion_tokens": 604,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "137 Motor Accidents Compensation Act 1999",
+      "section": "137",
+      "act": "Motor Accidents Compensation Act 1999",
+      "source_file": "Motor Accidents Compensation Act 1999 No 41 - NSW Legislation.html",
+      "source_sha256": "7f2d5c1043c9af4ef5bc571afd524059fbd932f1840fac6da9563066bee01d13",
+      "subject": "The provision governs the payment of interest on damages related to motor accidents.",
+      "determines": [],
+      "inputs": [
+        "Non-Economic Loss"
+      ],
+      "links": [
+        {
+          "concept_in_text": "damages awarded for non-economic loss",
+          "quote": "No interest is payable on damages awarded for non-economic loss.",
+          "input": "Non-Economic Loss",
+          "mapping_rationale": "The provision explicitly mentions 'damages awarded for non-economic loss', which corresponds to the dataset variable 'Non-Economic Loss' as it refers to the dollars awarded for pain and suffering.",
+          "determines": "Non-Economic Loss",
+          "relation": "gate",
+          "confidence": "high",
+          "quote_verbatim": false,
+          "quote_match": "self-loop",
+          "quote_fragments": [
+            "no interest is payable on damages awarded for non-economic loss."
+          ],
+          "challenge": null,
+          "rejected": "self-loop"
+        }
+      ],
+      "unmapped_concepts": [
+        "interest on damages",
+        "attendant care services",
+        "offer of settlement",
+        "judgment debts"
+      ],
+      "notes": "The provision primarily addresses the conditions under which interest on damages can be paid, but it does not determine the value or availability of the damages themselves.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "7e73a03e8c46a2689b52800b",
+        "requested_at": "2026-08-05T10:44:08+00:00",
+        "prompt_tokens": 2494,
+        "completion_tokens": 181,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "138 Motor Accidents Compensation Act 1999",
+      "section": "138",
+      "act": "Motor Accidents Compensation Act 1999",
+      "source_file": "Motor Accidents Compensation Act 1999 No 41 - NSW Legislation.html",
+      "source_sha256": "7f2d5c1043c9af4ef5bc571afd524059fbd932f1840fac6da9563066bee01d13",
+      "subject": "The provision addresses the application of contributory negligence to damages awards in motor accidents.",
+      "determines": [
+        "Lump Sum"
+      ],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "contributory negligence",
+        "damages recoverable",
+        "percentage reduction",
+        "just and equitable",
+        "alcohol or other drug-related offence",
+        "voluntary passenger",
+        "impaired ability to drive",
+        "seat belt",
+        "protective helmet"
+      ],
+      "notes": "The provision governs the reduction of damages due to contributory negligence, which affects the Lump Sum, but it does not specify any dataset variables as inputs to this determination.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "3221a07a954101d9fd0a53ba",
+        "requested_at": "2026-08-05T10:44:10+00:00",
+        "prompt_tokens": 2486,
+        "completion_tokens": 119,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "141 Motor Accidents Compensation Act 1999",
+      "section": "141",
+      "act": "Motor Accidents Compensation Act 1999",
+      "source_file": "Motor Accidents Compensation Act 1999 No 41 - NSW Legislation.html",
+      "source_sha256": "7f2d5c1043c9af4ef5bc571afd524059fbd932f1840fac6da9563066bee01d13",
+      "subject": "The provision addresses the standard of care required of a driver in motor accident claims, irrespective of the other person's knowledge of the driver's skill or experience.",
+      "determines": [],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "standard of care",
+        "knowledge of driver\u2019s skill and experience",
+        "contributory negligence",
+        "voluntary assumption of risk"
+      ],
+      "notes": "The provision is about the standard of care in legal proceedings, not about any specific variable related to the claimant or the damages awarded.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "0fcbb2e1aba23efe2cb0dfad",
+        "requested_at": "2026-08-05T10:44:12+00:00",
+        "prompt_tokens": 1991,
+        "completion_tokens": 102,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "141B Motor Accidents Compensation Act 1999",
+      "section": "141B",
+      "act": "Motor Accidents Compensation Act 1999",
+      "source_file": "Motor Accidents Compensation Act 1999 No 41 - NSW Legislation.html",
+      "source_sha256": "7f2d5c1043c9af4ef5bc571afd524059fbd932f1840fac6da9563066bee01d13",
+      "subject": "The provision sets the maximum amount of damages for attendant care services in motor accident compensation claims.",
+      "determines": [
+        "Lump Sum"
+      ],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "attendant care services",
+        "value of the services",
+        "amount estimated by the Australian Statistician",
+        "average weekly total earnings"
+      ],
+      "notes": "The provision governs the maximum compensation for attendant care services, which is a component of the Lump Sum. However, it does not specify any dataset variables as inputs for determining this amount.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "3e17f40556bc2feb5c63fcc7",
+        "requested_at": "2026-08-05T10:44:14+00:00",
+        "prompt_tokens": 2415,
+        "completion_tokens": 105,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "142 Motor Accidents Compensation Act 1999",
+      "section": "142",
+      "act": "Motor Accidents Compensation Act 1999",
+      "source_file": "Motor Accidents Compensation Act 1999 No 41 - NSW Legislation.html",
+      "source_sha256": "7f2d5c1043c9af4ef5bc571afd524059fbd932f1840fac6da9563066bee01d13",
+      "subject": "This provision is about the awarding of damages for the loss of services in respect of a motor accident.",
+      "determines": [],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "loss of the services of a person",
+        "attendant care services"
+      ],
+      "notes": "The provision prohibits damages for loss of services except under specific circumstances, but does not directly govern any of the dataset variables.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "2e22a43e2198d7416d796722",
+        "requested_at": "2026-08-05T10:44:15+00:00",
+        "prompt_tokens": 1960,
+        "completion_tokens": 81,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "144 Motor Accidents Compensation Act 1999",
+      "section": "144",
+      "act": "Motor Accidents Compensation Act 1999",
+      "source_file": "Motor Accidents Compensation Act 1999 No 41 - NSW Legislation.html",
+      "source_sha256": "7f2d5c1043c9af4ef5bc571afd524059fbd932f1840fac6da9563066bee01d13",
+      "subject": "The provision prohibits the awarding of exemplary or punitive damages in respect of a motor accident.",
+      "determines": [],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "exemplary damages",
+        "punitive damages"
+      ],
+      "notes": "The provision is about the prohibition of a specific type of damages (exemplary or punitive) and does not govern any of the dataset variables directly.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "9d261e881a31297b373278d3",
+        "requested_at": "2026-08-05T10:44:16+00:00",
+        "prompt_tokens": 1857,
+        "completion_tokens": 80,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "145 Motor Accidents Compensation Act 1999",
+      "section": "145",
+      "act": "Motor Accidents Compensation Act 1999",
+      "source_file": "Motor Accidents Compensation Act 1999 No 41 - NSW Legislation.html",
+      "source_sha256": "7f2d5c1043c9af4ef5bc571afd524059fbd932f1840fac6da9563066bee01d13",
+      "subject": "The provision is about the court's duty to apportion damages and costs in cases involving motor vehicle accidents.",
+      "determines": [],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "damages in respect of the death or injury",
+        "damages in respect of any other matter",
+        "costs awarded"
+      ],
+      "notes": "The provision does not determine any of the dataset variables directly. It focuses on the apportionment of damages and costs, which is a procedural requirement rather than a determination of specific compensation amounts or factors.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "cdcbcbc612fbe860b2e2d692",
+        "requested_at": "2026-08-05T10:44:18+00:00",
+        "prompt_tokens": 1941,
+        "completion_tokens": 108,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "146 Motor Accidents Compensation Act 1999",
+      "section": "146",
+      "act": "Motor Accidents Compensation Act 1999",
+      "source_file": "Motor Accidents Compensation Act 1999 No 41 - NSW Legislation.html",
+      "source_sha256": "7f2d5c1043c9af4ef5bc571afd524059fbd932f1840fac6da9563066bee01d13",
+      "subject": "Indexation of amounts relating to award of damages under sections 125 and 134.",
+      "determines": [],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "amounts relating to award of damages",
+        "percentage change in the amounts estimated by the Australian Statistician of the average weekly total earnings of full-time adults in New South Wales"
+      ],
+      "notes": "The provision is about the indexation process for adjusting amounts under sections 125 and 134, not about determining specific variables related to claims.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "e06231fcb7c37898cd2ffc8c",
+        "requested_at": "2026-08-05T10:44:20+00:00",
+        "prompt_tokens": 2400,
+        "completion_tokens": 103,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "149 Motor Accidents Compensation Act 1999",
+      "section": "149",
+      "act": "Motor Accidents Compensation Act 1999",
+      "source_file": "Motor Accidents Compensation Act 1999 No 41 - NSW Legislation.html",
+      "source_sha256": "7f2d5c1043c9af4ef5bc571afd524059fbd932f1840fac6da9563066bee01d13",
+      "subject": "Regulations fixing maximum costs recoverable by Australian legal practitioners in motor accidents matters.",
+      "determines": [],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "maximum costs for legal services",
+        "maximum costs for matters related to proceedings",
+        "legal service or other matter",
+        "costs for a legal service or matter that were unreasonably incurred"
+      ],
+      "notes": "The provision is about regulating legal costs, not about the variables related to the claimant's injury or compensation.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "980ff32fc580089117b24217",
+        "requested_at": "2026-08-05T10:44:21+00:00",
+        "prompt_tokens": 2171,
+        "completion_tokens": 96,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "15 Motor Accidents Compensation Act 1999",
+      "section": "15",
+      "act": "Motor Accidents Compensation Act 1999",
+      "source_file": "Motor Accidents Compensation Act 1999 No 41 - NSW Legislation.html",
+      "source_sha256": "7f2d5c1043c9af4ef5bc571afd524059fbd932f1840fac6da9563066bee01d13",
+      "subject": "The provision specifies risks not covered by third-party motor vehicle insurance policies.",
+      "determines": [],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "liability to pay compensation under the Workers Compensation Acts",
+        "liability incurred under an agreement"
+      ],
+      "notes": "The provision is about exclusions from insurance coverage, not about the determination of any of the dataset variables related to claims.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "f3df1e2bede33a82702bad49",
+        "requested_at": "2026-08-05T10:44:23+00:00",
+        "prompt_tokens": 1930,
+        "completion_tokens": 79,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "150 Motor Accidents Compensation Act 1999",
+      "section": "150",
+      "act": "Motor Accidents Compensation Act 1999",
+      "source_file": "Motor Accidents Compensation Act 1999 No 41 - NSW Legislation.html",
+      "source_sha256": "7f2d5c1043c9af4ef5bc571afd524059fbd932f1840fac6da9563066bee01d13",
+      "subject": "The provision is about setting maximum fees for medico-legal services provided by medical practitioners in connection with motor accident claims.",
+      "determines": [],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "maximum fees",
+        "medical report",
+        "court proceedings",
+        "medical assessment",
+        "medical assessor",
+        "appearance as a witness"
+      ],
+      "notes": "The provision governs the fees medical practitioners can charge for specific services related to motor accident claims, but it does not directly relate to any of the dataset variables about decided claims.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "1286ef34c92ff0e41897fef5",
+        "requested_at": "2026-08-05T10:44:24+00:00",
+        "prompt_tokens": 2033,
+        "completion_tokens": 101,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "58 Motor Accidents Compensation Act 1999",
+      "section": "58",
+      "act": "Motor Accidents Compensation Act 1999",
+      "source_file": "Motor Accidents Compensation Act 1999 No 41 - NSW Legislation.html",
+      "source_sha256": "7f2d5c1043c9af4ef5bc571afd524059fbd932f1840fac6da9563066bee01d13",
+      "subject": "This provision applies to disagreements between a claimant and an insurer about medical assessment matters related to treatment and impairment from a motor accident.",
+      "determines": [],
+      "inputs": [
+        "WPI %",
+        "Treatment Burden"
+      ],
+      "links": [
+        {
+          "concept_in_text": "degree of permanent impairment",
+          "quote": "whether the degree of permanent impairment of the injured person as a result of the injury caused by the motor accident is greater than 10%",
+          "input": "WPI %",
+          "mapping_rationale": "The 'degree of permanent impairment' corresponds to 'WPI %' as it is a clinical assessment of the permanent impairment.",
+          "determines": "WPI %",
+          "relation": "gate",
+          "confidence": "high",
+          "quote_verbatim": false,
+          "quote_match": "self-loop",
+          "quote_fragments": [
+            "whether the degree of permanent impairment of the injured person as a result of the injury caused by the motor accident is greater than 10%"
+          ],
+          "challenge": null,
+          "rejected": "self-loop"
+        },
+        {
+          "concept_in_text": "treatment provided or to be provided",
+          "quote": "whether the treatment provided or to be provided to the injured person was or is reasonable and necessary in the circumstances",
+          "input": "Treatment Burden",
+          "mapping_rationale": "The 'treatment provided or to be provided' relates to the extent of treatment, surgery, and ongoing care, which corresponds to 'Treatment Burden'.",
+          "determines": "Treatment Burden",
+          "relation": "gate",
+          "confidence": "high",
+          "quote_verbatim": false,
+          "quote_match": "self-loop",
+          "quote_fragments": [
+            "whether the treatment provided or to be provided to the injured person was or is reasonable and necessary in the circumstances"
+          ],
+          "challenge": null,
+          "rejected": "self-loop"
+        }
+      ],
+      "unmapped_concepts": [
+        "reasonable and necessary",
+        "relates to the injury caused by the motor accident"
+      ],
+      "notes": "The provision does not determine any of the dataset variables directly but sets the scope for medical assessment matters in disputes.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "8c1772450e8557fd3084b15e",
+        "requested_at": "2026-08-05T10:44:28+00:00",
+        "prompt_tokens": 2078,
+        "completion_tokens": 279,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "62 Motor Accidents Compensation Act 1999",
+      "section": "62",
+      "act": "Motor Accidents Compensation Act 1999",
+      "source_file": "Motor Accidents Compensation Act 1999 No 41 - NSW Legislation.html",
+      "source_sha256": "7f2d5c1043c9af4ef5bc571afd524059fbd932f1840fac6da9563066bee01d13",
+      "subject": "The provision is about the referral of a matter for further medical assessment in motor accident claims.",
+      "determines": [],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "deterioration of the injury",
+        "additional relevant information about the injury",
+        "material effect on the outcome of the previous assessment"
+      ],
+      "notes": "The provision governs the process of referring a matter for further medical assessment, but it does not directly determine or input any of the dataset variables. It mentions conditions under which a referral can be made, such as 'deterioration of the injury' and 'additional relevant information about the injury', but these are not directly linked to the dataset variables provided.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "5aaf56a5695586b164582dec",
+        "requested_at": "2026-08-05T10:44:30+00:00",
+        "prompt_tokens": 2087,
+        "completion_tokens": 138,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "63 Motor Accidents Compensation Act 1999",
+      "section": "63",
+      "act": "Motor Accidents Compensation Act 1999",
+      "source_file": "Motor Accidents Compensation Act 1999 No 41 - NSW Legislation.html",
+      "source_sha256": "7f2d5c1043c9af4ef5bc571afd524059fbd932f1840fac6da9563066bee01d13",
+      "subject": "The provision is about the review of medical assessments by a review panel in motor accident compensation cases.",
+      "determines": [],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "medical assessment",
+        "review panel",
+        "combined certificate assessment",
+        "degree of permanent impairment",
+        "certificate of assessment",
+        "new certificate",
+        "original certificate"
+      ],
+      "notes": "The provision outlines the process and conditions for reviewing medical assessments, but it does not directly govern any of the dataset variables related to claim outcomes. It focuses on procedural aspects of the review process.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "baa9b575fc07f4ed3a260fa1",
+        "requested_at": "2026-08-05T10:44:31+00:00",
+        "prompt_tokens": 2442,
+        "completion_tokens": 106,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "81 Motor Accidents Compensation Act 1999",
+      "section": "81",
+      "act": "Motor Accidents Compensation Act 1999",
+      "source_file": "Motor Accidents Compensation Act 1999 No 41 - NSW Legislation.html",
+      "source_sha256": "7f2d5c1043c9af4ef5bc571afd524059fbd932f1840fac6da9563066bee01d13",
+      "subject": "The duty of an insurer to admit or deny liability for a claim within a specified timeframe.",
+      "determines": [],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "admission or denial of liability",
+        "extent to which liability is admitted"
+      ],
+      "notes": "The provision is about the insurer's procedural duty regarding liability, not about the determination of any specific claim-related variables.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "54d5ed3ee8fe7d5a6a960302",
+        "requested_at": "2026-08-05T10:44:33+00:00",
+        "prompt_tokens": 2010,
+        "completion_tokens": 79,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "83 Motor Accidents Compensation Act 1999",
+      "section": "83",
+      "act": "Motor Accidents Compensation Act 1999",
+      "source_file": "Motor Accidents Compensation Act 1999 No 41 - NSW Legislation.html",
+      "source_sha256": "7f2d5c1043c9af4ef5bc571afd524059fbd932f1840fac6da9563066bee01d13",
+      "subject": "The duty of an insurer to make payments for hospital, medical, and other expenses once liability is admitted or determined.",
+      "determines": [],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "hospital, medical and pharmaceutical expenses",
+        "rehabilitation expenses",
+        "respite care expenses",
+        "attendant care services expenses",
+        "reasonable and necessary",
+        "properly verified",
+        "injury caused by the fault of the owner or driver",
+        "appropriate treatment",
+        "appropriate procedures",
+        "contributory negligence"
+      ],
+      "notes": "The provision is about the insurer's duty to pay certain expenses, not about determining the value of any dataset variable.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "05fd269e9489293779c83a69",
+        "requested_at": "2026-08-05T10:44:35+00:00",
+        "prompt_tokens": 2515,
+        "completion_tokens": 124,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "84A Motor Accidents Compensation Act 1999",
+      "section": "84A",
+      "act": "Motor Accidents Compensation Act 1999",
+      "source_file": "Motor Accidents Compensation Act 1999 No 41 - NSW Legislation.html",
+      "source_sha256": "7f2d5c1043c9af4ef5bc571afd524059fbd932f1840fac6da9563066bee01d13",
+      "subject": "The duty of an insurer to make interim payments to avoid claimant financial hardship once liability is admitted or determined.",
+      "determines": [],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "financial hardship",
+        "liability",
+        "economic loss",
+        "contributory negligence"
+      ],
+      "notes": "The provision is about the insurer's duty to make interim payments, not about the determination of any specific variable in the dataset.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "7134e989e0fbd0bd41723f37",
+        "requested_at": "2026-08-05T10:44:36+00:00",
+        "prompt_tokens": 2134,
+        "completion_tokens": 84,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "85A Motor Accidents Compensation Act 1999",
+      "section": "85A",
+      "act": "Motor Accidents Compensation Act 1999",
+      "source_file": "Motor Accidents Compensation Act 1999 No 41 - NSW Legislation.html",
+      "source_sha256": "7f2d5c1043c9af4ef5bc571afd524059fbd932f1840fac6da9563066bee01d13",
+      "subject": "The duty of a claimant to provide relevant particulars of a claim to the insurer.",
+      "determines": [],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "injuries sustained by the claimant",
+        "disabilities and impairments arising from those injuries",
+        "economic losses and other losses"
+      ],
+      "notes": "The provision is about the claimant's duty to provide information, not about determining any specific variable related to the claim's outcome.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "66c753ce368c57b56f8569d7",
+        "requested_at": "2026-08-05T10:44:38+00:00",
+        "prompt_tokens": 2014,
+        "completion_tokens": 88,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "86 Motor Accidents Compensation Act 1999",
+      "section": "86",
+      "act": "Motor Accidents Compensation Act 1999",
+      "source_file": "Motor Accidents Compensation Act 1999 No 41 - NSW Legislation.html",
+      "source_sha256": "7f2d5c1043c9af4ef5bc571afd524059fbd932f1840fac6da9563066bee01d13",
+      "subject": "The provision outlines the requirements for a claimant to undergo medical and other assessments upon request by the insurer or relevant authorities.",
+      "determines": [],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "medical examination",
+        "rehabilitation assessment",
+        "functional and vocational capacity",
+        "attendant care needs",
+        "Motor Accidents Medical Guidelines",
+        "medical assessor",
+        "reasonable excuse",
+        "travel costs"
+      ],
+      "notes": "The provision is about procedural requirements for claimants to undergo assessments, not about determining any specific variable related to the claim's outcome.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "78dfd70d928c1a8c8af0d3fd",
+        "requested_at": "2026-08-05T10:44:39+00:00",
+        "prompt_tokens": 2220,
+        "completion_tokens": 106,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "89 Motor Accidents Compensation Act 1999",
+      "section": "89",
+      "act": "Motor Accidents Compensation Act 1999",
+      "source_file": "Motor Accidents Compensation Act 1999 No 41 - NSW Legislation.html",
+      "source_sha256": "7f2d5c1043c9af4ef5bc571afd524059fbd932f1840fac6da9563066bee01d13",
+      "subject": "This provision outlines the application of Part 4.4 of the Motor Accidents Compensation Act 1999 to claims, regardless of liability admission, and notes the requirement for claims assessment before court proceedings.",
+      "determines": [],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "claim",
+        "insurer admits or denies liability",
+        "settled",
+        "court proceedings",
+        "referred for assessment",
+        "certificate",
+        "exclusion of the claim from assessment",
+        "results of assessment"
+      ],
+      "notes": "The provision is about procedural aspects of claims handling and does not directly govern any of the dataset variables related to the outcomes or characteristics of claims.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "ff1b8e5cc8f1fc257623ed8f",
+        "requested_at": "2026-08-05T10:44:41+00:00",
+        "prompt_tokens": 1953,
+        "completion_tokens": 126,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "89A Motor Accidents Compensation Act 1999",
+      "section": "89A",
+      "act": "Motor Accidents Compensation Act 1999",
+      "source_file": "Motor Accidents Compensation Act 1999 No 41 - NSW Legislation.html",
+      "source_sha256": "7f2d5c1043c9af4ef5bc571afd524059fbd932f1840fac6da9563066bee01d13",
+      "subject": "The provision mandates participation in a settlement conference before a claim can be referred for assessment.",
+      "determines": [],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "settlement conference",
+        "offer of settlement",
+        "claimant\u2019s guardian",
+        "person authorised by the insurer"
+      ],
+      "notes": "The provision is procedural, focusing on the requirement for a settlement conference before referral for assessment. It does not directly govern any of the dataset variables.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "b8bda077a3b6a3d4d3a6c51d",
+        "requested_at": "2026-08-05T10:44:43+00:00",
+        "prompt_tokens": 2059,
+        "completion_tokens": 89,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "89C Motor Accidents Compensation Act 1999",
+      "section": "89C",
+      "act": "Motor Accidents Compensation Act 1999",
+      "source_file": "Motor Accidents Compensation Act 1999 No 41 - NSW Legislation.html",
+      "source_sha256": "7f2d5c1043c9af4ef5bc571afd524059fbd932f1840fac6da9563066bee01d13",
+      "subject": "The provision mandates settlement offers after an unsuccessful settlement conference and before referral to the Commission for assessment.",
+      "determines": [],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "settlement conference",
+        "offer of settlement",
+        "schedule of damages",
+        "Commission for assessment"
+      ],
+      "notes": "The provision is procedural, focusing on the requirement for settlement offers and the conditions for referral to the Commission. It does not directly govern any of the dataset variables related to the outcome or assessment of claims.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "267a6246428927eeb2411c6d",
+        "requested_at": "2026-08-05T10:44:45+00:00",
+        "prompt_tokens": 2019,
+        "completion_tokens": 99,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "92 Motor Accidents Compensation Act 1999",
+      "section": "92",
+      "act": "Motor Accidents Compensation Act 1999",
+      "source_file": "Motor Accidents Compensation Act 1999 No 41 - NSW Legislation.html",
+      "source_sha256": "7f2d5c1043c9af4ef5bc571afd524059fbd932f1840fac6da9563066bee01d13",
+      "subject": "Exemption of claims from assessment under Part 92 of the Motor Accidents Compensation Act 1999.",
+      "determines": [
+        "Nature"
+      ],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "claim is of a kind that is exempt under the regulations",
+        "preliminary assessment of the claim",
+        "not suitable for assessment",
+        "certificate enabling court proceedings"
+      ],
+      "notes": "The provision determines whether a claim is exempt from assessment, which affects the procedural route ('Nature') the claim takes, but it does not specify any dataset variables as inputs for this determination.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "7d7973a8dee11e9f320f7dea",
+        "requested_at": "2026-08-05T10:44:47+00:00",
+        "prompt_tokens": 1996,
+        "completion_tokens": 113,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "94 Motor Accidents Compensation Act 1999",
+      "section": "94",
+      "act": "Motor Accidents Compensation Act 1999",
+      "source_file": "Motor Accidents Compensation Act 1999 No 41 - NSW Legislation.html",
+      "source_sha256": "7f2d5c1043c9af4ef5bc571afd524059fbd932f1840fac6da9563066bee01d13",
+      "subject": "The provision is about the Commission's assessment of claims referred to it, including liability and damages.",
+      "determines": [
+        "Liability Clarity",
+        "Lump Sum"
+      ],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "amount of damages that a court would be likely to award"
+      ],
+      "notes": "The provision discusses the assessment of liability and damages but does not specify inputs for these determinations. It mentions 'the amount of damages that a court would be likely to award', which is related to the Lump Sum, but does not specify how this is determined.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "a89216d505ea5838e3ce467a",
+        "requested_at": "2026-08-05T10:44:48+00:00",
+        "prompt_tokens": 2054,
+        "completion_tokens": 116,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "94A Motor Accidents Compensation Act 1999",
+      "section": "94A",
+      "act": "Motor Accidents Compensation Act 1999",
+      "source_file": "Motor Accidents Compensation Act 1999 No 41 - NSW Legislation.html",
+      "source_sha256": "7f2d5c1043c9af4ef5bc571afd524059fbd932f1840fac6da9563066bee01d13",
+      "subject": "The provision is about the Commission's authority to assess costs related to a claim, including legal and medico-legal services.",
+      "determines": [],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "claimant\u2019s costs",
+        "legal services",
+        "medico-legal services",
+        "written offer of settlement",
+        "requirements of a court",
+        "requirements of the regulations",
+        "principles and matters in section 200 of the Legal Profession Uniform Law (NSW)",
+        "right of appeal"
+      ],
+      "notes": "The provision focuses on the assessment of costs related to a claim, not on the determination of damages or other variables related to the claimant's injury or compensation.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "ef11df3804f398f97b567a48",
+        "requested_at": "2026-08-05T10:44:50+00:00",
+        "prompt_tokens": 2210,
+        "completion_tokens": 131,
+        "cache": "miss"
+      }
+    },
+    {
+      "provision": "95 Motor Accidents Compensation Act 1999",
+      "section": "95",
+      "act": "Motor Accidents Compensation Act 1999",
+      "source_file": "Motor Accidents Compensation Act 1999 No 41 - NSW Legislation.html",
+      "source_sha256": "7f2d5c1043c9af4ef5bc571afd524059fbd932f1840fac6da9563066bee01d13",
+      "subject": "The provision is about the binding status of assessments of liability and damages under a claim in motor accidents.",
+      "determines": [
+        "Lump Sum"
+      ],
+      "inputs": [],
+      "links": [],
+      "unmapped_concepts": [
+        "assessment of the issue of liability",
+        "assessment of the amount of damages",
+        "insurer accepts that liability",
+        "claimant accepts that amount of damages",
+        "certificate of assessment",
+        "payment of interest"
+      ],
+      "notes": "The provision discusses the binding nature of assessments on liability and damages, but does not specify inputs that determine the amount of damages. It mentions conditions under which the insurer must pay the assessed damages, but does not detail how the amount is calculated.",
+      "llm": {
+        "model": "gpt-4o-2024-08-06",
+        "prompt_sha256": "6988efaf8d80747ec463f194",
+        "requested_at": "2026-08-05T10:44:53+00:00",
+        "prompt_tokens": 2126,
+        "completion_tokens": 132,
+        "cache": "miss"
+      }
+    }
+  ]
+}

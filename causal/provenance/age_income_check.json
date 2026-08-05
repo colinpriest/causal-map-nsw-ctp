@@ -1,0 +1,51 @@
+{
+  "n_rows": 540,
+  "income_blank_in_csv": 226,
+  "income_blank_in_raw": 226,
+  "income_basis_not_stated": 226,
+  "income_blanks_match_raw": true,
+  "income_blanks_match_basis": true,
+  "age_blank_in_csv": 44,
+  "age_blank_in_raw": 44,
+  "age_blanks_match_raw": true,
+  "age_values_rounded_to_int": 1,
+  "age_value_mismatches": 0,
+  "complete_pairs": 297,
+  "zero_income_rows": 1,
+  "plotted_rows": 296,
+  "no_imputation_detected": true,
+  "spearman": 0.092,
+  "pearson_loglog": 0.116,
+  "band_medians": [
+    {
+      "age_mid": 20.0,
+      "median_income": 784.0,
+      "n": 54
+    },
+    {
+      "age_mid": 32.0,
+      "median_income": 1219.0,
+      "n": 48
+    },
+    {
+      "age_mid": 41.0,
+      "median_income": 1100.0,
+      "n": 47
+    },
+    {
+      "age_mid": 49.3,
+      "median_income": 987.3,
+      "n": 48
+    },
+    {
+      "age_mid": 56.8,
+      "median_income": 1138.9,
+      "n": 50
+    },
+    {
+      "age_mid": 70.0,
+      "median_income": 919.0,
+      "n": 49
+    }
+  ]
+}

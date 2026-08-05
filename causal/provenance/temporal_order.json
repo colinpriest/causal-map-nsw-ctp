@@ -1,0 +1,1241 @@
+{
+  "n_cases": 540,
+  "thresholds": {
+    "min_event_n": 80,
+    "min_cases": 40,
+    "decisive": 0.9,
+    "link_min": 0.35
+  },
+  "event_pairs": [
+    {
+      "earlier": "accident",
+      "later": "decision",
+      "share": 1.0,
+      "n_cases": 516,
+      "decisive": true
+    },
+    {
+      "earlier": "accident",
+      "later": "insurer offers settlement",
+      "share": 1.0,
+      "n_cases": 154,
+      "decisive": true
+    },
+    {
+      "earlier": "accident",
+      "later": "liability notice",
+      "share": 1.0,
+      "n_cases": 142,
+      "decisive": true
+    },
+    {
+      "earlier": "accident",
+      "later": "certificate of capacity",
+      "share": 1.0,
+      "n_cases": 51,
+      "decisive": true
+    },
+    {
+      "earlier": "certificate of capacity",
+      "later": "decision",
+      "share": 1.0,
+      "n_cases": 52,
+      "decisive": true
+    },
+    {
+      "earlier": "accident",
+      "later": "discharge",
+      "share": 1.0,
+      "n_cases": 82,
+      "decisive": true
+    },
+    {
+      "earlier": "discharge",
+      "later": "decision",
+      "share": 1.0,
+      "n_cases": 83,
+      "decisive": true
+    },
+    {
+      "earlier": "hospital admission",
+      "later": "decision",
+      "share": 1.0,
+      "n_cases": 207,
+      "decisive": true
+    },
+    {
+      "earlier": "accident",
+      "later": "statement",
+      "share": 1.0,
+      "n_cases": 63,
+      "decisive": true
+    },
+    {
+      "earlier": "GP visit",
+      "later": "hearing",
+      "share": 1.0,
+      "n_cases": 46,
+      "decisive": true
+    },
+    {
+      "earlier": "GP visit",
+      "later": "insurer offers settlement",
+      "share": 1.0,
+      "n_cases": 49,
+      "decisive": true
+    },
+    {
+      "earlier": "accident",
+      "later": "WPI assessment",
+      "share": 1.0,
+      "n_cases": 164,
+      "decisive": true
+    },
+    {
+      "earlier": "hospital admission",
+      "later": "WPI assessment",
+      "share": 1.0,
+      "n_cases": 69,
+      "decisive": true
+    },
+    {
+      "earlier": "accident",
+      "later": "hearing",
+      "share": 1.0,
+      "n_cases": 89,
+      "decisive": true
+    },
+    {
+      "earlier": "hospital admission",
+      "later": "application filed",
+      "share": 1.0,
+      "n_cases": 49,
+      "decisive": true
+    },
+    {
+      "earlier": "imaging",
+      "later": "decision",
+      "share": 1.0,
+      "n_cases": 177,
+      "decisive": true
+    },
+    {
+      "earlier": "report",
+      "later": "decision",
+      "share": 1.0,
+      "n_cases": 212,
+      "decisive": true
+    },
+    {
+      "earlier": "surgery",
+      "later": "decision",
+      "share": 1.0,
+      "n_cases": 191,
+      "decisive": true
+    },
+    {
+      "earlier": "hospital admission",
+      "later": "hearing",
+      "share": 1.0,
+      "n_cases": 40,
+      "decisive": true
+    },
+    {
+      "earlier": "imaging",
+      "later": "hearing",
+      "share": 1.0,
+      "n_cases": 51,
+      "decisive": true
+    },
+    {
+      "earlier": "report",
+      "later": "hearing",
+      "share": 1.0,
+      "n_cases": 45,
+      "decisive": true
+    },
+    {
+      "earlier": "surgery",
+      "later": "hearing",
+      "share": 1.0,
+      "n_cases": 47,
+      "decisive": true
+    },
+    {
+      "earlier": "hospital admission",
+      "later": "insurer offers settlement",
+      "share": 1.0,
+      "n_cases": 62,
+      "decisive": true
+    },
+    {
+      "earlier": "imaging",
+      "later": "insurer offers settlement",
+      "share": 1.0,
+      "n_cases": 64,
+      "decisive": true
+    },
+    {
+      "earlier": "surgery",
+      "later": "insurer offers settlement",
+      "share": 1.0,
+      "n_cases": 61,
+      "decisive": true
+    },
+    {
+      "earlier": "claim lodged",
+      "later": "decision",
+      "share": 1.0,
+      "n_cases": 143,
+      "decisive": true
+    },
+    {
+      "earlier": "claim lodged",
+      "later": "insurer offers settlement",
+      "share": 1.0,
+      "n_cases": 70,
+      "decisive": true
+    },
+    {
+      "earlier": "accident",
+      "later": "teleconference",
+      "share": 1.0,
+      "n_cases": 146,
+      "decisive": true
+    },
+    {
+      "earlier": "liability notice",
+      "later": "teleconference",
+      "share": 1.0,
+      "n_cases": 56,
+      "decisive": true
+    },
+    {
+      "earlier": "surgery",
+      "later": "teleconference",
+      "share": 1.0,
+      "n_cases": 63,
+      "decisive": true
+    },
+    {
+      "earlier": "accident",
+      "later": "preliminary conference",
+      "share": 1.0,
+      "n_cases": 107,
+      "decisive": true
+    },
+    {
+      "earlier": "hospital admission",
+      "later": "preliminary conference",
+      "share": 1.0,
+      "n_cases": 43,
+      "decisive": true
+    },
+    {
+      "earlier": "injury",
+      "later": "decision",
+      "share": 1.0,
+      "n_cases": 47,
+      "decisive": true
+    },
+    {
+      "earlier": "review",
+      "later": "decision",
+      "share": 1.0,
+      "n_cases": 53,
+      "decisive": true
+    },
+    {
+      "earlier": "accident",
+      "later": "liability admission",
+      "share": 1.0,
+      "n_cases": 48,
+      "decisive": true
+    },
+    {
+      "earlier": "liability admission",
+      "later": "decision",
+      "share": 1.0,
+      "n_cases": 48,
+      "decisive": true
+    },
+    {
+      "earlier": "hospital admission",
+      "later": "teleconference",
+      "share": 1.0,
+      "n_cases": 69,
+      "decisive": true
+    },
+    {
+      "earlier": "claim lodged",
+      "later": "teleconference",
+      "share": 1.0,
+      "n_cases": 49,
+      "decisive": true
+    },
+    {
+      "earlier": "insurer offers settlement",
+      "later": "decision",
+      "share": 0.994,
+      "n_cases": 160,
+      "decisive": true
+    },
+    {
+      "earlier": "WPI assessment",
+      "later": "decision",
+      "share": 0.994,
+      "n_cases": 170,
+      "decisive": true
+    },
+    {
+      "earlier": "accident",
+      "later": "submission filed",
+      "share": 0.994,
+      "n_cases": 173,
+      "decisive": true
+    },
+    {
+      "earlier": "application filed",
+      "later": "decision",
+      "share": 0.993,
+      "n_cases": 138,
+      "decisive": true
+    },
+    {
+      "earlier": "GP visit",
+      "later": "decision",
+      "share": 0.993,
+      "n_cases": 143,
+      "decisive": true
+    },
+    {
+      "earlier": "accident",
+      "later": "claim lodged",
+      "share": 0.993,
+      "n_cases": 137,
+      "decisive": true
+    },
+    {
+      "earlier": "accident",
+      "later": "application filed",
+      "share": 0.992,
+      "n_cases": 133,
+      "decisive": true
+    },
+    {
+      "earlier": "return to work",
+      "later": "decision",
+      "share": 0.991,
+      "n_cases": 106,
+      "decisive": true
+    },
+    {
+      "earlier": "IME",
+      "later": "decision",
+      "share": 0.991,
+      "n_cases": 325,
+      "decisive": true
+    },
+    {
+      "earlier": "preliminary conference",
+      "later": "decision",
+      "share": 0.991,
+      "n_cases": 109,
+      "decisive": true
+    },
+    {
+      "earlier": "liability notice",
+      "later": "decision",
+      "share": 0.987,
+      "n_cases": 153,
+      "decisive": true
+    },
+    {
+      "earlier": "imaging",
+      "later": "submission filed",
+      "share": 0.987,
+      "n_cases": 75,
+      "decisive": true
+    },
+    {
+      "earlier": "surgery",
+      "later": "submission filed",
+      "share": 0.986,
+      "n_cases": 70,
+      "decisive": true
+    },
+    {
+      "earlier": "IME",
+      "later": "hearing",
+      "share": 0.986,
+      "n_cases": 69,
+      "decisive": true
+    },
+    {
+      "earlier": "hospital discharge",
+      "later": "decision",
+      "share": 0.986,
+      "n_cases": 69,
+      "decisive": true
+    },
+    {
+      "earlier": "statement",
+      "later": "decision",
+      "share": 0.985,
+      "n_cases": 66,
+      "decisive": true
+    },
+    {
+      "earlier": "claim lodged",
+      "later": "submission filed",
+      "share": 0.985,
+      "n_cases": 67,
+      "decisive": true
+    },
+    {
+      "earlier": "application filed",
+      "later": "teleconference",
+      "share": 0.985,
+      "n_cases": 65,
+      "decisive": true
+    },
+    {
+      "earlier": "accident",
+      "later": "IME",
+      "share": 0.984,
+      "n_cases": 317,
+      "decisive": true
+    },
+    {
+      "earlier": "surgery",
+      "later": "WPI assessment",
+      "share": 0.984,
+      "n_cases": 63,
+      "decisive": true
+    },
+    {
+      "earlier": "hospital admission",
+      "later": "liability notice",
+      "share": 0.984,
+      "n_cases": 62,
+      "decisive": true
+    },
+    {
+      "earlier": "submission filed",
+      "later": "decision",
+      "share": 0.983,
+      "n_cases": 179,
+      "decisive": true
+    },
+    {
+      "earlier": "imaging",
+      "later": "teleconference",
+      "share": 0.981,
+      "n_cases": 53,
+      "decisive": true
+    },
+    {
+      "earlier": "WPI assessment",
+      "later": "hearing",
+      "share": 0.98,
+      "n_cases": 50,
+      "decisive": true
+    },
+    {
+      "earlier": "accident",
+      "later": "report",
+      "share": 0.98,
+      "n_cases": 205,
+      "decisive": true
+    },
+    {
+      "earlier": "teleconference",
+      "later": "decision",
+      "share": 0.978,
+      "n_cases": 138,
+      "decisive": true
+    },
+    {
+      "earlier": "liability notice",
+      "later": "preliminary conference",
+      "share": 0.978,
+      "n_cases": 46,
+      "decisive": true
+    },
+    {
+      "earlier": "hospital admission",
+      "later": "submission filed",
+      "share": 0.975,
+      "n_cases": 80,
+      "decisive": true
+    },
+    {
+      "earlier": "imaging",
+      "later": "WPI assessment",
+      "share": 0.973,
+      "n_cases": 73,
+      "decisive": true
+    },
+    {
+      "earlier": "hospital admission",
+      "later": "IME",
+      "share": 0.97,
+      "n_cases": 135,
+      "decisive": true
+    },
+    {
+      "earlier": "GP visit",
+      "later": "WPI assessment",
+      "share": 0.97,
+      "n_cases": 66,
+      "decisive": true
+    },
+    {
+      "earlier": "claim lodged",
+      "later": "application filed",
+      "share": 0.97,
+      "n_cases": 66,
+      "decisive": true
+    },
+    {
+      "earlier": "IME",
+      "later": "teleconference",
+      "share": 0.967,
+      "n_cases": 90,
+      "decisive": true
+    },
+    {
+      "earlier": "GP visit",
+      "later": "submission filed",
+      "share": 0.966,
+      "n_cases": 59,
+      "decisive": true
+    },
+    {
+      "earlier": "hearing",
+      "later": "decision",
+      "share": 0.966,
+      "n_cases": 87,
+      "decisive": true
+    },
+    {
+      "earlier": "GP visit",
+      "later": "IME",
+      "share": 0.963,
+      "n_cases": 107,
+      "decisive": true
+    },
+    {
+      "earlier": "accident",
+      "later": "return to work",
+      "share": 0.961,
+      "n_cases": 103,
+      "decisive": true
+    },
+    {
+      "earlier": "IME",
+      "later": "preliminary conference",
+      "share": 0.957,
+      "n_cases": 70,
+      "decisive": true
+    },
+    {
+      "earlier": "accident",
+      "later": "hospital discharge",
+      "share": 0.953,
+      "n_cases": 64,
+      "decisive": true
+    },
+    {
+      "earlier": "claim lodged",
+      "later": "liability notice",
+      "share": 0.952,
+      "n_cases": 83,
+      "decisive": true
+    },
+    {
+      "earlier": "WPI assessment",
+      "later": "teleconference",
+      "share": 0.952,
+      "n_cases": 42,
+      "decisive": true
+    },
+    {
+      "earlier": "hospital admission",
+      "later": "report",
+      "share": 0.951,
+      "n_cases": 81,
+      "decisive": true
+    },
+    {
+      "earlier": "accident",
+      "later": "surgery",
+      "share": 0.95,
+      "n_cases": 160,
+      "decisive": true
+    },
+    {
+      "earlier": "report",
+      "later": "insurer offers settlement",
+      "share": 0.949,
+      "n_cases": 78,
+      "decisive": true
+    },
+    {
+      "earlier": "liability notice",
+      "later": "submission filed",
+      "share": 0.946,
+      "n_cases": 74,
+      "decisive": true
+    },
+    {
+      "earlier": "surgery",
+      "later": "application filed",
+      "share": 0.945,
+      "n_cases": 55,
+      "decisive": true
+    },
+    {
+      "earlier": "accident",
+      "later": "review",
+      "share": 0.94,
+      "n_cases": 50,
+      "decisive": true
+    },
+    {
+      "earlier": "report",
+      "later": "teleconference",
+      "share": 0.939,
+      "n_cases": 66,
+      "decisive": true
+    },
+    {
+      "earlier": "accident",
+      "later": "hospital admission",
+      "share": 0.933,
+      "n_cases": 45,
+      "decisive": true
+    },
+    {
+      "earlier": "claim lodged",
+      "later": "WPI assessment",
+      "share": 0.932,
+      "n_cases": 59,
+      "decisive": true
+    },
+    {
+      "earlier": "hospital discharge",
+      "later": "IME",
+      "share": 0.932,
+      "n_cases": 44,
+      "decisive": true
+    },
+    {
+      "earlier": "IME",
+      "later": "insurer offers settlement",
+      "share": 0.929,
+      "n_cases": 98,
+      "decisive": true
+    },
+    {
+      "earlier": "discharge",
+      "later": "IME",
+      "share": 0.927,
+      "n_cases": 55,
+      "decisive": true
+    },
+    {
+      "earlier": "IME",
+      "later": "submission filed",
+      "share": 0.926,
+      "n_cases": 121,
+      "decisive": true
+    },
+    {
+      "earlier": "liability notice",
+      "later": "insurer offers settlement",
+      "share": 0.925,
+      "n_cases": 80,
+      "decisive": true
+    },
+    {
+      "earlier": "GP visit",
+      "later": "liability notice",
+      "share": 0.925,
+      "n_cases": 53,
+      "decisive": true
+    },
+    {
+      "earlier": "report",
+      "later": "submission filed",
+      "share": 0.919,
+      "n_cases": 86,
+      "decisive": true
+    },
+    {
+      "earlier": "hospital admission",
+      "later": "return to work",
+      "share": 0.913,
+      "n_cases": 46,
+      "decisive": true
+    },
+    {
+      "earlier": "imaging",
+      "later": "IME",
+      "share": 0.913,
+      "n_cases": 127,
+      "decisive": true
+    },
+    {
+      "earlier": "GP visit",
+      "later": "application filed",
+      "share": 0.911,
+      "n_cases": 45,
+      "decisive": true
+    },
+    {
+      "earlier": "imaging",
+      "later": "report",
+      "share": 0.905,
+      "n_cases": 95,
+      "decisive": true
+    },
+    {
+      "earlier": "claim lodged",
+      "later": "IME",
+      "share": 0.901,
+      "n_cases": 91,
+      "decisive": true
+    },
+    {
+      "earlier": "insurer offers settlement",
+      "later": "teleconference",
+      "share": 0.901,
+      "n_cases": 71,
+      "decisive": true
+    },
+    {
+      "earlier": "imaging",
+      "later": "liability notice",
+      "share": 0.899,
+      "n_cases": 69,
+      "decisive": false
+    },
+    {
+      "earlier": "IME",
+      "later": "WPI assessment",
+      "share": 0.891,
+      "n_cases": 110,
+      "decisive": false
+    },
+    {
+      "earlier": "accident",
+      "later": "imaging",
+      "share": 0.888,
+      "n_cases": 152,
+      "decisive": false
+    },
+    {
+      "earlier": "hospital admission",
+      "later": "discharge",
+      "share": 0.886,
+      "n_cases": 44,
+      "decisive": false
+    },
+    {
+      "earlier": "report",
+      "later": "preliminary conference",
+      "share": 0.886,
+      "n_cases": 44,
+      "decisive": false
+    },
+    {
+      "earlier": "surgery",
+      "later": "IME",
+      "share": 0.879,
+      "n_cases": 124,
+      "decisive": false
+    },
+    {
+      "earlier": "surgery",
+      "later": "report",
+      "share": 0.872,
+      "n_cases": 86,
+      "decisive": false
+    },
+    {
+      "earlier": "imaging",
+      "later": "return to work",
+      "share": 0.867,
+      "n_cases": 45,
+      "decisive": false
+    },
+    {
+      "earlier": "GP visit",
+      "later": "report",
+      "share": 0.866,
+      "n_cases": 67,
+      "decisive": false
+    },
+    {
+      "earlier": "WPI assessment",
+      "later": "submission filed",
+      "share": 0.861,
+      "n_cases": 79,
+      "decisive": false
+    },
+    {
+      "earlier": "application filed",
+      "later": "submission filed",
+      "share": 0.855,
+      "n_cases": 55,
+      "decisive": false
+    },
+    {
+      "earlier": "hospital admission",
+      "later": "claim lodged",
+      "share": 0.852,
+      "n_cases": 54,
+      "decisive": false
+    },
+    {
+      "earlier": "surgery",
+      "later": "return to work",
+      "share": 0.851,
+      "n_cases": 47,
+      "decisive": false
+    },
+    {
+      "earlier": "accident",
+      "later": "GP visit",
+      "share": 0.849,
+      "n_cases": 126,
+      "decisive": false
+    },
+    {
+      "earlier": "surgery",
+      "later": "liability notice",
+      "share": 0.844,
+      "n_cases": 64,
+      "decisive": false
+    },
+    {
+      "earlier": "application filed",
+      "later": "insurer offers settlement",
+      "share": 0.821,
+      "n_cases": 84,
+      "decisive": false
+    },
+    {
+      "earlier": "hospital admission",
+      "later": "GP visit",
+      "share": 0.815,
+      "n_cases": 54,
+      "decisive": false
+    },
+    {
+      "earlier": "liability notice",
+      "later": "WPI assessment",
+      "share": 0.81,
+      "n_cases": 63,
+      "decisive": false
+    },
+    {
+      "earlier": "hospital admission",
+      "later": "imaging",
+      "share": 0.803,
+      "n_cases": 66,
+      "decisive": false
+    },
+    {
+      "earlier": "imaging",
+      "later": "application filed",
+      "share": 0.797,
+      "n_cases": 64,
+      "decisive": false
+    },
+    {
+      "earlier": "return to work",
+      "later": "IME",
+      "share": 0.788,
+      "n_cases": 66,
+      "decisive": false
+    },
+    {
+      "earlier": "IME",
+      "later": "statement",
+      "share": 0.776,
+      "n_cases": 49,
+      "decisive": false
+    },
+    {
+      "earlier": "insurer offers settlement",
+      "later": "preliminary conference",
+      "share": 0.773,
+      "n_cases": 44,
+      "decisive": false
+    },
+    {
+      "earlier": "WPI assessment",
+      "later": "insurer offers settlement",
+      "share": 0.768,
+      "n_cases": 56,
+      "decisive": false
+    },
+    {
+      "earlier": "report",
+      "later": "WPI assessment",
+      "share": 0.753,
+      "n_cases": 81,
+      "decisive": false
+    },
+    {
+      "earlier": "GP visit",
+      "later": "claim lodged",
+      "share": 0.735,
+      "n_cases": 49,
+      "decisive": false
+    },
+    {
+      "earlier": "surgery",
+      "later": "discharge",
+      "share": 0.714,
+      "n_cases": 42,
+      "decisive": false
+    },
+    {
+      "earlier": "claim lodged",
+      "later": "report",
+      "share": 0.704,
+      "n_cases": 71,
+      "decisive": false
+    },
+    {
+      "earlier": "GP visit",
+      "later": "imaging",
+      "share": 0.699,
+      "n_cases": 83,
+      "decisive": false
+    },
+    {
+      "earlier": "hospital admission",
+      "later": "surgery",
+      "share": 0.687,
+      "n_cases": 67,
+      "decisive": false
+    },
+    {
+      "earlier": "application filed",
+      "later": "WPI assessment",
+      "share": 0.652,
+      "n_cases": 46,
+      "decisive": false
+    },
+    {
+      "earlier": "report",
+      "later": "application filed",
+      "share": 0.649,
+      "n_cases": 74,
+      "decisive": false
+    },
+    {
+      "earlier": "application filed",
+      "later": "liability notice",
+      "share": 0.633,
+      "n_cases": 79,
+      "decisive": false
+    },
+    {
+      "earlier": "insurer offers settlement",
+      "later": "submission filed",
+      "share": 0.633,
+      "n_cases": 60,
+      "decisive": false
+    },
+    {
+      "earlier": "submission filed",
+      "later": "teleconference",
+      "share": 0.63,
+      "n_cases": 54,
+      "decisive": false
+    },
+    {
+      "earlier": "report",
+      "later": "liability notice",
+      "share": 0.613,
+      "n_cases": 75,
+      "decisive": false
+    },
+    {
+      "earlier": "imaging",
+      "later": "claim lodged",
+      "share": 0.61,
+      "n_cases": 59,
+      "decisive": false
+    },
+    {
+      "earlier": "surgery",
+      "later": "claim lodged",
+      "share": 0.609,
+      "n_cases": 46,
+      "decisive": false
+    },
+    {
+      "earlier": "submission filed",
+      "later": "hearing",
+      "share": 0.605,
+      "n_cases": 43,
+      "decisive": false
+    },
+    {
+      "earlier": "imaging",
+      "later": "surgery",
+      "share": 0.6,
+      "n_cases": 70,
+      "decisive": false
+    },
+    {
+      "earlier": "liability notice",
+      "later": "IME",
+      "share": 0.585,
+      "n_cases": 94,
+      "decisive": false
+    },
+    {
+      "earlier": "application filed",
+      "later": "IME",
+      "share": 0.579,
+      "n_cases": 76,
+      "decisive": false
+    },
+    {
+      "earlier": "liability admission",
+      "later": "IME",
+      "share": 0.571,
+      "n_cases": 42,
+      "decisive": false
+    },
+    {
+      "earlier": "surgery",
+      "later": "GP visit",
+      "share": 0.547,
+      "n_cases": 53,
+      "decisive": false
+    },
+    {
+      "earlier": "report",
+      "later": "IME",
+      "share": 0.518,
+      "n_cases": 137,
+      "decisive": false
+    },
+    {
+      "earlier": "report",
+      "later": "return to work",
+      "share": 0.512,
+      "n_cases": 41,
+      "decisive": false
+    }
+  ],
+  "event_variable_links": {
+    "IME": {
+      "variable": "Legal Procedural Complexity",
+      "rho": 0.411,
+      "n": 540,
+      "runners_up": [
+        {
+          "variable": "Causation Complexity",
+          "rho": 0.34
+        },
+        {
+          "variable": "Work Impact Severity",
+          "rho": 0.306
+        }
+      ]
+    },
+    "hearing": {
+      "variable": "Legal Procedural Complexity",
+      "rho": 0.426,
+      "n": 540,
+      "runners_up": [
+        {
+          "variable": "Causation Complexity",
+          "rho": 0.367
+        },
+        {
+          "variable": "Psychological Injury Emphasis",
+          "rho": 0.277
+        }
+      ]
+    },
+    "statement": {
+      "variable": "Legal Procedural Complexity",
+      "rho": 0.436,
+      "n": 540,
+      "runners_up": [
+        {
+          "variable": "Work Impact Severity",
+          "rho": 0.202
+        },
+        {
+          "variable": "Causation Complexity",
+          "rho": 0.194
+        }
+      ]
+    },
+    "surgery": {
+      "variable": "Treatment Burden",
+      "rho": 0.665,
+      "n": 540,
+      "runners_up": [
+        {
+          "variable": "Injury Burden Intensity",
+          "rho": 0.303
+        },
+        {
+          "variable": "Work Impact Severity",
+          "rho": 0.219
+        }
+      ]
+    }
+  },
+  "event_variable_rejected": [
+    {
+      "event": "GP visit",
+      "best_variable": "Causation Complexity",
+      "rho": 0.276,
+      "reason": "|rho| < 0.35"
+    },
+    {
+      "event": "WPI assessment",
+      "best_variable": "Causation Complexity",
+      "rho": 0.321,
+      "reason": "|rho| < 0.35"
+    },
+    {
+      "event": "accident",
+      "best_variable": "Legal Procedural Complexity",
+      "rho": 0.131,
+      "reason": "|rho| < 0.35"
+    },
+    {
+      "event": "application filed",
+      "best_variable": "Legal Procedural Complexity",
+      "rho": -0.163,
+      "reason": "|rho| < 0.35"
+    },
+    {
+      "event": "certificate of capacity",
+      "best_variable": "Injury Burden Intensity",
+      "rho": -0.114,
+      "reason": "|rho| < 0.35"
+    },
+    {
+      "event": "claim lodged",
+      "best_variable": "Injury Burden Intensity",
+      "rho": -0.089,
+      "reason": "|rho| < 0.35"
+    },
+    {
+      "event": "decision",
+      "best_variable": "Pre-existing Condition Salience",
+      "rho": 0.144,
+      "reason": "|rho| < 0.35"
+    },
+    {
+      "event": "discharge",
+      "best_variable": "Treatment Burden",
+      "rho": 0.171,
+      "reason": "|rho| < 0.35"
+    },
+    {
+      "event": "hospital admission",
+      "best_variable": "WPI %",
+      "rho": 0.188,
+      "reason": "|rho| < 0.35"
+    },
+    {
+      "event": "hospital discharge",
+      "best_variable": "WPI %",
+      "rho": 0.18,
+      "reason": "|rho| < 0.35"
+    },
+    {
+      "event": "imaging",
+      "best_variable": "Causation Complexity",
+      "rho": 0.29,
+      "reason": "|rho| < 0.35"
+    },
+    {
+      "event": "insurer offers settlement",
+      "best_variable": "Legal Procedural Complexity",
+      "rho": -0.275,
+      "reason": "|rho| < 0.35"
+    },
+    {
+      "event": "liability notice",
+      "best_variable": "Pre-existing Condition Salience",
+      "rho": 0.145,
+      "reason": "|rho| < 0.35"
+    },
+    {
+      "event": "preliminary conference",
+      "best_variable": "Legal Procedural Complexity",
+      "rho": -0.333,
+      "reason": "|rho| < 0.35"
+    },
+    {
+      "event": "report",
+      "best_variable": "Causation Complexity",
+      "rho": 0.227,
+      "reason": "|rho| < 0.35"
+    },
+    {
+      "event": "return to work",
+      "best_variable": "Work Impact Severity",
+      "rho": 0.204,
+      "reason": "|rho| < 0.35"
+    },
+    {
+      "event": "review",
+      "best_variable": "Treatment Burden",
+      "rho": 0.142,
+      "reason": "|rho| < 0.35"
+    },
+    {
+      "event": "submission filed",
+      "best_variable": "Legal Procedural Complexity",
+      "rho": 0.338,
+      "reason": "|rho| < 0.35"
+    },
+    {
+      "event": "teleconference",
+      "best_variable": "Legal Procedural Complexity",
+      "rho": -0.205,
+      "reason": "|rho| < 0.35"
+    }
+  ],
+  "variables_covered": [
+    "Legal Procedural Complexity",
+    "Treatment Burden"
+  ],
+  "variables_uncovered": [
+    "Injury Burden Intensity",
+    "Work Impact Severity",
+    "Psychological Injury Emphasis",
+    "Liability Clarity",
+    "Causation Complexity",
+    "Pre-existing Condition Salience",
+    "WPI %"
+  ],
+  "variable_pairs": [
+    {
+      "earlier": "Treatment Burden",
+      "later": "Legal Procedural Complexity",
+      "share": 0.88,
+      "n_cases": 142,
+      "decisive": false
+    }
+  ],
+  "caveat": "Event logs record when something was DONE, not when the underlying state arose. Chronology bounds orientation; it does not supply it. Variable-level orderings exist only for variables with an event proxy at |rho| >= 0.35; the rest carry no temporal claim."
+}

@@ -1,0 +1,31 @@
+{
+  "meta": {
+    "model": "gpt-4o-2024-08-06",
+    "prompt_sha256": "5005402fd768309248423618",
+    "requested_at": "2026-08-05T06:47:50+00:00",
+    "prompt_tokens": 1072,
+    "completion_tokens": 94,
+    "cache": "miss"
+  },
+  "system": "You are reading a single provision of New South Wales motor accident legislation. Report ONLY what this provision's text states. Do not use background knowledge of the scheme, other provisions, case law, or what you expect the answer to be. If the provision does not mention something, say it does not. Every link you report must be supported by a quote copied exactly from the text you were given; if you cannot copy such a quote, do not report the link.",
+  "user": "PROVISION: 4.11 Motor Accident Injuries Act 2017\n\n--- BEGIN PROVISION TEXT ---\n4.11\n \nNo damages for non-economic loss unless permanent impairment greater than impairment threshold\nNo damages for non-economic loss may be awarded in respect of injury unless the degree of permanent impairment of the injured person as a result of the injury caused by a motor accident is greater than 10%.\n--- END PROVISION TEXT ---\n\nThe dataset records these variables about decided claims:\n  - Lump Sum: the total dollar amount awarded to the claimant\n  - WPI %: whole person impairment, as a percentage, from a medical assessment\n  - Non-Economic Loss: dollars awarded for non-economic loss (pain and suffering)\n  - Future Economic Loss: dollars awarded for future loss of earning capacity\n  - Claimant Weekly Income: the claimant's pre-accident weekly earnings, in dollars\n  - Claimant Age: the claimant's age at the date of injury, in years\n  - Claimant Gender: the claimant's recorded gender\n  - Nature: the procedural route: settlement approval, or damages assessment\n  - Injury Burden Intensity: an ordinal score for the overall physical burden of injuries\n  - Treatment Burden: an ordinal score for the extent of treatment, surgery and care\n  - Work Impact Severity: an ordinal score for loss of working capacity\n  - Legal Procedural Complexity: an ordinal score for procedural complexity of the proceeding\n  - Psychological Injury Emphasis: an ordinal score for the weight given to psychological injury\n  - Liability Clarity: an ordinal score for how clear fault is\n  - Causation Complexity: an ordinal score for difficulty attributing the condition to the accident\n  - Pre-existing Condition Salience: an ordinal score for how prominent a prior condition is\n\nUsing ONLY the provision text above, report which of these variables the provision governs, and which it names as bearing on that. Quote exactly.",
+  "response": {
+    "provision_subject": "This provision sets a threshold for awarding damages for non-economic loss based on permanent impairment.",
+    "determines": [
+      "Non-Economic Loss"
+    ],
+    "inputs": [
+      "WPI %"
+    ],
+    "links": [
+      {
+        "input": "WPI %",
+        "determines": "Non-Economic Loss",
+        "relation": "gate",
+        "quote": "No damages for non-economic loss may be awarded...unless the degree of permanent impairment...is greater than 10%.",
+        "confidence": "high"
+      }
+    ],
+    "notes": ""
+  }
+}

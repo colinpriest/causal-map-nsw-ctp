@@ -1,0 +1,15 @@
+{
+  "meta": {
+    "model": "gpt-4o-2024-08-06",
+    "prompt_sha256": "b7d3763347365bee399ac41f",
+    "cache": "miss",
+    "requested_at": "2026-08-05T07:15:16+00:00"
+  },
+  "system": "You are checking a claim someone has made about a statutory provision. Your job is to REFUTE it if it can be refuted. Default to unsound when uncertain.\n\nThe claim asserts that, according to this provision, one quantity bears on another. The two most common ways such a claim is wrong:\n  (a) SUBJECT MISMATCH. The provision governs something other than the quantity the claim says it determines. A provision about an insurer's duty to pay for treatment does not govern how much treatment occurred. A provision conferring jurisdiction to assess a claim does not make one assessed quantity a determinant of another.\n  (b) WORD MATCHING. The claim latched onto a word rather than a meaning -- reading 'caused by the fault of the driver' (a fault condition) as being about how difficult causation is to establish.\n\nA claim is sound only if the provision genuinely makes the first quantity bear on the second. Mentioning both is not enough. A precondition for the provision to operate is not automatically a determinant of its subject.",
+  "user": "PROVISION: 4.8 Motor Accident Injuries Act 2017\n\n--- BEGIN PROVISION TEXT ---\n4.8\n \nAssessment of impairment of earning capacity if dispute over degree of impairment\nIf there is a dispute about the degree of impairment of an injured person\u2019s earning capacity, the degree of that impairment may be referred for assessment by a medical assessor under Division 7.5 before damages are awarded.\nNote.\nSection 7.20 (Medical assessment procedures) authorises a court, the Commission or party to a dispute, to refer the dispute about the degree of impairment to the Commission for assessment by a medical assessor. The assessment of the medical assessor is prima facie evidence in proceedings before a court or the Commission\u2014see section 7.23 (Status of medical assessments).\ns 4.8:\n Am 2020 No 18, Sch 6.6[15].\n--- END PROVISION TEXT ---\n\nTHE CLAIM: this provision makes 'Work Impact Severity' (an ordinal score for loss of working capacity) bear on 'Future Economic Loss' (dollars awarded for future loss of earning capacity), as a gate.\nQuoted in support: \"dispute about the degree of impairment of an injured person\u2019s earning capacity\"\nMapping offered: The 'degree of impairment of an injured person\u2019s earning capacity' corresponds to 'Work Impact Severity' as it involves assessing the impact of the injury on the person's ability to work.\n\nRefute this claim if it can be refuted.",
+  "response": {
+    "objection": "The provision is about the process of resolving disputes over impairment assessment, not directly about how 'Work Impact Severity' determines 'Future Economic Loss'. It does not establish a direct relationship between these two quantities as a gate.",
+    "failure_mode": "subject_mismatch",
+    "sound": false
+  }
+}

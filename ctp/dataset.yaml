@@ -1,0 +1,16 @@
+key: ctp
+label: CTP Severity
+country: australia
+source: >
+  NSW CTP impairment lump-sum awards, scraped from AustLII and LLM-structured (custom).
+citation: null
+licence: null
+raw_path: raw/ctp_impairment_lump_sum.xlsx
+target: Lump Sum
+style: severity
+glm_family: gamma
+n_locked: 540
+leakage_cols: []
+cleaning: >
+  See docs/data.md and docs/additional-actuarial-datasets.md for the per-dataset cleaning
+  (id/date/inflation-twin drops, redundancy drops, stratified-40k lock, freq/sev split).

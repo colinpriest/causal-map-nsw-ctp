@@ -1,0 +1,36 @@
+{
+  "meta": {
+    "model": "gpt-4o-2024-08-06",
+    "prompt_sha256": "a42577ac7d4678055f2db1a1",
+    "requested_at": "2026-08-05T10:39:35+00:00",
+    "prompt_tokens": 1997,
+    "completion_tokens": 197,
+    "cache": "miss"
+  },
+  "system": "You are reading a single provision of New South Wales motor accident legislation. Report ONLY what this provision's text states. Do not use background knowledge of the scheme, other provisions, case law, or what you expect the answer to be.\n\nThe dataset variables are PROXIES FOR CONCEPTS, and the legislation will not use their names. Match on meaning, not wording. If a provision speaks of 'future earning capacity', that is the concept the variable 'Claimant Weekly Income' measures, and you should report the link. If it speaks of 'degree of permanent impairment', that is 'WPI %'. Do not decline a link merely because the provision uses different words.\n\nSeparate two things in your answer:\n  1. WHAT THE TEXT SAYS. Every link must carry a quote copied from the text you were given, containing the words that express the concept. You may elide with '...'. If you cannot copy such a quote, do not report the link.\n  2. HOW YOU MAPPED IT. State, separately, why the quoted concept corresponds to that dataset variable. This is your interpretation and will be recorded as such.\n\nA provision that says what a head of damage is FOR is stating an input to that head. An Act writes this as a list of what may be awarded -- 'the only damages that may be awarded for economic loss are ... damages for the deprivation or impairment of earning capacity' -- and that sentence makes impairment of earning capacity an input, with relation `defines_scope`. Do not pass over these because they read as definitions rather than rules; defining what a payment compensates IS specifying what determines it.\n\nA concept the provision names that no dataset variable measures should be listed in `unmapped_concepts`, not forced onto a variable that does not fit.\n\nTWO TRAPS TO AVOID.\n  (a) If the THING THE PROVISION GOVERNS is not one of the dataset variables, report NO links at all, whatever else the provision mentions. A provision about an insurer's duty to PAY FOR treatment does not govern how much treatment a claimant received: those are different quantities. Do not map preconditions onto variables just because the provision has preconditions.\n  (b) Do not import a variable's name into your reading. A provision that scopes payments to injury 'caused by the fault of the driver' states a condition; it says nothing about how DIFFICULT causation is to establish, so it is not evidence about a variable measuring difficulty. Ask whether the provision discusses the quantity the variable measures, not whether it uses a similar word.",
+  "user": "PROVISION: 62 Motor Accidents Compensation Act 1999\n\n--- BEGIN PROVISION TEXT ---\n62\n \nReferral of matter for further medical assessment\n(1)\n A matter referred for assessment under this Part may be referred again on one or more further occasions in accordance with this Part\u2014\n(a)\n by any party to the medical dispute, but only on the grounds of the deterioration of the injury or additional relevant information about the injury, or\n(b)\n by a court or the Commission.\n(1A)\n A matter may not be referred again for assessment by a party to the medical dispute on the grounds of deterioration of the injury or additional relevant information about the injury unless the deterioration or additional information is such as to be capable of having a material effect on the outcome of the previous assessment.\n(1B)\n Referral of a matter under this section is to be by referral to the President.\n(2)\n A certificate as to a matter referred again for assessment prevails over any previous certificate as to the matter to the extent of any inconsistency.\ns 62:\n Am 2007 No 95, Sch 1 [30]; 2009 No 96, Sch 13 [2]; 2012 No 54, Sch 3.1 [9]; 2020 No 18, Sch 6.7[14] [15]; 2026 No 2, Sch 2.12.\n--- END PROVISION TEXT ---\n\nThe dataset records these variables about decided claims:\n  - Lump Sum: the total dollars awarded to the claimant\n  - WPI %: whole person impairment as a percentage: a clinical assessment of the permanent impairment remaining once the claimant's condition has stabilised\n  - Non-Economic Loss: dollars awarded for pain and suffering, as a component of the payout\n  - Future Economic Loss: dollars awarded for loss of future earning capacity, as a component of the payout\n  - Claimant Weekly Income: the claimant's weekly earnings before the accident\n  - Claimant Age: the claimant's age in years at the date of injury\n  - Claimant Gender: the claimant's recorded gender\n  - Nature: which procedural route the claim took: approval of an agreed settlement, or a contested damages assessment\n  - Injury Burden Intensity: the overall physical severity of the injuries the claimant sustained in the accident\n  - Treatment Burden: the extent of treatment, surgery and ongoing care the claimant underwent for those injuries\n  - Work Impact Severity: how much of the claimant's capacity to work was lost\n  - Legal Procedural Complexity: how straightforward or contested the components of the payout were to determine\n  - Psychological Injury Emphasis: how much the psychological damage was discussed in the court case\n  - Liability Clarity: how obvious it is who was at fault in the accident\n  - Causation Complexity: how straightforward it is to determine how much of the claimant's current physical health, psychological health, and ability to earn an income is due to the accident rather than to other causes\n  - Pre-existing Condition Salience: the physical and psychological health conditions the claimant had before the accident\n\nUsing ONLY the provision text above, report which of these variables the provision governs, and which concepts it names as bearing on that determination. Match on MEANING: the provision will not use these variable names. Quote the words that carry the concept, then say separately how you mapped it.",
+  "response": {
+    "provision_subject": "Referral of a matter for further medical assessment in motor accident claims.",
+    "determines": [],
+    "inputs": [
+      "Injury Burden Intensity"
+    ],
+    "links": [
+      {
+        "concept_in_text": "deterioration of the injury",
+        "quote": "deterioration of the injury or additional relevant information about the injury",
+        "input": "Injury Burden Intensity",
+        "mapping_rationale": "The phrase 'deterioration of the injury' refers to changes in the severity of the claimant's injuries, which corresponds to the concept of 'Injury Burden Intensity' as it measures the overall physical severity of the injuries.",
+        "determines": "WPI %",
+        "relation": "gate",
+        "confidence": "high"
+      }
+    ],
+    "unmapped_concepts": [
+      "additional relevant information",
+      "material effect on the outcome",
+      "certificate"
+    ],
+    "notes": "The provision allows for further medical assessment based on injury deterioration, which can affect the assessment of WPI %. However, it does not directly determine any of the dataset variables."
+  }
+}

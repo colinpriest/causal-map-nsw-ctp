@@ -1,0 +1,77 @@
+# Calibration set for the statutory reader (stage 3c).
+#
+# Each case is a provision whose correct reading can be checked against the words on the
+# page. These are NOT causal hypotheses -- they are facts about what a section says, and
+# anyone can verify each one by reading the quoted text. That distinction is what makes
+# tuning the reader against them legitimate: an instrument is calibrated against known
+# quantities, and a reader that cannot extract what s 4.5 plainly states is miscalibrated.
+#
+# The line that must not be crossed is tuning until the reader produces a preferred CAUSAL
+# GRAPH. That would be fitting. Tuning until it correctly parses a sentence is not.
+#
+# WHY THIS FILE EXISTS
+# The reader missed `Work Impact Severity -> Future Economic Loss` twice across 102
+# provisions read, because the relation vocabulary had no slot for "this head of damage is
+# FOR that thing". Acts state that as an enumeration of what may be awarded, not as a rule,
+# so the reader reached for `gate` and the challenger correctly refuted a gate claim. Both
+# components worked; the vocabulary was incomplete. `defines_scope` was added for it, and
+# these cases exist so the next change to either prompt can be checked rather than trusted.
+#
+# Run: python causal/check_calibration.py
+
+cases:
+  - provision: 4.5 Motor Accident Injuries Act 2017
+    quote: >-
+      The only damages that may be awarded for economic loss are ... damages for past or
+      future economic loss due to loss of earnings or the deprivation or impairment of
+      earning capacity
+    expect_input: Work Impact Severity
+    expect_determines: Future Economic Loss
+    expect_relation: defines_scope
+    why: >-
+      The provision states what economic loss damages compensate. Impairment of earning
+      capacity is the concept Work Impact Severity measures, so this sentence makes it an
+      input to that head. Previously produced a `gate` claim naming Claimant Weekly Income,
+      which was refuted -- correctly, as a gate claim.
+
+  - provision: 4.11 Motor Accident Injuries Act 2017
+    quote: >-
+      No damages for non-economic loss may be awarded ... unless the degree of permanent
+      impairment ... is greater than 10%
+    expect_input: WPI %
+    expect_determines: Non-Economic Loss
+    expect_relation: gate
+    why: An explicit threshold. The reader has always found this one.
+
+  - provision: 4.6 Motor Accident Injuries Act 2017
+    quote: >-
+      the amount (if any) by which the injured or deceased person's net weekly earnings
+      would (but for the injury or death) have exceeded the maximum weekly statutory
+      benefits amount ... is to be disregarded
+    expect_input: Claimant Weekly Income
+    expect_determines: Future Economic Loss
+    expect_relation: limit
+    why: >-
+      A cap by reference to earnings. Found only after the challenger was told that a
+      provision disregarding earnings above a maximum does limit an earnings-based award.
+
+  - provision: 4.9 Motor Accident Injuries Act 2017
+    quote: >-
+      the present value of the future economic loss is to be qualified by adopting the
+      prescribed discount rate
+    expect_input: null
+    expect_determines: null
+    expect_relation: null
+    why: >-
+      A NEGATIVE case. The discount rate is a constant, not a recorded variable, so no
+      link should be reported. Included so that widening the vocabulary cannot be checked
+      only against cases where an edge is wanted -- a reader that finds an edge here is
+      over-firing.
+
+  - provision: 4.13 Motor Accident Injuries Act 2017
+    quote: The maximum amount of damages that may be awarded for non-economic loss is $521,000
+    expect_input: null
+    expect_determines: null
+    expect_relation: null
+    why: >-
+      A NEGATIVE case. A fixed dollar cap, with no variable on the input side.

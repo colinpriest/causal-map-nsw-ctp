@@ -1,0 +1,1069 @@
+{
+  "generated_at": "2026-08-05T07:55:08+00:00",
+  "model": "gpt-4o",
+  "samples_per_pair": 1,
+  "evidence_class": "reasoned_prior",
+  "weaker_than": "statute and case text: there is no external referent and no quote. Never merge with provision-backed edges.",
+  "blindness": "The model saw variable names and neutral descriptions only. No correlation, effect size, tail statistic or DAG was shown.",
+  "tests": {
+    "sign": "Spearman correlation between var_a and var_b has the predicted sign.",
+    "monotone": "The median of var_b moves consistently in one direction across levels of var_a.",
+    "inverted_u": "The median of var_b peaks at intermediate levels of var_a and is lower at both extremes (or the inverse, a U).",
+    "mediation": "The association between var_a and `outcome` largely disappears once `mediator` is held fixed.",
+    "attenuation_asymmetry": "If var_a acts on `outcome` THROUGH var_b, then holding var_b fixed blocks var_a's path and collapses its association with `outcome`, while holding var_a fixed leaves var_b's association largely intact. Predict `a_is_upstream` when you expect var_a's association to collapse the more of the two."
+  },
+  "verdicts": [
+    "a_causes_b",
+    "b_causes_a",
+    "indirect",
+    "common_cause",
+    "measurement_artifact",
+    "none"
+  ],
+  "system_prompt": "You are reasoning about how compulsory third party motor accident claims work, to decide how two recorded quantities are related. You have NOT been shown any data, and you must not guess at what the data shows. Reason from mechanism.\n\nPROCEDURE, in this order:\n  1. Write the strongest case that A causes B.\n  2. Write the strongest case that B causes A.\n  3. Only then choose a verdict. Arguing both sides first is mandatory: a case written after choosing is a rationalisation.\n\nTHE VERDICT IS NOT LIMITED TO A->B OR B->A:\n  a_causes_b / b_causes_a  - a direct causal relationship.\n  indirect                 - A affects B only THROUGH a named third variable. Use this when the honest answer is a chain: age does not directly set future economic loss, it sets how many working years remain, which sets the loss.\n  common_cause             - both are driven by something else, which you must NAME.\n  measurement_artifact     - the two only move together because of how they were recorded, not because of anything in the world.\n  none                     - no relationship worth drawing.\n\nTWO SCORES, kept separate because they are different questions:\n  confidence_mechanism_exists - 1 to 5, how sure you are the mechanism is real.\n  expected_magnitude          - 1 to 5, how large the effect would be if real.\nA statutory arithmetic identity is 5/5. A plausible behavioural story that would move an award slightly is 4/1.\n\nFINALLY, commit to a prediction the data can refute. Choose the test from the menu that would most sharply distinguish your verdict from its alternatives. Do not choose a test your verdict would pass trivially. Note that a real mechanism can be NON-MONOTONE -- earnings rise with career experience and fall at retirement -- so if you expect a peak in the middle, say `inverted_u`, not `monotone`.",
+  "n_pairs": 28,
+  "verdict_counts": {
+    "a_causes_b": 2,
+    "indirect": 11,
+    "common_cause": 15
+  },
+  "priors": [
+    {
+      "a": "Injury Burden Intensity",
+      "b": "Treatment Burden",
+      "tier": "B",
+      "both_llm_coded": true,
+      "verdict": "a_causes_b",
+      "verdict_agreement": 1.0,
+      "verdict_spread": {
+        "a_causes_b": 1
+      },
+      "mechanism": "More severe injuries require more extensive treatment, increasing the treatment burden.",
+      "named_common_cause": null,
+      "mediator": null,
+      "confidence_mechanism_exists": 4,
+      "expected_magnitude": 3,
+      "case_for_a_causes_b": "Injury Burden Intensity could directly influence Treatment Burden because more severe injuries typically require more extensive medical treatment, surgeries, and care. For instance, a higher injury burden might necessitate longer hospital stays, more complex surgeries, or ongoing rehabilitation, all of which would increase the treatment burden.",
+      "case_for_b_causes_a": "Treatment Burden could influence the perception or assessment of Injury Burden Intensity. If a claimant undergoes extensive treatment, it might lead to a reassessment of the injury's severity, potentially increasing the perceived injury burden. This could occur if the extent of treatment reveals complications or additional injuries that were not initially apparent.",
+      "prediction": {
+        "test": "monotone",
+        "var_a": "Injury Burden Intensity",
+        "var_b": "Treatment Burden",
+        "outcome": null,
+        "mediator": null,
+        "direction": "increasing",
+        "rationale": "If Injury Burden Intensity directly causes Treatment Burden, we would expect to see a consistent increase in Treatment Burden as Injury Burden Intensity increases. This would be reflected in a monotonic relationship where higher levels of injury burden correspond to higher levels of treatment burden."
+      },
+      "samples": [
+        {
+          "verdict": "a_causes_b",
+          "test": "monotone",
+          "direction": "increasing",
+          "confidence": 4,
+          "magnitude": 3,
+          "prompt_sha256": "27bf693c2fc4491c3f0e996b"
+        }
+      ]
+    },
+    {
+      "a": "Work Impact Severity",
+      "b": "Legal Procedural Complexity",
+      "tier": "B",
+      "both_llm_coded": true,
+      "verdict": "indirect",
+      "verdict_agreement": 1.0,
+      "verdict_spread": {
+        "indirect": 1
+      },
+      "mechanism": "Work Impact Severity affects Legal Procedural Complexity through the mediator of Future Economic Loss.",
+      "named_common_cause": null,
+      "mediator": "Future Economic Loss",
+      "confidence_mechanism_exists": 4,
+      "expected_magnitude": 3,
+      "case_for_a_causes_b": "Work Impact Severity could lead to increased Legal Procedural Complexity because a higher severity of work impact might necessitate more detailed legal proceedings. This could be due to the need for more extensive documentation, expert testimonies, and legal arguments to establish the extent of the claimant's loss and justify compensation. As the work impact severity increases, the legal team might need to engage in more complex procedural steps to adequately represent the claimant's case.",
+      "case_for_b_causes_a": "Legal Procedural Complexity could lead to increased Work Impact Severity if the complexity of the legal process itself exacerbates the claimant's situation. For instance, prolonged legal proceedings might delay compensation, causing financial strain and potentially worsening the claimant's ability to work or recover, thereby increasing the perceived severity of work impact.",
+      "prediction": {
+        "test": "mediation",
+        "var_a": "Work Impact Severity",
+        "var_b": "Legal Procedural Complexity",
+        "outcome": "Legal Procedural Complexity",
+        "mediator": "Future Economic Loss",
+        "direction": "attenuates",
+        "rationale": "If Work Impact Severity affects Legal Procedural Complexity through Future Economic Loss, then controlling for Future Economic Loss should reduce the association between Work Impact Severity and Legal Procedural Complexity."
+      },
+      "samples": [
+        {
+          "verdict": "indirect",
+          "test": "mediation",
+          "direction": "attenuates",
+          "confidence": 4,
+          "magnitude": 3,
+          "prompt_sha256": "7c4694a4b919d00f7c2335bb"
+        }
+      ]
+    },
+    {
+      "a": "Legal Procedural Complexity",
+      "b": "Psychological Injury Emphasis",
+      "tier": "B",
+      "both_llm_coded": true,
+      "verdict": "indirect",
+      "verdict_agreement": 1.0,
+      "verdict_spread": {
+        "indirect": 1
+      },
+      "mechanism": "Legal procedural complexity affects psychological injury emphasis through the need for detailed substantiation in complex cases.",
+      "named_common_cause": null,
+      "mediator": "Legal Procedural Complexity",
+      "confidence_mechanism_exists": 3,
+      "expected_magnitude": 2,
+      "case_for_a_causes_b": "Legal procedural complexity could influence the emphasis on psychological injury if more complex legal procedures require a more detailed examination of all aspects of the injury, including psychological components. In cases where the legal process is more intricate, there might be a greater need to substantiate claims, leading to a higher emphasis on psychological injuries to ensure a comprehensive case is presented.",
+      "case_for_b_causes_a": "Psychological injury emphasis might lead to increased legal procedural complexity if cases with significant psychological components require more detailed legal processes to adequately address and substantiate these claims. Psychological injuries can be more subjective and harder to quantify than physical injuries, potentially necessitating more complex legal procedures to establish the extent and impact of these injuries.",
+      "prediction": {
+        "test": "mediation",
+        "var_a": "Legal Procedural Complexity",
+        "var_b": "Psychological Injury Emphasis",
+        "outcome": "Psychological Injury Emphasis",
+        "mediator": "Legal Procedural Complexity",
+        "direction": "a_is_upstream",
+        "rationale": "If legal procedural complexity influences psychological injury emphasis through the need for detailed substantiation, then controlling for legal procedural complexity should reduce the association between procedural complexity and psychological injury emphasis."
+      },
+      "samples": [
+        {
+          "verdict": "indirect",
+          "test": "mediation",
+          "direction": "a_is_upstream",
+          "confidence": 3,
+          "magnitude": 2,
+          "prompt_sha256": "bc35e8a24b9dea1673c9d0e2"
+        }
+      ]
+    },
+    {
+      "a": "Work Impact Severity",
+      "b": "Psychological Injury Emphasis",
+      "tier": "B",
+      "both_llm_coded": true,
+      "verdict": "indirect",
+      "verdict_agreement": 1.0,
+      "verdict_spread": {
+        "indirect": 1
+      },
+      "mechanism": "Work Impact Severity affects Psychological Injury Emphasis through the Injury Burden Intensity, as severe work impact may increase the overall injury burden, which in turn emphasizes psychological injuries.",
+      "named_common_cause": null,
+      "mediator": "Injury Burden Intensity",
+      "confidence_mechanism_exists": 4,
+      "expected_magnitude": 2,
+      "case_for_a_causes_b": "Work Impact Severity could lead to a greater emphasis on psychological injury because a significant loss of working capacity might exacerbate psychological distress. When individuals face severe limitations in their ability to work, it can lead to increased stress, anxiety, and depression, which in turn might be given more weight in the assessment of psychological injury. Thus, higher work impact severity could cause evaluators to place more emphasis on psychological injuries.",
+      "case_for_b_causes_a": "Psychological Injury Emphasis might lead to higher Work Impact Severity scores because if psychological injuries are given more weight, it could influence the assessment of the claimant's overall ability to work. Psychological injuries such as depression or anxiety can significantly impact a person's capacity to perform work tasks, and if these are emphasized, it might result in a higher assessment of work impact severity.",
+      "prediction": {
+        "test": "mediation",
+        "var_a": "Work Impact Severity",
+        "var_b": "Psychological Injury Emphasis",
+        "outcome": "Psychological Injury Emphasis",
+        "mediator": "Injury Burden Intensity",
+        "direction": "attenuates",
+        "rationale": "If Work Impact Severity affects Psychological Injury Emphasis through Injury Burden Intensity, then controlling for Injury Burden Intensity should reduce the association between Work Impact Severity and Psychological Injury Emphasis."
+      },
+      "samples": [
+        {
+          "verdict": "indirect",
+          "test": "mediation",
+          "direction": "attenuates",
+          "confidence": 4,
+          "magnitude": 2,
+          "prompt_sha256": "01d149340673e5260de93680"
+        }
+      ]
+    },
+    {
+      "a": "Legal Procedural Complexity",
+      "b": "Causation Complexity",
+      "tier": "B",
+      "both_llm_coded": true,
+      "verdict": "common_cause",
+      "verdict_agreement": 1.0,
+      "verdict_spread": {
+        "common_cause": 1
+      },
+      "mechanism": "Both Legal Procedural Complexity and Causation Complexity are likely influenced by the inherent complexity of the case, such as the severity of the injury or the clarity of liability.",
+      "named_common_cause": "Injury Burden Intensity",
+      "mediator": null,
+      "confidence_mechanism_exists": 4,
+      "expected_magnitude": 3,
+      "case_for_a_causes_b": "Legal Procedural Complexity could lead to higher Causation Complexity because more complex legal procedures might involve more detailed investigations and arguments about the causation of injuries. When legal procedures are complex, there may be more scrutiny and debate over whether the injuries were indeed caused by the accident, thus increasing the perceived complexity of causation.",
+      "case_for_b_causes_a": "Causation Complexity could lead to higher Legal Procedural Complexity because if it is difficult to attribute the condition to the accident, the legal process may become more intricate. Lawyers might need to gather more evidence, call expert witnesses, and engage in more detailed legal arguments to establish causation, thereby increasing the procedural complexity.",
+      "prediction": {
+        "test": "sign",
+        "var_a": "Legal Procedural Complexity",
+        "var_b": "Causation Complexity",
+        "outcome": null,
+        "mediator": null,
+        "direction": "positive",
+        "rationale": "If both Legal Procedural Complexity and Causation Complexity are driven by the same underlying factors, such as the severity of the injury or the clarity of liability, they should be positively correlated. A positive Spearman correlation would support the common cause hypothesis."
+      },
+      "samples": [
+        {
+          "verdict": "common_cause",
+          "test": "sign",
+          "direction": "positive",
+          "confidence": 4,
+          "magnitude": 3,
+          "prompt_sha256": "10ee122ad0a7b2f695052a11"
+        }
+      ]
+    },
+    {
+      "a": "Psychological Injury Emphasis",
+      "b": "Causation Complexity",
+      "tier": "B",
+      "both_llm_coded": true,
+      "verdict": "common_cause",
+      "verdict_agreement": 1.0,
+      "verdict_spread": {
+        "common_cause": 1
+      },
+      "mechanism": "Both Psychological Injury Emphasis and Causation Complexity are likely influenced by the nature of the injury and the legal procedural complexity.",
+      "named_common_cause": "Legal Procedural Complexity",
+      "mediator": null,
+      "confidence_mechanism_exists": 4,
+      "expected_magnitude": 3,
+      "case_for_a_causes_b": "Psychological Injury Emphasis could lead to increased Causation Complexity because psychological injuries are often more subjective and harder to quantify than physical injuries. This subjectivity can make it more challenging to establish a clear causal link between the accident and the psychological condition, thus increasing the complexity of causation.",
+      "case_for_b_causes_a": "Causation Complexity might lead to greater Psychological Injury Emphasis if the complexity in establishing causation necessitates a deeper exploration and emphasis on psychological aspects to substantiate the claim. When causation is complex, claimants and their legal teams might focus more on psychological injuries to strengthen the case, especially if physical injuries are less clear-cut.",
+      "prediction": {
+        "test": "sign",
+        "var_a": "Psychological Injury Emphasis",
+        "var_b": "Causation Complexity",
+        "outcome": null,
+        "mediator": null,
+        "direction": "positive",
+        "rationale": "If both Psychological Injury Emphasis and Causation Complexity are driven by Legal Procedural Complexity, they should be positively correlated. A positive Spearman correlation would support the common cause hypothesis."
+      },
+      "samples": [
+        {
+          "verdict": "common_cause",
+          "test": "sign",
+          "direction": "positive",
+          "confidence": 4,
+          "magnitude": 3,
+          "prompt_sha256": "aff2a80017345418d4c4e668"
+        }
+      ]
+    },
+    {
+      "a": "Injury Burden Intensity",
+      "b": "Psychological Injury Emphasis",
+      "tier": "C",
+      "both_llm_coded": true,
+      "verdict": "indirect",
+      "verdict_agreement": 1.0,
+      "verdict_spread": {
+        "indirect": 1
+      },
+      "mechanism": "Injury Burden Intensity affects Psychological Injury Emphasis through the mediator of Treatment Burden, as more severe injuries require more treatment, which can highlight psychological impacts.",
+      "named_common_cause": null,
+      "mediator": "Treatment Burden",
+      "confidence_mechanism_exists": 3,
+      "expected_magnitude": 2,
+      "case_for_a_causes_b": "Injury Burden Intensity could lead to a greater emphasis on psychological injury because more severe physical injuries might result in more significant psychological impacts. For instance, a person with a high injury burden might experience more pain, disability, and lifestyle changes, which could exacerbate psychological distress. This distress might then be given more weight in the assessment of psychological injury emphasis.",
+      "case_for_b_causes_a": "Psychological Injury Emphasis might influence the perceived Injury Burden Intensity if psychological factors are considered part of the overall injury burden. If psychological injuries are emphasized, they might contribute to a higher overall injury burden score, as psychological distress can exacerbate the perception of physical pain and disability.",
+      "prediction": {
+        "test": "mediation",
+        "var_a": "Injury Burden Intensity",
+        "var_b": "Psychological Injury Emphasis",
+        "outcome": "Psychological Injury Emphasis",
+        "mediator": "Treatment Burden",
+        "direction": "attenuates",
+        "rationale": "If Injury Burden Intensity affects Psychological Injury Emphasis through Treatment Burden, then controlling for Treatment Burden should reduce the association between Injury Burden Intensity and Psychological Injury Emphasis."
+      },
+      "samples": [
+        {
+          "verdict": "indirect",
+          "test": "mediation",
+          "direction": "attenuates",
+          "confidence": 3,
+          "magnitude": 2,
+          "prompt_sha256": "4d55a65de8bc0001b7085b0c"
+        }
+      ]
+    },
+    {
+      "a": "Work Impact Severity",
+      "b": "Causation Complexity",
+      "tier": "C",
+      "both_llm_coded": true,
+      "verdict": "indirect",
+      "verdict_agreement": 1.0,
+      "verdict_spread": {
+        "indirect": 1
+      },
+      "mechanism": "Work Impact Severity affects Causation Complexity through Legal Procedural Complexity, as more severe work impacts may lead to more complex legal proceedings.",
+      "named_common_cause": null,
+      "mediator": "Legal Procedural Complexity",
+      "confidence_mechanism_exists": 3,
+      "expected_magnitude": 2,
+      "case_for_a_causes_b": "Work Impact Severity could influence Causation Complexity because a higher severity of work impact might lead to more scrutiny and investigation into the causation of the injury. When the impact on work is severe, there may be more at stake in terms of compensation, prompting a deeper examination of whether the accident was indeed the cause of the condition, thus increasing causation complexity.",
+      "case_for_b_causes_a": "Causation Complexity could influence Work Impact Severity because if it is difficult to attribute the condition to the accident, it might affect the assessment of how much the injury impacts the claimant's work capacity. If causation is complex, there might be more uncertainty or dispute over the extent to which the accident has affected the claimant's ability to work, potentially leading to a lower assessment of work impact severity.",
+      "prediction": {
+        "test": "mediation",
+        "var_a": "Work Impact Severity",
+        "var_b": "Causation Complexity",
+        "outcome": "Causation Complexity",
+        "mediator": "Legal Procedural Complexity",
+        "direction": "attenuates",
+        "rationale": "If Work Impact Severity affects Causation Complexity through Legal Procedural Complexity, then controlling for Legal Procedural Complexity should reduce the association between Work Impact Severity and Causation Complexity."
+      },
+      "samples": [
+        {
+          "verdict": "indirect",
+          "test": "mediation",
+          "direction": "attenuates",
+          "confidence": 3,
+          "magnitude": 2,
+          "prompt_sha256": "5f8962229ab0fc2078c2cb0e"
+        }
+      ]
+    },
+    {
+      "a": "Injury Burden Intensity",
+      "b": "Legal Procedural Complexity",
+      "tier": "C",
+      "both_llm_coded": true,
+      "verdict": "indirect",
+      "verdict_agreement": 1.0,
+      "verdict_spread": {
+        "indirect": 1
+      },
+      "mechanism": "Injury Burden Intensity affects Legal Procedural Complexity through the Treatment Burden, as more severe injuries require more extensive treatment, which complicates legal proceedings.",
+      "named_common_cause": null,
+      "mediator": "Treatment Burden",
+      "confidence_mechanism_exists": 4,
+      "expected_magnitude": 2,
+      "case_for_a_causes_b": "Injury Burden Intensity could lead to greater Legal Procedural Complexity because more severe injuries might require more detailed legal proceedings to establish the extent of the injury, the appropriate compensation, and the necessary medical evidence. Severe injuries might also involve multiple parties, such as various medical experts, which could complicate the legal process.",
+      "case_for_b_causes_a": "Legal Procedural Complexity might lead to a higher perceived Injury Burden Intensity if the complexity of the legal process necessitates more detailed medical examinations and reports, which could highlight or even exaggerate the severity of the injuries. Additionally, complex legal procedures might involve more stakeholders, each providing their own assessment of the injury's impact, potentially leading to a higher recorded injury burden.",
+      "prediction": {
+        "test": "mediation",
+        "var_a": "Injury Burden Intensity",
+        "var_b": "Legal Procedural Complexity",
+        "outcome": "Legal Procedural Complexity",
+        "mediator": "Treatment Burden",
+        "direction": "attenuates",
+        "rationale": "If Injury Burden Intensity affects Legal Procedural Complexity through Treatment Burden, then controlling for Treatment Burden should reduce the association between Injury Burden Intensity and Legal Procedural Complexity."
+      },
+      "samples": [
+        {
+          "verdict": "indirect",
+          "test": "mediation",
+          "direction": "attenuates",
+          "confidence": 4,
+          "magnitude": 2,
+          "prompt_sha256": "adf35c4cc4d0a922c5643bc7"
+        }
+      ]
+    },
+    {
+      "a": "Injury Burden Intensity",
+      "b": "Work Impact Severity",
+      "tier": "B",
+      "both_llm_coded": true,
+      "verdict": "a_causes_b",
+      "verdict_agreement": 1.0,
+      "verdict_spread": {
+        "a_causes_b": 1
+      },
+      "mechanism": "Severe physical injuries limit the ability to perform work tasks, reducing working capacity.",
+      "named_common_cause": null,
+      "mediator": null,
+      "confidence_mechanism_exists": 4,
+      "expected_magnitude": 3,
+      "case_for_a_causes_b": "Injury Burden Intensity could directly influence Work Impact Severity because the more severe the physical injuries, the greater the impact on a person's ability to perform work-related tasks. Severe injuries may lead to longer recovery times, more significant physical limitations, and potentially permanent impairments, all of which can reduce a person's working capacity.",
+      "case_for_b_causes_a": "Work Impact Severity might influence the perception or reporting of Injury Burden Intensity. If a person experiences a significant loss in working capacity, they might report or be assessed with a higher injury burden due to the perceived impact on their life and livelihood, even if the physical injuries are not as severe.",
+      "prediction": {
+        "test": "monotone",
+        "var_a": "Injury Burden Intensity",
+        "var_b": "Work Impact Severity",
+        "outcome": null,
+        "mediator": null,
+        "direction": "increasing",
+        "rationale": "If Injury Burden Intensity directly causes Work Impact Severity, we would expect to see a consistent increase in Work Impact Severity as Injury Burden Intensity increases. This would be reflected in a monotonic relationship where higher levels of injury burden correspond to higher levels of work impact."
+      },
+      "samples": [
+        {
+          "verdict": "a_causes_b",
+          "test": "monotone",
+          "direction": "increasing",
+          "confidence": 4,
+          "magnitude": 3,
+          "prompt_sha256": "909e62ccc2e8183702f50f4a"
+        }
+      ]
+    },
+    {
+      "a": "Causation Complexity",
+      "b": "Pre-existing Condition Salience",
+      "tier": "C",
+      "both_llm_coded": true,
+      "verdict": "common_cause",
+      "verdict_agreement": 1.0,
+      "verdict_spread": {
+        "common_cause": 1
+      },
+      "mechanism": "Both Causation Complexity and Pre-existing Condition Salience are influenced by the presence of a pre-existing condition, which complicates the attribution of injuries to the accident.",
+      "named_common_cause": "Pre-existing Condition",
+      "mediator": null,
+      "confidence_mechanism_exists": 4,
+      "expected_magnitude": 3,
+      "case_for_a_causes_b": "Causation Complexity could lead to a higher Pre-existing Condition Salience because when it is difficult to attribute the condition to the accident, there may be more scrutiny on the claimant's medical history. This increased scrutiny could make any pre-existing conditions more prominent in the assessment process, as parties involved in the claim might look for alternative explanations for the claimant's current condition.",
+      "case_for_b_causes_a": "Pre-existing Condition Salience could increase Causation Complexity because if a claimant has a prominent pre-existing condition, it becomes more challenging to determine how much of their current condition is due to the accident versus the pre-existing condition. This overlap can complicate the attribution of the injury to the accident, thereby increasing the complexity of causation.",
+      "prediction": {
+        "test": "sign",
+        "var_a": "Causation Complexity",
+        "var_b": "Pre-existing Condition Salience",
+        "outcome": null,
+        "mediator": null,
+        "direction": "positive",
+        "rationale": "A positive correlation would support the idea that both variables are influenced by the presence of a pre-existing condition, which complicates both the attribution of injuries to the accident and the prominence of pre-existing conditions in the assessment."
+      },
+      "samples": [
+        {
+          "verdict": "common_cause",
+          "test": "sign",
+          "direction": "positive",
+          "confidence": 4,
+          "magnitude": 3,
+          "prompt_sha256": "a5f30357856bc3762c415e31"
+        }
+      ]
+    },
+    {
+      "a": "Treatment Burden",
+      "b": "Work Impact Severity",
+      "tier": "B",
+      "both_llm_coded": true,
+      "verdict": "indirect",
+      "verdict_agreement": 1.0,
+      "verdict_spread": {
+        "indirect": 1
+      },
+      "mechanism": "Treatment Burden affects Work Impact Severity through Injury Burden Intensity, as more severe injuries require more treatment and also impact work capacity.",
+      "named_common_cause": null,
+      "mediator": "Injury Burden Intensity",
+      "confidence_mechanism_exists": 4,
+      "expected_magnitude": 3,
+      "case_for_a_causes_b": "Treatment Burden could cause Work Impact Severity because the extent of medical treatment, surgery, and care required after an accident can directly affect a person's ability to work. For example, if a person requires extensive surgery and rehabilitation, they may be unable to work for a significant period, leading to a higher severity of work impact. The physical and time demands of treatment can reduce the capacity to perform work tasks, either temporarily or permanently.",
+      "case_for_b_causes_a": "Work Impact Severity could cause Treatment Burden if the loss of working capacity leads to a need for more intensive treatment. For instance, if a person is unable to work due to their injuries, they might seek more aggressive or prolonged treatment options in an attempt to recover their working capacity. The severity of work impact might motivate both the claimant and healthcare providers to pursue more extensive treatment plans.",
+      "prediction": {
+        "test": "mediation",
+        "var_a": "Treatment Burden",
+        "var_b": "Work Impact Severity",
+        "outcome": "Work Impact Severity",
+        "mediator": "Injury Burden Intensity",
+        "direction": "attenuates",
+        "rationale": "If Treatment Burden affects Work Impact Severity through Injury Burden Intensity, then controlling for Injury Burden Intensity should reduce the association between Treatment Burden and Work Impact Severity."
+      },
+      "samples": [
+        {
+          "verdict": "indirect",
+          "test": "mediation",
+          "direction": "attenuates",
+          "confidence": 4,
+          "magnitude": 3,
+          "prompt_sha256": "104aa7942aac7e14adb63518"
+        }
+      ]
+    },
+    {
+      "a": "Injury Burden Intensity",
+      "b": "Causation Complexity",
+      "tier": "D",
+      "both_llm_coded": true,
+      "verdict": "indirect",
+      "verdict_agreement": 1.0,
+      "verdict_spread": {
+        "indirect": 1
+      },
+      "mechanism": "Injury Burden Intensity affects Causation Complexity through the mediator of Pre-existing Condition Salience, as more severe injuries may highlight pre-existing conditions that complicate causation.",
+      "named_common_cause": null,
+      "mediator": "Pre-existing Condition Salience",
+      "confidence_mechanism_exists": 3,
+      "expected_magnitude": 2,
+      "case_for_a_causes_b": "Injury Burden Intensity could cause Causation Complexity because more severe injuries might involve multiple factors or incidents that contribute to the injury, making it harder to attribute the condition solely to the accident. For example, a high injury burden might involve pre-existing conditions or multiple injuries that complicate the causal link to the accident.",
+      "case_for_b_causes_a": "Causation Complexity could lead to a higher perceived Injury Burden Intensity if the complexity in attributing the injury to the accident results in more thorough investigations and assessments, potentially uncovering additional injuries or complications that increase the perceived burden.",
+      "prediction": {
+        "test": "mediation",
+        "var_a": "Injury Burden Intensity",
+        "var_b": "Causation Complexity",
+        "outcome": "Causation Complexity",
+        "mediator": "Pre-existing Condition Salience",
+        "direction": "attenuates",
+        "rationale": "If Injury Burden Intensity affects Causation Complexity through Pre-existing Condition Salience, then controlling for Pre-existing Condition Salience should reduce the association between Injury Burden Intensity and Causation Complexity."
+      },
+      "samples": [
+        {
+          "verdict": "indirect",
+          "test": "mediation",
+          "direction": "attenuates",
+          "confidence": 3,
+          "magnitude": 2,
+          "prompt_sha256": "b0be0d1cf4794942b89ec34d"
+        }
+      ]
+    },
+    {
+      "a": "Treatment Burden",
+      "b": "Legal Procedural Complexity",
+      "tier": "D",
+      "both_llm_coded": true,
+      "verdict": "common_cause",
+      "verdict_agreement": 1.0,
+      "verdict_spread": {
+        "common_cause": 1
+      },
+      "mechanism": "Both Treatment Burden and Legal Procedural Complexity are likely influenced by the severity of the injury and the clarity of liability.",
+      "named_common_cause": "Injury Burden Intensity",
+      "mediator": null,
+      "confidence_mechanism_exists": 4,
+      "expected_magnitude": 3,
+      "case_for_a_causes_b": "Treatment Burden could lead to increased Legal Procedural Complexity because more extensive treatment might involve more medical documentation, expert testimonies, and potentially disputes over the necessity and extent of treatment. This could complicate the legal proceedings as more evidence and arguments need to be presented and considered.",
+      "case_for_b_causes_a": "Legal Procedural Complexity might lead to a higher Treatment Burden if the complexity of the case results in prolonged legal proceedings, during which the claimant continues to receive treatment. Additionally, complex legal cases might require more thorough medical evaluations and treatments to substantiate claims, thereby increasing the treatment burden.",
+      "prediction": {
+        "test": "sign",
+        "var_a": "Treatment Burden",
+        "var_b": "Legal Procedural Complexity",
+        "outcome": null,
+        "mediator": null,
+        "direction": "positive",
+        "rationale": "If both Treatment Burden and Legal Procedural Complexity are driven by the severity of the injury, they should be positively correlated. This test will help determine if there is a general association between the two variables, which would be expected if they share a common cause."
+      },
+      "samples": [
+        {
+          "verdict": "common_cause",
+          "test": "sign",
+          "direction": "positive",
+          "confidence": 4,
+          "magnitude": 3,
+          "prompt_sha256": "6c28644a56cfa34fe69ea249"
+        }
+      ]
+    },
+    {
+      "a": "Legal Procedural Complexity",
+      "b": "Pre-existing Condition Salience",
+      "tier": "D",
+      "both_llm_coded": true,
+      "verdict": "common_cause",
+      "verdict_agreement": 1.0,
+      "verdict_spread": {
+        "common_cause": 1
+      },
+      "mechanism": "Both Legal Procedural Complexity and Pre-existing Condition Salience are likely influenced by Causation Complexity, as difficulty in attributing conditions to the accident can complicate legal procedures and highlight pre-existing conditions.",
+      "named_common_cause": "Causation Complexity",
+      "mediator": null,
+      "confidence_mechanism_exists": 4,
+      "expected_magnitude": 3,
+      "case_for_a_causes_b": "Legal Procedural Complexity could influence Pre-existing Condition Salience because more complex legal procedures might involve more thorough investigations into the claimant's medical history. This could lead to a greater emphasis on pre-existing conditions as they become more scrutinized and documented during the legal process.",
+      "case_for_b_causes_a": "Pre-existing Condition Salience could lead to increased Legal Procedural Complexity because if a claimant has a significant pre-existing condition, it might complicate the legal proceedings. This is due to the need to disentangle the effects of the accident from the pre-existing condition, requiring more legal arguments and evidence, thus increasing procedural complexity.",
+      "prediction": {
+        "test": "sign",
+        "var_a": "Legal Procedural Complexity",
+        "var_b": "Pre-existing Condition Salience",
+        "outcome": null,
+        "mediator": null,
+        "direction": "positive",
+        "rationale": "If Causation Complexity is a common cause, both Legal Procedural Complexity and Pre-existing Condition Salience should be positively correlated, as more complex causation issues would increase both."
+      },
+      "samples": [
+        {
+          "verdict": "common_cause",
+          "test": "sign",
+          "direction": "positive",
+          "confidence": 4,
+          "magnitude": 3,
+          "prompt_sha256": "f71c355a2f5620e856db45f9"
+        }
+      ]
+    },
+    {
+      "a": "Psychological Injury Emphasis",
+      "b": "Pre-existing Condition Salience",
+      "tier": "D",
+      "both_llm_coded": true,
+      "verdict": "common_cause",
+      "verdict_agreement": 1.0,
+      "verdict_spread": {
+        "common_cause": 1
+      },
+      "mechanism": "Both Psychological Injury Emphasis and Pre-existing Condition Salience are likely influenced by the complexity of the case, including factors like Causation Complexity and Legal Procedural Complexity.",
+      "named_common_cause": "Causation Complexity",
+      "mediator": null,
+      "confidence_mechanism_exists": 4,
+      "expected_magnitude": 2,
+      "case_for_a_causes_b": "Psychological Injury Emphasis could lead to greater Pre-existing Condition Salience because when psychological injuries are given more weight, there may be a more thorough examination of the claimant's medical history to understand the psychological impact. This could bring pre-existing conditions to the forefront, as they might interact with or exacerbate the psychological injury, making them more salient in the assessment process.",
+      "case_for_b_causes_a": "Pre-existing Condition Salience could lead to greater Psychological Injury Emphasis because if a pre-existing condition is prominent, it might necessitate a deeper exploration of psychological impacts. For instance, if a claimant has a history of psychological issues, this could lead to a greater emphasis on psychological injuries in the current claim, as the pre-existing condition might make the claimant more vulnerable to psychological harm from the accident.",
+      "prediction": {
+        "test": "sign",
+        "var_a": "Psychological Injury Emphasis",
+        "var_b": "Pre-existing Condition Salience",
+        "outcome": null,
+        "mediator": null,
+        "direction": "positive",
+        "rationale": "A positive correlation would suggest that both variables are influenced by a common factor, such as the complexity of the case, which would affect both the emphasis on psychological injury and the salience of pre-existing conditions."
+      },
+      "samples": [
+        {
+          "verdict": "common_cause",
+          "test": "sign",
+          "direction": "positive",
+          "confidence": 4,
+          "magnitude": 2,
+          "prompt_sha256": "d08653248ac6babaf52a3838"
+        }
+      ]
+    },
+    {
+      "a": "Treatment Burden",
+      "b": "Causation Complexity",
+      "tier": "D",
+      "both_llm_coded": true,
+      "verdict": "indirect",
+      "verdict_agreement": 1.0,
+      "verdict_spread": {
+        "indirect": 1
+      },
+      "mechanism": "Treatment Burden affects Causation Complexity through Injury Burden Intensity, as more severe injuries require more treatment and are easier to attribute to the accident.",
+      "named_common_cause": null,
+      "mediator": "Injury Burden Intensity",
+      "confidence_mechanism_exists": 4,
+      "expected_magnitude": 2,
+      "case_for_a_causes_b": "Treatment Burden could influence Causation Complexity because the more extensive the treatment required, the more likely it is that the injuries are severe and clearly linked to the accident. This could make it easier to establish causation, reducing complexity. Conversely, if the treatment is extensive but the injuries are not clearly linked to the accident, it could increase causation complexity as more evidence and expert opinions might be needed to establish the link.",
+      "case_for_b_causes_a": "Causation Complexity could influence Treatment Burden because if it is difficult to attribute the condition to the accident, there might be more scrutiny and requirement for extensive documentation and treatment to establish the link. This could lead to a higher treatment burden as more medical evaluations and treatments are pursued to substantiate the claim.",
+      "prediction": {
+        "test": "mediation",
+        "var_a": "Treatment Burden",
+        "var_b": "Causation Complexity",
+        "outcome": "Causation Complexity",
+        "mediator": "Injury Burden Intensity",
+        "direction": "attenuates",
+        "rationale": "If Treatment Burden affects Causation Complexity through Injury Burden Intensity, then controlling for Injury Burden Intensity should reduce the association between Treatment Burden and Causation Complexity."
+      },
+      "samples": [
+        {
+          "verdict": "indirect",
+          "test": "mediation",
+          "direction": "attenuates",
+          "confidence": 4,
+          "magnitude": 2,
+          "prompt_sha256": "21e529eaf2162800c71ba214"
+        }
+      ]
+    },
+    {
+      "a": "Legal Procedural Complexity",
+      "b": "Liability Clarity",
+      "tier": "D",
+      "both_llm_coded": true,
+      "verdict": "common_cause",
+      "verdict_agreement": 1.0,
+      "verdict_spread": {
+        "common_cause": 1
+      },
+      "mechanism": "Both legal procedural complexity and liability clarity are likely influenced by the inherent complexity of the case, such as the nature of the accident and the evidence available.",
+      "named_common_cause": "Causation Complexity",
+      "mediator": null,
+      "confidence_mechanism_exists": 4,
+      "expected_magnitude": 3,
+      "case_for_a_causes_b": "Legal procedural complexity could influence liability clarity because complex legal procedures might involve more detailed investigations and legal arguments, which could either clarify or obscure the determination of fault. For instance, in cases with high procedural complexity, there might be more room for legal maneuvering, which could either clarify the liability through thorough examination or make it more ambiguous due to conflicting evidence and interpretations.",
+      "case_for_b_causes_a": "Liability clarity could influence legal procedural complexity because when liability is clear, the legal process might be more straightforward and less complex. Conversely, when liability is unclear, the legal proceedings might become more complex as parties engage in more extensive legal arguments and evidence gathering to establish fault.",
+      "prediction": {
+        "test": "sign",
+        "var_a": "Legal Procedural Complexity",
+        "var_b": "Liability Clarity",
+        "outcome": null,
+        "mediator": null,
+        "direction": "positive",
+        "rationale": "If both legal procedural complexity and liability clarity are influenced by the same underlying factors, such as causation complexity, we would expect a positive correlation between them. This test will help determine if they move together, supporting the common cause hypothesis."
+      },
+      "samples": [
+        {
+          "verdict": "common_cause",
+          "test": "sign",
+          "direction": "positive",
+          "confidence": 4,
+          "magnitude": 3,
+          "prompt_sha256": "05af6830b0eb0481962d73a3"
+        }
+      ]
+    },
+    {
+      "a": "Injury Burden Intensity",
+      "b": "Pre-existing Condition Salience",
+      "tier": "D",
+      "both_llm_coded": true,
+      "verdict": "common_cause",
+      "verdict_agreement": 1.0,
+      "verdict_spread": {
+        "common_cause": 1
+      },
+      "mechanism": "Both Injury Burden Intensity and Pre-existing Condition Salience are likely influenced by the claimant's overall health status and medical history.",
+      "named_common_cause": "Claimant's overall health status",
+      "mediator": null,
+      "confidence_mechanism_exists": 4,
+      "expected_magnitude": 3,
+      "case_for_a_causes_b": "Injury Burden Intensity could cause Pre-existing Condition Salience to be more prominent because a higher burden of injury might exacerbate or highlight pre-existing conditions. For example, if someone has a mild pre-existing condition, a severe injury could worsen it or make it more noticeable, thus increasing its salience in the context of a claim.",
+      "case_for_b_causes_a": "Pre-existing Condition Salience could cause Injury Burden Intensity to be rated higher if the presence of a pre-existing condition complicates the recovery process or exacerbates the impact of the injury. For instance, if a claimant has a significant pre-existing condition, any new injury might be perceived as more burdensome due to the compounded effects on the individual's health.",
+      "prediction": {
+        "test": "sign",
+        "var_a": "Injury Burden Intensity",
+        "var_b": "Pre-existing Condition Salience",
+        "outcome": null,
+        "mediator": null,
+        "direction": "positive",
+        "rationale": "A positive correlation would suggest that both variables are influenced by a common underlying factor, such as the claimant's overall health status, which affects both the intensity of the injury burden and the salience of pre-existing conditions."
+      },
+      "samples": [
+        {
+          "verdict": "common_cause",
+          "test": "sign",
+          "direction": "positive",
+          "confidence": 4,
+          "magnitude": 3,
+          "prompt_sha256": "c620fb41ce45edd712b2b243"
+        }
+      ]
+    },
+    {
+      "a": "Treatment Burden",
+      "b": "Psychological Injury Emphasis",
+      "tier": "D",
+      "both_llm_coded": true,
+      "verdict": "indirect",
+      "verdict_agreement": 1.0,
+      "verdict_spread": {
+        "indirect": 1
+      },
+      "mechanism": "Treatment Burden affects Psychological Injury Emphasis through Injury Burden Intensity, as more severe injuries require more treatment and also lead to greater psychological impact.",
+      "named_common_cause": null,
+      "mediator": "Injury Burden Intensity",
+      "confidence_mechanism_exists": 4,
+      "expected_magnitude": 3,
+      "case_for_a_causes_b": "Treatment Burden could cause Psychological Injury Emphasis because the extent of treatment, surgery, and care required after an accident can have a significant psychological impact on a claimant. Extensive medical treatments and surgeries can be stressful, painful, and disruptive to a person's life, potentially leading to increased psychological distress. This distress might then be reflected in the weight given to psychological injury in the claims process, as more emphasis might be placed on psychological injuries when the treatment burden is high.",
+      "case_for_b_causes_a": "Psychological Injury Emphasis could cause Treatment Burden if the recognition and emphasis on psychological injuries lead to more comprehensive treatment plans that include psychological care. If psychological injuries are given significant weight, it might result in a higher treatment burden as claimants receive more extensive psychological therapy, counseling, or other related treatments to address these injuries.",
+      "prediction": {
+        "test": "mediation",
+        "var_a": "Treatment Burden",
+        "var_b": "Psychological Injury Emphasis",
+        "outcome": "Psychological Injury Emphasis",
+        "mediator": "Injury Burden Intensity",
+        "direction": "attenuates",
+        "rationale": "If Treatment Burden affects Psychological Injury Emphasis through Injury Burden Intensity, then controlling for Injury Burden Intensity should reduce the association between Treatment Burden and Psychological Injury Emphasis."
+      },
+      "samples": [
+        {
+          "verdict": "indirect",
+          "test": "mediation",
+          "direction": "attenuates",
+          "confidence": 4,
+          "magnitude": 3,
+          "prompt_sha256": "f2e30e3635aa345747236ace"
+        }
+      ]
+    },
+    {
+      "a": "Work Impact Severity",
+      "b": "Pre-existing Condition Salience",
+      "tier": "D",
+      "both_llm_coded": true,
+      "verdict": "indirect",
+      "verdict_agreement": 1.0,
+      "verdict_spread": {
+        "indirect": 1
+      },
+      "mechanism": "Pre-existing conditions affect work impact severity through their influence on WPI % and Future Economic Loss.",
+      "named_common_cause": null,
+      "mediator": "WPI %",
+      "confidence_mechanism_exists": 4,
+      "expected_magnitude": 3,
+      "case_for_a_causes_b": "Work Impact Severity could influence Pre-existing Condition Salience if the severity of the work impact makes it more necessary to examine and highlight any pre-existing conditions. For instance, if a claimant has a severe loss of working capacity, it might prompt a more thorough investigation into their medical history to determine if any pre-existing conditions contributed to the current state, thus increasing the salience of those conditions.",
+      "case_for_b_causes_a": "Pre-existing Condition Salience could affect Work Impact Severity if the presence of a notable pre-existing condition influences the assessment of how much the accident has impacted the claimant's working capacity. If a pre-existing condition is prominent, it might be considered that the work impact is less severe because some of the incapacity could be attributed to the pre-existing condition rather than the accident itself.",
+      "prediction": {
+        "test": "mediation",
+        "var_a": "Work Impact Severity",
+        "var_b": "Pre-existing Condition Salience",
+        "outcome": "Work Impact Severity",
+        "mediator": "WPI %",
+        "direction": "attenuates",
+        "rationale": "If Pre-existing Condition Salience affects Work Impact Severity through WPI %, then controlling for WPI % should reduce the association between Pre-existing Condition Salience and Work Impact Severity."
+      },
+      "samples": [
+        {
+          "verdict": "indirect",
+          "test": "mediation",
+          "direction": "attenuates",
+          "confidence": 4,
+          "magnitude": 3,
+          "prompt_sha256": "8d62fbac1ea6068f6320d507"
+        }
+      ]
+    },
+    {
+      "a": "Liability Clarity",
+      "b": "Pre-existing Condition Salience",
+      "tier": "D",
+      "both_llm_coded": true,
+      "verdict": "common_cause",
+      "verdict_agreement": 1.0,
+      "verdict_spread": {
+        "common_cause": 1
+      },
+      "mechanism": "Both liability clarity and pre-existing condition salience are influenced by the complexity of the case, including factors like causation complexity and legal procedural complexity.",
+      "named_common_cause": "Causation Complexity",
+      "mediator": null,
+      "confidence_mechanism_exists": 4,
+      "expected_magnitude": 2,
+      "case_for_a_causes_b": "Liability clarity could influence the salience of pre-existing conditions because when fault is clear, there may be less incentive to emphasize pre-existing conditions as a defense strategy. Conversely, when liability is unclear, parties might highlight pre-existing conditions to argue that the injuries or conditions were not primarily caused by the accident, thus increasing their salience in the proceedings.",
+      "case_for_b_causes_a": "The salience of pre-existing conditions could affect liability clarity if the presence of a significant pre-existing condition complicates the determination of fault. For example, if a claimant had a pre-existing condition that could have contributed to their current state, it might make it harder to clearly attribute the injury to the accident, thus reducing liability clarity.",
+      "prediction": {
+        "test": "sign",
+        "var_a": "Liability Clarity",
+        "var_b": "Pre-existing Condition Salience",
+        "outcome": null,
+        "mediator": null,
+        "direction": "positive",
+        "rationale": "If both variables are influenced by a common cause like causation complexity, they should show a positive correlation, as more complex cases would likely have both lower liability clarity and higher pre-existing condition salience."
+      },
+      "samples": [
+        {
+          "verdict": "common_cause",
+          "test": "sign",
+          "direction": "positive",
+          "confidence": 4,
+          "magnitude": 2,
+          "prompt_sha256": "474fa7fe6282e58db12ec5a0"
+        }
+      ]
+    },
+    {
+      "a": "Treatment Burden",
+      "b": "Pre-existing Condition Salience",
+      "tier": "D",
+      "both_llm_coded": true,
+      "verdict": "common_cause",
+      "verdict_agreement": 1.0,
+      "verdict_spread": {
+        "common_cause": 1
+      },
+      "mechanism": "Both Treatment Burden and Pre-existing Condition Salience are likely influenced by the overall Injury Burden Intensity, which dictates the extent of treatment needed and the relevance of pre-existing conditions.",
+      "named_common_cause": "Injury Burden Intensity",
+      "mediator": null,
+      "confidence_mechanism_exists": 4,
+      "expected_magnitude": 3,
+      "case_for_a_causes_b": "Treatment Burden could cause Pre-existing Condition Salience to be more prominent because extensive treatment might reveal or exacerbate underlying conditions. For example, during surgery or intensive care, doctors might discover pre-existing conditions that were not previously apparent, thus increasing their salience in the context of the claim.",
+      "case_for_b_causes_a": "Pre-existing Condition Salience could lead to a higher Treatment Burden because if a claimant has a prominent pre-existing condition, it might necessitate more extensive treatment to manage both the new injury and the pre-existing condition. For instance, a person with a pre-existing heart condition might require more careful monitoring and additional treatments if they suffer a new injury.",
+      "prediction": {
+        "test": "sign",
+        "var_a": "Treatment Burden",
+        "var_b": "Pre-existing Condition Salience",
+        "outcome": null,
+        "mediator": null,
+        "direction": "positive",
+        "rationale": "If both Treatment Burden and Pre-existing Condition Salience are driven by Injury Burden Intensity, they should be positively correlated. A positive Spearman correlation would support the common cause hypothesis."
+      },
+      "samples": [
+        {
+          "verdict": "common_cause",
+          "test": "sign",
+          "direction": "positive",
+          "confidence": 4,
+          "magnitude": 3,
+          "prompt_sha256": "f21ed354e355580acfcdf9ca"
+        }
+      ]
+    },
+    {
+      "a": "Injury Burden Intensity",
+      "b": "Liability Clarity",
+      "tier": "D",
+      "both_llm_coded": true,
+      "verdict": "common_cause",
+      "verdict_agreement": 1.0,
+      "verdict_spread": {
+        "common_cause": 1
+      },
+      "mechanism": "Both Injury Burden Intensity and Liability Clarity are likely influenced by the nature of the accident and the evidence available, which affects both the severity of injuries and the clarity of fault.",
+      "named_common_cause": "Nature",
+      "mediator": null,
+      "confidence_mechanism_exists": 4,
+      "expected_magnitude": 3,
+      "case_for_a_causes_b": "Injury Burden Intensity could influence Liability Clarity if the severity of the injuries makes it more apparent who is at fault. For example, in cases where the injuries are severe, it might be clearer that the fault lies with the party responsible for the accident, as the nature of the injuries could suggest a high-impact collision or a clear breach of duty of care.",
+      "case_for_b_causes_a": "Liability Clarity could influence Injury Burden Intensity if the clarity of fault affects the reporting or assessment of injuries. For instance, if fault is clear, there might be more thorough documentation and assessment of injuries, potentially leading to a higher recorded Injury Burden Intensity.",
+      "prediction": {
+        "test": "sign",
+        "var_a": "Injury Burden Intensity",
+        "var_b": "Liability Clarity",
+        "outcome": null,
+        "mediator": null,
+        "direction": "positive",
+        "rationale": "If both variables are influenced by the nature of the accident, they should show a positive correlation, as more severe accidents are likely to have both higher injury burdens and clearer liability."
+      },
+      "samples": [
+        {
+          "verdict": "common_cause",
+          "test": "sign",
+          "direction": "positive",
+          "confidence": 4,
+          "magnitude": 3,
+          "prompt_sha256": "d98013853ae71ab20cf729de"
+        }
+      ]
+    },
+    {
+      "a": "Work Impact Severity",
+      "b": "Liability Clarity",
+      "tier": "D",
+      "both_llm_coded": true,
+      "verdict": "common_cause",
+      "verdict_agreement": 1.0,
+      "verdict_spread": {
+        "common_cause": 1
+      },
+      "mechanism": "Both Work Impact Severity and Liability Clarity are likely influenced by the complexity of the case, including factors like Legal Procedural Complexity and Causation Complexity.",
+      "named_common_cause": "Legal Procedural Complexity",
+      "mediator": null,
+      "confidence_mechanism_exists": 4,
+      "expected_magnitude": 3,
+      "case_for_a_causes_b": "Work Impact Severity could influence Liability Clarity because a higher severity of work impact might lead to more thorough investigations and clearer determinations of liability. When a claimant's ability to work is significantly impacted, there may be more pressure to establish clear liability to ensure appropriate compensation, leading to clearer fault determinations.",
+      "case_for_b_causes_a": "Liability Clarity could influence Work Impact Severity because when liability is clear, claimants might receive compensation more quickly and with less dispute, potentially reducing the perceived severity of work impact. Conversely, unclear liability might prolong the process, exacerbating the claimant's work impact severity due to financial stress and uncertainty.",
+      "prediction": {
+        "test": "sign",
+        "var_a": "Work Impact Severity",
+        "var_b": "Liability Clarity",
+        "outcome": null,
+        "mediator": null,
+        "direction": "positive",
+        "rationale": "A positive correlation would suggest that both variables are influenced by a common factor, such as the complexity of the legal case, which affects both the clarity of liability and the severity of work impact."
+      },
+      "samples": [
+        {
+          "verdict": "common_cause",
+          "test": "sign",
+          "direction": "positive",
+          "confidence": 4,
+          "magnitude": 3,
+          "prompt_sha256": "8867764c1005e9fc7be3a0cd"
+        }
+      ]
+    },
+    {
+      "a": "Treatment Burden",
+      "b": "Liability Clarity",
+      "tier": "D",
+      "both_llm_coded": true,
+      "verdict": "common_cause",
+      "verdict_agreement": 1.0,
+      "verdict_spread": {
+        "common_cause": 1
+      },
+      "mechanism": "The severity of the accident could drive both the need for extensive treatment and the clarity of liability.",
+      "named_common_cause": "Injury Burden Intensity",
+      "mediator": null,
+      "confidence_mechanism_exists": 4,
+      "expected_magnitude": 3,
+      "case_for_a_causes_b": "Treatment Burden could influence Liability Clarity if the extent of treatment, surgery, and care required after an accident provides evidence of the severity of the accident and the resulting injuries. This could make it clearer who is at fault, as more severe injuries might correlate with more obvious fault scenarios, such as a high-impact collision where liability is more straightforward to establish.",
+      "case_for_b_causes_a": "Liability Clarity could influence Treatment Burden if the clarity of fault affects the willingness of insurers or other parties to approve and fund extensive treatment. If liability is clear, there might be less resistance to authorizing necessary treatments, surgeries, and care, leading to a higher treatment burden recorded.",
+      "prediction": {
+        "test": "sign",
+        "var_a": "Treatment Burden",
+        "var_b": "Liability Clarity",
+        "outcome": null,
+        "mediator": null,
+        "direction": "positive",
+        "rationale": "A positive correlation would support the idea that both Treatment Burden and Liability Clarity are influenced by a common factor, such as the severity of the accident, which affects both the extent of treatment needed and the clarity of fault."
+      },
+      "samples": [
+        {
+          "verdict": "common_cause",
+          "test": "sign",
+          "direction": "positive",
+          "confidence": 4,
+          "magnitude": 3,
+          "prompt_sha256": "69f9990daaa7a1c2a75b90e3"
+        }
+      ]
+    },
+    {
+      "a": "Liability Clarity",
+      "b": "Causation Complexity",
+      "tier": "D",
+      "both_llm_coded": true,
+      "verdict": "common_cause",
+      "verdict_agreement": 1.0,
+      "verdict_spread": {
+        "common_cause": 1
+      },
+      "mechanism": "Both liability clarity and causation complexity are influenced by the inherent complexity of the case, including factors like the nature of the accident and the presence of pre-existing conditions.",
+      "named_common_cause": "Legal Procedural Complexity",
+      "mediator": null,
+      "confidence_mechanism_exists": 4,
+      "expected_magnitude": 3,
+      "case_for_a_causes_b": "Liability clarity could influence causation complexity because when fault is clear, it might simplify the process of attributing the condition to the accident. If liability is clear, there may be less room for dispute over whether the accident caused the condition, thus reducing causation complexity.",
+      "case_for_b_causes_a": "Causation complexity could influence liability clarity because if it is difficult to attribute the condition to the accident, it might also make it harder to clearly establish fault. If the causation is complex, it could introduce ambiguity into the liability determination, making it less clear.",
+      "prediction": {
+        "test": "sign",
+        "var_a": "Liability Clarity",
+        "var_b": "Causation Complexity",
+        "outcome": null,
+        "mediator": null,
+        "direction": "positive",
+        "rationale": "If both liability clarity and causation complexity are influenced by the same underlying factors, such as legal procedural complexity, they should show a positive correlation."
+      },
+      "samples": [
+        {
+          "verdict": "common_cause",
+          "test": "sign",
+          "direction": "positive",
+          "confidence": 4,
+          "magnitude": 3,
+          "prompt_sha256": "aa07f2bfebd0afb455e0ba2c"
+        }
+      ]
+    },
+    {
+      "a": "Psychological Injury Emphasis",
+      "b": "Liability Clarity",
+      "tier": "D",
+      "both_llm_coded": true,
+      "verdict": "common_cause",
+      "verdict_agreement": 1.0,
+      "verdict_spread": {
+        "common_cause": 1
+      },
+      "mechanism": "Both Psychological Injury Emphasis and Liability Clarity could be influenced by the complexity of the case, such as Legal Procedural Complexity or Causation Complexity.",
+      "named_common_cause": "Legal Procedural Complexity",
+      "mediator": null,
+      "confidence_mechanism_exists": 4,
+      "expected_magnitude": 2,
+      "case_for_a_causes_b": "Psychological Injury Emphasis could influence Liability Clarity if the emphasis on psychological injury affects the perception of fault. For instance, if psychological injuries are emphasized, it might complicate the determination of liability, as psychological injuries can be more subjective and harder to attribute directly to the accident. This could lead to lower clarity in liability as the emphasis on psychological factors introduces more complexity into the assessment of fault.",
+      "case_for_b_causes_a": "Liability Clarity could influence Psychological Injury Emphasis if the clarity of fault affects how much weight is given to psychological injuries. For example, if liability is clear and fault is easily established, there might be less need to emphasize psychological injuries to strengthen the claimant's case. Conversely, if liability is unclear, there might be a strategic emphasis on psychological injuries to bolster the claim and potentially increase the perceived impact of the accident.",
+      "prediction": {
+        "test": "sign",
+        "var_a": "Psychological Injury Emphasis",
+        "var_b": "Liability Clarity",
+        "outcome": null,
+        "mediator": null,
+        "direction": "positive",
+        "rationale": "If both Psychological Injury Emphasis and Liability Clarity are influenced by Legal Procedural Complexity, they might show a positive correlation, as more complex cases could lead to both higher emphasis on psychological injuries and lower clarity in liability."
+      },
+      "samples": [
+        {
+          "verdict": "common_cause",
+          "test": "sign",
+          "direction": "positive",
+          "confidence": 4,
+          "magnitude": 2,
+          "prompt_sha256": "85c9d11caef14eb23a34ecb8"
+        }
+      ]
+    }
+  ],
+  "coder_warning_shown": false
+}

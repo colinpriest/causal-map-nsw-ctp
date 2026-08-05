@@ -1,0 +1,15 @@
+{
+  "meta": {
+    "model": "gpt-4o-2024-08-06",
+    "prompt_sha256": "b7f64305aab63d3234b27116",
+    "cache": "miss",
+    "requested_at": "2026-08-05T07:15:21+00:00"
+  },
+  "system": "You are checking a claim someone has made about a statutory provision. Your job is to REFUTE it if it can be refuted. Default to unsound when uncertain.\n\nThe claim asserts that, according to this provision, one quantity bears on another. The two most common ways such a claim is wrong:\n  (a) SUBJECT MISMATCH. The provision governs something other than the quantity the claim says it determines. A provision about an insurer's duty to pay for treatment does not govern how much treatment occurred. A provision conferring jurisdiction to assess a claim does not make one assessed quantity a determinant of another.\n  (b) WORD MATCHING. The claim latched onto a word rather than a meaning -- reading 'caused by the fault of the driver' (a fault condition) as being about how difficult causation is to establish.\n\nA claim is sound only if the provision genuinely makes the first quantity bear on the second. Mentioning both is not enough. A precondition for the provision to operate is not automatically a determinant of its subject.",
+  "user": "PROVISION: 4.9 Motor Accident Injuries Act 2017\n\n--- BEGIN PROVISION TEXT ---\n4.9\n \nDamages for future economic loss\u2014discount rate\n(cf s 127 MACA)\n(1)\n If an award of damages is to include compensation, assessed as a lump sum, in respect of damages for future economic loss that is referable to\u2014\n(a)\n deprivation or impairment of earning capacity, or\n(b)\n loss of expectation of financial support,\nthe present value of the future economic loss is to be qualified by adopting the prescribed discount rate.\n(2)\n The \nprescribed discount rate\n is\u2014\n(a)\n a discount rate of the percentage prescribed by the regulations, or\n(b)\n if no percentage is so prescribed\u2014a discount rate of 5%.\n(3)\n Except as provided by this section, nothing in this section affects any other law relating to the discounting of sums awarded as damages.\n--- END PROVISION TEXT ---\n\nTHE CLAIM: this provision makes 'Lump Sum' (the total dollar amount awarded to the claimant) bear on 'Future Economic Loss' (dollars awarded for future loss of earning capacity), as a formula_input.\nQuoted in support: \"If an award of damages is to include compensation, assessed as a lump sum, in respect of damages for future economic loss\"\nMapping offered: The provision refers to the compensation being assessed as a lump sum, which corresponds to the total dollar amount awarded to the claimant.\n\nRefute this claim if it can be refuted.",
+  "response": {
+    "objection": "The provision does not make the 'Lump Sum' bear on 'Future Economic Loss'; rather, it specifies how the future economic loss is to be calculated using a discount rate. The 'Lump Sum' is the result of this calculation, not an input to it.",
+    "failure_mode": "subject_mismatch",
+    "sound": false
+  }
+}

@@ -1,0 +1,122 @@
+{
+  "meta": {
+    "model": "gpt-4o-2024-08-06",
+    "prompt_sha256": "58f72f6b4e51f2b5bcde73e1",
+    "sample": 1,
+    "cache": "miss",
+    "requested_at": "2026-08-05T09:38:41+00:00"
+  },
+  "system": "You are working out the chronology of a compulsory third party motor accident claim in New South Wales, from a list of things recorded about decided claims.\n\nDivide the life of a claim into ordered PHASES, and place every recorded item in the phase at which the thing it measures COMES INTO EXISTENCE -- not when it is written down, and not when it is used.\n\nWork out from each definition what the measured thing IS, and place it when that thing comes into being. Some definitions carry their own timing: a condition described as pre-existing is one the claimant had beforehand. Others do not, and for those you must reason about the claim.\n\nThat distinction decides most of the hard cases:\n  * A medical assessment performed years later measures a physical state that arose at the time of the injury. Ask when the QUANTITY was fixed, not when it was measured.\n  * Something recorded in the final decision may describe a fact established long before it.\n  * A procedural fact about how the claim was run belongs to the phase in which the claim was run, not to the injury.\n\nDecide how many phases there are. Use as few as genuinely capture the order and no more; a phase containing one item is fine if that item really stands alone in time. Items that arise at the same stage belong in the same phase, and a phase may contain items that cause one another -- being contemporaneous is not being simultaneous.\n\nFor every item, say in one sentence WHEN the thing it measures came into existence. That sentence is the justification for its placement and will be recorded.",
+  "user": "Recorded about each decided claim:\n  - Lump Sum: the total dollars awarded to the claimant\n  - WPI %: whole person impairment as a percentage: a clinical assessment of the permanent impairment remaining once the claimant's condition has stabilised\n  - Non-Economic Loss: dollars awarded for pain and suffering, as a component of the payout\n  - Future Economic Loss: dollars awarded for loss of future earning capacity, as a component of the payout\n  - Claimant Weekly Income: the claimant's weekly earnings before the accident\n  - Claimant Age: the claimant's age in years at the date of injury\n  - Claimant Gender: the claimant's recorded gender\n  - Nature: which procedural route the claim took: approval of an agreed settlement, or a contested damages assessment\n  - Injury Burden Intensity: the overall physical severity of the injuries the claimant sustained in the accident\n  - Treatment Burden: the extent of treatment, surgery and ongoing care the claimant underwent for those injuries\n  - Work Impact Severity: how much of the claimant's capacity to work was lost\n  - Legal Procedural Complexity: how straightforward or contested the components of the payout were to determine\n  - Psychological Injury Emphasis: how much the psychological damage was discussed in the court case. It is an observed indicator of an underlying psychological injury which is not itself recorded anywhere in the data\n  - Liability Clarity: how obvious it is who was at fault in the accident\n  - Causation Complexity: how straightforward it is to determine how much of the claimant's current physical health, psychological health, and ability to earn an income is due to the accident rather than to other causes\n  - Pre-existing Condition Salience: the physical and psychological health conditions the claimant had before the accident\n\nDefine the ordered phases of a claim, then place every item in one.",
+  "response": {
+    "phases": [
+      {
+        "order": 1,
+        "name": "Claimant Pre-Accident Life",
+        "description": "This phase includes personal details and the claimant's situation before the accident, establishing the claimant's baseline conditions."
+      },
+      {
+        "order": 2,
+        "name": "Accident and Injury",
+        "description": "This phase includes events and conditions directly resulting from the accident itself, including immediate injury impacts."
+      },
+      {
+        "order": 3,
+        "name": "Post-Accident Impact Analysis",
+        "description": "This phase involves the assessment of the claimant's condition and the impact on various aspects of their life post-accident."
+      },
+      {
+        "order": 4,
+        "name": "Claim Processing and Legal Proceedings",
+        "description": "This phase covers the procedural aspects of how the claim is processed, including the legal and procedural elements."
+      },
+      {
+        "order": 5,
+        "name": "Claim Resolution",
+        "description": "This phase includes the final determination of compensation, reflecting the outcome of the claim."
+      }
+    ],
+    "assignments": [
+      {
+        "column": "Lump Sum",
+        "phase_order": 5,
+        "when_it_arises": "The lump sum comes into existence when the final compensation amount is determined at claim resolution."
+      },
+      {
+        "column": "WPI %",
+        "phase_order": 3,
+        "when_it_arises": "The WPI % is determined once the claimant's condition has stabilized, so it arises during the post-accident impact analysis."
+      },
+      {
+        "column": "Non-Economic Loss",
+        "phase_order": 5,
+        "when_it_arises": "Non-economic loss is awarded as part of the final compensation payout in claim resolution."
+      },
+      {
+        "column": "Future Economic Loss",
+        "phase_order": 5,
+        "when_it_arises": "Future economic loss is calculated as part of the final compensation payout in claim resolution."
+      },
+      {
+        "column": "Claimant Weekly Income",
+        "phase_order": 1,
+        "when_it_arises": "The claimant's weekly income is a pre-accident fact and arises in the claimant's pre-accident life phase."
+      },
+      {
+        "column": "Claimant Age",
+        "phase_order": 1,
+        "when_it_arises": "The claimant's age is determined at the date of the accident, making it a pre-accident condition."
+      },
+      {
+        "column": "Claimant Gender",
+        "phase_order": 1,
+        "when_it_arises": "Claimant's gender is an inherent characteristic present before the accident."
+      },
+      {
+        "column": "Nature",
+        "phase_order": 4,
+        "when_it_arises": "The nature of the claim is determined during the processing and legal proceedings of the claim."
+      },
+      {
+        "column": "Injury Burden Intensity",
+        "phase_order": 2,
+        "when_it_arises": "Injury burden intensity is assessed based on the injuries sustained in the accident itself."
+      },
+      {
+        "column": "Treatment Burden",
+        "phase_order": 3,
+        "when_it_arises": "Treatment burden arises as the extent of treatment required is determined post-accident."
+      },
+      {
+        "column": "Work Impact Severity",
+        "phase_order": 3,
+        "when_it_arises": "Work impact severity arises post-accident as the effect on work capacity is assessed."
+      },
+      {
+        "column": "Legal Procedural Complexity",
+        "phase_order": 4,
+        "when_it_arises": "Legal procedural complexity becomes apparent during claim processing and legal proceedings."
+      },
+      {
+        "column": "Psychological Injury Emphasis",
+        "phase_order": 4,
+        "when_it_arises": "Psychological injury emphasis is noted during legal proceedings as it is emphasized in court cases."
+      },
+      {
+        "column": "Liability Clarity",
+        "phase_order": 4,
+        "when_it_arises": "Liability clarity is evaluated during claim processing and legal proceedings."
+      },
+      {
+        "column": "Causation Complexity",
+        "phase_order": 4,
+        "when_it_arises": "Causation complexity is assessed during legal proceedings, determining the impact of the accident compared to other causes."
+      },
+      {
+        "column": "Pre-existing Condition Salience",
+        "phase_order": 1,
+        "when_it_arises": "Pre-existing conditions are a fact from the claimant's life before the accident."
+      }
+    ]
+  }
+}

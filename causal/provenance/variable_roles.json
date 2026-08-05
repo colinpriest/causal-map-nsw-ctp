@@ -1,0 +1,721 @@
+{
+  "generated_at": "2026-08-05T08:43:33+00:00",
+  "target": "Lump Sum",
+  "roots": [
+    "Claimant Age",
+    "Claimant Gender"
+  ],
+  "thresholds": {
+    "min_base": 0.1,
+    "screen": 0.35,
+    "unique": 0.1,
+    "indep": 0.1,
+    "induced": 0.2,
+    "n_induced": 3,
+    "root_link": 0.15
+  },
+  "anchor_note": "Roots are supplied from outside the data: age at injury and gender are fixed before the accident. Without an anchor, a mediator and a confounder are statistically indistinguishable -- conditioning on either destroys dependence.",
+  "caveat": "`on_path_unresolved` means the column screens dependence but the data cannot say whether it sits between other variables or above them. Resolving it needs an ordering claim from statute, chronology or elicitation.",
+  "roles": {
+    "Lump Sum": {
+      "screening": 0.414,
+      "induced_dependence_pairs": 5,
+      "induced_examples": [
+        [
+          "WPI %",
+          "Work Impact Severity",
+          0.048,
+          -0.243
+        ],
+        [
+          "Non-Economic Loss",
+          "Claimant Age",
+          0.056,
+          0.53
+        ],
+        [
+          "Future Economic Loss",
+          "Claimant Gender",
+          0.034,
+          0.219
+        ],
+        [
+          "Claimant Weekly Income",
+          "Work Impact Severity",
+          -0.077,
+          -0.235
+        ]
+      ],
+      "sign_flips_induced": 12,
+      "mediates_root_to_target": {},
+      "max_root_mediation": null,
+      "marginal_with_target": null,
+      "unique_contribution_to_target": null,
+      "role": "target",
+      "why": "declared"
+    },
+    "WPI %": {
+      "screening": 0.414,
+      "induced_dependence_pairs": 4,
+      "induced_examples": [
+        [
+          "Claimant Gender",
+          "Liability Clarity",
+          0.021,
+          0.33
+        ],
+        [
+          "Claimant Gender",
+          "Causation Complexity",
+          0.088,
+          0.239
+        ],
+        [
+          "Nature",
+          "Liability Clarity",
+          -0.047,
+          -0.432
+        ],
+        [
+          "Liability Clarity",
+          "Causation Complexity",
+          -0.063,
+          0.277
+        ]
+      ],
+      "sign_flips_induced": 8,
+      "mediates_root_to_target": {
+        "Claimant Age -> Lump Sum": -1.002,
+        "Claimant Age -> Future Economic Loss": -0.03,
+        "Claimant Age -> Claimant Gender": 0.192,
+        "Claimant Age -> Nature": -0.132,
+        "Claimant Age -> Work Impact Severity": -0.112,
+        "Claimant Age -> Legal Procedural Complexity": -0.112,
+        "Claimant Age -> Causation Complexity": 0.199,
+        "Claimant Gender -> Claimant Weekly Income": 0.132,
+        "Claimant Gender -> Claimant Age": 0.192,
+        "Claimant Gender -> Nature": 0.828,
+        "Claimant Gender -> Work Impact Severity": -0.811,
+        "Claimant Gender -> Legal Procedural Complexity": 0.988
+      },
+      "max_root_mediation": 0.051,
+      "marginal_with_target": 0.739,
+      "unique_contribution_to_target": 0.07,
+      "role": "ambiguous",
+      "signals": [
+        "collider",
+        "on_path",
+        "recorder"
+      ]
+    },
+    "Non-Economic Loss": {
+      "screening": 0.379,
+      "induced_dependence_pairs": 3,
+      "induced_examples": [
+        [
+          "Claimant Gender",
+          "Liability Clarity",
+          -0.051,
+          0.294
+        ],
+        [
+          "Work Impact Severity",
+          "Liability Clarity",
+          -0.093,
+          0.251
+        ],
+        [
+          "Liability Clarity",
+          "Causation Complexity",
+          -0.041,
+          -0.241
+        ]
+      ],
+      "sign_flips_induced": 4,
+      "mediates_root_to_target": {
+        "Claimant Age -> WPI %": 0.926,
+        "Claimant Age -> Future Economic Loss": -0.12,
+        "Claimant Age -> Nature": -0.022,
+        "Claimant Age -> Injury Burden Intensity": 0.368,
+        "Claimant Age -> Work Impact Severity": -0.196,
+        "Claimant Age -> Legal Procedural Complexity": -0.002,
+        "Claimant Age -> Psychological Injury Emphasis": -0.198,
+        "Claimant Age -> Pre-existing Condition Salience": -0.255,
+        "Claimant Gender -> Claimant Weekly Income": 0.055
+      },
+      "max_root_mediation": -0.022,
+      "marginal_with_target": 0.792,
+      "unique_contribution_to_target": 0.439,
+      "role": "collider",
+      "signals": [
+        "collider",
+        "on_path"
+      ]
+    },
+    "Future Economic Loss": {
+      "screening": 0.411,
+      "induced_dependence_pairs": 7,
+      "induced_examples": [
+        [
+          "Lump Sum",
+          "Claimant Gender",
+          0.014,
+          -0.287
+        ],
+        [
+          "Lump Sum",
+          "Liability Clarity",
+          -0.062,
+          0.438
+        ],
+        [
+          "Lump Sum",
+          "Pre-existing Condition Salience",
+          0.096,
+          0.368
+        ],
+        [
+          "Claimant Gender",
+          "Liability Clarity",
+          -0.053,
+          -0.416
+        ]
+      ],
+      "sign_flips_induced": 2,
+      "mediates_root_to_target": {
+        "Claimant Age -> Nature": 0.586,
+        "Claimant Age -> Legal Procedural Complexity": 0.442,
+        "Claimant Age -> Pre-existing Condition Salience": 0.601,
+        "Claimant Gender -> Claimant Weekly Income": -0.037
+      },
+      "max_root_mediation": 0.514,
+      "marginal_with_target": 0.847,
+      "unique_contribution_to_target": 0.535,
+      "role": "ambiguous",
+      "signals": [
+        "collider",
+        "on_path",
+        "mediates_root_to_target"
+      ]
+    },
+    "Claimant Weekly Income": {
+      "screening": 0.224,
+      "induced_dependence_pairs": 4,
+      "induced_examples": [
+        [
+          "Claimant Gender",
+          "Liability Clarity",
+          -0.019,
+          0.252
+        ],
+        [
+          "Nature",
+          "Liability Clarity",
+          -0.097,
+          0.32
+        ],
+        [
+          "Work Impact Severity",
+          "Liability Clarity",
+          -0.076,
+          -0.288
+        ],
+        [
+          "Liability Clarity",
+          "Causation Complexity",
+          0.005,
+          0.285
+        ]
+      ],
+      "sign_flips_induced": 2,
+      "mediates_root_to_target": {
+        "Claimant Age -> Future Economic Loss": -0.03,
+        "Claimant Age -> Pre-existing Condition Salience": -0.112
+      },
+      "max_root_mediation": -0.071,
+      "marginal_with_target": 0.159,
+      "unique_contribution_to_target": 0.315,
+      "role": "collider",
+      "signals": [
+        "collider"
+      ]
+    },
+    "Claimant Age": {
+      "screening": 0.217,
+      "induced_dependence_pairs": 3,
+      "induced_examples": [
+        [
+          "Claimant Gender",
+          "Liability Clarity",
+          -0.014,
+          -0.341
+        ],
+        [
+          "Treatment Burden",
+          "Liability Clarity",
+          -0.024,
+          0.224
+        ],
+        [
+          "Liability Clarity",
+          "Causation Complexity",
+          -0.014,
+          -0.274
+        ]
+      ],
+      "sign_flips_induced": 2,
+      "mediates_root_to_target": {
+        "Claimant Gender -> Claimant Weekly Income": -0.046
+      },
+      "max_root_mediation": -0.046,
+      "marginal_with_target": -0.162,
+      "unique_contribution_to_target": 0.216,
+      "role": "root",
+      "why": "fixed before the accident; nothing in the claim can cause it"
+    },
+    "Claimant Gender": {
+      "screening": 0.204,
+      "induced_dependence_pairs": 4,
+      "induced_examples": [
+        [
+          "Nature",
+          "Treatment Burden",
+          0.096,
+          0.2
+        ],
+        [
+          "Treatment Burden",
+          "Liability Clarity",
+          -0.021,
+          -0.257
+        ],
+        [
+          "Liability Clarity",
+          "Causation Complexity",
+          -0.013,
+          -0.266
+        ],
+        [
+          "Liability Clarity",
+          "Pre-existing Condition Salience",
+          0.096,
+          0.257
+        ]
+      ],
+      "sign_flips_induced": 2,
+      "mediates_root_to_target": {
+        "Claimant Age -> WPI %": 0.028,
+        "Claimant Age -> Future Economic Loss": -0.012,
+        "Claimant Age -> Nature": 0.197,
+        "Claimant Age -> Injury Burden Intensity": 0.056,
+        "Claimant Age -> Work Impact Severity": -0.019,
+        "Claimant Age -> Legal Procedural Complexity": 0.113,
+        "Claimant Age -> Psychological Injury Emphasis": -0.09,
+        "Claimant Age -> Pre-existing Condition Salience": 0.04
+      },
+      "max_root_mediation": 0.034,
+      "marginal_with_target": 0.058,
+      "unique_contribution_to_target": 0.067,
+      "role": "root",
+      "why": "fixed before the accident; nothing in the claim can cause it"
+    },
+    "Nature": {
+      "screening": 0.395,
+      "induced_dependence_pairs": 5,
+      "induced_examples": [
+        [
+          "Non-Economic Loss",
+          "Claimant Age",
+          0.056,
+          0.293
+        ],
+        [
+          "Claimant Gender",
+          "Psychological Injury Emphasis",
+          -0.095,
+          -0.252
+        ],
+        [
+          "Claimant Gender",
+          "Liability Clarity",
+          -0.032,
+          -0.241
+        ],
+        [
+          "Psychological Injury Emphasis",
+          "Liability Clarity",
+          0.002,
+          0.231
+        ]
+      ],
+      "sign_flips_induced": 9,
+      "mediates_root_to_target": {
+        "Claimant Age -> WPI %": -0.207,
+        "Claimant Age -> Future Economic Loss": 0.092,
+        "Claimant Age -> Injury Burden Intensity": -0.463,
+        "Claimant Age -> Work Impact Severity": 0.052,
+        "Claimant Age -> Legal Procedural Complexity": 0.695,
+        "Claimant Age -> Psychological Injury Emphasis": 0.927,
+        "Claimant Age -> Pre-existing Condition Salience": -0.697,
+        "Claimant Gender -> Claimant Weekly Income": 0.087
+      },
+      "max_root_mediation": 0.069,
+      "marginal_with_target": 0.437,
+      "unique_contribution_to_target": 0.013,
+      "role": "ambiguous",
+      "signals": [
+        "collider",
+        "on_path",
+        "recorder"
+      ]
+    },
+    "Injury Burden Intensity": {
+      "screening": 0.382,
+      "induced_dependence_pairs": 3,
+      "induced_examples": [
+        [
+          "Lump Sum",
+          "Claimant Age",
+          -0.094,
+          -0.246
+        ],
+        [
+          "Claimant Gender",
+          "Liability Clarity",
+          -0.032,
+          0.271
+        ],
+        [
+          "Liability Clarity",
+          "Causation Complexity",
+          -0.013,
+          -0.217
+        ]
+      ],
+      "sign_flips_induced": 3,
+      "mediates_root_to_target": {
+        "Claimant Age -> WPI %": 0.072,
+        "Claimant Age -> Future Economic Loss": -0.081,
+        "Claimant Age -> Nature": -0.242,
+        "Claimant Age -> Work Impact Severity": 0.01,
+        "Claimant Age -> Legal Procedural Complexity": -0.186,
+        "Claimant Age -> Psychological Injury Emphasis": -0.365,
+        "Claimant Age -> Pre-existing Condition Salience": 0.162,
+        "Claimant Gender -> Claimant Weekly Income": 0.073
+      },
+      "max_root_mediation": -0.036,
+      "marginal_with_target": 0.698,
+      "unique_contribution_to_target": 0.206,
+      "role": "collider",
+      "signals": [
+        "collider",
+        "on_path"
+      ]
+    },
+    "Treatment Burden": {
+      "screening": 0.219,
+      "induced_dependence_pairs": 3,
+      "induced_examples": [
+        [
+          "Claimant Gender",
+          "Liability Clarity",
+          -0.032,
+          -0.385
+        ],
+        [
+          "Psychological Injury Emphasis",
+          "Liability Clarity",
+          0.002,
+          -0.25
+        ],
+        [
+          "Liability Clarity",
+          "Causation Complexity",
+          -0.013,
+          -0.288
+        ]
+      ],
+      "sign_flips_induced": 0,
+      "mediates_root_to_target": {
+        "Claimant Age -> WPI %": -0.055,
+        "Claimant Age -> Future Economic Loss": 0.014,
+        "Claimant Age -> Nature": -0.012,
+        "Claimant Age -> Injury Burden Intensity": 0.177,
+        "Claimant Age -> Work Impact Severity": 0.06,
+        "Claimant Age -> Legal Procedural Complexity": 0.013,
+        "Claimant Age -> Psychological Injury Emphasis": -0.004,
+        "Claimant Age -> Pre-existing Condition Salience": 0.106,
+        "Claimant Gender -> Claimant Weekly Income": 0.094
+      },
+      "max_root_mediation": 0.014,
+      "marginal_with_target": 0.299,
+      "unique_contribution_to_target": 0.017,
+      "role": "ambiguous",
+      "signals": [
+        "collider",
+        "recorder"
+      ]
+    },
+    "Work Impact Severity": {
+      "screening": 0.408,
+      "induced_dependence_pairs": 4,
+      "induced_examples": [
+        [
+          "Non-Economic Loss",
+          "Claimant Age",
+          0.056,
+          0.239
+        ],
+        [
+          "Non-Economic Loss",
+          "Claimant Gender",
+          -0.065,
+          -0.261
+        ],
+        [
+          "Claimant Gender",
+          "Liability Clarity",
+          -0.032,
+          -0.273
+        ],
+        [
+          "Injury Burden Intensity",
+          "Liability Clarity",
+          -0.086,
+          -0.237
+        ]
+      ],
+      "sign_flips_induced": 2,
+      "mediates_root_to_target": {
+        "Claimant Age -> WPI %": -0.097,
+        "Claimant Age -> Future Economic Loss": -0.208,
+        "Claimant Age -> Nature": 0.735,
+        "Claimant Age -> Injury Burden Intensity": -0.3,
+        "Claimant Age -> Legal Procedural Complexity": 0.627,
+        "Claimant Age -> Psychological Injury Emphasis": 0.909,
+        "Claimant Age -> Pre-existing Condition Salience": -0.266,
+        "Claimant Gender -> Claimant Weekly Income": 0.208
+      },
+      "max_root_mediation": 0.055,
+      "marginal_with_target": 0.579,
+      "unique_contribution_to_target": 0.372,
+      "role": "collider",
+      "signals": [
+        "collider",
+        "on_path"
+      ]
+    },
+    "Legal Procedural Complexity": {
+      "screening": 0.413,
+      "induced_dependence_pairs": 6,
+      "induced_examples": [
+        [
+          "Non-Economic Loss",
+          "Claimant Age",
+          0.056,
+          0.287
+        ],
+        [
+          "Claimant Gender",
+          "Psychological Injury Emphasis",
+          -0.095,
+          -0.226
+        ],
+        [
+          "Claimant Gender",
+          "Liability Clarity",
+          -0.032,
+          -0.253
+        ],
+        [
+          "Treatment Burden",
+          "Liability Clarity",
+          -0.021,
+          -0.211
+        ]
+      ],
+      "sign_flips_induced": 9,
+      "mediates_root_to_target": {
+        "Claimant Age -> WPI %": -0.203,
+        "Claimant Age -> Future Economic Loss": 0.139,
+        "Claimant Age -> Nature": 0.996,
+        "Claimant Age -> Injury Burden Intensity": -0.501,
+        "Claimant Age -> Work Impact Severity": 0.106,
+        "Claimant Age -> Psychological Injury Emphasis": 0.984,
+        "Claimant Age -> Pre-existing Condition Salience": -0.818,
+        "Claimant Gender -> Claimant Weekly Income": 0.078
+      },
+      "max_root_mediation": 0.092,
+      "marginal_with_target": 0.399,
+      "unique_contribution_to_target": 0.045,
+      "role": "ambiguous",
+      "signals": [
+        "collider",
+        "on_path",
+        "recorder"
+      ]
+    },
+    "Psychological Injury Emphasis": {
+      "screening": 0.293,
+      "induced_dependence_pairs": 3,
+      "induced_examples": [
+        [
+          "Non-Economic Loss",
+          "Claimant Age",
+          0.056,
+          0.297
+        ],
+        [
+          "Claimant Gender",
+          "Liability Clarity",
+          -0.032,
+          -0.347
+        ],
+        [
+          "Treatment Burden",
+          "Liability Clarity",
+          -0.021,
+          0.278
+        ]
+      ],
+      "sign_flips_induced": 1,
+      "mediates_root_to_target": {
+        "Claimant Age -> WPI %": -0.095,
+        "Claimant Age -> Future Economic Loss": 0.013,
+        "Claimant Age -> Nature": 0.127,
+        "Claimant Age -> Injury Burden Intensity": -0.125,
+        "Claimant Age -> Work Impact Severity": 0.118,
+        "Claimant Age -> Legal Procedural Complexity": 0.131,
+        "Claimant Age -> Pre-existing Condition Salience": -0.305,
+        "Claimant Gender -> Claimant Weekly Income": 0.187
+      },
+      "max_root_mediation": 0.066,
+      "marginal_with_target": 0.427,
+      "unique_contribution_to_target": 0.254,
+      "role": "collider",
+      "signals": [
+        "collider"
+      ]
+    },
+    "Liability Clarity": {
+      "screening": 0.05,
+      "induced_dependence_pairs": 0,
+      "induced_examples": [],
+      "sign_flips_induced": 0,
+      "mediates_root_to_target": {
+        "Claimant Age -> WPI %": -0.042,
+        "Claimant Age -> Future Economic Loss": -0.004,
+        "Claimant Age -> Nature": 0.045,
+        "Claimant Age -> Injury Burden Intensity": -0.027,
+        "Claimant Age -> Work Impact Severity": 0.008,
+        "Claimant Age -> Legal Procedural Complexity": 0.015,
+        "Claimant Age -> Psychological Injury Emphasis": 0.03,
+        "Claimant Age -> Pre-existing Condition Salience": 0.007,
+        "Claimant Gender -> Claimant Weekly Income": -0.06
+      },
+      "max_root_mediation": 0.007,
+      "marginal_with_target": -0.082,
+      "unique_contribution_to_target": 0.167,
+      "role": "peripheral",
+      "signals": []
+    },
+    "Causation Complexity": {
+      "screening": 0.25,
+      "induced_dependence_pairs": 4,
+      "induced_examples": [
+        [
+          "Claimant Gender",
+          "Liability Clarity",
+          -0.032,
+          -0.381
+        ],
+        [
+          "Injury Burden Intensity",
+          "Liability Clarity",
+          -0.086,
+          -0.29
+        ],
+        [
+          "Treatment Burden",
+          "Liability Clarity",
+          -0.021,
+          -0.26
+        ],
+        [
+          "Liability Clarity",
+          "Pre-existing Condition Salience",
+          0.096,
+          0.207
+        ]
+      ],
+      "sign_flips_induced": 4,
+      "mediates_root_to_target": {
+        "Claimant Age -> WPI %": -0.05,
+        "Claimant Age -> Future Economic Loss": 0.008,
+        "Claimant Age -> Nature": 0.086,
+        "Claimant Age -> Injury Burden Intensity": -0.019,
+        "Claimant Age -> Work Impact Severity": 0.078,
+        "Claimant Age -> Legal Procedural Complexity": 0.043,
+        "Claimant Age -> Psychological Injury Emphasis": 0.351,
+        "Claimant Age -> Pre-existing Condition Salience": -0.88,
+        "Claimant Gender -> Claimant Weekly Income": 0.118
+      },
+      "max_root_mediation": 0.043,
+      "marginal_with_target": 0.226,
+      "unique_contribution_to_target": 0.016,
+      "role": "ambiguous",
+      "signals": [
+        "collider",
+        "recorder"
+      ]
+    },
+    "Pre-existing Condition Salience": {
+      "screening": 0.174,
+      "induced_dependence_pairs": 4,
+      "induced_examples": [
+        [
+          "Non-Economic Loss",
+          "Claimant Gender",
+          -0.065,
+          -0.217
+        ],
+        [
+          "Claimant Gender",
+          "Injury Burden Intensity",
+          -0.088,
+          -0.214
+        ],
+        [
+          "Claimant Gender",
+          "Liability Clarity",
+          -0.032,
+          -0.361
+        ],
+        [
+          "Treatment Burden",
+          "Liability Clarity",
+          -0.021,
+          0.224
+        ]
+      ],
+      "sign_flips_induced": 2,
+      "mediates_root_to_target": {
+        "Claimant Age -> WPI %": 0.048,
+        "Claimant Age -> Future Economic Loss": 0.077,
+        "Claimant Age -> Nature": -0.249,
+        "Claimant Age -> Injury Burden Intensity": 0.238,
+        "Claimant Age -> Work Impact Severity": 0.035,
+        "Claimant Age -> Legal Procedural Complexity": -0.248,
+        "Claimant Age -> Psychological Injury Emphasis": -0.355,
+        "Claimant Gender -> Claimant Weekly Income": 0.007
+      },
+      "max_root_mediation": 0.021,
+      "marginal_with_target": 0.051,
+      "unique_contribution_to_target": 0.052,
+      "role": "collider",
+      "signals": [
+        "collider"
+      ]
+    }
+  }
+}

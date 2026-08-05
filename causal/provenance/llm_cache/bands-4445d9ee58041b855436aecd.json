@@ -1,0 +1,127 @@
+{
+  "meta": {
+    "model": "gpt-4o-2024-08-06",
+    "prompt_sha256": "4445d9ee58041b855436aecd",
+    "sample": 3,
+    "cache": "miss",
+    "requested_at": "2026-08-05T09:45:47+00:00"
+  },
+  "system": "You are working out the chronology of a compulsory third party motor accident claim in New South Wales, from a list of things recorded about decided claims.\n\nDivide the life of a claim into ordered PHASES, and place every recorded item in the phase at which the thing it measures COMES INTO EXISTENCE -- not when it is written down, and not when it is used.\n\nWork out from each definition what the measured thing IS, and place it when that thing comes into being. Some definitions carry their own timing: a condition described as pre-existing is one the claimant had beforehand. Others do not, and for those you must reason about the claim.\n\nSome entries are NOT OBSERVED. They have no column and no values, but they are real quantities the data traces only indirectly, and they must be placed too. Where an unobserved quantity has an observed indicator, place the unobserved thing when IT arose and the indicator when the OBSERVATION was made: an injury and the later discussion of that injury are different events. An indicator can never be earlier than the thing it indicates.\n\nThat distinction decides most of the hard cases:\n  * A medical assessment performed years later measures a physical state that arose at the time of the injury. Ask when the QUANTITY was fixed, not when it was measured.\n  * Something recorded in the final decision may describe a fact established long before it.\n  * A procedural fact about how the claim was run belongs to the phase in which the claim was run, not to the injury.\n\nDecide how many phases there are. Use as few as genuinely capture the order and no more; a phase containing one item is fine if that item really stands alone in time. Items that arise at the same stage belong in the same phase, and a phase may contain items that cause one another -- being contemporaneous is not being simultaneous.\n\nFor every item, say in one sentence WHEN the thing it measures came into existence. That sentence is the justification for its placement and will be recorded.",
+  "user": "Recorded about each decided claim:\n  - Lump Sum: the total dollars awarded to the claimant\n      [how recorded: read directly off the decision]\n  - WPI %: whole person impairment as a percentage: a clinical assessment of the permanent impairment remaining once the claimant's condition has stabilised\n      [how recorded: read directly off the decision]\n  - Non-Economic Loss: dollars awarded for pain and suffering, as a component of the payout\n      [how recorded: read directly off the decision]\n  - Future Economic Loss: dollars awarded for loss of future earning capacity, as a component of the payout\n      [how recorded: read directly off the decision]\n  - Claimant Weekly Income: the claimant's weekly earnings before the accident\n      [how recorded: read directly off the decision]\n  - Claimant Age: the claimant's age in years at the date of injury\n      [how recorded: read directly off the decision]\n  - Claimant Gender: the claimant's recorded gender\n      [how recorded: read directly off the decision]\n  - Nature: which procedural route the claim took: approval of an agreed settlement, or a contested damages assessment\n      [how recorded: read directly off the decision]\n  - Injury Burden Intensity: the overall physical severity of the injuries the claimant sustained in the accident\n      [how recorded: assigned by a language model scoring the written decision]\n  - Treatment Burden: the extent of treatment, surgery and ongoing care the claimant underwent for those injuries\n      [how recorded: assigned by a language model scoring the written decision]\n  - Work Impact Severity: how much of the claimant's capacity to work was lost\n      [how recorded: assigned by a language model scoring the written decision]\n  - Legal Procedural Complexity: how straightforward or contested the components of the payout were to determine\n      [how recorded: assigned by a language model scoring the written decision]\n  - Psychological Injury Emphasis: how much the psychological damage was discussed in the court case\n      [how recorded: assigned by a language model scoring the written decision]\n      [this is the observed indicator of Psychological Injury]\n  - Liability Clarity: how obvious it is who was at fault in the accident\n      [how recorded: assigned by a language model scoring the written decision]\n  - Causation Complexity: how straightforward it is to determine how much of the claimant's current physical health, psychological health, and ability to earn an income is due to the accident rather than to other causes\n      [how recorded: assigned by a language model scoring the written decision]\n  - Pre-existing Condition Salience: the physical and psychological health conditions the claimant had before the accident\n      [how recorded: assigned by a language model scoring the written decision]\n  - Psychological Injury: the psychological injury the claimant suffered as a result of the accident -- its actual severity, as distinct from how much it was discussed\n      [NOT OBSERVED: no column, no values. Its only measured trace is Psychological Injury Emphasis]\n\nDefine the ordered phases of a claim, then place every item in one.",
+  "response": {
+    "phases": [
+      {
+        "order": 1,
+        "name": "Accident Occurrence",
+        "description": "Physical and psychological injuries are sustained by the claimant during the motor accident."
+      },
+      {
+        "order": 2,
+        "name": "Baseline Information Establishment",
+        "description": "Before the accident or immediately at its occurrence, baseline characteristics of the claimant's pre-accident state are identified."
+      },
+      {
+        "order": 3,
+        "name": "Injury Evaluation and Stabilization",
+        "description": "The period during which the claimant's condition stabilizes post-accident and the impairment level becomes assessable."
+      },
+      {
+        "order": 4,
+        "name": "Claim Processing and Determination",
+        "description": "The procedural handling of the claim, involving the assessment of liability, procedural nature, and complexities."
+      },
+      {
+        "order": 5,
+        "name": "Decision Finalization",
+        "description": "The final decision where financial outcomes are determined and recorded."
+      }
+    ],
+    "assignments": [
+      {
+        "column": "Lump Sum",
+        "phase_order": 5,
+        "when_it_arises": "The total payout to the claimant is determined in the final decision phase."
+      },
+      {
+        "column": "WPI %",
+        "phase_order": 3,
+        "when_it_arises": "The WPI percentage is established when the claimant's condition stabilizes and is assessed."
+      },
+      {
+        "column": "Non-Economic Loss",
+        "phase_order": 5,
+        "when_it_arises": "The financial compensation for pain and suffering is determined in the final payout decision."
+      },
+      {
+        "column": "Future Economic Loss",
+        "phase_order": 5,
+        "when_it_arises": "The compensation for future earning capacity loss is part of the final financial determination."
+      },
+      {
+        "column": "Claimant Weekly Income",
+        "phase_order": 2,
+        "when_it_arises": "The claimant's pre-accident earnings are established based on their financial situation before the accident."
+      },
+      {
+        "column": "Claimant Age",
+        "phase_order": 2,
+        "when_it_arises": "The claimant's age is fixed at the time of injury."
+      },
+      {
+        "column": "Claimant Gender",
+        "phase_order": 2,
+        "when_it_arises": "The claimant's gender is an inherent characteristic known before or at the accident."
+      },
+      {
+        "column": "Nature",
+        "phase_order": 4,
+        "when_it_arises": "The procedural path of the claim is determined during the processing of the claim."
+      },
+      {
+        "column": "Injury Burden Intensity",
+        "phase_order": 1,
+        "when_it_arises": "The physical severity of the injuries arises at the accident occurrence."
+      },
+      {
+        "column": "Treatment Burden",
+        "phase_order": 1,
+        "when_it_arises": "The need for treatment arises from the injuries sustained in the accident."
+      },
+      {
+        "column": "Work Impact Severity",
+        "phase_order": 1,
+        "when_it_arises": "The impact on work capacity begins with the injuries from the accident."
+      },
+      {
+        "column": "Legal Procedural Complexity",
+        "phase_order": 4,
+        "when_it_arises": "The complexity in determining payout components arises during claim processing."
+      },
+      {
+        "column": "Psychological Injury Emphasis",
+        "phase_order": 4,
+        "when_it_arises": "The emphasis on psychological injury is based on its discussion during claim processing."
+      },
+      {
+        "column": "Liability Clarity",
+        "phase_order": 4,
+        "when_it_arises": "How clear liability is is assessed during the processing of the claim."
+      },
+      {
+        "column": "Causation Complexity",
+        "phase_order": 4,
+        "when_it_arises": "The complexity of causation is evaluated in the claim processing phase."
+      },
+      {
+        "column": "Pre-existing Condition Salience",
+        "phase_order": 2,
+        "when_it_arises": "Pre-existing conditions are those present before the accident occurs."
+      },
+      {
+        "column": "Psychological Injury",
+        "phase_order": 1,
+        "when_it_arises": "The psychological injuries sustained originate at the time of the accident."
+      }
+    ]
+  }
+}

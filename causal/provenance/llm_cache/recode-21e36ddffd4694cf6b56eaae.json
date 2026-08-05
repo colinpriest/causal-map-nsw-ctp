@@ -1,0 +1,27 @@
+{
+  "meta": {
+    "model": "gpt-4o-2024-08-06",
+    "prompt_sha256": "21e36ddffd4694cf6b56eaae",
+    "cache": "miss",
+    "case": "Polwarth v Allianz Australia Insurance Limited [2024] NSWPIC 161; \n (24 March 20",
+    "requested_at": "2026-08-05T08:15:26+00:00"
+  },
+  "system": "You are coding NSW motor accident decisions for a research dataset. Read the decision text supplied and assign each ordinal score from the text alone.\n\nScore each dimension INDEPENDENTLY. A decision describing a severe case will score high on some dimensions and not others: severe physical injury does not by itself imply a contested proceeding, a disputed liability, or a prominent psychological component. Judge each scale against its own definition and resist letting an overall impression of severity carry across the scales.\n\nIf the text does not support a judgement on a dimension, give the lowest score rather than guessing upward, and say so in `uncertain`.",
+  "user": "DECISION TEXT:\n--- Catchwords ---\nMOTOR ACCIDENTS -\n\nMotor Accidents Compensation Act 1999 ; assessment of damages; liability wholly admitted; claimant a mine worker; allegations of pre-accident injuries overlapping; claim for non-economic loss, past and future economic loss, past and future treatment expenses and past and future domestic care; Held \u2013 assessment of damages made in accordance with section 94 plus costs and disbursements as agreed.\n\n--- Key Paragraphs ---\n[para 28] Finds ongoing neck pain and disability are causally related to the accident.\n28. Having reviewed the medical opinion above, I accept Mr Polwarth sustained injuries in the motor bike crash as set out by John Hunter Hospital and subsequent doctors. He continues to suffer from persistent neck pain which is further aggravated by prolonged sitting or awkward postures. I accept the description by Dr Mitchell that Mr Polwarth's ongoing pain and disabilities are related to the subject accident with not significant prior or subsequent injury involved.\n\n[para 29] Rejects overlap of pre-injury symptoms with current neck disabilities.\n29. I do not accept Mr Polwarth's pre-injury symptoms overlap or relate to the nature and extent of his neck disabilities. Has the claimant established an economic loss past 10 weeks after the accident?\n\n[para 53] Determines past economic loss as total incapacity from August 2020 to February 2024.\n53. I have been persuaded Mr Polwarth's past economic loss is a total work incapacity from August 2020 to February 2024.\n\n[para 55] Adopts average weekly net earnings figure used to quantify past loss.\n55. The claimant prepared a table of earnings from 2013 to 2021. The insurer made no objection to this table which I will adopt to calculate Mr Polwarth's average weekly net earnings. I have calculated the average weekly net earnings as $1,937.20 using 2016 to 2020 from the table.\n\n[para 56] Calculates the period and quantum of past economic loss.\n56. Mr Quickenden submitted the number of weeks is 181.2. I accept this is a reasonable assessment of the number of weeks since 20 August 2020. The amount for past economic loss is $351,020.64.\n\n[para 69] Sets buffer for future economic loss and superannuation at 95,000.\n69. Having regard to Mr Polwarth's age, his years to retirement age and his ongoing injuries and disabilities, the appropriate amount for a buffer for future economic loss and superannuation is $95,000. Is there a need for future domestic assistance?\n\n[para 72] Applies s 141B to reject future domestic assistance claim.\n72. The insurer anticipated this claim and responded with a submission that s 141B of the Act is not supported. As such no allowance should be made. I agree.\n\n[para 80] Summarises the assessment of damages across heads and totals.\n80. A summary of the assessment of damages is as follows: -\n\n(a) past economic loss $351,020.64\n\n(b) past paid economic loss $22,065\n\n(c) past superannuation $38,612.27\n\n(d) Fox v Wood $7,202.00\n\n(e) future economic loss $95,000.00\n\n(f) past treatment expenses $9,370.58\n\n(g) future treatment expenses $500.00\n\n(h) total $523,770.49 .\n\nCOSTS AND DISBURSEMENTS\n\nAssign each score:\n  Injury Burden Intensity (0-4): overall physical burden of the injuries: 0 minimal, 4 catastrophic/multiple major injuries\n  Treatment Burden (0-3): extent of treatment, surgery and ongoing care: 0 none or minimal, 3 extensive surgery and long-term care\n  Work Impact Severity (0-3): loss of working capacity: 0 none, 3 total incapacity\n  Legal Procedural Complexity (0-3): procedural complexity of the proceeding: 0 straightforward, 3 heavily contested\n  Psychological Injury Emphasis (0-2): weight the decision gives to psychological injury: 0 none, 2 central\n  Liability Clarity (0-2): how clear fault is: 0 seriously disputed, 2 clear or admitted\n  Causation Complexity (0-2): difficulty attributing the condition to the accident: 0 straightforward, 2 heavily contested\n  Pre-existing Condition Salience (0-2): how prominent a prior condition is in the decision: 0 absent, 2 central",
+  "response": {
+    "Injury Burden Intensity": 2,
+    "Treatment Burden": 1,
+    "Work Impact Severity": 3,
+    "Legal Procedural Complexity": 0,
+    "Psychological Injury Emphasis": 0,
+    "Liability Clarity": 2,
+    "Causation Complexity": 0,
+    "Pre-existing Condition Salience": 0,
+    "uncertain": [
+      "Treatment Burden",
+      "Psychological Injury Emphasis",
+      "Causation Complexity",
+      "Pre-existing Condition Salience"
+    ]
+  }
+}

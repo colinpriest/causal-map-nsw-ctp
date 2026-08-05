@@ -1,0 +1,727 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NSW CTP Severity — Causal Structure</title>
+<style>
+  :root{
+    color-scheme: light;
+    --page:#f9f9f7; --surface:#fcfcfb; --surface-2:#ffffff;
+    --ink:#0b0b0b; --ink-2:#52514e; --muted:#898781;
+    --grid:#e1e0d9; --axis:#c3c2b7; --border:rgba(11,11,11,.10);
+    --pos:#2a78d6; --neg:#e34948;
+    --band:rgba(11,11,11,.022);
+    --chip:#f0efec;
+    --warn:#fab219; --crit:#d03b3b; --good:#0ca30c;
+    --shadow:0 1px 2px rgba(11,11,11,.06), 0 8px 24px rgba(11,11,11,.05);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:where(:not([data-theme="light"])){
+      color-scheme: dark;
+      --page:#0d0d0d; --surface:#1a1a19; --surface-2:#212120;
+      --ink:#ffffff; --ink-2:#c3c2b7; --muted:#898781;
+      --grid:#2c2c2a; --axis:#383835; --border:rgba(255,255,255,.10);
+      --pos:#3987e5; --neg:#e66767;
+      --band:rgba(255,255,255,.028);
+      --chip:#2c2c2a;
+      --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="dark"]{
+    color-scheme: dark;
+    --page:#0d0d0d; --surface:#1a1a19; --surface-2:#212120;
+    --ink:#ffffff; --ink-2:#c3c2b7; --muted:#898781;
+    --grid:#2c2c2a; --axis:#383835; --border:rgba(255,255,255,.10);
+    --pos:#3987e5; --neg:#e66767;
+    --band:rgba(255,255,255,.028);
+    --chip:#2c2c2a;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.35);
+  }
+
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:var(--page); color:var(--ink);
+    font:15px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif;
+    padding:28px 24px 64px;
+  }
+  .wrap{max-width:1500px;margin:0 auto}
+
+  header h1{font-size:26px;line-height:1.2;margin:0 0 6px;letter-spacing:-.01em}
+  header p.sub{margin:0;color:var(--ink-2);max-width:78ch}
+  header p.sub code{background:var(--chip);padding:1px 5px;border-radius:4px;font-size:.9em}
+  header p.prov{
+    margin:14px 0 0;max-width:88ch;font-size:13.5px;line-height:1.5;color:var(--ink);
+    background:color-mix(in srgb,var(--warn) 12%,var(--surface));
+    border:1px solid var(--warn);border-left-width:4px;border-radius:6px;padding:11px 14px;
+  }
+  header p.prov code{background:var(--chip);padding:1px 5px;border-radius:4px;font-size:.9em}
+
+  .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:12px;margin:22px 0 8px}
+  .tile{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:13px 15px}
+  .tile .v{font-size:27px;line-height:1.1;letter-spacing:-.02em}
+  .tile .k{font-size:12px;color:var(--muted);margin-top:3px;text-transform:uppercase;letter-spacing:.05em}
+  .tile .n{font-size:12.5px;color:var(--ink-2);margin-top:6px}
+  .tile.alert{border-color:var(--crit)}
+  .tile.alert .v{color:var(--crit)}
+
+  nav.tabs{display:flex;gap:6px;margin:26px 0 0;flex-wrap:wrap}
+  nav.tabs button{
+    font:inherit;font-size:14px;padding:8px 15px;border-radius:8px 8px 0 0;
+    border:1px solid transparent;border-bottom:none;background:none;color:var(--ink-2);cursor:pointer
+  }
+  nav.tabs button[aria-selected="true"]{background:var(--surface);border-color:var(--border);color:var(--ink);font-weight:600}
+  nav.tabs button:hover{color:var(--ink)}
+
+  .panel{background:var(--surface);border:1px solid var(--border);border-radius:0 10px 10px 10px;box-shadow:var(--shadow)}
+  .panel[hidden]{display:none}
+  .panel-head{padding:16px 20px 0}
+  .panel-head h2{font-size:16px;margin:0 0 4px}
+  .panel-head p{margin:0;color:var(--ink-2);font-size:13.5px;max-width:96ch}
+
+  /* ---- legend ---- */
+  .legend{display:flex;gap:20px;flex-wrap:wrap;align-items:center;padding:14px 20px 4px;font-size:12.5px;color:var(--ink-2)}
+  .legend .item{display:flex;gap:7px;align-items:center}
+  .legend svg{display:block;overflow:visible}
+
+  /* ---- graph ---- */
+  .graph-layout{display:grid;grid-template-columns:minmax(0,1fr) 316px;gap:0}
+  @media (max-width:1180px){.graph-layout{grid-template-columns:minmax(0,1fr)}}
+  .graph-scroll{overflow-x:auto;padding:6px 12px 18px}
+  svg.map{display:block;width:100%;min-width:1080px;height:auto;font:12px system-ui,-apple-system,"Segoe UI",sans-serif}
+
+  .bandrect{fill:var(--band)}
+  .bandlabel{fill:var(--muted);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+  .bandrule{stroke:var(--grid);stroke-width:1}
+
+  g.edge path{fill:none;stroke-linecap:round;transition:opacity .12s,stroke-width .12s}
+  /* Every paint rule below names path.wire / path.ah explicitly. A bare `g.edge.pos path`
+     selector outranks `g.edge .hit` on specificity and paints the invisible 14px hit
+     target in the edge colour, straight over the arrowheads. */
+  g.edge path.wire{opacity:.30}
+  g.edge path.ah{opacity:.95;stroke:none}
+  g.edge.pos path.wire{stroke:var(--pos)} g.edge.pos path.ah{fill:var(--pos)}
+  g.edge.neg path.wire{stroke:var(--neg)} g.edge.neg path.ah{fill:var(--neg)}
+  g.edge.conflict path.wire{stroke-dasharray:5 3.5}
+  g.edge path.hit{stroke:rgba(0,0,0,0);stroke-width:14;fill:none;cursor:pointer;pointer-events:stroke}
+  svg.map.focused g.edge{opacity:.05}
+  svg.map.focused g.edge.hi{opacity:1}
+  svg.map.focused g.edge.hi path.wire{stroke-width:3.2;opacity:.8}
+  /* on highlight the wire itself flows source→target, so direction is unmistakable */
+  svg.map g.edge.hi path.wire{stroke-dasharray:9 8;animation:flow 1.1s linear infinite}
+  @keyframes flow{to{stroke-dashoffset:-17}}
+  @media (prefers-reduced-motion:reduce){svg.map g.edge.hi path.wire{animation:none}}
+
+  g.node{cursor:pointer}
+  g.node rect.box{fill:var(--surface-2);stroke:var(--axis);stroke-width:1.25;rx:8}
+  g.node text.lab{fill:var(--ink);font-size:12.5px;font-weight:600}
+  g.node text.meta{fill:var(--muted);font-size:10.5px}
+  svg.map.focused g.node{opacity:.28}
+  svg.map.focused g.node.hi,svg.map.focused g.node.sel{opacity:1}
+  g.node.sel rect.box{stroke:var(--ink);stroke-width:2.25}
+  g.node.parent rect.box{stroke:var(--pos);stroke-width:2}
+  g.node.child rect.box{stroke:var(--neg);stroke-width:2}
+  g.node:focus{outline:none} g.node:focus rect.box{stroke:var(--ink);stroke-width:2.25}
+  g.node.target rect.box{fill:var(--chip)}
+
+  /* ---- side panel ---- */
+  aside{border-left:1px solid var(--border);padding:16px 18px 22px;min-height:520px}
+  @media (max-width:1180px){aside{border-left:none;border-top:1px solid var(--border)}}
+  aside .hint{color:var(--muted);font-size:13px}
+  aside h3{margin:0 0 2px;font-size:16px;letter-spacing:-.01em}
+  aside .band-chip{display:inline-block;background:var(--chip);color:var(--ink-2);font-size:11px;
+    padding:2px 8px;border-radius:999px;margin:6px 0 10px;letter-spacing:.03em}
+  aside .note{font-size:13px;color:var(--ink-2);margin:0 0 16px}
+  aside h4{font-size:11.5px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);
+    margin:16px 0 7px;display:flex;align-items:center;gap:7px}
+  aside ul{list-style:none;margin:0;padding:0}
+  aside li{padding:7px 0 8px;border-top:1px solid var(--grid);font-size:13px}
+  aside li:first-child{border-top:none}
+  aside li .row{display:flex;gap:8px;align-items:baseline}
+  aside li .nm{font-weight:600;flex:1}
+  aside li .sg{font-variant-numeric:tabular-nums;font-size:11.5px;color:var(--ink-2);white-space:nowrap}
+  aside li .mech{color:var(--ink-2);font-size:12.5px;margin-top:2px}
+  aside li .flag{display:inline-block;font-size:10.5px;color:var(--crit);border:1px solid var(--crit);
+    border-radius:4px;padding:0 4px;margin-top:4px}
+  .pill{display:inline-flex;align-items:center;gap:4px;font-size:11px;padding:1px 6px;border-radius:4px;
+    border:1px solid currentColor}
+  .pill.up{color:var(--pos)} .pill.down{color:var(--neg)}
+
+  /* ---- order strip ---- */
+  .strip{padding:4px 20px 20px}
+  .strip h4{font-size:12px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin:16px 0 8px}
+  .seq{display:flex;flex-wrap:wrap;gap:5px}
+  .seq span{font-size:11.5px;background:var(--chip);color:var(--ink-2);padding:3px 8px;border-radius:5px;
+    display:inline-flex;gap:6px;align-items:center}
+  .seq span b{color:var(--muted);font-weight:600;font-variant-numeric:tabular-nums}
+  .seq span.bad{background:none;border:1px solid var(--crit);color:var(--crit)}
+  .seq span.bad b{color:var(--crit)}
+  .seq span.tgt{border:1px solid var(--ink);color:var(--ink)}
+
+  /* ---- matrix ---- */
+  .mx-controls{display:flex;gap:8px;align-items:center;padding:12px 20px 0;flex-wrap:wrap}
+  .mx-controls .seg{display:inline-flex;border:1px solid var(--border);border-radius:8px;overflow:hidden}
+  .mx-controls .seg button{font:inherit;font-size:13px;padding:6px 13px;border:none;background:var(--surface-2);
+    color:var(--ink-2);cursor:pointer}
+  .mx-controls .seg button[aria-pressed="true"]{background:var(--chip);color:var(--ink);font-weight:600}
+  .mx-wrap{overflow-x:auto;padding:14px 20px 22px}
+  table.mx{border-collapse:separate;border-spacing:0;font-size:11.5px}
+  table.mx th{font-weight:500;color:var(--ink-2);white-space:nowrap}
+  table.mx th.col{height:132px;vertical-align:bottom;padding:0 0 6px}
+  table.mx th.col div{writing-mode:vertical-rl;transform:rotate(180deg);text-align:left}
+  table.mx th.row{text-align:right;padding:0 10px 0 0;max-width:230px}
+  table.mx td{width:23px;height:23px;padding:0;border:1px solid var(--grid);text-align:center;
+    font-size:11px;line-height:1;font-weight:700;color:#fff}
+  table.mx td.diag{background:var(--chip);border-color:var(--chip)}
+  table.mx td.pos{background:var(--pos)}
+  table.mx td.neg{background:var(--neg)}
+  table.mx td.bad{outline:2px solid var(--crit);outline-offset:-2px}
+  table.mx td[title]{cursor:help}
+  table.mx tr.hl th.row{color:var(--ink);font-weight:700}
+  .mx-note{padding:0 20px 20px;font-size:13px;color:var(--ink-2);max-width:100ch}
+  .mx-note strong{color:var(--ink)}
+
+  /* ---- collider ---- */
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px;padding:16px 20px 22px}
+  .card{border:1px solid var(--border);border-radius:10px;padding:15px 17px;background:var(--surface-2)}
+  .card h3{margin:0 0 8px;font-size:14.5px}
+  .card p{margin:0 0 10px;font-size:13px;color:var(--ink-2)}
+  .card p:last-child{margin-bottom:0}
+  .bignum{font-size:22px;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+  .bignum .a{color:var(--pos)} .bignum .b{color:var(--neg)}
+  .bignum .arw{color:var(--muted);margin:0 8px;font-size:17px}
+
+  table.tbl{border-collapse:collapse;width:100%;font-size:13px;margin-top:6px}
+  table.tbl th,table.tbl td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--grid);vertical-align:top}
+  table.tbl th{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:600}
+  table.tbl td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+  .up{color:var(--pos)} .down{color:var(--neg)}
+
+  #tip{position:fixed;pointer-events:none;z-index:50;max-width:330px;background:var(--surface-2);
+    border:1px solid var(--border);border-radius:8px;box-shadow:var(--shadow);padding:9px 12px;
+    font-size:12.5px;color:var(--ink);opacity:0;transition:opacity .1s}
+  #tip.on{opacity:1}
+  #tip .t{font-weight:600;margin-bottom:3px}
+  #tip .d{color:var(--ink-2);font-size:12px}
+  footer{margin-top:28px;color:var(--muted);font-size:12.5px}
+  .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>NSW CTP severity — the causal structure behind an award</h1>
+  <p class="sub">
+    A directed acyclic graph over the 16 columns of <code>ctp/ctp.csv</code>, built for
+    <strong>DAG-aware generation with TabPFN</strong>: each variable is generated conditioned on its
+    causal parents, in topological order, instead of on whatever happens to sit to its left in the file.
+    Arrows read <em>&ldquo;causes&rdquo;</em>. Orientation comes from scheme mechanics and claim chronology;
+    the &rho; figures are measured on the 540 real awards and are descriptive only.
+  </p>
+  <p class="prov">
+    <strong>Unreviewed.</strong> Every arrow, sign and mechanism on this page was
+    <strong>generated by a large language model</strong> from NSW CTP scheme mechanics. No lawyer,
+    actuary or claims practitioner has reviewed any edge. The &rho; values, the collider figures and
+    the statistics quoted in the mechanism text are computed from <code>ctp/ctp.csv</code> and are
+    reproducible &mdash; but a correlation cannot confirm a causal direction. Treat every arrow as a
+    hypothesis pending domain review.
+  </p>
+</header>
+
+<section class="tiles" id="tiles"></section>
+
+<nav class="tabs" role="tablist" aria-label="Views">
+  <button role="tab" id="tab-map" aria-controls="v-map" aria-selected="true">Causal map</button>
+  <button role="tab" id="tab-mx" aria-controls="v-mx" aria-selected="false">Order &amp; adjacency</button>
+  <button role="tab" id="tab-col" aria-controls="v-col" aria-selected="false">Why order matters</button>
+  <button role="tab" id="tab-mis" aria-controls="v-mis" aria-selected="false">Missingness</button>
+</nav>
+
+<!-- ============================= MAP ============================= -->
+<section class="panel" id="v-map" role="tabpanel" aria-labelledby="tab-map">
+  <div class="panel-head">
+    <h2>Causal map</h2>
+    <p>Left to right is forward in time. Hover or click any variable to isolate what causes it and what it
+      causes; click empty space to reset.</p>
+  </div>
+  <div class="legend" id="legend"></div>
+  <div class="graph-layout">
+    <div class="graph-scroll"><svg class="map" id="map" role="img"
+        aria-label="Directed acyclic graph of the NSW CTP severity variables"></svg></div>
+    <aside id="side"><p class="hint">Select a variable to see its parents, its children, and the mechanism
+      behind each arrow.</p></aside>
+  </div>
+  <div class="strip">
+    <h4>Generation order used by the DAG-aware generator (topological)</h4>
+    <div class="seq" id="seq-topo"></div>
+  </div>
+</section>
+
+<!-- ============================= MATRIX ============================= -->
+<section class="panel" id="v-mx" role="tabpanel" aria-labelledby="tab-mx" hidden>
+  <div class="panel-head">
+    <h2>Parent &rarr; child adjacency</h2>
+    <p>Row causes column. Re-order the axes and watch the marks move: under causal order every arrow sits
+      <em>above</em> the diagonal &mdash; that is what makes the graph acyclic and generatable in one pass.</p>
+  </div>
+  <div class="mx-controls">
+    <span style="font-size:13px;color:var(--muted)">Order rows &amp; columns by</span>
+    <span class="seg">
+      <button id="ord-topo" aria-pressed="true">Causal (topological)</button>
+      <button id="ord-csv" aria-pressed="false">CSV column order</button>
+    </span>
+  </div>
+  <div class="mx-wrap"><div id="mx"></div></div>
+  <p class="mx-note" id="mx-note"></p>
+</section>
+
+<!-- ============================= COLLIDER ============================= -->
+<section class="panel" id="v-col" role="tabpanel" aria-labelledby="tab-col" hidden>
+  <div class="panel-head">
+    <h2>Why the order matters here</h2>
+    <p>TabPFN generates columns autoregressively, each one conditioned on the columns before it. In
+      <code>ctp.csv</code> the columns run almost exactly backwards along the causal graph &mdash; so the vanilla
+      generator conditions causes on their effects.</p>
+  </div>
+  <div class="cards" id="cards"></div>
+  <div class="mx-wrap">
+    <h4 style="font-size:12px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin:0 0 8px">
+      Every edge the CSV column order gets backwards</h4>
+    <table class="tbl" id="viol"></table>
+  </div>
+</section>
+
+<!-- ============================= MISSINGNESS ============================= -->
+<section class="panel" id="v-mis" role="tabpanel" aria-labelledby="tab-mis" hidden>
+  <div class="panel-head">
+    <h2>Missingness is part of the causal structure</h2>
+    <p>Five columns carry missing values, and none of them are missing at random. Each
+      <strong>R</strong> node below is an indicator &ldquo;this field was <em>not</em> recorded in the decision&rdquo;.
+      The generator must reproduce these mechanisms, not impute them away.</p>
+  </div>
+  <div class="graph-scroll"><svg class="map" id="mismap" style="min-width:820px" role="img"
+      aria-label="Missingness sub-graph"></svg></div>
+  <div class="mx-wrap"><table class="tbl" id="mistbl"></table></div>
+</section>
+
+<footer id="foot"></footer>
+</div>
+<div id="tip" role="status" aria-live="polite"></div>
+
+<script id="dag-data" type="application/json">{"name":"nsw-ctp-severity","version":"1.0","target":"Lump Sum","n_rows":540,"description":"DAG for NSW CTP impairment lump-sum awards, for DAG-aware autoregressive generation with TabPFN (Tugnoli et al., 2026). UNREVIEWED: edges, signs and mechanisms were generated by a large language model from NSW CTP scheme mechanics and claim chronology; no domain expert has reviewed them. The rho annotations are descriptive and do not validate any edge.","provenance":{"edge_source":"llm_generated","model":"Claude (Anthropic)","domain_review":"none","reviewed_by":null,"reviewed_at":null,"basis":"Motor Accident Injuries Act 2017 / Motor Accidents Compensation Act 1999 heads of damage, as represented in the model's training data. No section-level citations were recorded.","caveat":"Treat every edge as a hypothesis pending review by a NSW CTP practitioner. Descriptive statistics in the note/mechanism strings are verified by causal/verify_claims.py; the causal assertions are not verifiable from this data."},"bands":[{"id":"claimant","label":"Claimant, pre-accident","blurb":"Fixed before the accident. Nothing downstream can change these."},{"id":"injury","label":"Accident & injury","blurb":"The crash and the harm it caused. Liability is a fact of the accident, not of the claimant."},{"id":"clinical","label":"Clinical course & capacity","blurb":"How the injury played out: treatment, permanent impairment, ability to work."},{"id":"dispute","label":"Dispute & forum","blurb":"What ends up contested, and whether the claim resolves by settlement approval or a damages assessment."},{"id":"heads","label":"Heads of damage","blurb":"The two quantum components the decision actually records."},{"id":"award","label":"Award","blurb":"The total. A pure sink \u2014 it causes nothing."}],"nodes":[{"id":"Claimant Age","short":"Age","band":"claimant","kind":"numeric","x":118,"y":130,"note":"Age at injury. Root: nothing in the claim can cause it."},{"id":"Claimant Gender","short":"Gender","band":"claimant","kind":"categorical","x":118,"y":248,"note":"Root. Enters mainly through pre-accident earnings and occupation mix."},{"id":"Claimant Weekly Income","short":"Weekly income","band":"claimant","kind":"numeric","x":118,"y":366,"note":"Pre-accident earnings \u2014 the multiplicand for economic loss. 41.9% missing, and the missingness is itself informative (not working / not in evidence)."},{"id":"Pre-existing Condition Salience","short":"Pre-existing","band":"claimant","kind":"ordinal","x":118,"y":506,"note":"How prominent a prior condition is in the decision. Degenerative change accumulates with age, so Age is its parent."},{"id":"Injury Burden Intensity","short":"Injury burden","band":"injury","kind":"ordinal","x":352,"y":110,"note":"Overall physical burden of the injuries (0\u20134). The accident forces that produced it are unobserved \u2014 treated as exogenous noise."},{"id":"Psychological Injury Emphasis","short":"Psych emphasis","band":"injury","kind":"ordinal","x":352,"y":300,"note":"Weight the decision gives to psychological injury (0\u20132)."},{"id":"Liability Clarity","short":"Liability clarity","band":"injury","kind":"ordinal","x":352,"y":618,"note":"How clear fault is (0\u20132). A fact of the accident. Near-constant here (91.9% at the top level) \u2014 a weak but genuinely exogenous discount lever."},{"id":"WPI %","short":"WPI %","band":"clinical","kind":"numeric","x":586,"y":92,"note":"Whole Person Impairment from the medical assessment. The statutory gate for non-economic loss (>10%). 46.9% missing \u2014 recorded only when it was assessed."},{"id":"Treatment Burden","short":"Treatment burden","band":"clinical","kind":"ordinal","x":586,"y":210,"note":"Extent of treatment / surgery / ongoing care (0\u20133)."},{"id":"Work Impact Severity","short":"Work impact","band":"clinical","kind":"ordinal","x":586,"y":372,"note":"Loss of working capacity (0\u20133). The driver of economic loss."},{"id":"Causation Complexity","short":"Causation","band":"dispute","kind":"ordinal","x":820,"y":478,"note":"How hard it is to attribute the condition to the accident (0\u20132). Pre-existing conditions and psychological claims are what make it hard."},{"id":"Nature","short":"Nature (forum)","band":"dispute","kind":"categorical","x":820,"y":596,"note":"Settlement Approval vs Damages. An effect of how contested the claim is, not a cause of the injury. Damages matters run 2.6x the median award \u2014 almost all of that is confounding by severity, not the forum itself."},{"id":"Legal Procedural Complexity","short":"Legal complexity","band":"dispute","kind":"ordinal","x":820,"y":700,"note":"Procedural complexity of the proceeding (0\u20133). A leaf: it records the dispute, it does not set quantum."},{"id":"Non-Economic Loss","short":"Non-economic loss","band":"heads","kind":"numeric","x":1054,"y":150,"note":"General damages for pain and suffering. Gated on WPI > 10%: 77% of awards at or below 10% WPI are exactly $0. 15.4% missing."},{"id":"Future Economic Loss","short":"Future economic loss","band":"heads","kind":"numeric","x":1054,"y":360,"note":"Future loss of earning capacity: weekly income x lost capacity x years to retirement. 23.5% missing."},{"id":"Lump Sum","short":"Lump Sum","band":"award","kind":"numeric","x":1274,"y":248,"note":"TARGET. The total award: the two recorded heads plus past economic loss, treatment and care. A collider \u2014 and column 0 of the CSV."}],"edges":[{"source":"Claimant Age","target":"Claimant Weekly Income","sign":"+","strength":"high","mechanism":"Age-earnings profile: earnings rise then plateau and fall at retirement.","rho":0.082,"n":297,"sign_conflicts_marginal":false,"csv_order_violation":true},{"source":"Claimant Gender","target":"Claimant Weekly Income","sign":"+","strength":"high","mechanism":"Gendered occupation mix and hours. Contrast is Male vs Female: male claimants' median weekly income is 29% higher.","rho":0.187,"n":314,"sign_conflicts_marginal":false,"csv_order_violation":true},{"source":"Claimant Age","target":"Pre-existing Condition Salience","sign":"+","strength":"high","mechanism":"Degenerative change accumulates, so older claimants arrive with more prior pathology on the record.","rho":0.164,"n":496,"sign_conflicts_marginal":false,"csv_order_violation":false},{"source":"Claimant Age","target":"Injury Burden Intensity","sign":"+","strength":"medium","mechanism":"Frailty: the same collision produces more burden (fractures, slower union) in older claimants.","rho":0.177,"n":496,"sign_conflicts_marginal":false,"csv_order_violation":false},{"source":"Injury Burden Intensity","target":"Psychological Injury Emphasis","sign":"+","strength":"high","mechanism":"More severe physical injury produces more secondary psychological injury.","rho":0.206,"n":540,"sign_conflicts_marginal":false,"csv_order_violation":false},{"source":"Claimant Age","target":"Psychological Injury Emphasis","sign":"-","strength":"medium","mechanism":"Psychological components are pleaded and emphasised more for working-age claimants.","rho":-0.154,"n":496,"sign_conflicts_marginal":false,"csv_order_violation":false},{"source":"Pre-existing Condition Salience","target":"Psychological Injury Emphasis","sign":"+","strength":"medium","mechanism":"Prior psychological or chronic-pain history raises the psychological emphasis.","rho":0.265,"n":540,"sign_conflicts_marginal":false,"csv_order_violation":true},{"source":"Injury Burden Intensity","target":"Treatment Burden","sign":"+","strength":"high","mechanism":"More severe injuries need more surgery, rehabilitation and ongoing care.","rho":0.551,"n":540,"sign_conflicts_marginal":false,"csv_order_violation":false},{"source":"Psychological Injury Emphasis","target":"Treatment Burden","sign":"+","strength":"medium","mechanism":"Psychological injury adds a treatment stream of its own.","rho":0.019,"n":540,"sign_conflicts_marginal":false,"csv_order_violation":true},{"source":"Injury Burden Intensity","target":"WPI %","sign":"+","strength":"high","mechanism":"WPI is the assessor's measurement of exactly this burden.","rho":0.613,"n":287,"sign_conflicts_marginal":false,"csv_order_violation":true},{"source":"Treatment Burden","target":"WPI %","sign":"+","strength":"medium","mechanism":"Surgical intervention and failure to resolve push the assessed impairment up.","rho":0.302,"n":287,"sign_conflicts_marginal":false,"csv_order_violation":true},{"source":"Psychological Injury Emphasis","target":"WPI %","sign":"+","strength":"medium","mechanism":"Psychiatric impairment is separately assessable and adds to the recorded figure.","rho":0.138,"n":287,"sign_conflicts_marginal":false,"csv_order_violation":true},{"source":"Pre-existing Condition Salience","target":"WPI %","sign":"-","strength":"high","mechanism":"Statutory deduction: the proportion of impairment attributable to a prior condition is subtracted.","rho":0.073,"n":287,"sign_conflicts_marginal":true,"csv_order_violation":true},{"source":"Claimant Age","target":"WPI %","sign":"+","strength":"low","mechanism":"Age-related degeneration raises measured impairment before deduction.","rho":0.222,"n":273,"sign_conflicts_marginal":false,"csv_order_violation":true},{"source":"Injury Burden Intensity","target":"Work Impact Severity","sign":"+","strength":"high","mechanism":"Physical burden limits what work the claimant can still do.","rho":0.141,"n":540,"sign_conflicts_marginal":false,"csv_order_violation":false},{"source":"Psychological Injury Emphasis","target":"Work Impact Severity","sign":"+","strength":"high","mechanism":"Psychological injury is a major driver of incapacity independent of physical burden.","rho":0.406,"n":540,"sign_conflicts_marginal":false,"csv_order_violation":true},{"source":"Treatment Burden","target":"Work Impact Severity","sign":"+","strength":"medium","mechanism":"A long treatment course keeps the claimant off work.","rho":0.128,"n":540,"sign_conflicts_marginal":false,"csv_order_violation":false},{"source":"Claimant Age","target":"Work Impact Severity","sign":"-","strength":"high","mechanism":"Claimants at or past retirement have little working capacity left to lose.","rho":-0.388,"n":496,"sign_conflicts_marginal":false,"csv_order_violation":false},{"source":"Claimant Gender","target":"Work Impact Severity","sign":"+","strength":"low","mechanism":"Occupation mix: manual roles lose capacity faster than sedentary ones. Contrast is Male vs Female.","rho":0.149,"n":540,"sign_conflicts_marginal":false,"csv_order_violation":false},{"source":"Pre-existing Condition Salience","target":"Causation Complexity","sign":"+","strength":"high","mechanism":"The single biggest source of causation argument is a prior condition to apportion against.","rho":0.635,"n":540,"sign_conflicts_marginal":false,"csv_order_violation":true},{"source":"Psychological Injury Emphasis","target":"Causation Complexity","sign":"+","strength":"high","mechanism":"Psychological injury is the most-contested causal link in the scheme.","rho":0.444,"n":540,"sign_conflicts_marginal":false,"csv_order_violation":false},{"source":"Causation Complexity","target":"Nature","sign":"+","strength":"high","mechanism":"Contested causation is what pushes a claim out of settlement approval into a damages assessment.","rho":0.582,"n":540,"sign_conflicts_marginal":false,"csv_order_violation":true},{"source":"Liability Clarity","target":"Nature","sign":"-","strength":"medium","mechanism":"Clear fault settles; disputed fault is assessed.","rho":-0.11,"n":540,"sign_conflicts_marginal":false,"csv_order_violation":true},{"source":"Work Impact Severity","target":"Nature","sign":"+","strength":"medium","mechanism":"Large economic-loss claims are worth litigating.","rho":0.506,"n":540,"sign_conflicts_marginal":false,"csv_order_violation":true},{"source":"Claimant Age","target":"Nature","sign":"-","strength":"medium","mechanism":"Younger claimants have the future-earnings exposure that justifies a damages assessment.","rho":-0.293,"n":496,"sign_conflicts_marginal":false,"csv_order_violation":false},{"source":"Causation Complexity","target":"Legal Procedural Complexity","sign":"+","strength":"high","mechanism":"Causation disputes generate the medical evidence, joinder and interlocutory steps that are recorded here.","rho":0.612,"n":540,"sign_conflicts_marginal":false,"csv_order_violation":true},{"source":"Nature","target":"Legal Procedural Complexity","sign":"+","strength":"high","mechanism":"A damages assessment is procedurally heavier than approving an agreed settlement.","rho":0.903,"n":540,"sign_conflicts_marginal":false,"csv_order_violation":false},{"source":"Psychological Injury Emphasis","target":"Legal Procedural Complexity","sign":"+","strength":"medium","mechanism":"Psychiatric evidence multiplies the assessments and the argument.","rho":0.459,"n":540,"sign_conflicts_marginal":false,"csv_order_violation":true},{"source":"Work Impact Severity","target":"Legal Procedural Complexity","sign":"+","strength":"medium","mechanism":"Contested capacity means vocational and economic evidence.","rho":0.5,"n":540,"sign_conflicts_marginal":false,"csv_order_violation":false},{"source":"Liability Clarity","target":"Legal Procedural Complexity","sign":"-","strength":"low","mechanism":"Clear liability removes a whole limb of the argument.","rho":-0.162,"n":540,"sign_conflicts_marginal":false,"csv_order_violation":true},{"source":"WPI %","target":"Non-Economic Loss","sign":"+","strength":"high","mechanism":"STATUTORY GATE. No non-economic loss below the >10% WPI threshold; above it, quantum scales with the assessed impairment.","rho":0.78,"n":255,"sign_conflicts_marginal":false,"csv_order_violation":false},{"source":"Injury Burden Intensity","target":"Non-Economic Loss","sign":"+","strength":"high","mechanism":"Pain and suffering track the burden itself, beyond the impairment percentage.","rho":0.668,"n":457,"sign_conflicts_marginal":false,"csv_order_violation":true},{"source":"Psychological Injury Emphasis","target":"Non-Economic Loss","sign":"+","strength":"medium","mechanism":"Psychological sequelae add to general damages where the threshold is met.","rho":0.307,"n":457,"sign_conflicts_marginal":false,"csv_order_violation":true},{"source":"Liability Clarity","target":"Non-Economic Loss","sign":"+","strength":"medium","mechanism":"Contributory negligence discounts the award proportionally.","rho":-0.146,"n":457,"sign_conflicts_marginal":true,"csv_order_violation":true},{"source":"Causation Complexity","target":"Non-Economic Loss","sign":"-","strength":"medium","mechanism":"Apportionment against non-accident causes reduces the recoverable component.","rho":0.113,"n":457,"sign_conflicts_marginal":true,"csv_order_violation":true},{"source":"Claimant Age","target":"Non-Economic Loss","sign":"-","strength":"low","mechanism":"Shorter remaining life over which to suffer the loss.","rho":0.056,"n":425,"sign_conflicts_marginal":true,"csv_order_violation":true},{"source":"Work Impact Severity","target":"Future Economic Loss","sign":"+","strength":"high","mechanism":"The residual-capacity discount is the core of the calculation.","rho":0.628,"n":413,"sign_conflicts_marginal":false,"csv_order_violation":true},{"source":"Claimant Weekly Income","target":"Future Economic Loss","sign":"+","strength":"high","mechanism":"The multiplicand: future loss is lost weekly earnings x the multiplier.","rho":0.115,"n":301,"sign_conflicts_marginal":false,"csv_order_violation":true},{"source":"Claimant Age","target":"Future Economic Loss","sign":"-","strength":"high","mechanism":"The multiplier: fewer years to retirement means fewer years of loss.","rho":-0.346,"n":377,"sign_conflicts_marginal":false,"csv_order_violation":true},{"source":"WPI %","target":"Future Economic Loss","sign":"+","strength":"medium","mechanism":"Permanent impairment corroborates permanent loss of capacity.","rho":0.358,"n":234,"sign_conflicts_marginal":false,"csv_order_violation":false},{"source":"Liability Clarity","target":"Future Economic Loss","sign":"+","strength":"medium","mechanism":"Contributory negligence discounts this head too.","rho":-0.11,"n":413,"sign_conflicts_marginal":true,"csv_order_violation":true},{"source":"Causation Complexity","target":"Future Economic Loss","sign":"-","strength":"medium","mechanism":"Loss attributable to a pre-existing condition is carved out.","rho":0.2,"n":413,"sign_conflicts_marginal":true,"csv_order_violation":true},{"source":"Nature","target":"Future Economic Loss","sign":"+","strength":"low","mechanism":"Damages assessments reach the fully-argued figure; approved settlements are compromised.","rho":0.402,"n":413,"sign_conflicts_marginal":false,"csv_order_violation":true},{"source":"Non-Economic Loss","target":"Lump Sum","sign":"+","strength":"high","mechanism":"ARITHMETIC. A recorded component of the total.","rho":0.772,"n":457,"sign_conflicts_marginal":false,"csv_order_violation":true},{"source":"Future Economic Loss","target":"Lump Sum","sign":"+","strength":"high","mechanism":"ARITHMETIC. A recorded component of the total.","rho":0.813,"n":413,"sign_conflicts_marginal":false,"csv_order_violation":true},{"source":"Claimant Weekly Income","target":"Lump Sum","sign":"+","strength":"medium","mechanism":"Past economic loss \u2014 a head of damage the table does not record separately.","rho":0.133,"n":314,"sign_conflicts_marginal":false,"csv_order_violation":true},{"source":"Work Impact Severity","target":"Lump Sum","sign":"+","strength":"medium","mechanism":"Past economic loss and future care both scale with lost capacity.","rho":0.466,"n":540,"sign_conflicts_marginal":false,"csv_order_violation":true},{"source":"Treatment Burden","target":"Lump Sum","sign":"+","strength":"medium","mechanism":"Medical, care and domestic-assistance heads the table does not record separately.","rho":0.386,"n":540,"sign_conflicts_marginal":false,"csv_order_violation":true},{"source":"Liability Clarity","target":"Lump Sum","sign":"+","strength":"low","mechanism":"The contributory-negligence discount applies to the whole award.","rho":-0.057,"n":540,"sign_conflicts_marginal":true,"csv_order_violation":true}],"parents":{"Claimant Age":[],"Claimant Gender":[],"Claimant Weekly Income":["Claimant Age","Claimant Gender"],"Pre-existing Condition Salience":["Claimant Age"],"Injury Burden Intensity":["Claimant Age"],"Psychological Injury Emphasis":["Injury Burden Intensity","Claimant Age","Pre-existing Condition Salience"],"Liability Clarity":[],"WPI %":["Injury Burden Intensity","Treatment Burden","Psychological Injury Emphasis","Pre-existing Condition Salience","Claimant Age"],"Treatment Burden":["Injury Burden Intensity","Psychological Injury Emphasis"],"Work Impact Severity":["Injury Burden Intensity","Psychological Injury Emphasis","Treatment Burden","Claimant Age","Claimant Gender"],"Causation Complexity":["Pre-existing Condition Salience","Psychological Injury Emphasis"],"Nature":["Causation Complexity","Liability Clarity","Work Impact Severity","Claimant Age"],"Legal Procedural Complexity":["Causation Complexity","Nature","Psychological Injury Emphasis","Work Impact Severity","Liability Clarity"],"Non-Economic Loss":["WPI %","Injury Burden Intensity","Psychological Injury Emphasis","Liability Clarity","Causation Complexity","Claimant Age"],"Future Economic Loss":["Work Impact Severity","Claimant Weekly Income","Claimant Age","WPI %","Liability Clarity","Causation Complexity","Nature"],"Lump Sum":["Non-Economic Loss","Future Economic Loss","Claimant Weekly Income","Work Impact Severity","Treatment Burden","Liability Clarity"]},"topological_order":["Claimant Age","Claimant Gender","Liability Clarity","Claimant Weekly Income","Pre-existing Condition Salience","Injury Burden Intensity","Psychological Injury Emphasis","Treatment Burden","Causation Complexity","WPI %","Work Impact Severity","Nature","Non-Economic Loss","Legal Procedural Complexity","Future Economic Loss","Lump Sum"],"csv_column_order":["Lump Sum","WPI %","Non-Economic Loss","Future Economic Loss","Claimant Weekly Income","Claimant Age","Claimant Gender","Nature","Injury Burden Intensity","Treatment Burden","Work Impact Severity","Legal Procedural Complexity","Psychological Injury Emphasis","Liability Clarity","Causation Complexity","Pre-existing Condition Salience"],"csv_order_violations":[["Claimant Age","Claimant Weekly Income"],["Claimant Gender","Claimant Weekly Income"],["Pre-existing Condition Salience","Psychological Injury Emphasis"],["Psychological Injury Emphasis","Treatment Burden"],["Injury Burden Intensity","WPI %"],["Treatment Burden","WPI %"],["Psychological Injury Emphasis","WPI %"],["Pre-existing Condition Salience","WPI %"],["Claimant Age","WPI %"],["Psychological Injury Emphasis","Work Impact Severity"],["Pre-existing Condition Salience","Causation Complexity"],["Causation Complexity","Nature"],["Liability Clarity","Nature"],["Work Impact Severity","Nature"],["Causation Complexity","Legal Procedural Complexity"],["Psychological Injury Emphasis","Legal Procedural Complexity"],["Liability Clarity","Legal Procedural Complexity"],["Injury Burden Intensity","Non-Economic Loss"],["Psychological Injury Emphasis","Non-Economic Loss"],["Liability Clarity","Non-Economic Loss"],["Causation Complexity","Non-Economic Loss"],["Claimant Age","Non-Economic Loss"],["Work Impact Severity","Future Economic Loss"],["Claimant Weekly Income","Future Economic Loss"],["Claimant Age","Future Economic Loss"],["Liability Clarity","Future Economic Loss"],["Causation Complexity","Future Economic Loss"],["Nature","Future Economic Loss"],["Non-Economic Loss","Lump Sum"],["Future Economic Loss","Lump Sum"],["Claimant Weekly Income","Lump Sum"],["Work Impact Severity","Lump Sum"],["Treatment Burden","Lump Sum"],["Liability Clarity","Lump Sum"]],"missingness":{"nodes":[{"id":"R_WPI","target":"WPI %","rate":0.469,"note":"WPI is written down only when an impairment assessment was in evidence."},{"id":"R_Income","target":"Claimant Weekly Income","rate":0.419,"note":"Weekly income appears only where earnings were in issue and proved."},{"id":"R_FEL","target":"Future Economic Loss","rate":0.235,"note":"Future economic loss is stated only when it was claimed and quantified."},{"id":"R_NEL","target":"Non-Economic Loss","rate":0.154,"note":"Non-economic loss is stated only when the threshold question was reached."},{"id":"R_Age","target":"Claimant Age","rate":0.081,"note":"Age is occasionally not extractable from the decision."}],"edges":[{"source":"WPI %","target":"R_WPI","sign":"-","mechanism":"SELF-MASKING. Assessment is sought when the >10% threshold is live, so a recorded WPI is not missing at random in WPI itself."},{"source":"Injury Burden Intensity","target":"R_WPI","sign":"-","mechanism":"Minor injuries never reach an assessment."},{"source":"Nature","target":"R_WPI","sign":"-","mechanism":"Damages assessments turn on the threshold; 42.0% missing vs 49.4% in settlement approvals."},{"source":"WPI %","target":"R_NEL","sign":"+","mechanism":"Below the threshold the head is simply not addressed: 18.4% missing at WPI<=10 against 3.0% above it."},{"source":"Nature","target":"R_NEL","sign":"-","mechanism":"A damages assessment must deal with every pleaded head."},{"source":"Work Impact Severity","target":"R_Income","sign":"-","mechanism":"Earnings are proved when capacity is in issue."},{"source":"Claimant Gender","target":"R_Income","sign":"+","mechanism":"47.7% missing for female claimants vs 37.2% for male \u2014 an evidentiary artefact worth preserving."},{"source":"Claimant Age","target":"R_Income","sign":"+","mechanism":"Retired claimants have no earnings to record."},{"source":"R_Income","target":"R_FEL","sign":"+","mechanism":"SHARED MECHANISM. 50.4% of rows missing income are also missing future economic loss, against 4.1% of rows with income."},{"source":"Work Impact Severity","target":"R_FEL","sign":"-","mechanism":"No lost capacity, no future economic loss claim."},{"source":"Nature","target":"R_FEL","sign":"-","mechanism":"A damages assessment quantifies the head explicitly."},{"source":"Nature","target":"R_Age","sign":"-","mechanism":"Damages decisions set out the claimant's circumstances in more detail."}]},"colliders":[{"pair":["Non-Economic Loss","Future Economic Loss"],"collider":"Lump Sum","n":348,"rho_marginal":0.513,"rho_given_collider":-0.459}],"categorical_contrasts":{"Claimant Gender":"Male vs Female","Nature":"Damages vs Settlement Approval"},"stats":{"n_nodes":16,"n_edges":49,"n_violations":34,"n_sign_conflicts":7,"missing_rates":{"WPI %":0.4685,"Non-Economic Loss":0.1537,"Future Economic Loss":0.2352,"Claimant Weekly Income":0.4185,"Claimant Age":0.0815}}}</script>
+<script>
+(function(){
+"use strict";
+const DAG = JSON.parse(document.getElementById('dag-data').textContent);
+const NODES = DAG.nodes, EDGES = DAG.edges, BANDS = DAG.bands;
+const byId = Object.fromEntries(NODES.map(n=>[n.id,n]));
+const SVGNS = 'http://www.w3.org/2000/svg';
+const el = (t,a={},kids=[])=>{const e=document.createElementNS(SVGNS,t);
+  for(const k in a) e.setAttribute(k,a[k]); kids.forEach(c=>e.appendChild(c)); return e;};
+const h = (t,a={},kids=[])=>{const e=document.createElement(t);
+  for(const k in a){ if(k==='html') e.innerHTML=a[k]; else if(k==='text') e.textContent=a[k]; else e.setAttribute(k,a[k]); }
+  (Array.isArray(kids)?kids:[kids]).forEach(c=>c&&e.appendChild(c)); return e;};
+
+const NW=178, NH=46;                     // node box
+const TRI='M-5.5 -5.6 L6 0 L-5.5 5.6 Z'; // the one arrow shape, reused everywhere
+const parentsOf={}, childrenOf={};
+NODES.forEach(n=>{parentsOf[n.id]=[]; childrenOf[n.id]=[];});
+EDGES.forEach(e=>{parentsOf[e.target].push(e); childrenOf[e.source].push(e);});
+
+/* ---------------------------------------------------------------- tiles */
+const S = DAG.stats;
+[
+  ['16','variables','the full modelling table'],
+  [String(S.n_edges),'directed edges','LLM-generated, unreviewed — then measured',true],
+  [String(BANDS.length),'causal bands','pre-accident → injury → clinical → dispute → heads → award'],
+  [S.n_violations+'/'+S.n_edges,'edges the CSV order reverses','the vanilla generator conditions causes on effects',true],
+  [DAG.colliders[0].rho_marginal.toFixed(2)+' → '+DAG.colliders[0].rho_given_collider.toFixed(2),
+   'collider flip at the target','ρ(non-economic, future economic) once you condition on Lump Sum',true]
+].forEach(([v,k,n,alert])=>{
+  document.getElementById('tiles').appendChild(
+    h('div',{class:'tile'+(alert?' alert':'')},[h('div',{class:'v',text:v}),h('div',{class:'k',text:k}),h('div',{class:'n',text:n})]));
+});
+
+/* ---------------------------------------------------------------- legend */
+const lg = document.getElementById('legend');
+function swatch(cls,dash){
+  const s=el('svg',{width:'56',height:'14',viewBox:'0 0 56 14'});
+  const g=el('g',{class:'edge '+cls});
+  g.appendChild(el('path',{class:'wire',d:'M1 7 H44','stroke-width':'2.4',
+    ...(dash?{'stroke-dasharray':'5 3.5'}:{})}));
+  g.appendChild(el('path',{class:'ah',d:TRI,transform:'translate(24 7) scale(1.15)'}));
+  g.appendChild(el('path',{class:'ah',d:TRI,transform:'translate(48 7)'}));
+  s.appendChild(g); return s;
+}
+lg.appendChild(h('span',{class:'item'},[h('strong',{text:'cause'}),swatch('pos',false),
+  h('strong',{text:'effect'})]));
+[['pos','arrow points at what it changes; blue = increases',false],
+ ['neg','red = decreases',false],
+ ['pos conflict','dashed = direct effect opposes the raw correlation (confounded)',true]]
+ .forEach(([c,t,d])=>lg.appendChild(h('span',{class:'item'},[swatch(c,d),h('span',{text:t})])));
+lg.appendChild(h('span',{class:'item'},[h('span',{style:'font-size:12.5px',
+  html:'line thickness = |Spearman ρ| in the real data &nbsp;·&nbsp; a thin line can still be a strong mechanism'})]));
+
+/* ---------------------------------------------------------------- map */
+// left gutter: within-band edges bow out past x=0 and must not be clipped
+const PAD_T=54, PAD_L=72, W=1470, H=792;
+const map=document.getElementById('map');
+map.setAttribute('viewBox',`${-PAD_L} 0 ${W+PAD_L} ${H}`);
+const gBands=el('g'), gEdges=el('g'), gNodes=el('g');
+map.appendChild(gBands); map.appendChild(gEdges); map.appendChild(gNodes);
+
+// band columns
+const bandX={};
+BANDS.forEach(b=>{
+  const ns=NODES.filter(n=>n.band===b.id);
+  const xs=ns.map(n=>n.x);
+  bandX[b.id]={min:Math.min(...xs)-NW/2-18, max:Math.max(...xs)+NW/2+18};
+});
+BANDS.forEach((b,i)=>{
+  const {min,max}=bandX[b.id];
+  if(i%2===0) gBands.appendChild(el('rect',{class:'bandrect',x:min,y:PAD_T-16,width:max-min,height:H-PAD_T-4,rx:10}));
+  gBands.appendChild(el('line',{class:'bandrule',x1:min,y1:PAD_T-22,x2:max,y2:PAD_T-22}));
+  const t=el('text',{class:'bandlabel',x:min+4,y:PAD_T-32}); t.textContent=b.label.toUpperCase();
+  gBands.appendChild(t);
+});
+
+const wid = r => r==null ? 1.8 : 1.7 + Math.min(Math.abs(r),0.9)*3.0;
+
+/* Attachment points are fanned across each node's face: a node with 6 parents gets 6
+   separate landing points rather than 6 arrowheads stacked on one pixel. */
+function fan(i,n,extent){ return n<=1 ? 0 : (i-(n-1)/2) * Math.min(extent/n, 9.5); }
+
+function edgeGeom(e){
+  const s=byId[e.source], t=byId[e.target];
+  const sy = s.y + fan(childrenOf[s.id].indexOf(e), childrenOf[s.id].length, NH-12);
+  const ty = t.y + fan(parentsOf[t.id].indexOf(e),  parentsOf[t.id].length,  NH-12);
+  let p0,p1,p2,p3;
+  if(s.x===t.x){                                  // within-band: bow out to the left
+    const span=Math.abs(t.y-s.y), bow=span>150?118:64;
+    const sx=s.x-NW/2, tx=t.x-NW/2-9;
+    p0=[sx,sy]; p1=[sx-bow,sy]; p2=[tx-bow,ty]; p3=[tx,ty];
+  }else{
+    const sx=s.x+NW/2, tx=t.x-NW/2-9, dx=tx-sx;
+    p0=[sx,sy]; p1=[sx+dx*0.46,sy]; p2=[tx-dx*0.46,ty]; p3=[tx,ty];
+  }
+  return {p0,p1,p2,p3,
+    d:`M${p0[0]} ${p0[1]} C${p1[0]} ${p1[1]} ${p2[0]} ${p2[1]} ${p3[0]} ${p3[1]}`};
+}
+const bez=(g,t)=>{const u=1-t;return [
+  u*u*u*g.p0[0]+3*u*u*t*g.p1[0]+3*u*t*t*g.p2[0]+t*t*t*g.p3[0],
+  u*u*u*g.p0[1]+3*u*u*t*g.p1[1]+3*u*t*t*g.p2[1]+t*t*t*g.p3[1]];};
+const bezAngle=(g,t)=>{const u=1-t;
+  const dx=3*u*u*(g.p1[0]-g.p0[0])+6*u*t*(g.p2[0]-g.p1[0])+3*t*t*(g.p3[0]-g.p2[0]);
+  const dy=3*u*u*(g.p1[1]-g.p0[1])+6*u*t*(g.p2[1]-g.p1[1])+3*t*t*(g.p3[1]-g.p2[1]);
+  return Math.atan2(dy,dx)*180/Math.PI;};
+
+/* Put the mid-path chevron somewhere it is actually visible: walk candidate
+   positions along the curve and take the first that is not behind a node box. */
+function clearT(gm){
+  for(const t of [0.55,0.45,0.65,0.36,0.74,0.28,0.82,0.18,0.10]){
+    const [x,y]=bez(gm,t);
+    if(!NODES.some(n=>Math.abs(x-n.x)<NW/2+4 && Math.abs(y-n.y)<NH/2+4)) return t;
+  }
+  return null;   // edge runs under a node the whole way — the terminal head carries direction
+}
+function headAt(g,t,scale){
+  const [x,y]=bez(g,t), a=bezAngle(g,t);
+  return {transform:`translate(${x.toFixed(2)} ${y.toFixed(2)}) rotate(${a.toFixed(2)})`+
+                    (scale!==1?` scale(${scale})`:'')};
+}
+
+const edgeEls=[];
+EDGES.forEach((e,i)=>{
+  const g=el('g',{class:'edge '+(e.sign==='+'?'pos':'neg')+(e.sign_conflicts_marginal?' conflict':''),
+                  'data-i':i});
+  const gm=edgeGeom(e);
+  g.appendChild(el('path',{class:'wire',d:gm.d,'stroke-width':wid(e.rho)}));
+  // two direction marks: a chevron out in open space, and the head where it lands
+  const ct=clearT(gm);
+  if(ct!==null) g.appendChild(el('path',{class:'ah',d:TRI,...headAt(gm,ct,1.15)}));
+  g.appendChild(el('path',{class:'ah',d:TRI,...headAt(gm,1,1)}));
+  g.appendChild(el('path',{class:'hit',d:gm.d}));
+  gEdges.appendChild(g); edgeEls.push(g);
+  g.addEventListener('mouseenter',ev=>showTip(ev,
+    `${e.source} → ${e.target}`,
+    `${e.sign==='+'?'Increases':'Decreases'} · ${e.strength} confidence` +
+    (e.rho!=null?` · raw ρ ${e.rho>0?'+':''}${e.rho.toFixed(2)} (n=${e.n})`:'') +
+    `<br>${e.mechanism}` + (e.sign_conflicts_marginal?
+      `<br><em>The raw correlation runs the other way — confounded by upstream severity.</em>`:'')));
+  g.addEventListener('mousemove',moveTip);
+  g.addEventListener('mouseleave',hideTip);
+});
+
+const nodeEls={};
+NODES.forEach(n=>{
+  const g=el('g',{class:'node'+(n.id===DAG.target?' target':''),tabindex:'0',role:'button',
+                  'aria-label':n.id,'data-id':n.id});
+  g.appendChild(el('rect',{class:'box',x:n.x-NW/2,y:n.y-NH/2,width:NW,height:NH}));
+  const t1=el('text',{class:'lab',x:n.x-NW/2+12,y:n.y-1}); t1.textContent=n.short;
+  const kind = n.id===DAG.target ? 'target · '+n.kind : n.kind;
+  const miss = DAG.stats.missing_rates[n.id];
+  const t2=el('text',{class:'meta',x:n.x-NW/2+12,y:n.y+14});
+  t2.textContent = kind + (miss? `  ·  ${(miss*100).toFixed(0)}% missing` : '');
+  g.appendChild(t1); g.appendChild(t2);
+  gNodes.appendChild(g); nodeEls[n.id]=g;
+  const on=()=>focusNode(n.id), off=()=>{ if(!pinned) clearFocus(); };
+  g.addEventListener('mouseenter',ev=>{on(); showTip(ev,n.id,n.note);});
+  g.addEventListener('mousemove',moveTip);
+  g.addEventListener('mouseleave',()=>{off(); hideTip();});
+  g.addEventListener('focus',on); g.addEventListener('blur',off);
+  g.addEventListener('click',ev=>{ev.stopPropagation(); pinned = (pinned===n.id)?null:n.id;
+    pinned?focusNode(n.id):clearFocus();});
+  g.addEventListener('keydown',ev=>{ if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();
+    pinned=(pinned===n.id)?null:n.id; pinned?focusNode(n.id):clearFocus();}});
+});
+map.addEventListener('click',()=>{pinned=null;clearFocus();});
+
+let pinned=null;
+function focusNode(id){
+  map.classList.add('focused');
+  Object.values(nodeEls).forEach(g=>g.classList.remove('hi','sel','parent','child'));
+  edgeEls.forEach(g=>g.classList.remove('hi'));
+  nodeEls[id].classList.add('hi','sel');
+  parentsOf[id].forEach(e=>{edgeEls[EDGES.indexOf(e)].classList.add('hi');
+    nodeEls[e.source].classList.add('hi','parent');});
+  childrenOf[id].forEach(e=>{edgeEls[EDGES.indexOf(e)].classList.add('hi');
+    nodeEls[e.target].classList.add('hi','child');});
+  renderSide(id);
+}
+function clearFocus(){
+  map.classList.remove('focused');
+  Object.values(nodeEls).forEach(g=>g.classList.remove('hi','sel','parent','child'));
+  edgeEls.forEach(g=>g.classList.remove('hi'));
+  document.getElementById('side').replaceChildren(
+    h('p',{class:'hint',text:'Select a variable to see its parents, its children, and the mechanism behind each arrow.'}));
+}
+
+function edgeLi(e,which){
+  const other = which==='parent' ? e.source : e.target;
+  const sg = h('span',{class:'sg'},[
+    h('span',{class:'pill '+(e.sign==='+'?'up':'down'),
+              text:(e.sign==='+'?'↑ increases':'↓ decreases')}),
+    h('span',{text: e.rho!=null? '  ρ '+(e.rho>0?'+':'')+e.rho.toFixed(2) : '  ρ n/a'})]);
+  const li=h('li',{},[h('div',{class:'row'},[h('span',{class:'nm',text:other}),sg]),
+                     h('div',{class:'mech',text:e.mechanism})]);
+  if(e.sign_conflicts_marginal)
+    li.appendChild(h('span',{class:'flag',text:'raw correlation runs the other way — confounded'}));
+  return li;
+}
+function renderSide(id){
+  const n=byId[id], band=BANDS.find(b=>b.id===n.band);
+  const kids=[h('h3',{text:id}), h('span',{class:'band-chip',text:band.label}), h('p',{class:'note',text:n.note})];
+  const ps=parentsOf[id], cs=childrenOf[id];
+  kids.push(h('h4',{text:`← Caused by (${ps.length})`}));
+  kids.push(ps.length? h('ul',{},ps.map(e=>edgeLi(e,'parent')))
+                     : h('p',{class:'hint',text:'Nothing. This is a root — the generator samples it from its marginal.'}));
+  kids.push(h('h4',{text:`Causes → (${cs.length})`}));
+  kids.push(cs.length? h('ul',{},cs.map(e=>edgeLi(e,'child')))
+                     : h('p',{class:'hint',text:'Nothing. This is a sink — it is generated last and conditions nothing.'}));
+  document.getElementById('side').replaceChildren(...kids);
+}
+
+/* ---------------------------------------------------------------- order strip */
+const seq=document.getElementById('seq-topo');
+DAG.topological_order.forEach((id,i)=>{
+  seq.appendChild(h('span',{class:id===DAG.target?'tgt':''},[h('b',{text:String(i+1)}),h('span',{text:id})]));
+});
+
+/* ---------------------------------------------------------------- matrix */
+const edgeMap={}; EDGES.forEach(e=>edgeMap[e.source+'␟'+e.target]=e);
+let mxOrder='topo';
+function renderMatrix(){
+  const order = mxOrder==='topo' ? DAG.topological_order : DAG.csv_column_order;
+  const idx = Object.fromEntries(order.map((n,i)=>[n,i]));
+  const t=h('table',{class:'mx'});
+  const head=h('tr',{},[h('th',{})]);
+  order.forEach(c=>head.appendChild(h('th',{class:'col'},[h('div',{text:byId[c].short})])));
+  t.appendChild(head);
+  order.forEach(r=>{
+    const tr=h('tr',{},[h('th',{class:'row',text:byId[r].short})]);
+    order.forEach(c=>{
+      if(r===c){ tr.appendChild(h('td',{class:'diag'})); return; }
+      const e=edgeMap[r+'␟'+c];
+      if(!e){ tr.appendChild(h('td',{})); return; }
+      const back = idx[c] < idx[r];
+      const td=h('td',{class:(e.sign==='+'?'pos':'neg')+(back?' bad':''),
+        text:e.sign==='+'?'+':'−',
+        title:`${r} → ${c}\n${e.sign==='+'?'increases':'decreases'}`+
+              (e.rho!=null?`, raw ρ ${e.rho>0?'+':''}${e.rho.toFixed(2)}`:'')+
+              (back?'\n⚠ generated BEFORE its parent under this ordering':'')});
+      tr.appendChild(td);
+    });
+    t.appendChild(tr);
+  });
+  document.getElementById('mx').replaceChildren(t);
+  document.getElementById('mx-note').innerHTML = mxOrder==='topo'
+    ? `<strong>All ${EDGES.length} marks sit above the diagonal.</strong> Reading down a column gives a variable’s
+       complete parent set — exactly the conditioning set the DAG-aware generator passes to TabPFN. Reading
+       across a row gives everything that variable influences.`
+    : `<strong>${S.n_violations} of the ${EDGES.length} marks have fallen below the diagonal</strong> (outlined in red).
+       Each one is a variable the vanilla generator produces <em>before</em> one of its own causes, so TabPFN is asked
+       to condition a cause on its effect. The target, <code>Lump Sum</code>, is column 0 — it is generated first
+       and every later column is conditioned on it.`;
+}
+document.getElementById('ord-topo').addEventListener('click',()=>{mxOrder='topo';syncOrd();});
+document.getElementById('ord-csv').addEventListener('click',()=>{mxOrder='csv';syncOrd();});
+function syncOrd(){
+  document.getElementById('ord-topo').setAttribute('aria-pressed',mxOrder==='topo');
+  document.getElementById('ord-csv').setAttribute('aria-pressed',mxOrder==='csv');
+  renderMatrix();
+}
+renderMatrix();
+
+/* ---------------------------------------------------------------- collider cards */
+const C=DAG.colliders[0];
+const cards=document.getElementById('cards');
+cards.appendChild(h('div',{class:'card'},[
+  h('h3',{text:'The target is a collider — and it is column 0'}),
+  h('p',{html:`<code>Lump Sum</code> is the sum of its damages heads, so
+     <strong>Non-Economic Loss → Lump Sum ← Future Economic Loss</strong>. The two heads are positively
+     related in the real data because severity drives both. Condition on their common effect and that
+     relationship inverts:`}),
+  h('p',{class:'bignum',html:`<span class="a">ρ = ${C.rho_marginal>0?'+':''}${C.rho_marginal.toFixed(2)}</span>
+     <span class="arw">→</span><span class="b">${C.rho_given_collider.toFixed(2)}</span>`}),
+  h('p',{html:`Spearman ρ between the two heads (log scale, n=${C.n}), marginally and then partialling out
+     <code>Lump Sum</code>. Tugnoli et&nbsp;al. (2026) show this is precisely the case where an autoregressive
+     generator bakes a spurious correlation into its output — sampling error in the learned conditionals
+     leaks the induced dependence into the marginal.`})]));
+cards.appendChild(h('div',{class:'card'},[
+  h('h3',{text:'What the two conditioning strategies do'}),
+  h('p',{html:`<strong>Vanilla.</strong> <code>p(x<sub>i</sub> | x<sub>1..i-1</sub>)</code> in file order. Generating
+     <code>WPI %</code> second means conditioning it on <code>Lump Sum</code> — an award conditioning an
+     impairment assessment.`}),
+  h('p',{html:`<strong>DAG-aware.</strong> <code>p(x<sub>i</sub> | pa(x<sub>i</sub>))</code> in topological order.
+     <code>WPI %</code> is generated ninth, from injury burden, treatment burden, psychological emphasis,
+     pre-existing condition and age — and from nothing downstream of itself.`}),
+  h('p',{html:`Both run on a frozen TabPFN at inference time. Only the conditioning set changes; no weights move.`})]));
+cards.appendChild(h('div',{class:'card'},[
+  h('h3',{text:'Seven edges where the raw correlation lies'}),
+  h('p',{html:`Marked with a dashed line on the map. In each, the asserted direct effect and the observed
+     marginal correlation have opposite signs — the marginal is dominated by confounding through injury
+     severity. <code>Causation Complexity</code> reduces what is recoverable, yet correlates
+     <span class="up">+0.20</span> with future economic loss, because contested causation arises in exactly
+     the severe and psychological claims that are worth the most.`}),
+  h('p',{html:`A generator fitted to the correlation structure reproduces the <em>marginal</em>. A generator
+     given the graph reproduces the <em>mechanism</em>, and the marginal falls out of it.`})]));
+
+/* violation table */
+const vt=document.getElementById('viol');
+vt.appendChild(h('thead',{},[h('tr',{},[h('th',{text:'Cause'}),h('th',{text:'Effect'}),
+  h('th',{text:'CSV position'}),h('th',{text:'Mechanism'})])]));
+const csvIdx=Object.fromEntries(DAG.csv_column_order.map((c,i)=>[c,i]));
+const vb=h('tbody');
+EDGES.filter(e=>e.csv_order_violation)
+  .sort((a,b)=>csvIdx[a.target]-csvIdx[b.target]||csvIdx[a.source]-csvIdx[b.source])
+  .forEach(e=>vb.appendChild(h('tr',{},[
+    h('td',{text:e.source}),h('td',{text:e.target}),
+    h('td',{class:'num',text:`col ${csvIdx[e.source]} after col ${csvIdx[e.target]}`}),
+    h('td',{text:e.mechanism})])));
+vt.appendChild(vb);
+
+/* ---------------------------------------------------------------- missingness */
+(function(){
+  const MN=DAG.missingness.nodes, ME=DAG.missingness.edges;
+  const rIds=MN.map(n=>n.id);
+  const srcIds=[...new Set(ME.map(e=>e.source).filter(s=>!rIds.includes(s)))];
+  const svg=document.getElementById('mismap');
+  const w=980, rowH=76, hgt=Math.max(srcIds.length,MN.length)*rowH+90;
+  svg.setAttribute('viewBox',`0 0 ${w} ${hgt}`);
+  const gE=el('g'), gN=el('g'); svg.appendChild(gE); svg.appendChild(gN);
+  const pos={};
+  const lx=170, rx=760, W2=210, H2=44;
+  srcIds.forEach((s,i)=>pos[s]={x:lx,y:60+i*rowH});
+  MN.forEach((n,i)=>pos[n.id]={x:rx,y:60+i*rowH+ (srcIds.length-MN.length)*rowH/2});
+  const hd1=el('text',{class:'bandlabel',x:lx-W2/2,y:28}); hd1.textContent='OBSERVED CAUSE';
+  const hd2=el('text',{class:'bandlabel',x:rx-W2/2,y:28}); hd2.textContent='NOT-RECORDED INDICATOR';
+  gN.appendChild(hd1); gN.appendChild(hd2);
+  const srcCount={}, tgtCount={}, srcSeen={}, tgtSeen={};
+  ME.forEach(e=>{ srcCount[e.source]=(srcCount[e.source]||0)+1;
+                  tgtCount[e.target]=(tgtCount[e.target]||0)+1;
+                  srcSeen[e.source]=0; tgtSeen[e.target]=0; });
+  ME.forEach(e=>{
+    const s=pos[e.source], t=pos[e.target]; if(!s||!t) return;
+    const sameCol = Math.abs(s.x-t.x)<1;
+    const sy=s.y+fan(srcSeen[e.source]++, srcCount[e.source], H2-12);
+    const ty=t.y+fan(tgtSeen[e.target]++, tgtCount[e.target], H2-12);
+    let gm;
+    if(sameCol){
+      const bow=90, sx=s.x-W2/2, tx=t.x-W2/2-9;
+      gm={p0:[sx,sy],p1:[sx-bow,sy],p2:[tx-bow,ty],p3:[tx,ty]};
+    }else{
+      const sx=s.x+W2/2, tx=t.x-W2/2-9, dx=tx-sx;
+      gm={p0:[sx,sy],p1:[sx+dx*.5,sy],p2:[tx-dx*.5,ty],p3:[tx,ty]};
+    }
+    gm.d=`M${gm.p0[0]} ${gm.p0[1]} C${gm.p1[0]} ${gm.p1[1]} ${gm.p2[0]} ${gm.p2[1]} ${gm.p3[0]} ${gm.p3[1]}`;
+    const d=gm.d;
+    const g=el('g',{class:'edge '+(e.sign==='+'?'pos':'neg')});
+    g.appendChild(el('path',{class:'wire',d,'stroke-width':'2',style:'opacity:.45'}));
+    g.appendChild(el('path',{class:'ah',d:TRI,...headAt(gm,0.55,1.15)}));
+    g.appendChild(el('path',{class:'ah',d:TRI,...headAt(gm,1,1)}));
+    g.appendChild(el('path',{class:'hit',d}));
+    g.addEventListener('mouseenter',ev=>showTip(ev,`${e.source} → ${e.target}`,
+      `${e.sign==='+'?'raises':'lowers'} the chance the field is left blank<br>${e.mechanism}`));
+    g.addEventListener('mousemove',moveTip); g.addEventListener('mouseleave',hideTip);
+    gE.appendChild(g);
+  });
+  const drawBox=(id,label,sub,dashed)=>{
+    const p=pos[id]; if(!p) return;
+    const g=el('g',{class:'node'});
+    g.appendChild(el('rect',{class:'box',x:p.x-W2/2,y:p.y-H2/2,width:W2,height:H2,
+      ...(dashed?{'stroke-dasharray':'5 3.5'}:{})}));
+    const a=el('text',{class:'lab',x:p.x-W2/2+12,y:p.y-1}); a.textContent=label;
+    const b=el('text',{class:'meta',x:p.x-W2/2+12,y:p.y+14}); b.textContent=sub;
+    g.appendChild(a); g.appendChild(b); gN.appendChild(g);
+  };
+  srcIds.forEach(s=>drawBox(s, byId[s]?byId[s].short:s, 'observed column', false));
+  MN.forEach(n=>drawBox(n.id, n.id, `${byId[n.target].short} · ${(n.rate*100).toFixed(1)}% blank`, true));
+
+  const t=document.getElementById('mistbl');
+  t.appendChild(h('thead',{},[h('tr',{},[h('th',{text:'Field'}),h('th',{text:'Blank'}),
+    h('th',{text:'Why it is blank'})])]));
+  const tb=h('tbody');
+  MN.forEach(n=>tb.appendChild(h('tr',{},[h('td',{text:n.target}),
+    h('td',{class:'num',text:(n.rate*100).toFixed(1)+'%'}),h('td',{text:n.note})])));
+  t.appendChild(tb);
+})();
+
+/* ---------------------------------------------------------------- tabs */
+const tabs=[['tab-map','v-map'],['tab-mx','v-mx'],['tab-col','v-col'],['tab-mis','v-mis']];
+tabs.forEach(([tid,pid])=>{
+  document.getElementById(tid).addEventListener('click',()=>{
+    tabs.forEach(([t,p])=>{
+      const on = t===tid;
+      document.getElementById(t).setAttribute('aria-selected',on);
+      document.getElementById(p).hidden = !on;
+    });
+  });
+});
+
+/* ---------------------------------------------------------------- tooltip */
+const tip=document.getElementById('tip');
+function showTip(ev,title,body){
+  tip.replaceChildren(h('div',{class:'t',text:title}), h('div',{class:'d',html:body||''}));
+  tip.classList.add('on'); moveTip(ev);
+}
+function moveTip(ev){
+  const pad=14, r=tip.getBoundingClientRect();
+  let x=ev.clientX+pad, y=ev.clientY+pad;
+  if(x+r.width>innerWidth-8) x=ev.clientX-r.width-pad;
+  if(y+r.height>innerHeight-8) y=ev.clientY-r.height-pad;
+  tip.style.left=x+'px'; tip.style.top=y+'px';
+}
+function hideTip(){ tip.classList.remove('on'); }
+
+document.getElementById('foot').innerHTML =
+  `Graph <code>${DAG.name}</code> v${DAG.version} · ${DAG.n_rows} awards · built by
+   <code>causal/build_ctp_causal_dag.py</code> → <code>causal/ctp_causal_dag.json</code>.
+   Method: Tugnoli, De Lorenzo, Virgolin &amp; Cinà, <em>Improving TabPFN’s Synthetic Data Generation by
+   Integrating Causal Structure</em> (arXiv:2603.10254v3); Ma et&nbsp;al., <em>TabPFGen</em> (arXiv:2406.05216v1).
+   <br><strong>Provenance:</strong> edge orientation was generated by a large language model from NSW CTP
+   scheme mechanics — it is neither a causal-discovery output nor reviewed by a domain expert.`;
+})();
+</script>
+</body>
+</html>

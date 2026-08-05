@@ -1,0 +1,154 @@
+{
+  "key": "ctp",
+  "source": "NSW CTP impairment lump-sum awards, scraped from AustLII and LLM-structured (custom). See data/datasets/ctp/dictionary.md.",
+  "locked_path": "data\\datasets\\ctp\\ctp.csv",
+  "sha256_hash": "98a8aafc5744291a471ea23242b76643655dac3e4a36cca02b4b794bcb7bc761",
+  "row_count": 540,
+  "column_count": 16,
+  "column_names": [
+    "Lump Sum",
+    "WPI %",
+    "Non-Economic Loss",
+    "Future Economic Loss",
+    "Claimant Weekly Income",
+    "Claimant Age",
+    "Claimant Gender",
+    "Nature",
+    "Injury Burden Intensity",
+    "Treatment Burden",
+    "Work Impact Severity",
+    "Legal Procedural Complexity",
+    "Psychological Injury Emphasis",
+    "Liability Clarity",
+    "Causation Complexity",
+    "Pre-existing Condition Salience"
+  ],
+  "column_summary": [
+    {
+      "name": "Lump Sum",
+      "dtype": "float64",
+      "missing_frac": 0.0,
+      "n_distinct": 375,
+      "min": 1025.8,
+      "max": 3500000.0
+    },
+    {
+      "name": "WPI %",
+      "dtype": "Int64",
+      "missing_frac": 0.4685,
+      "n_distinct": 37,
+      "min": 1.0,
+      "max": 48.0
+    },
+    {
+      "name": "Non-Economic Loss",
+      "dtype": "float64",
+      "missing_frac": 0.1537,
+      "n_distinct": 62,
+      "min": 0.0,
+      "max": 650000.0
+    },
+    {
+      "name": "Future Economic Loss",
+      "dtype": "float64",
+      "missing_frac": 0.2352,
+      "n_distinct": 201,
+      "min": 0.0,
+      "max": 1844408.6
+    },
+    {
+      "name": "Claimant Weekly Income",
+      "dtype": "float64",
+      "missing_frac": 0.4185,
+      "n_distinct": 269,
+      "min": 0.0,
+      "max": 6179.0
+    },
+    {
+      "name": "Claimant Age",
+      "dtype": "Int64",
+      "missing_frac": 0.0815,
+      "n_distinct": 80,
+      "min": 13.0,
+      "max": 100.0
+    },
+    {
+      "name": "Claimant Gender",
+      "dtype": "string",
+      "missing_frac": 0.0,
+      "n_distinct": 2
+    },
+    {
+      "name": "Nature",
+      "dtype": "string",
+      "missing_frac": 0.0,
+      "n_distinct": 2
+    },
+    {
+      "name": "Injury Burden Intensity",
+      "dtype": "Int64",
+      "missing_frac": 0.0,
+      "n_distinct": 5,
+      "min": 0.0,
+      "max": 4.0
+    },
+    {
+      "name": "Treatment Burden",
+      "dtype": "Int64",
+      "missing_frac": 0.0,
+      "n_distinct": 4,
+      "min": 0.0,
+      "max": 3.0
+    },
+    {
+      "name": "Work Impact Severity",
+      "dtype": "Int64",
+      "missing_frac": 0.0,
+      "n_distinct": 4,
+      "min": 0.0,
+      "max": 3.0
+    },
+    {
+      "name": "Legal Procedural Complexity",
+      "dtype": "Int64",
+      "missing_frac": 0.0,
+      "n_distinct": 4,
+      "min": 0.0,
+      "max": 3.0
+    },
+    {
+      "name": "Psychological Injury Emphasis",
+      "dtype": "Int64",
+      "missing_frac": 0.0,
+      "n_distinct": 3,
+      "min": 0.0,
+      "max": 2.0
+    },
+    {
+      "name": "Liability Clarity",
+      "dtype": "Int64",
+      "missing_frac": 0.0,
+      "n_distinct": 3,
+      "min": 0.0,
+      "max": 2.0
+    },
+    {
+      "name": "Causation Complexity",
+      "dtype": "Int64",
+      "missing_frac": 0.0,
+      "n_distinct": 3,
+      "min": 0.0,
+      "max": 2.0
+    },
+    {
+      "name": "Pre-existing Condition Salience",
+      "dtype": "Int64",
+      "missing_frac": 0.0,
+      "n_distinct": 3,
+      "min": 0.0,
+      "max": 2.0
+    }
+  ],
+  "schema_fingerprint": "98a8aafc5744291a_r540_c16",
+  "locked_at": "2026-07-19T01:30:51.809079+00:00"
+}

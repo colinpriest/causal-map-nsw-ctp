@@ -1,0 +1,21 @@
+{
+  "meta": {
+    "model": "gpt-4o-2024-08-06",
+    "prompt_sha256": "1de45ab972f86035e0d6823e",
+    "requested_at": "2026-08-05T06:47:54+00:00",
+    "prompt_tokens": 1192,
+    "completion_tokens": 87,
+    "cache": "miss"
+  },
+  "system": "You are reading a single provision of New South Wales motor accident legislation. Report ONLY what this provision's text states. Do not use background knowledge of the scheme, other provisions, case law, or what you expect the answer to be. If the provision does not mention something, say it does not. Every link you report must be supported by a quote copied exactly from the text you were given; if you cannot copy such a quote, do not report the link.",
+  "user": "PROVISION: 4.7 Motor Accident Injuries Act 2017\n\n--- BEGIN PROVISION TEXT ---\n4.7\n \nFuture economic loss\u2014claimant\u2019s prospects and adjustments\n(cf s 126 MACA)\n(1)\n Damages may not be awarded for future economic loss unless the claimant first satisfies the court or Commission that the assumptions about future earning capacity or other events on which the award is to be based accord with the claimant\u2019s most likely future circumstances but for the injury.\n(2)\n The amount of damages for future economic loss that would have been sustained on those assumptions is to be adjusted by reference to the percentage possibility that the events concerned might have occurred but for the injury.\n(3)\n If an award for future economic loss is made, the court or Commission is required to state the assumptions on which the award was based and the relevant percentage by which damages were adjusted.\ns 4.7:\n Am 2020 No 18, Sch 6.6[14].\n--- END PROVISION TEXT ---\n\nThe dataset records these variables about decided claims:\n  - Lump Sum: the total dollar amount awarded to the claimant\n  - WPI %: whole person impairment, as a percentage, from a medical assessment\n  - Non-Economic Loss: dollars awarded for non-economic loss (pain and suffering)\n  - Future Economic Loss: dollars awarded for future loss of earning capacity\n  - Claimant Weekly Income: the claimant's pre-accident weekly earnings, in dollars\n  - Claimant Age: the claimant's age at the date of injury, in years\n  - Claimant Gender: the claimant's recorded gender\n  - Nature: the procedural route: settlement approval, or damages assessment\n  - Injury Burden Intensity: an ordinal score for the overall physical burden of injuries\n  - Treatment Burden: an ordinal score for the extent of treatment, surgery and care\n  - Work Impact Severity: an ordinal score for loss of working capacity\n  - Legal Procedural Complexity: an ordinal score for procedural complexity of the proceeding\n  - Psychological Injury Emphasis: an ordinal score for the weight given to psychological injury\n  - Liability Clarity: an ordinal score for how clear fault is\n  - Causation Complexity: an ordinal score for difficulty attributing the condition to the accident\n  - Pre-existing Condition Salience: an ordinal score for how prominent a prior condition is\n\nUsing ONLY the provision text above, report which of these variables the provision governs, and which it names as bearing on that. Quote exactly.",
+  "response": {
+    "provision_subject": "This provision is about awarding damages for future economic loss based on claimant's future prospects and adjustments.",
+    "determines": [
+      "Future Economic Loss"
+    ],
+    "inputs": [],
+    "links": [],
+    "notes": "The provision does not explicitly mention any of the dataset variables as inputs for determining future economic loss. It focuses on assumptions about future earning capacity and adjustments based on percentage possibilities, but these are not directly linked to the dataset variables provided."
+  }
+}

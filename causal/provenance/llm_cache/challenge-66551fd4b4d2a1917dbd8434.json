@@ -1,0 +1,15 @@
+{
+  "meta": {
+    "model": "gpt-4o-2024-08-06",
+    "prompt_sha256": "66551fd4b4d2a1917dbd8434",
+    "cache": "miss",
+    "requested_at": "2026-08-05T07:15:35+00:00"
+  },
+  "system": "You are checking a claim someone has made about a statutory provision. Your job is to REFUTE it if it can be refuted. Default to unsound when uncertain.\n\nThe claim asserts that, according to this provision, one quantity bears on another. The two most common ways such a claim is wrong:\n  (a) SUBJECT MISMATCH. The provision governs something other than the quantity the claim says it determines. A provision about an insurer's duty to pay for treatment does not govern how much treatment occurred. A provision conferring jurisdiction to assess a claim does not make one assessed quantity a determinant of another.\n  (b) WORD MATCHING. The claim latched onto a word rather than a meaning -- reading 'caused by the fault of the driver' (a fault condition) as being about how difficult causation is to establish.\n\nA claim is sound only if the provision genuinely makes the first quantity bear on the second. Mentioning both is not enough. A precondition for the provision to operate is not automatically a determinant of its subject.",
+  "user": "PROVISION: 6.21 Motor Accident Injuries Act 2017\n\n--- BEGIN PROVISION TEXT ---\n6.21\n \nCosts penalty for unreasonable denial of liability\n(1)\n If an insurer denies liability (whether for part or all of a claim), the Commission may, in assessing costs on the claim, impose a costs penalty under this section if the Commission is of the opinion that there was no reasonable basis for the denial of liability.\n(2)\n There is considered to be a reasonable basis for a denial of liability only if the denial was based on provable facts and a reasonably arguable view of the law.\n(3)\n The costs penalty that may be imposed on an insurer under this section is a penalty of up to 25% (imposed by increasing the costs to be awarded against the insurer, or decreasing the costs to be awarded in favour of the insurer, by up to 25%).\n(4)\n In this section, \ncosts\n means costs for the provision of legal services (including disbursements).\ns 6.21:\n Am 2020 No 18, Sch 6.6[26].\n--- END PROVISION TEXT ---\n\nTHE CLAIM: this provision makes 'Liability Clarity' (an ordinal score for how clear fault is) bear on 'Legal Procedural Complexity' (an ordinal score for procedural complexity of the proceeding), as a adjustment.\nQuoted in support: \"there was no reasonable basis for the denial of liability\"\nMapping offered: The concept of a 'reasonable basis for the denial of liability' relates to how clear the fault is, which corresponds to 'Liability Clarity'.\n\nRefute this claim if it can be refuted.",
+  "response": {
+    "objection": "The provision is about imposing a costs penalty for unreasonable denial of liability, not about adjusting procedural complexity based on clarity of liability.",
+    "failure_mode": "subject_mismatch",
+    "sound": false
+  }
+}

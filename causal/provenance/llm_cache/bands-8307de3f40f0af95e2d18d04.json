@@ -1,0 +1,122 @@
+{
+  "meta": {
+    "model": "gpt-4o-2024-08-06",
+    "prompt_sha256": "8307de3f40f0af95e2d18d04",
+    "sample": 4,
+    "cache": "miss",
+    "requested_at": "2026-08-05T08:59:20+00:00"
+  },
+  "system": "You are working out the chronology of a compulsory third party motor accident claim in New South Wales, from a list of things recorded about decided claims.\n\nDivide the life of a claim into ordered PHASES, and place every recorded item in the phase at which the thing it measures COMES INTO EXISTENCE -- not when it is written down, and not when it is used.\n\nThat distinction decides most of the hard cases:\n  * A medical assessment performed years later measures a physical state that arose at the time of the injury. Ask when the QUANTITY was fixed, not when it was measured.\n  * Something recorded in the final decision may describe a fact established long before it.\n  * A procedural fact about how the claim was run belongs to the phase in which the claim was run, not to the injury.\n\nDecide how many phases there are. Use as few as genuinely capture the order and no more; a phase containing one item is fine if that item really stands alone in time. Items that arise at the same stage belong in the same phase, and a phase may contain items that cause one another -- being contemporaneous is not being simultaneous.\n\nFor every item, say in one sentence WHEN the thing it measures came into existence. That sentence is the justification for its placement and will be recorded.",
+  "user": "Recorded about each decided claim:\n  - Lump Sum: the total dollar amount awarded to the claimant\n  - WPI %: whole person impairment as a percentage. A CLINICAL assessment of the permanent impairment remaining once the condition has stabilised after treatment -- not a measure of injury severity at the moment of impact\n  - Non-Economic Loss: dollars awarded for non-economic loss (pain and suffering)\n  - Future Economic Loss: dollars awarded for future loss of earning capacity\n  - Claimant Weekly Income: the claimant's pre-accident weekly earnings, in dollars\n  - Claimant Age: the claimant's age at the date of injury, in years\n  - Claimant Gender: the claimant's recorded gender\n  - Nature: the procedural route the claim took: settlement approval, or damages assessment\n  - Injury Burden Intensity: ordinal score for the overall physical burden of the injuries\n  - Treatment Burden: ordinal score for the extent of treatment, surgery and ongoing care\n  - Work Impact Severity: ordinal score for loss of working capacity\n  - Legal Procedural Complexity: ordinal score for procedural complexity of the proceeding\n  - Psychological Injury Emphasis: ordinal score for weight given to psychological injury\n  - Liability Clarity: ordinal score for how clear fault is\n  - Causation Complexity: ordinal score for difficulty attributing the condition to the accident\n  - Pre-existing Condition Salience: ordinal score for how prominent a prior condition is\n\nDefine the ordered phases of a claim, then place every item in one.",
+  "response": {
+    "phases": [
+      {
+        "order": 1,
+        "name": "Accident Occurrence",
+        "description": "This phase includes details about the claimant and immediate consequences or conditions at the time of the accident."
+      },
+      {
+        "order": 2,
+        "name": "Initial Medical Assessment",
+        "description": "This phase involves the initial medical analysis post-accident, leading to an understanding of the injuries and their immediate implications."
+      },
+      {
+        "order": 3,
+        "name": "Ongoing Medical Treatment",
+        "description": "Following the initial assessment, there are ongoing treatments leading to a stabilized condition and further evaluations which emerge during this phase."
+      },
+      {
+        "order": 4,
+        "name": "Claim Processing",
+        "description": "This phase involves the procedural aspects of handling and processing the claim, reflecting on its path through the legal system."
+      },
+      {
+        "order": 5,
+        "name": "Final Assessment and Decision",
+        "description": "The conclusion of the process where the final judgments, settlements, and compensations are determined and quantified."
+      }
+    ],
+    "assignments": [
+      {
+        "column": "Claimant Weekly Income",
+        "phase_order": 1,
+        "when_it_arises": "Claimant weekly income is determined based on their earnings prior to the accident, thus existing at the time of the accident."
+      },
+      {
+        "column": "Claimant Age",
+        "phase_order": 1,
+        "when_it_arises": "Claimant age is the claimant's age at the time of the injury."
+      },
+      {
+        "column": "Claimant Gender",
+        "phase_order": 1,
+        "when_it_arises": "Claimant gender is a static demographic detail, existing independently and prior to the accident."
+      },
+      {
+        "column": "Injury Burden Intensity",
+        "phase_order": 2,
+        "when_it_arises": "The intensity of the injury burden is assessed after evaluating the immediate impact on the claimant post-accident."
+      },
+      {
+        "column": "Liability Clarity",
+        "phase_order": 2,
+        "when_it_arises": "Liability clarity concerns become discernible shortly after the accident during the initial legal and factual assessments."
+      },
+      {
+        "column": "Causation Complexity",
+        "phase_order": 2,
+        "when_it_arises": "Causation complexity is identified during the initial stages of medical and factual inquiry post-accident."
+      },
+      {
+        "column": "Pre-existing Condition Salience",
+        "phase_order": 2,
+        "when_it_arises": "The significance of pre-existing conditions is assessed initially when evaluating the injury relative to the accident."
+      },
+      {
+        "column": "Treatment Burden",
+        "phase_order": 3,
+        "when_it_arises": "The treatment burden materializes as medical care evolves, reflecting ongoing interventions necessary for recovery."
+      },
+      {
+        "column": "WPI %",
+        "phase_order": 3,
+        "when_it_arises": "The WPI percentage is determined once the claimant's condition is stabilized after ongoing treatment."
+      },
+      {
+        "column": "Work Impact Severity",
+        "phase_order": 3,
+        "when_it_arises": "This is assessed over time as the impact of the injuries on working capacity becomes apparent during recovery."
+      },
+      {
+        "column": "Psychological Injury Emphasis",
+        "phase_order": 3,
+        "when_it_arises": "The emphasis on psychological injury becomes apparent as treatment and assessments continue post-accident."
+      },
+      {
+        "column": "Nature",
+        "phase_order": 4,
+        "when_it_arises": "The procedural nature of the claim emerges during the claim's progression through the legal process."
+      },
+      {
+        "column": "Legal Procedural Complexity",
+        "phase_order": 4,
+        "when_it_arises": "The complexity of the legal process is discerned as the claim moves through its procedural stages."
+      },
+      {
+        "column": "Lump Sum",
+        "phase_order": 5,
+        "when_it_arises": "The lump sum compensation is decided at the conclusion of the claim handling process."
+      },
+      {
+        "column": "Non-Economic Loss",
+        "phase_order": 5,
+        "when_it_arises": "Non-economic loss compensation amounts are determined at the conclusion of the claim process as part of final settlements."
+      },
+      {
+        "column": "Future Economic Loss",
+        "phase_order": 5,
+        "when_it_arises": "The assessment of future economic loss is finalized towards the end of claim processing as future work-life impact is projected."
+      }
+    ]
+  }
+}

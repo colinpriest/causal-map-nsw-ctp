@@ -1,0 +1,150 @@
+# Data dictionary for the ctp board -- the single source of truth for what each column
+# measures. Every stage that describes a column to a model reads this file, so a definition
+# is written once and cannot drift between prompts.
+#
+# DEFINITIONS, NOT ASSERTIONS.
+# Each `definition` says what the column measures and nothing else. None states which phase
+# a column belongs to, and none describes what drives its level -- that would encode the
+# causal edges the pipeline exists to derive. Where a definition implies an ordering it is
+# because the word carries it: a PRE-existing condition is by definition one the claimant
+# had before the accident.
+#
+# `recorded` is how the value was produced, which is separate from what it is about. The
+# eight ordinals were assigned by a language model reading each decision; that is a fact
+# about derivation, and it does not make them measurements of the decision.
+#
+# ctp/dictionary.md is generated from this file -- edit here, then run
+# `python causal/build_dictionary.py`.
+
+dataset: ctp
+target: Lump Sum
+n_rows: 540
+
+columns:
+  - name: Lump Sum
+    definition: the total dollars awarded to the claimant
+    dtype: numeric
+    recorded: read directly off the decision
+
+  - name: WPI %
+    definition: >-
+      whole person impairment as a percentage: a clinical assessment of the permanent
+      impairment remaining once the claimant's condition has stabilised
+    dtype: numeric
+    recorded: read directly off the decision
+
+  - name: Non-Economic Loss
+    definition: dollars awarded for pain and suffering, as a component of the payout
+    dtype: numeric
+    recorded: read directly off the decision
+
+  - name: Future Economic Loss
+    definition: >-
+      dollars awarded for loss of future earning capacity, as a component of the payout
+    dtype: numeric
+    recorded: read directly off the decision
+
+  - name: Claimant Weekly Income
+    definition: the claimant's weekly earnings before the accident
+    dtype: numeric
+    recorded: read directly off the decision
+
+  - name: Claimant Age
+    definition: the claimant's age in years at the date of injury
+    dtype: numeric
+    recorded: read directly off the decision
+
+  - name: Claimant Gender
+    definition: the claimant's recorded gender
+    dtype: categorical
+    recorded: read directly off the decision
+
+  - name: Nature
+    definition: >-
+      which procedural route the claim took: approval of an agreed settlement, or a
+      contested damages assessment
+    dtype: categorical
+    recorded: read directly off the decision
+
+  - name: Injury Burden Intensity
+    definition: >-
+      the overall physical severity of the injuries the claimant sustained in the accident
+    dtype: ordinal
+    range: [0, 4]
+    recorded: assigned by a language model scoring the written decision
+
+  - name: Treatment Burden
+    definition: >-
+      the extent of treatment, surgery and ongoing care the claimant underwent for those
+      injuries
+    dtype: ordinal
+    range: [0, 3]
+    recorded: assigned by a language model scoring the written decision
+
+  - name: Work Impact Severity
+    definition: how much of the claimant's capacity to work was lost
+    dtype: ordinal
+    range: [0, 3]
+    recorded: assigned by a language model scoring the written decision
+
+  - name: Legal Procedural Complexity
+    definition: >-
+      how straightforward or contested the components of the payout were to determine
+    dtype: ordinal
+    range: [0, 3]
+    recorded: assigned by a language model scoring the written decision
+
+  - name: Psychological Injury Emphasis
+    definition: how much the psychological damage was discussed in the court case
+    dtype: ordinal
+    range: [0, 2]
+    recorded: assigned by a language model scoring the written decision
+    indicator_of: Psychological Injury
+    indicator_note: >-
+      This column measures the discussion, not the injury. It is the only observed trace of
+      the underlying psychological injury, which is not recorded anywhere in the data.
+
+  - name: Liability Clarity
+    definition: how obvious it is who was at fault in the accident
+    dtype: ordinal
+    range: [0, 2]
+    recorded: assigned by a language model scoring the written decision
+
+  - name: Causation Complexity
+    definition: >-
+      how straightforward it is to determine how much of the claimant's current physical
+      health, psychological health, and ability to earn an income is due to the accident
+      rather than to other causes
+    dtype: ordinal
+    range: [0, 2]
+    recorded: assigned by a language model scoring the written decision
+
+  - name: Pre-existing Condition Salience
+    definition: >-
+      the physical and psychological health conditions the claimant had before the accident
+    dtype: ordinal
+    range: [0, 2]
+    recorded: assigned by a language model scoring the written decision
+
+# ---------------------------------------------------------------------------------------
+# Unobserved variables.
+#
+# A latent node is carried in the graph but has no column. It exists because a measured
+# column is an INDICATOR of something rather than the thing itself, and conflating the two
+# forces a false choice: the psychological injury arises at the accident, while discussion
+# of it arises in the proceeding. Placing the observed column at either point misstates one
+# of them. Separating them lets each sit where it belongs, with a measurement edge between.
+#
+# Nothing downstream may treat a latent node as data. It has no values; it constrains
+# structure only.
+# ---------------------------------------------------------------------------------------
+latent:
+  - name: Psychological Injury
+    definition: >-
+      the psychological injury the claimant suffered as a result of the accident -- its
+      actual severity, as distinct from how much it was discussed
+    measured_by: Psychological Injury Emphasis
+    why_latent: >-
+      No column records it. The dataset holds only how prominently the decision discussed
+      psychological damage, which is a noisy trace of the injury filtered through what was
+      pleaded, what evidence was led, and what the decision-maker chose to set out.

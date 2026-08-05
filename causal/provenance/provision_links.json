@@ -1,0 +1,6437 @@
+{
+  "thresholds": {
+    "min_cites": 20,
+    "min_group": 10,
+    "fdr": 0.05,
+    "effect_min": 0.15,
+    "gate_min": 0.1,
+    "definitional": 0.9
+  },
+  "n_provisions_distinct": 203,
+  "n_provisions_tested": 17,
+  "provisions_tested": [
+    {
+      "provision": "6.23 Motor Accident Injuries Act 2017",
+      "n_citing": 353
+    },
+    {
+      "provision": "7.36 Motor Accident Injuries Act 2017",
+      "n_citing": 126
+    },
+    {
+      "provision": "4.7 Motor Accident Injuries Act 2017",
+      "n_citing": 111
+    },
+    {
+      "provision": "3.40 Motor Accident Injuries Act 2017",
+      "n_citing": 75
+    },
+    {
+      "provision": "4.5 Motor Accident Injuries Act 2017",
+      "n_citing": 70
+    },
+    {
+      "provision": "7.37 Motor Accident Guidelines",
+      "n_citing": 67
+    },
+    {
+      "provision": "1.4 Motor Accident Injuries Act 2017",
+      "n_citing": 66
+    },
+    {
+      "provision": "7.38 Motor Accident Guidelines 2017",
+      "n_citing": 64
+    },
+    {
+      "provision": "14D Personal Injury Commission Regulation 2020",
+      "n_citing": 62
+    },
+    {
+      "provision": "95 Personal Injury Commission Rules 2021",
+      "n_citing": 31
+    },
+    {
+      "provision": "4.13 Motor Accident Injuries Act 2017",
+      "n_citing": 30
+    },
+    {
+      "provision": "14A Personal Injury Commission Regulation 2020",
+      "n_citing": 29
+    },
+    {
+      "provision": "94 Motor Accidents Compensation Act 1999",
+      "n_citing": 26
+    },
+    {
+      "provision": "4.11 Motor Accident Injuries Act 2017",
+      "n_citing": 26
+    },
+    {
+      "provision": "83 Motor Accidents Compensation Act 1999",
+      "n_citing": 24
+    },
+    {
+      "provision": "7.38 Motor Accident Guidelines",
+      "n_citing": 21
+    },
+    {
+      "provision": "7.37 Motor Accident Injuries Regulation 2017",
+      "n_citing": 21
+    }
+  ],
+  "all_provisions": [
+    {
+      "provision": "6.23 Motor Accident Injuries Act 2017",
+      "n_citing": 353
+    },
+    {
+      "provision": "7.36 Motor Accident Injuries Act 2017",
+      "n_citing": 126
+    },
+    {
+      "provision": "4.7 Motor Accident Injuries Act 2017",
+      "n_citing": 111
+    },
+    {
+      "provision": "3.40 Motor Accident Injuries Act 2017",
+      "n_citing": 75
+    },
+    {
+      "provision": "4.5 Motor Accident Injuries Act 2017",
+      "n_citing": 70
+    },
+    {
+      "provision": "7.37 Motor Accident Guidelines",
+      "n_citing": 67
+    },
+    {
+      "provision": "1.4 Motor Accident Injuries Act 2017",
+      "n_citing": 66
+    },
+    {
+      "provision": "7.38 Motor Accident Guidelines 2017",
+      "n_citing": 64
+    },
+    {
+      "provision": "14D Personal Injury Commission Regulation 2020",
+      "n_citing": 62
+    },
+    {
+      "provision": "95 Personal Injury Commission Rules 2021",
+      "n_citing": 31
+    },
+    {
+      "provision": "4.13 Motor Accident Injuries Act 2017",
+      "n_citing": 30
+    },
+    {
+      "provision": "14A Personal Injury Commission Regulation 2020",
+      "n_citing": 29
+    },
+    {
+      "provision": "94 Motor Accidents Compensation Act 1999",
+      "n_citing": 26
+    },
+    {
+      "provision": "4.11 Motor Accident Injuries Act 2017",
+      "n_citing": 26
+    },
+    {
+      "provision": "83 Motor Accidents Compensation Act 1999",
+      "n_citing": 24
+    },
+    {
+      "provision": "7.38 Motor Accident Guidelines",
+      "n_citing": 21
+    },
+    {
+      "provision": "7.37 Motor Accident Injuries Regulation 2017",
+      "n_citing": 21
+    },
+    {
+      "provision": "6.20 Motor Accident Injuries Act 2017",
+      "n_citing": 17
+    },
+    {
+      "provision": "130 Motor Accidents Compensation Act 1999",
+      "n_citing": 16
+    },
+    {
+      "provision": "10 Procedural Direction MA3",
+      "n_citing": 15
+    },
+    {
+      "provision": "149 Motor Accidents Compensation Act 1999",
+      "n_citing": 15
+    },
+    {
+      "provision": "150 Motor Accidents Compensation Act 1999",
+      "n_citing": 15
+    },
+    {
+      "provision": "7.389 Motor Accident Injuries Guidelines",
+      "n_citing": 15
+    },
+    {
+      "provision": "7.399 Motor Accident Injuries Guidelines",
+      "n_citing": 15
+    },
+    {
+      "provision": "4.9 Motor Accident Injuries Act 2017",
+      "n_citing": 14
+    },
+    {
+      "provision": "126 Motor Accidents Compensation Act 1999",
+      "n_citing": 14
+    },
+    {
+      "provision": "5R Civil Liability Act 2002",
+      "n_citing": 13
+    },
+    {
+      "provision": "4.22 Motor Accident Injuries Act 2017",
+      "n_citing": 12
+    },
+    {
+      "provision": "141B Motor Accidents Compensation Act 1999",
+      "n_citing": 10
+    },
+    {
+      "provision": "4.17 Motor Accident Injuries Act 2017",
+      "n_citing": 10
+    },
+    {
+      "provision": "5B Civil Liability Act 2002",
+      "n_citing": 8
+    },
+    {
+      "provision": "7.6 Motor Accident Injuries Act 2017",
+      "n_citing": 8
+    },
+    {
+      "provision": "7.37 Motor Accident Guidelines (Version 9.3)",
+      "n_citing": 8
+    },
+    {
+      "provision": "6.14 Motor Accident Injuries Act 2017",
+      "n_citing": 7
+    },
+    {
+      "provision": "7.38 Motor Accident Injuries Guidelines",
+      "n_citing": 7
+    },
+    {
+      "provision": "7.37 Motor Accident Guidelines (v9.3)",
+      "n_citing": 6
+    },
+    {
+      "provision": "4.16 Motor Accident Injuries Act 2017",
+      "n_citing": 6
+    },
+    {
+      "provision": "14 Personal Injury Commission Regulation 2020",
+      "n_citing": 6
+    },
+    {
+      "provision": "1 cl 3 Personal Injury Commission Act 2020",
+      "n_citing": 6
+    },
+    {
+      "provision": "9 Motor Accident Injuries Regulation 2017",
+      "n_citing": 6
+    },
+    {
+      "provision": "7.37 Motor Accident Guidelines 2017",
+      "n_citing": 6
+    },
+    {
+      "provision": "3.24 Motor Accident Injuries Act 2017",
+      "n_citing": 6
+    },
+    {
+      "provision": "4.3 Motor Accident Injuries Act 2017",
+      "n_citing": 6
+    },
+    {
+      "provision": "4.6 Motor Accident Injuries Act 2017",
+      "n_citing": 5
+    },
+    {
+      "provision": "7.37 Motor Accident Guidelines version 9.3",
+      "n_citing": 5
+    },
+    {
+      "provision": "5D Civil Liability Act 2002",
+      "n_citing": 5
+    },
+    {
+      "provision": "3.26 Motor Accident Injuries Act 2017",
+      "n_citing": 5
+    },
+    {
+      "provision": "1 Pt 2 Div 2 cl 3 Personal Injury Commission Act 2020",
+      "n_citing": 4
+    },
+    {
+      "provision": "21 Personal Injury Commission Act 2020",
+      "n_citing": 4
+    },
+    {
+      "provision": "5S Civil Liability Act 2002",
+      "n_citing": 4
+    },
+    {
+      "provision": "4.15 Motor Accident Injuries Act 2017",
+      "n_citing": 4
+    },
+    {
+      "provision": "94A Motor Accidents Compensation Act 1999",
+      "n_citing": 4
+    },
+    {
+      "provision": "6.22 Motor Accident Injuries Act 2017",
+      "n_citing": 3
+    },
+    {
+      "provision": "4.4 Motor Accident Injuries Act 2017",
+      "n_citing": 3
+    },
+    {
+      "provision": "1.6 Motor Accident Injuries Act 2017",
+      "n_citing": 3
+    },
+    {
+      "provision": "137 Motor Accidents Compensation Act 1999",
+      "n_citing": 3
+    },
+    {
+      "provision": "7.37 Motor Accident Injuries Guidelines v9.3",
+      "n_citing": 3
+    },
+    {
+      "provision": "3.11 Motor Accident Injuries Act 2017",
+      "n_citing": 3
+    },
+    {
+      "provision": "3.28 Motor Accident Injuries Act 2017",
+      "n_citing": 3
+    },
+    {
+      "provision": "42 Personal Injury Commission Act 2020",
+      "n_citing": 3
+    },
+    {
+      "provision": "8.3 Motor Accident Injuries Act 2017",
+      "n_citing": 3
+    },
+    {
+      "provision": "7.389 Motor Accident Guidelines",
+      "n_citing": 3
+    },
+    {
+      "provision": "7.399 Motor Accident Guidelines",
+      "n_citing": 3
+    },
+    {
+      "provision": "15B Civil Liability Act 2002",
+      "n_citing": 3
+    },
+    {
+      "provision": "7.38 Motor Accident Injuries Guidelines 2017",
+      "n_citing": 3
+    },
+    {
+      "provision": "5E Civil Liability Act 2002",
+      "n_citing": 3
+    },
+    {
+      "provision": "3.2 Motor Accident Injuries Act 2017",
+      "n_citing": 3
+    },
+    {
+      "provision": "1.3 Motor Accident Injuries Act 2017",
+      "n_citing": 3
+    },
+    {
+      "provision": "4.10 Motor Accident Injuries Act 2017",
+      "n_citing": 3
+    },
+    {
+      "provision": "94 Motor Accident Injuries Act 2017",
+      "n_citing": 3
+    },
+    {
+      "provision": "7.389 Motor Accident Injuries Guidelines 2017",
+      "n_citing": 3
+    },
+    {
+      "provision": "7.399 Motor Accident Injuries Guidelines 2017",
+      "n_citing": 3
+    },
+    {
+      "provision": "11 Procedural Direction MA3",
+      "n_citing": 3
+    },
+    {
+      "provision": "8.6 Motor Accident Injuries Act 2017",
+      "n_citing": 2
+    },
+    {
+      "provision": "84A Motor Accidents Compensation Act 1999",
+      "n_citing": 2
+    },
+    {
+      "provision": "52 Personal Injury Commission Act 2020",
+      "n_citing": 2
+    },
+    {
+      "provision": "4.14 Motor Accident Injuries Act 2017",
+      "n_citing": 2
+    },
+    {
+      "provision": "3.9 Motor Accident Injuries Act 2017",
+      "n_citing": 2
+    },
+    {
+      "provision": "3.35 Motor Accident Injuries Act 2017",
+      "n_citing": 2
+    },
+    {
+      "provision": "7.20 Motor Accident Injuries Act 2017",
+      "n_citing": 2
+    },
+    {
+      "provision": "7.34 Motor Accident Injuries Act 2017",
+      "n_citing": 2
+    },
+    {
+      "provision": "5.1 Motor Accident Injuries Act 2017",
+      "n_citing": 2
+    },
+    {
+      "provision": "5.5 Motor Accident Injuries Act 2017",
+      "n_citing": 2
+    },
+    {
+      "provision": "151 Workers Compensation Act 1987",
+      "n_citing": 2
+    },
+    {
+      "provision": "7.294 Motor Accident Guidelines",
+      "n_citing": 2
+    },
+    {
+      "provision": "30 Civil Liability Act 2002",
+      "n_citing": 2
+    },
+    {
+      "provision": "9 Law Reform (Miscellaneous Provisions) Act 1965",
+      "n_citing": 2
+    },
+    {
+      "provision": "3 Pt 2 Div 2 Sch 1 Personal Injury Commission Act 2020",
+      "n_citing": 2
+    },
+    {
+      "provision": "81 Motor Accidents Compensation Act 1999",
+      "n_citing": 2
+    },
+    {
+      "provision": "3.44 Motor Accident Injuries Act 2017",
+      "n_citing": 2
+    },
+    {
+      "provision": "7.35 Motor Accident Injuries Act 2017",
+      "n_citing": 2
+    },
+    {
+      "provision": "62 Motor Accidents Compensation Act 1999",
+      "n_citing": 2
+    },
+    {
+      "provision": "131 Motor Accidents Compensation Act 1999",
+      "n_citing": 2
+    },
+    {
+      "provision": "47 Motor Accident Injuries Act 2017",
+      "n_citing": 2
+    },
+    {
+      "provision": "7.37 Motor Accident Injuries Guidelines 2017",
+      "n_citing": 2
+    },
+    {
+      "provision": "16 Civil Liability Act 2002",
+      "n_citing": 2
+    },
+    {
+      "provision": "14B Personal Injury Commission Regulations 2020",
+      "n_citing": 2
+    },
+    {
+      "provision": "14B Personal Injury Commission Regulation 2020",
+      "n_citing": 2
+    },
+    {
+      "provision": "4.7 Motor Accidents Injuries Act 2017",
+      "n_citing": 2
+    },
+    {
+      "provision": "3.38 Motor Accident Injuries Act 2017",
+      "n_citing": 2
+    },
+    {
+      "provision": "6.21 Motor Accident Injuries Act 2017",
+      "n_citing": 2
+    },
+    {
+      "provision": "4.12 Motor Accident Injuries Act 2017",
+      "n_citing": 2
+    },
+    {
+      "provision": "155 Motor Accident Injuries Act 2017",
+      "n_citing": 2
+    },
+    {
+      "provision": "1 Pt 2 cl 14A Personal Injury Commission Act 2020",
+      "n_citing": 2
+    },
+    {
+      "provision": "1 Pt 2 cl 14B Personal Injury Commission Act 2020",
+      "n_citing": 2
+    },
+    {
+      "provision": "7.32 Motor Accident Injuries Act 2017",
+      "n_citing": 1
+    },
+    {
+      "provision": "1 Pt 2 cl 2(5) Motor Accident Injuries Regulation 2017",
+      "n_citing": 1
+    },
+    {
+      "provision": "4.1 Motor Accident Injuries Act 2017",
+      "n_citing": 1
+    },
+    {
+      "provision": "7.23 Motor Accident Injuries Act 2017",
+      "n_citing": 1
+    },
+    {
+      "provision": "4.7 Motor Accidents Compensation Act 1999",
+      "n_citing": 1
+    },
+    {
+      "provision": "151Z Workers Compensation Act",
+      "n_citing": 1
+    },
+    {
+      "provision": "7.37 Motor Accident Guidelines v9.3",
+      "n_citing": 1
+    },
+    {
+      "provision": "212 Transport Administration Act 1988 (NSW)",
+      "n_citing": 1
+    },
+    {
+      "provision": "15B Civil Liability Act 2002 (NSW)",
+      "n_citing": 1
+    },
+    {
+      "provision": "7.38 Motor Accident Guidelines (v9.3)",
+      "n_citing": 1
+    },
+    {
+      "provision": "48 Road Rules 2014 (NSW)",
+      "n_citing": 1
+    },
+    {
+      "provision": "144 Road Rules 2014 (NSW)",
+      "n_citing": 1
+    },
+    {
+      "provision": "126 Road Rules 2014 (NSW)",
+      "n_citing": 1
+    },
+    {
+      "provision": "7.24 Motor Accident Injuries Act 2017",
+      "n_citing": 1
+    },
+    {
+      "provision": "8.6 Motor Accident Injuries Regulation 2017",
+      "n_citing": 1
+    },
+    {
+      "provision": "1 cl 4 Motor Accident Injuries Act 2017",
+      "n_citing": 1
+    },
+    {
+      "provision": "7.37 Motor Accident Injuries Guidelines (v9.3)",
+      "n_citing": 1
+    },
+    {
+      "provision": "7.37 Motor Accident Injuries Guidelines version 9.3",
+      "n_citing": 1
+    },
+    {
+      "provision": "151Z Workers Compensation Act 1987",
+      "n_citing": 1
+    },
+    {
+      "provision": "71 Road Rules 2014",
+      "n_citing": 1
+    },
+    {
+      "provision": "67 Personal Injury Commission Rules 2021",
+      "n_citing": 1
+    },
+    {
+      "provision": "121 Transport Administration Act 1988",
+      "n_citing": 1
+    },
+    {
+      "provision": "6 Personal Injury Commission Rules 2021",
+      "n_citing": 1
+    },
+    {
+      "provision": "7.37 Motor Accident Injuries Guidelines (Version 9.3)",
+      "n_citing": 1
+    },
+    {
+      "provision": "89 Motor Accidents Compensation Act 1999",
+      "n_citing": 1
+    },
+    {
+      "provision": "8.10 Motor Accident Injuries Act 2017",
+      "n_citing": 1
+    },
+    {
+      "provision": "8.4 Motor Accident Injuries Act 2017",
+      "n_citing": 1
+    },
+    {
+      "provision": "3.33 Motor Accident Injuries Act 2017",
+      "n_citing": 1
+    },
+    {
+      "provision": "7.37 Motor Accident Injuries Guidelines",
+      "n_citing": 1
+    },
+    {
+      "provision": "3.6 Motor Accident Injuries Act 2017",
+      "n_citing": 1
+    },
+    {
+      "provision": "7.37 Motor Accident Guidelines Version 9.3",
+      "n_citing": 1
+    },
+    {
+      "provision": "149 and 150 Motor Accidents Compensation Act 1999",
+      "n_citing": 1
+    },
+    {
+      "provision": "13 Civil Liability Act 2002",
+      "n_citing": 1
+    },
+    {
+      "provision": "13 Civil Liability Act 2005",
+      "n_citing": 1
+    },
+    {
+      "provision": "140 Evidence Act 1995 (NSW)",
+      "n_citing": 1
+    },
+    {
+      "provision": "58 Motor Accidents Compensation Act 1999",
+      "n_citing": 1
+    },
+    {
+      "provision": "75 Road Rules 2014 (NSW)",
+      "n_citing": 1
+    },
+    {
+      "provision": "95 Motor Accidents Compensation Act 1999",
+      "n_citing": 1
+    },
+    {
+      "provision": "127 Motor Accidents Compensation Act 1999",
+      "n_citing": 1
+    },
+    {
+      "provision": "13 Motor Accidents Compensation Regulation 2020",
+      "n_citing": 1
+    },
+    {
+      "provision": "124 Motor Accidents Compensation Act 1999",
+      "n_citing": 1
+    },
+    {
+      "provision": "83 Workers Compensation Act 1987",
+      "n_citing": 1
+    },
+    {
+      "provision": "1.2 Motor Accident Injuries Act 2017",
+      "n_citing": 1
+    },
+    {
+      "provision": "134 Motor Accidents Compensation Act 1999",
+      "n_citing": 1
+    },
+    {
+      "provision": "92 Motor Accidents Compensation Act 1999",
+      "n_citing": 1
+    },
+    {
+      "provision": "12A Motor Accidents Compensation Regulation",
+      "n_citing": 1
+    },
+    {
+      "provision": "94 Motor Accident Compensation Act 1999",
+      "n_citing": 1
+    },
+    {
+      "provision": "94A Motor Accident Compensation Act 1999",
+      "n_citing": 1
+    },
+    {
+      "provision": "83 Motor Accident Compensation Act 1999",
+      "n_citing": 1
+    },
+    {
+      "provision": "126 Motor Accident Compensation Act 1999",
+      "n_citing": 1
+    },
+    {
+      "provision": "141B Motor Accident Compensation Act 1999",
+      "n_citing": 1
+    },
+    {
+      "provision": "86 Motor Accidents Compensation Act 1999",
+      "n_citing": 1
+    },
+    {
+      "provision": "9 Motor Accidents Injuries Regulation 2017",
+      "n_citing": 1
+    },
+    {
+      "provision": "14 Motor Accident Guidelines",
+      "n_citing": 1
+    },
+    {
+      "provision": "3 and 42 Personal Injury Commission Act 2020",
+      "n_citing": 1
+    },
+    {
+      "provision": "41 Personal Injury Commission Act 2020",
+      "n_citing": 1
+    },
+    {
+      "provision": "32 Civil Liability Act 2002",
+      "n_citing": 1
+    },
+    {
+      "provision": "6.7 Motor Accident Guidelines 2017",
+      "n_citing": 1
+    },
+    {
+      "provision": "7.37 Motor Accident Injuries Act 2017",
+      "n_citing": 1
+    },
+    {
+      "provision": "8.5 Motor Accident Injuries Act 2017",
+      "n_citing": 1
+    },
+    {
+      "provision": "20 Motor Accident Injuries Regulation 2017",
+      "n_citing": 1
+    },
+    {
+      "provision": "3 Sch 1 Pt 2 Div 2 Personal Injury Commission Act 2020",
+      "n_citing": 1
+    },
+    {
+      "provision": "26 Personal Injury Commission Act 2020",
+      "n_citing": 1
+    },
+    {
+      "provision": "133 Motor Accident Injuries Act 2017",
+      "n_citing": 1
+    },
+    {
+      "provision": "6.34 Motor Accident Injuries Act 2017",
+      "n_citing": 1
+    },
+    {
+      "provision": "15 Motor Accidents Compensation Act 1999",
+      "n_citing": 1
+    },
+    {
+      "provision": "3B Civil Liability Act 2002",
+      "n_citing": 1
+    },
+    {
+      "provision": "3 Civil Liability Act 2002",
+      "n_citing": 1
+    },
+    {
+      "provision": "7.42 Motor Accident Injuries Act 2017",
+      "n_citing": 1
+    },
+    {
+      "provision": "5.2 Motor Accident Injuries Act 2017",
+      "n_citing": 1
+    },
+    {
+      "provision": "5.3 Motor Accident Injuries Act 2017",
+      "n_citing": 1
+    },
+    {
+      "provision": "5 Civil Liability Act 2002",
+      "n_citing": 1
+    },
+    {
+      "provision": "5T Civil Liability Act 2002",
+      "n_citing": 1
+    },
+    {
+      "provision": "38 Evidence Act 1995",
+      "n_citing": 1
+    },
+    {
+      "provision": "33 Interpretation Act 1987",
+      "n_citing": 1
+    },
+    {
+      "provision": "30 Interpretation Act 1987",
+      "n_citing": 1
+    },
+    {
+      "provision": "126 Motor Accident Injuries Act 2017",
+      "n_citing": 1
+    },
+    {
+      "provision": "7.33 Motor Accident Injuries Act 2017",
+      "n_citing": 1
+    },
+    {
+      "provision": "73 Personal Injury Commission Rules 2021",
+      "n_citing": 1
+    },
+    {
+      "provision": "7.36 Motor Accidents Injuries Act 2017",
+      "n_citing": 1
+    },
+    {
+      "provision": "3.40 Motor Accidents Injuries Act 2017",
+      "n_citing": 1
+    },
+    {
+      "provision": "4.5 Motor Accidents Injuries Act 2017",
+      "n_citing": 1
+    },
+    {
+      "provision": "4.9 Motor Accidents Injuries Act 2017",
+      "n_citing": 1
+    },
+    {
+      "provision": "7.38 Motor Accident Injury Guidelines",
+      "n_citing": 1
+    },
+    {
+      "provision": "7.21 Motor Accident Injuries Act 2017",
+      "n_citing": 1
+    },
+    {
+      "provision": "9 Law Reform (Miscellaneous Provisions) Act 1965 (NSW)",
+      "n_citing": 1
+    },
+    {
+      "provision": "6.215 Motor Accident Guidelines",
+      "n_citing": 1
+    },
+    {
+      "provision": "7.52 Motor Accident Injuries Act 2017",
+      "n_citing": 1
+    },
+    {
+      "provision": "7.38 Motor Accident Injuries Act 2017",
+      "n_citing": 1
+    },
+    {
+      "provision": "31 Civil Liability Act 2002",
+      "n_citing": 1
+    },
+    {
+      "provision": "6.3 Motor Accident Injuries Act 2017",
+      "n_citing": 1
+    },
+    {
+      "provision": "85A Motor Accidents Compensation Act 1999",
+      "n_citing": 1
+    },
+    {
+      "provision": "63 Motor Accidents Compensation Act 1999",
+      "n_citing": 1
+    },
+    {
+      "provision": "89A Motor Accidents Compensation Act 1999",
+      "n_citing": 1
+    },
+    {
+      "provision": "89C Motor Accidents Compensation Act 1999",
+      "n_citing": 1
+    },
+    {
+      "provision": "7.294 Motor Accident Guidelines 2017",
+      "n_citing": 1
+    },
+    {
+      "provision": "8 Motor Accident (Lifetime Care and Support) Act 2006",
+      "n_citing": 1
+    },
+    {
+      "provision": "7.304 Motor Accident Guidelines",
+      "n_citing": 1
+    }
+  ],
+  "unparsed_citations": [
+    {
+      "text": "Motor Accident Injuries Regulation 2017",
+      "n": 16
+    },
+    {
+      "text": "Division 3.4 Motor Accident Injuries Act 2017",
+      "n": 14
+    },
+    {
+      "text": "Div 3.4 Motor Accident Injuries Act 2017",
+      "n": 11
+    },
+    {
+      "text": "cl 7.392-7.411 Motor Accident Injuries Guidelines",
+      "n": 11
+    },
+    {
+      "text": "Division 7.6 Motor Accident Injuries Act 2017",
+      "n": 10
+    },
+    {
+      "text": "Part 4.4 Motor Accidents Compensation Act 1999",
+      "n": 9
+    },
+    {
+      "text": "Motor Accident Guidelines cl 7.37",
+      "n": 7
+    },
+    {
+      "text": "Part 8 Motor Accident Injuries Act 2017",
+      "n": 7
+    },
+    {
+      "text": "Personal Injury Commission Act 2020",
+      "n": 7
+    },
+    {
+      "text": "Procedural Direction MA3 cl 10",
+      "n": 6
+    },
+    {
+      "text": "Procedural Direction MA3",
+      "n": 5
+    },
+    {
+      "text": "Compensation to Relatives Act 1897",
+      "n": 5
+    },
+    {
+      "text": "Part 4 Motor Accident Injuries Act 2017",
+      "n": 4
+    },
+    {
+      "text": "Motor Accidents Compensation Regulation 2015",
+      "n": 4
+    },
+    {
+      "text": "Div 3.3 Motor Accident Injuries Act 2017",
+      "n": 4
+    },
+    {
+      "text": "Personal Injury Commission Rules 2021",
+      "n": 4
+    },
+    {
+      "text": "Motor Accident Injuries Act 2017",
+      "n": 4
+    },
+    {
+      "text": "cl 7.04.2 Motor Accident Guidelines",
+      "n": 3
+    },
+    {
+      "text": "Personal Injury Commission Regulation 2020",
+      "n": 3
+    },
+    {
+      "text": "cl 7.392-7.411 Motor Accident Injuries Guidelines 2017",
+      "n": 3
+    }
+  ],
+  "n_tests": 272,
+  "n_value_links": 119,
+  "n_gate_links": 17,
+  "n_definitional": 2,
+  "definitional_pairs": [
+    {
+      "provision": "6.23 Motor Accident Injuries Act 2017",
+      "variable": "Nature",
+      "effect": -0.997
+    },
+    {
+      "provision": "6.23 Motor Accident Injuries Act 2017",
+      "variable": "Legal Procedural Complexity",
+      "effect": -0.959
+    }
+  ],
+  "records": [
+    {
+      "section": "6.23",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "6.23 Motor Accident Injuries Act 2017",
+      "n_citing": 353,
+      "variable": "Lump Sum",
+      "effect": -0.461,
+      "p_value": 1.22e-18,
+      "n_value": [
+        353,
+        187
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "6.23",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "6.23 Motor Accident Injuries Act 2017",
+      "n_citing": 353,
+      "variable": "WPI %",
+      "effect": -0.102,
+      "p_value": 0.147,
+      "n_value": [
+        178,
+        109
+      ],
+      "blank_rate_citing": 0.496,
+      "blank_rate_other": 0.417,
+      "gate_effect": 0.079,
+      "gate_p": 0.0857,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "6.23",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "6.23 Motor Accident Injuries Act 2017",
+      "n_citing": 353,
+      "variable": "Non-Economic Loss",
+      "effect": -0.331,
+      "p_value": 1.77e-09,
+      "n_value": [
+        307,
+        150
+      ],
+      "blank_rate_citing": 0.13,
+      "blank_rate_other": 0.198,
+      "gate_effect": -0.068,
+      "gate_p": 0.0448,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "6.23",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "6.23 Motor Accident Injuries Act 2017",
+      "n_citing": 353,
+      "variable": "Future Economic Loss",
+      "effect": -0.472,
+      "p_value": 2.06e-16,
+      "n_value": [
+        237,
+        176
+      ],
+      "blank_rate_citing": 0.329,
+      "blank_rate_other": 0.059,
+      "gate_effect": 0.27,
+      "gate_p": 4.32e-14,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": true
+    },
+    {
+      "section": "6.23",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "6.23 Motor Accident Injuries Act 2017",
+      "n_citing": 353,
+      "variable": "Claimant Weekly Income",
+      "effect": -0.05,
+      "p_value": 0.447,
+      "n_value": [
+        162,
+        152
+      ],
+      "blank_rate_citing": 0.541,
+      "blank_rate_other": 0.187,
+      "gate_effect": 0.354,
+      "gate_p": 5.45e-16,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": true
+    },
+    {
+      "section": "6.23",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "6.23 Motor Accident Injuries Act 2017",
+      "n_citing": 353,
+      "variable": "Claimant Age",
+      "effect": 0.355,
+      "p_value": 7.11e-11,
+      "n_value": [
+        323,
+        173
+      ],
+      "blank_rate_citing": 0.085,
+      "blank_rate_other": 0.075,
+      "gate_effect": 0.01,
+      "gate_p": 0.743,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "6.23",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "6.23 Motor Accident Injuries Act 2017",
+      "n_citing": 353,
+      "variable": "Claimant Gender",
+      "effect": -0.137,
+      "p_value": 0.00229,
+      "n_value": [
+        353,
+        187
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "6.23",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "6.23 Motor Accident Injuries Act 2017",
+      "n_citing": 353,
+      "variable": "Nature",
+      "effect": -0.997,
+      "p_value": 2.82e-118,
+      "n_value": [
+        353,
+        187
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": true,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "6.23",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "6.23 Motor Accident Injuries Act 2017",
+      "n_citing": 353,
+      "variable": "Injury Burden Intensity",
+      "effect": -0.24,
+      "p_value": 2.17e-07,
+      "n_value": [
+        353,
+        187
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "6.23",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "6.23 Motor Accident Injuries Act 2017",
+      "n_citing": 353,
+      "variable": "Treatment Burden",
+      "effect": -0.11,
+      "p_value": 0.0214,
+      "n_value": [
+        353,
+        187
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "6.23",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "6.23 Motor Accident Injuries Act 2017",
+      "n_citing": 353,
+      "variable": "Work Impact Severity",
+      "effect": -0.581,
+      "p_value": 1.27e-31,
+      "n_value": [
+        353,
+        187
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "6.23",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "6.23 Motor Accident Injuries Act 2017",
+      "n_citing": 353,
+      "variable": "Legal Procedural Complexity",
+      "effect": -0.959,
+      "p_value": 8.27e-97,
+      "n_value": [
+        353,
+        187
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": true,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "6.23",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "6.23 Motor Accident Injuries Act 2017",
+      "n_citing": 353,
+      "variable": "Psychological Injury Emphasis",
+      "effect": -0.551,
+      "p_value": 2.08e-29,
+      "n_value": [
+        353,
+        187
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "6.23",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "6.23 Motor Accident Injuries Act 2017",
+      "n_citing": 353,
+      "variable": "Liability Clarity",
+      "effect": 0.055,
+      "p_value": 0.0256,
+      "n_value": [
+        353,
+        187
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "6.23",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "6.23 Motor Accident Injuries Act 2017",
+      "n_citing": 353,
+      "variable": "Causation Complexity",
+      "effect": -0.643,
+      "p_value": 3.79e-42,
+      "n_value": [
+        353,
+        187
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "6.23",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "6.23 Motor Accident Injuries Act 2017",
+      "n_citing": 353,
+      "variable": "Pre-existing Condition Salience",
+      "effect": -0.361,
+      "p_value": 1.52e-13,
+      "n_value": [
+        353,
+        187
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "7.36",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "7.36 Motor Accident Injuries Act 2017",
+      "n_citing": 126,
+      "variable": "Lump Sum",
+      "effect": 0.469,
+      "p_value": 1.54e-15,
+      "n_value": [
+        126,
+        414
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "7.36",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "7.36 Motor Accident Injuries Act 2017",
+      "n_citing": 126,
+      "variable": "WPI %",
+      "effect": 0.129,
+      "p_value": 0.0963,
+      "n_value": [
+        75,
+        212
+      ],
+      "blank_rate_citing": 0.405,
+      "blank_rate_other": 0.488,
+      "gate_effect": -0.083,
+      "gate_p": 0.104,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "7.36",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "7.36 Motor Accident Injuries Act 2017",
+      "n_citing": 126,
+      "variable": "Non-Economic Loss",
+      "effect": 0.402,
+      "p_value": 7.96e-11,
+      "n_value": [
+        103,
+        354
+      ],
+      "blank_rate_citing": 0.183,
+      "blank_rate_other": 0.145,
+      "gate_effect": 0.038,
+      "gate_p": 0.324,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "7.36",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "7.36 Motor Accident Injuries Act 2017",
+      "n_citing": 126,
+      "variable": "Future Economic Loss",
+      "effect": 0.445,
+      "p_value": 1.2e-12,
+      "n_value": [
+        120,
+        293
+      ],
+      "blank_rate_citing": 0.048,
+      "blank_rate_other": 0.292,
+      "gate_effect": -0.245,
+      "gate_p": 3.86e-10,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": true
+    },
+    {
+      "section": "7.36",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "7.36 Motor Accident Injuries Act 2017",
+      "n_citing": 126,
+      "variable": "Claimant Weekly Income",
+      "effect": 0.065,
+      "p_value": 0.352,
+      "n_value": [
+        104,
+        210
+      ],
+      "blank_rate_citing": 0.175,
+      "blank_rate_other": 0.493,
+      "gate_effect": -0.318,
+      "gate_p": 7.54e-11,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": true
+    },
+    {
+      "section": "7.36",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "7.36 Motor Accident Injuries Act 2017",
+      "n_citing": 126,
+      "variable": "Claimant Age",
+      "effect": -0.307,
+      "p_value": 4.4e-07,
+      "n_value": [
+        119,
+        377
+      ],
+      "blank_rate_citing": 0.056,
+      "blank_rate_other": 0.089,
+      "gate_effect": -0.034,
+      "gate_p": 0.267,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "7.36",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "7.36 Motor Accident Injuries Act 2017",
+      "n_citing": 126,
+      "variable": "Claimant Gender",
+      "effect": 0.07,
+      "p_value": 0.166,
+      "n_value": [
+        126,
+        414
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "7.36",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "7.36 Motor Accident Injuries Act 2017",
+      "n_citing": 126,
+      "variable": "Nature",
+      "effect": 0.767,
+      "p_value": 2.33e-56,
+      "n_value": [
+        126,
+        414
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "7.36",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "7.36 Motor Accident Injuries Act 2017",
+      "n_citing": 126,
+      "variable": "Injury Burden Intensity",
+      "effect": 0.259,
+      "p_value": 6.49e-07,
+      "n_value": [
+        126,
+        414
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "7.36",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "7.36 Motor Accident Injuries Act 2017",
+      "n_citing": 126,
+      "variable": "Treatment Burden",
+      "effect": 0.164,
+      "p_value": 0.00232,
+      "n_value": [
+        126,
+        414
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "7.36",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "7.36 Motor Accident Injuries Act 2017",
+      "n_citing": 126,
+      "variable": "Work Impact Severity",
+      "effect": 0.596,
+      "p_value": 1.4e-26,
+      "n_value": [
+        126,
+        414
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "7.36",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "7.36 Motor Accident Injuries Act 2017",
+      "n_citing": 126,
+      "variable": "Legal Procedural Complexity",
+      "effect": 0.767,
+      "p_value": 7.31e-50,
+      "n_value": [
+        126,
+        414
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "7.36",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "7.36 Motor Accident Injuries Act 2017",
+      "n_citing": 126,
+      "variable": "Psychological Injury Emphasis",
+      "effect": 0.472,
+      "p_value": 1e-17,
+      "n_value": [
+        126,
+        414
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "7.36",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "7.36 Motor Accident Injuries Act 2017",
+      "n_citing": 126,
+      "variable": "Liability Clarity",
+      "effect": -0.081,
+      "p_value": 0.00388,
+      "n_value": [
+        126,
+        414
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "7.36",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "7.36 Motor Accident Injuries Act 2017",
+      "n_citing": 126,
+      "variable": "Causation Complexity",
+      "effect": 0.505,
+      "p_value": 2.23e-21,
+      "n_value": [
+        126,
+        414
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "7.36",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "7.36 Motor Accident Injuries Act 2017",
+      "n_citing": 126,
+      "variable": "Pre-existing Condition Salience",
+      "effect": 0.3,
+      "p_value": 4.72e-08,
+      "n_value": [
+        126,
+        414
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "4.7",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "4.7 Motor Accident Injuries Act 2017",
+      "n_citing": 111,
+      "variable": "Lump Sum",
+      "effect": 0.259,
+      "p_value": 2.55e-05,
+      "n_value": [
+        111,
+        429
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "4.7",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "4.7 Motor Accident Injuries Act 2017",
+      "n_citing": 111,
+      "variable": "WPI %",
+      "effect": -0.171,
+      "p_value": 0.0326,
+      "n_value": [
+        68,
+        219
+      ],
+      "blank_rate_citing": 0.387,
+      "blank_rate_other": 0.49,
+      "gate_effect": -0.102,
+      "gate_p": 0.0558,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "4.7",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "4.7 Motor Accident Injuries Act 2017",
+      "n_citing": 111,
+      "variable": "Non-Economic Loss",
+      "effect": 0.086,
+      "p_value": 0.179,
+      "n_value": [
+        93,
+        364
+      ],
+      "blank_rate_citing": 0.162,
+      "blank_rate_other": 0.152,
+      "gate_effect": 0.011,
+      "gate_p": 0.769,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "4.7",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "4.7 Motor Accident Injuries Act 2017",
+      "n_citing": 111,
+      "variable": "Future Economic Loss",
+      "effect": 0.313,
+      "p_value": 1.26e-06,
+      "n_value": [
+        108,
+        305
+      ],
+      "blank_rate_citing": 0.027,
+      "blank_rate_other": 0.289,
+      "gate_effect": -0.262,
+      "gate_p": 6.67e-11,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": true
+    },
+    {
+      "section": "4.7",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "4.7 Motor Accident Injuries Act 2017",
+      "n_citing": 111,
+      "variable": "Claimant Weekly Income",
+      "effect": -0.049,
+      "p_value": 0.483,
+      "n_value": [
+        99,
+        215
+      ],
+      "blank_rate_citing": 0.108,
+      "blank_rate_other": 0.499,
+      "gate_effect": -0.391,
+      "gate_p": 3.05e-15,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": true
+    },
+    {
+      "section": "4.7",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "4.7 Motor Accident Injuries Act 2017",
+      "n_citing": 111,
+      "variable": "Claimant Age",
+      "effect": -0.258,
+      "p_value": 6.12e-05,
+      "n_value": [
+        101,
+        395
+      ],
+      "blank_rate_citing": 0.09,
+      "blank_rate_other": 0.079,
+      "gate_effect": 0.011,
+      "gate_p": 0.699,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "4.7",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "4.7 Motor Accident Injuries Act 2017",
+      "n_citing": 111,
+      "variable": "Claimant Gender",
+      "effect": 0.047,
+      "p_value": 0.377,
+      "n_value": [
+        111,
+        429
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "4.7",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "4.7 Motor Accident Injuries Act 2017",
+      "n_citing": 111,
+      "variable": "Nature",
+      "effect": 0.367,
+      "p_value": 4.99e-13,
+      "n_value": [
+        111,
+        429
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "4.7",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "4.7 Motor Accident Injuries Act 2017",
+      "n_citing": 111,
+      "variable": "Injury Burden Intensity",
+      "effect": 0.053,
+      "p_value": 0.331,
+      "n_value": [
+        111,
+        429
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "4.7",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "4.7 Motor Accident Injuries Act 2017",
+      "n_citing": 111,
+      "variable": "Treatment Burden",
+      "effect": 0.061,
+      "p_value": 0.283,
+      "n_value": [
+        111,
+        429
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "4.7",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "4.7 Motor Accident Injuries Act 2017",
+      "n_citing": 111,
+      "variable": "Work Impact Severity",
+      "effect": 0.493,
+      "p_value": 3.25e-17,
+      "n_value": [
+        111,
+        429
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "4.7",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "4.7 Motor Accident Injuries Act 2017",
+      "n_citing": 111,
+      "variable": "Legal Procedural Complexity",
+      "effect": 0.374,
+      "p_value": 4.88e-12,
+      "n_value": [
+        111,
+        429
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "4.7",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "4.7 Motor Accident Injuries Act 2017",
+      "n_citing": 111,
+      "variable": "Psychological Injury Emphasis",
+      "effect": 0.262,
+      "p_value": 5.5e-06,
+      "n_value": [
+        111,
+        429
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "4.7",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "4.7 Motor Accident Injuries Act 2017",
+      "n_citing": 111,
+      "variable": "Liability Clarity",
+      "effect": 0.013,
+      "p_value": 0.66,
+      "n_value": [
+        111,
+        429
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "4.7",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "4.7 Motor Accident Injuries Act 2017",
+      "n_citing": 111,
+      "variable": "Causation Complexity",
+      "effect": 0.344,
+      "p_value": 6.67e-10,
+      "n_value": [
+        111,
+        429
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "4.7",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "4.7 Motor Accident Injuries Act 2017",
+      "n_citing": 111,
+      "variable": "Pre-existing Condition Salience",
+      "effect": 0.129,
+      "p_value": 0.0254,
+      "n_value": [
+        111,
+        429
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "3.40",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "3.40 Motor Accident Injuries Act 2017",
+      "n_citing": 75,
+      "variable": "Lump Sum",
+      "effect": 0.136,
+      "p_value": 0.0594,
+      "n_value": [
+        75,
+        465
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "3.40",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "3.40 Motor Accident Injuries Act 2017",
+      "n_citing": 75,
+      "variable": "WPI %",
+      "effect": -0.092,
+      "p_value": 0.316,
+      "n_value": [
+        48,
+        239
+      ],
+      "blank_rate_citing": 0.36,
+      "blank_rate_other": 0.486,
+      "gate_effect": -0.126,
+      "gate_p": 0.0464,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "3.40",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "3.40 Motor Accident Injuries Act 2017",
+      "n_citing": 75,
+      "variable": "Non-Economic Loss",
+      "effect": -0.002,
+      "p_value": 0.977,
+      "n_value": [
+        62,
+        395
+      ],
+      "blank_rate_citing": 0.173,
+      "blank_rate_other": 0.151,
+      "gate_effect": 0.023,
+      "gate_p": 0.606,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "3.40",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "3.40 Motor Accident Injuries Act 2017",
+      "n_citing": 75,
+      "variable": "Future Economic Loss",
+      "effect": 0.095,
+      "p_value": 0.213,
+      "n_value": [
+        69,
+        344
+      ],
+      "blank_rate_citing": 0.08,
+      "blank_rate_other": 0.26,
+      "gate_effect": -0.18,
+      "gate_p": 0.000353,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": true
+    },
+    {
+      "section": "3.40",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "3.40 Motor Accident Injuries Act 2017",
+      "n_citing": 75,
+      "variable": "Claimant Weekly Income",
+      "effect": -0.086,
+      "p_value": 0.306,
+      "n_value": [
+        58,
+        256
+      ],
+      "blank_rate_citing": 0.227,
+      "blank_rate_other": 0.449,
+      "gate_effect": -0.223,
+      "gate_p": 0.000234,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": true
+    },
+    {
+      "section": "3.40",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "3.40 Motor Accident Injuries Act 2017",
+      "n_citing": 75,
+      "variable": "Claimant Age",
+      "effect": -0.221,
+      "p_value": 0.00266,
+      "n_value": [
+        72,
+        424
+      ],
+      "blank_rate_citing": 0.04,
+      "blank_rate_other": 0.088,
+      "gate_effect": -0.048,
+      "gate_p": 0.252,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "3.40",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "3.40 Motor Accident Injuries Act 2017",
+      "n_citing": 75,
+      "variable": "Claimant Gender",
+      "effect": -0.074,
+      "p_value": 0.229,
+      "n_value": [
+        75,
+        465
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "3.40",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "3.40 Motor Accident Injuries Act 2017",
+      "n_citing": 75,
+      "variable": "Nature",
+      "effect": 0.045,
+      "p_value": 0.451,
+      "n_value": [
+        75,
+        465
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "3.40",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "3.40 Motor Accident Injuries Act 2017",
+      "n_citing": 75,
+      "variable": "Injury Burden Intensity",
+      "effect": -0.038,
+      "p_value": 0.55,
+      "n_value": [
+        75,
+        465
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "3.40",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "3.40 Motor Accident Injuries Act 2017",
+      "n_citing": 75,
+      "variable": "Treatment Burden",
+      "effect": -0.065,
+      "p_value": 0.325,
+      "n_value": [
+        75,
+        465
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "3.40",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "3.40 Motor Accident Injuries Act 2017",
+      "n_citing": 75,
+      "variable": "Work Impact Severity",
+      "effect": 0.24,
+      "p_value": 0.000435,
+      "n_value": [
+        75,
+        465
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "3.40",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "3.40 Motor Accident Injuries Act 2017",
+      "n_citing": 75,
+      "variable": "Legal Procedural Complexity",
+      "effect": 0.162,
+      "p_value": 0.0105,
+      "n_value": [
+        75,
+        465
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "3.40",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "3.40 Motor Accident Injuries Act 2017",
+      "n_citing": 75,
+      "variable": "Psychological Injury Emphasis",
+      "effect": 0.126,
+      "p_value": 0.0612,
+      "n_value": [
+        75,
+        465
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "3.40",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "3.40 Motor Accident Injuries Act 2017",
+      "n_citing": 75,
+      "variable": "Liability Clarity",
+      "effect": -0.058,
+      "p_value": 0.0863,
+      "n_value": [
+        75,
+        465
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "3.40",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "3.40 Motor Accident Injuries Act 2017",
+      "n_citing": 75,
+      "variable": "Causation Complexity",
+      "effect": 0.084,
+      "p_value": 0.196,
+      "n_value": [
+        75,
+        465
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "3.40",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "3.40 Motor Accident Injuries Act 2017",
+      "n_citing": 75,
+      "variable": "Pre-existing Condition Salience",
+      "effect": 0.025,
+      "p_value": 0.707,
+      "n_value": [
+        75,
+        465
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "4.5",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "4.5 Motor Accident Injuries Act 2017",
+      "n_citing": 70,
+      "variable": "Lump Sum",
+      "effect": 0.342,
+      "p_value": 3.85e-06,
+      "n_value": [
+        70,
+        470
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "4.5",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "4.5 Motor Accident Injuries Act 2017",
+      "n_citing": 70,
+      "variable": "WPI %",
+      "effect": -0.005,
+      "p_value": 0.956,
+      "n_value": [
+        41,
+        246
+      ],
+      "blank_rate_citing": 0.414,
+      "blank_rate_other": 0.477,
+      "gate_effect": -0.062,
+      "gate_p": 0.37,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "4.5",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "4.5 Motor Accident Injuries Act 2017",
+      "n_citing": 70,
+      "variable": "Non-Economic Loss",
+      "effect": 0.199,
+      "p_value": 0.00878,
+      "n_value": [
+        61,
+        396
+      ],
+      "blank_rate_citing": 0.129,
+      "blank_rate_other": 0.157,
+      "gate_effect": -0.029,
+      "gate_p": 0.599,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "4.5",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "4.5 Motor Accident Injuries Act 2017",
+      "n_citing": 70,
+      "variable": "Future Economic Loss",
+      "effect": 0.379,
+      "p_value": 1.91e-06,
+      "n_value": [
+        62,
+        351
+      ],
+      "blank_rate_citing": 0.114,
+      "blank_rate_other": 0.253,
+      "gate_effect": -0.139,
+      "gate_p": 0.00985,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": true
+    },
+    {
+      "section": "4.5",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "4.5 Motor Accident Injuries Act 2017",
+      "n_citing": 70,
+      "variable": "Claimant Weekly Income",
+      "effect": -0.043,
+      "p_value": 0.619,
+      "n_value": [
+        55,
+        259
+      ],
+      "blank_rate_citing": 0.214,
+      "blank_rate_other": 0.449,
+      "gate_effect": -0.235,
+      "gate_p": 0.000153,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": true
+    },
+    {
+      "section": "4.5",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "4.5 Motor Accident Injuries Act 2017",
+      "n_citing": 70,
+      "variable": "Claimant Age",
+      "effect": -0.202,
+      "p_value": 0.0102,
+      "n_value": [
+        62,
+        434
+      ],
+      "blank_rate_citing": 0.114,
+      "blank_rate_other": 0.077,
+      "gate_effect": 0.038,
+      "gate_p": 0.345,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "4.5",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "4.5 Motor Accident Injuries Act 2017",
+      "n_citing": 70,
+      "variable": "Claimant Gender",
+      "effect": -0.017,
+      "p_value": 0.793,
+      "n_value": [
+        70,
+        470
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "4.5",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "4.5 Motor Accident Injuries Act 2017",
+      "n_citing": 70,
+      "variable": "Nature",
+      "effect": 0.207,
+      "p_value": 0.000692,
+      "n_value": [
+        70,
+        470
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "4.5",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "4.5 Motor Accident Injuries Act 2017",
+      "n_citing": 70,
+      "variable": "Injury Burden Intensity",
+      "effect": 0.155,
+      "p_value": 0.0176,
+      "n_value": [
+        70,
+        470
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "4.5",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "4.5 Motor Accident Injuries Act 2017",
+      "n_citing": 70,
+      "variable": "Treatment Burden",
+      "effect": 0.133,
+      "p_value": 0.0502,
+      "n_value": [
+        70,
+        470
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "4.5",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "4.5 Motor Accident Injuries Act 2017",
+      "n_citing": 70,
+      "variable": "Work Impact Severity",
+      "effect": 0.422,
+      "p_value": 2.01e-09,
+      "n_value": [
+        70,
+        470
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "4.5",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "4.5 Motor Accident Injuries Act 2017",
+      "n_citing": 70,
+      "variable": "Legal Procedural Complexity",
+      "effect": 0.229,
+      "p_value": 0.000425,
+      "n_value": [
+        70,
+        470
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "4.5",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "4.5 Motor Accident Injuries Act 2017",
+      "n_citing": 70,
+      "variable": "Psychological Injury Emphasis",
+      "effect": 0.328,
+      "p_value": 2.23e-06,
+      "n_value": [
+        70,
+        470
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "4.5",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "4.5 Motor Accident Injuries Act 2017",
+      "n_citing": 70,
+      "variable": "Liability Clarity",
+      "effect": 0.045,
+      "p_value": 0.201,
+      "n_value": [
+        70,
+        470
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "4.5",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "4.5 Motor Accident Injuries Act 2017",
+      "n_citing": 70,
+      "variable": "Causation Complexity",
+      "effect": 0.178,
+      "p_value": 0.00806,
+      "n_value": [
+        70,
+        470
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "4.5",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "4.5 Motor Accident Injuries Act 2017",
+      "n_citing": 70,
+      "variable": "Pre-existing Condition Salience",
+      "effect": 0.115,
+      "p_value": 0.0978,
+      "n_value": [
+        70,
+        470
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "7.37",
+      "act": "Motor Accident Guidelines",
+      "provision": "7.37 Motor Accident Guidelines",
+      "n_citing": 67,
+      "variable": "Lump Sum",
+      "effect": -0.155,
+      "p_value": 0.0405,
+      "n_value": [
+        67,
+        473
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "7.37",
+      "act": "Motor Accident Guidelines",
+      "provision": "7.37 Motor Accident Guidelines",
+      "n_citing": 67,
+      "variable": "WPI %",
+      "effect": -0.001,
+      "p_value": 0.993,
+      "n_value": [
+        42,
+        245
+      ],
+      "blank_rate_citing": 0.373,
+      "blank_rate_other": 0.482,
+      "gate_effect": -0.109,
+      "gate_p": 0.116,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "7.37",
+      "act": "Motor Accident Guidelines",
+      "provision": "7.37 Motor Accident Guidelines",
+      "n_citing": 67,
+      "variable": "Non-Economic Loss",
+      "effect": -0.194,
+      "p_value": 0.0125,
+      "n_value": [
+        58,
+        399
+      ],
+      "blank_rate_citing": 0.134,
+      "blank_rate_other": 0.156,
+      "gate_effect": -0.022,
+      "gate_p": 0.721,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "7.37",
+      "act": "Motor Accident Guidelines",
+      "provision": "7.37 Motor Accident Guidelines",
+      "n_citing": 67,
+      "variable": "Future Economic Loss",
+      "effect": -0.24,
+      "p_value": 0.00513,
+      "n_value": [
+        52,
+        361
+      ],
+      "blank_rate_citing": 0.224,
+      "blank_rate_other": 0.237,
+      "gate_effect": -0.013,
+      "gate_p": 0.879,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "7.37",
+      "act": "Motor Accident Guidelines",
+      "provision": "7.37 Motor Accident Guidelines",
+      "n_citing": 67,
+      "variable": "Claimant Weekly Income",
+      "effect": -0.048,
+      "p_value": 0.622,
+      "n_value": [
+        41,
+        273
+      ],
+      "blank_rate_citing": 0.388,
+      "blank_rate_other": 0.423,
+      "gate_effect": -0.035,
+      "gate_p": 0.692,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "7.37",
+      "act": "Motor Accident Guidelines",
+      "provision": "7.37 Motor Accident Guidelines",
+      "n_citing": 67,
+      "variable": "Claimant Age",
+      "effect": 0.111,
+      "p_value": 0.16,
+      "n_value": [
+        61,
+        435
+      ],
+      "blank_rate_citing": 0.09,
+      "blank_rate_other": 0.08,
+      "gate_effect": 0.009,
+      "gate_p": 0.811,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "7.37",
+      "act": "Motor Accident Guidelines",
+      "provision": "7.37 Motor Accident Guidelines",
+      "n_citing": 67,
+      "variable": "Claimant Gender",
+      "effect": -0.074,
+      "p_value": 0.254,
+      "n_value": [
+        67,
+        473
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "7.37",
+      "act": "Motor Accident Guidelines",
+      "provision": "7.37 Motor Accident Guidelines",
+      "n_citing": 67,
+      "variable": "Nature",
+      "effect": -0.397,
+      "p_value": 1.71e-10,
+      "n_value": [
+        67,
+        473
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "7.37",
+      "act": "Motor Accident Guidelines",
+      "provision": "7.37 Motor Accident Guidelines",
+      "n_citing": 67,
+      "variable": "Injury Burden Intensity",
+      "effect": -0.15,
+      "p_value": 0.0249,
+      "n_value": [
+        67,
+        473
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "7.37",
+      "act": "Motor Accident Guidelines",
+      "provision": "7.37 Motor Accident Guidelines",
+      "n_citing": 67,
+      "variable": "Treatment Burden",
+      "effect": -0.003,
+      "p_value": 0.968,
+      "n_value": [
+        67,
+        473
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "7.37",
+      "act": "Motor Accident Guidelines",
+      "provision": "7.37 Motor Accident Guidelines",
+      "n_citing": 67,
+      "variable": "Work Impact Severity",
+      "effect": -0.165,
+      "p_value": 0.0212,
+      "n_value": [
+        67,
+        473
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "7.37",
+      "act": "Motor Accident Guidelines",
+      "provision": "7.37 Motor Accident Guidelines",
+      "n_citing": 67,
+      "variable": "Legal Procedural Complexity",
+      "effect": -0.393,
+      "p_value": 3.18e-09,
+      "n_value": [
+        67,
+        473
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "7.37",
+      "act": "Motor Accident Guidelines",
+      "provision": "7.37 Motor Accident Guidelines",
+      "n_citing": 67,
+      "variable": "Psychological Injury Emphasis",
+      "effect": -0.126,
+      "p_value": 0.0742,
+      "n_value": [
+        67,
+        473
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "7.37",
+      "act": "Motor Accident Guidelines",
+      "provision": "7.37 Motor Accident Guidelines",
+      "n_citing": 67,
+      "variable": "Liability Clarity",
+      "effect": 0.041,
+      "p_value": 0.251,
+      "n_value": [
+        67,
+        473
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "7.37",
+      "act": "Motor Accident Guidelines",
+      "provision": "7.37 Motor Accident Guidelines",
+      "n_citing": 67,
+      "variable": "Causation Complexity",
+      "effect": -0.194,
+      "p_value": 0.00445,
+      "n_value": [
+        67,
+        473
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "7.37",
+      "act": "Motor Accident Guidelines",
+      "provision": "7.37 Motor Accident Guidelines",
+      "n_citing": 67,
+      "variable": "Pre-existing Condition Salience",
+      "effect": -0.082,
+      "p_value": 0.242,
+      "n_value": [
+        67,
+        473
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "1.4",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "1.4 Motor Accident Injuries Act 2017",
+      "n_citing": 66,
+      "variable": "Lump Sum",
+      "effect": 0.419,
+      "p_value": 3.34e-08,
+      "n_value": [
+        66,
+        474
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "1.4",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "1.4 Motor Accident Injuries Act 2017",
+      "n_citing": 66,
+      "variable": "WPI %",
+      "effect": 0.519,
+      "p_value": 1.32e-07,
+      "n_value": [
+        40,
+        247
+      ],
+      "blank_rate_citing": 0.394,
+      "blank_rate_other": 0.479,
+      "gate_effect": -0.085,
+      "gate_p": 0.236,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "1.4",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "1.4 Motor Accident Injuries Act 2017",
+      "n_citing": 66,
+      "variable": "Non-Economic Loss",
+      "effect": 0.54,
+      "p_value": 1.94e-13,
+      "n_value": [
+        66,
+        391
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.175,
+      "gate_effect": -0.175,
+      "gate_p": 1.24e-05,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": true
+    },
+    {
+      "section": "1.4",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "1.4 Motor Accident Injuries Act 2017",
+      "n_citing": 66,
+      "variable": "Future Economic Loss",
+      "effect": 0.449,
+      "p_value": 3.9e-06,
+      "n_value": [
+        39,
+        374
+      ],
+      "blank_rate_citing": 0.409,
+      "blank_rate_other": 0.211,
+      "gate_effect": 0.198,
+      "gate_p": 0.000944,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": true
+    },
+    {
+      "section": "1.4",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "1.4 Motor Accident Injuries Act 2017",
+      "n_citing": 66,
+      "variable": "Claimant Weekly Income",
+      "effect": 0.035,
+      "p_value": 0.734,
+      "n_value": [
+        36,
+        278
+      ],
+      "blank_rate_citing": 0.455,
+      "blank_rate_other": 0.414,
+      "gate_effect": 0.041,
+      "gate_p": 0.595,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "1.4",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "1.4 Motor Accident Injuries Act 2017",
+      "n_citing": 66,
+      "variable": "Claimant Age",
+      "effect": 0.091,
+      "p_value": 0.238,
+      "n_value": [
+        65,
+        431
+      ],
+      "blank_rate_citing": 0.015,
+      "blank_rate_other": 0.091,
+      "gate_effect": -0.076,
+      "gate_p": 0.0305,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "1.4",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "1.4 Motor Accident Injuries Act 2017",
+      "n_citing": 66,
+      "variable": "Claimant Gender",
+      "effect": -0.134,
+      "p_value": 0.0396,
+      "n_value": [
+        66,
+        474
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "1.4",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "1.4 Motor Accident Injuries Act 2017",
+      "n_citing": 66,
+      "variable": "Nature",
+      "effect": 0.173,
+      "p_value": 0.00576,
+      "n_value": [
+        66,
+        474
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "1.4",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "1.4 Motor Accident Injuries Act 2017",
+      "n_citing": 66,
+      "variable": "Injury Burden Intensity",
+      "effect": 0.388,
+      "p_value": 7.77e-09,
+      "n_value": [
+        66,
+        474
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "1.4",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "1.4 Motor Accident Injuries Act 2017",
+      "n_citing": 66,
+      "variable": "Treatment Burden",
+      "effect": 0.364,
+      "p_value": 1.73e-07,
+      "n_value": [
+        66,
+        474
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "1.4",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "1.4 Motor Accident Injuries Act 2017",
+      "n_citing": 66,
+      "variable": "Work Impact Severity",
+      "effect": 0.012,
+      "p_value": 0.873,
+      "n_value": [
+        66,
+        474
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "1.4",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "1.4 Motor Accident Injuries Act 2017",
+      "n_citing": 66,
+      "variable": "Legal Procedural Complexity",
+      "effect": 0.143,
+      "p_value": 0.032,
+      "n_value": [
+        66,
+        474
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "1.4",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "1.4 Motor Accident Injuries Act 2017",
+      "n_citing": 66,
+      "variable": "Psychological Injury Emphasis",
+      "effect": 0.235,
+      "p_value": 0.000944,
+      "n_value": [
+        66,
+        474
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "1.4",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "1.4 Motor Accident Injuries Act 2017",
+      "n_citing": 66,
+      "variable": "Liability Clarity",
+      "effect": -0.027,
+      "p_value": 0.459,
+      "n_value": [
+        66,
+        474
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "1.4",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "1.4 Motor Accident Injuries Act 2017",
+      "n_citing": 66,
+      "variable": "Causation Complexity",
+      "effect": 0.174,
+      "p_value": 0.0114,
+      "n_value": [
+        66,
+        474
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "1.4",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "1.4 Motor Accident Injuries Act 2017",
+      "n_citing": 66,
+      "variable": "Pre-existing Condition Salience",
+      "effect": 0.134,
+      "p_value": 0.0586,
+      "n_value": [
+        66,
+        474
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "7.38",
+      "act": "Motor Accident Guidelines 2017",
+      "provision": "7.38 Motor Accident Guidelines 2017",
+      "n_citing": 64,
+      "variable": "Lump Sum",
+      "effect": -0.196,
+      "p_value": 0.011,
+      "n_value": [
+        64,
+        476
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "7.38",
+      "act": "Motor Accident Guidelines 2017",
+      "provision": "7.38 Motor Accident Guidelines 2017",
+      "n_citing": 64,
+      "variable": "WPI %",
+      "effect": 0.126,
+      "p_value": 0.246,
+      "n_value": [
+        32,
+        255
+      ],
+      "blank_rate_citing": 0.5,
+      "blank_rate_other": 0.464,
+      "gate_effect": 0.036,
+      "gate_p": 0.597,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "7.38",
+      "act": "Motor Accident Guidelines 2017",
+      "provision": "7.38 Motor Accident Guidelines 2017",
+      "n_citing": 64,
+      "variable": "Non-Economic Loss",
+      "effect": -0.112,
+      "p_value": 0.153,
+      "n_value": [
+        57,
+        400
+      ],
+      "blank_rate_citing": 0.109,
+      "blank_rate_other": 0.16,
+      "gate_effect": -0.05,
+      "gate_p": 0.359,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "7.38",
+      "act": "Motor Accident Guidelines 2017",
+      "provision": "7.38 Motor Accident Guidelines 2017",
+      "n_citing": 64,
+      "variable": "Future Economic Loss",
+      "effect": -0.12,
+      "p_value": 0.252,
+      "n_value": [
+        33,
+        380
+      ],
+      "blank_rate_citing": 0.484,
+      "blank_rate_other": 0.202,
+      "gate_effect": 0.283,
+      "gate_p": 2.94e-06,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": true
+    },
+    {
+      "section": "7.38",
+      "act": "Motor Accident Guidelines 2017",
+      "provision": "7.38 Motor Accident Guidelines 2017",
+      "n_citing": 64,
+      "variable": "Claimant Weekly Income",
+      "effect": -0.08,
+      "p_value": 0.59,
+      "n_value": [
+        16,
+        298
+      ],
+      "blank_rate_citing": 0.75,
+      "blank_rate_other": 0.374,
+      "gate_effect": 0.376,
+      "gate_p": 1.26e-08,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": true
+    },
+    {
+      "section": "7.38",
+      "act": "Motor Accident Guidelines 2017",
+      "provision": "7.38 Motor Accident Guidelines 2017",
+      "n_citing": 64,
+      "variable": "Claimant Age",
+      "effect": 0.25,
+      "p_value": 0.00156,
+      "n_value": [
+        61,
+        435
+      ],
+      "blank_rate_citing": 0.047,
+      "blank_rate_other": 0.086,
+      "gate_effect": -0.039,
+      "gate_p": 0.462,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "7.38",
+      "act": "Motor Accident Guidelines 2017",
+      "provision": "7.38 Motor Accident Guidelines 2017",
+      "n_citing": 64,
+      "variable": "Claimant Gender",
+      "effect": -0.012,
+      "p_value": 0.857,
+      "n_value": [
+        64,
+        476
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "7.38",
+      "act": "Motor Accident Guidelines 2017",
+      "provision": "7.38 Motor Accident Guidelines 2017",
+      "n_citing": 64,
+      "variable": "Nature",
+      "effect": -0.395,
+      "p_value": 4.94e-10,
+      "n_value": [
+        64,
+        476
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "7.38",
+      "act": "Motor Accident Guidelines 2017",
+      "provision": "7.38 Motor Accident Guidelines 2017",
+      "n_citing": 64,
+      "variable": "Injury Burden Intensity",
+      "effect": -0.084,
+      "p_value": 0.22,
+      "n_value": [
+        64,
+        476
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "7.38",
+      "act": "Motor Accident Guidelines 2017",
+      "provision": "7.38 Motor Accident Guidelines 2017",
+      "n_citing": 64,
+      "variable": "Treatment Burden",
+      "effect": -0.09,
+      "p_value": 0.202,
+      "n_value": [
+        64,
+        476
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "7.38",
+      "act": "Motor Accident Guidelines 2017",
+      "provision": "7.38 Motor Accident Guidelines 2017",
+      "n_citing": 64,
+      "variable": "Work Impact Severity",
+      "effect": -0.262,
+      "p_value": 0.000334,
+      "n_value": [
+        64,
+        476
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "7.38",
+      "act": "Motor Accident Guidelines 2017",
+      "provision": "7.38 Motor Accident Guidelines 2017",
+      "n_citing": 64,
+      "variable": "Legal Procedural Complexity",
+      "effect": -0.439,
+      "p_value": 8.93e-11,
+      "n_value": [
+        64,
+        476
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "7.38",
+      "act": "Motor Accident Guidelines 2017",
+      "provision": "7.38 Motor Accident Guidelines 2017",
+      "n_citing": 64,
+      "variable": "Psychological Injury Emphasis",
+      "effect": -0.355,
+      "p_value": 8.78e-07,
+      "n_value": [
+        64,
+        476
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "7.38",
+      "act": "Motor Accident Guidelines 2017",
+      "provision": "7.38 Motor Accident Guidelines 2017",
+      "n_citing": 64,
+      "variable": "Liability Clarity",
+      "effect": 0.057,
+      "p_value": 0.116,
+      "n_value": [
+        64,
+        476
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "7.38",
+      "act": "Motor Accident Guidelines 2017",
+      "provision": "7.38 Motor Accident Guidelines 2017",
+      "n_citing": 64,
+      "variable": "Causation Complexity",
+      "effect": -0.365,
+      "p_value": 1.61e-07,
+      "n_value": [
+        64,
+        476
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "7.38",
+      "act": "Motor Accident Guidelines 2017",
+      "provision": "7.38 Motor Accident Guidelines 2017",
+      "n_citing": 64,
+      "variable": "Pre-existing Condition Salience",
+      "effect": -0.19,
+      "p_value": 0.00812,
+      "n_value": [
+        64,
+        476
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "14D",
+      "act": "Personal Injury Commission Regulation 2020",
+      "provision": "14D Personal Injury Commission Regulation 2020",
+      "n_citing": 62,
+      "variable": "Lump Sum",
+      "effect": -0.233,
+      "p_value": 0.00283,
+      "n_value": [
+        62,
+        478
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "14D",
+      "act": "Personal Injury Commission Regulation 2020",
+      "provision": "14D Personal Injury Commission Regulation 2020",
+      "n_citing": 62,
+      "variable": "WPI %",
+      "effect": -0.034,
+      "p_value": 0.763,
+      "n_value": [
+        30,
+        257
+      ],
+      "blank_rate_citing": 0.516,
+      "blank_rate_other": 0.462,
+      "gate_effect": 0.054,
+      "gate_p": 0.499,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "14D",
+      "act": "Personal Injury Commission Regulation 2020",
+      "provision": "14D Personal Injury Commission Regulation 2020",
+      "n_citing": 62,
+      "variable": "Non-Economic Loss",
+      "effect": -0.186,
+      "p_value": 0.0182,
+      "n_value": [
+        56,
+        401
+      ],
+      "blank_rate_citing": 0.097,
+      "blank_rate_other": 0.161,
+      "gate_effect": -0.064,
+      "gate_p": 0.26,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "14D",
+      "act": "Personal Injury Commission Regulation 2020",
+      "provision": "14D Personal Injury Commission Regulation 2020",
+      "n_citing": 62,
+      "variable": "Future Economic Loss",
+      "effect": -0.209,
+      "p_value": 0.0434,
+      "n_value": [
+        34,
+        379
+      ],
+      "blank_rate_citing": 0.452,
+      "blank_rate_other": 0.207,
+      "gate_effect": 0.244,
+      "gate_p": 8.86e-05,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": true
+    },
+    {
+      "section": "14D",
+      "act": "Personal Injury Commission Regulation 2020",
+      "provision": "14D Personal Injury Commission Regulation 2020",
+      "n_citing": 62,
+      "variable": "Claimant Weekly Income",
+      "effect": 0.012,
+      "p_value": 0.916,
+      "n_value": [
+        27,
+        287
+      ],
+      "blank_rate_citing": 0.565,
+      "blank_rate_other": 0.4,
+      "gate_effect": 0.165,
+      "gate_p": 0.0194,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "14D",
+      "act": "Personal Injury Commission Regulation 2020",
+      "provision": "14D Personal Injury Commission Regulation 2020",
+      "n_citing": 62,
+      "variable": "Claimant Age",
+      "effect": 0.234,
+      "p_value": 0.00288,
+      "n_value": [
+        62,
+        434
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.092,
+      "gate_effect": -0.092,
+      "gate_p": 0.00571,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "14D",
+      "act": "Personal Injury Commission Regulation 2020",
+      "provision": "14D Personal Injury Commission Regulation 2020",
+      "n_citing": 62,
+      "variable": "Claimant Gender",
+      "effect": -0.047,
+      "p_value": 0.487,
+      "n_value": [
+        62,
+        478
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "14D",
+      "act": "Personal Injury Commission Regulation 2020",
+      "provision": "14D Personal Injury Commission Regulation 2020",
+      "n_citing": 62,
+      "variable": "Nature",
+      "effect": -0.375,
+      "p_value": 5.64e-09,
+      "n_value": [
+        62,
+        478
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "14D",
+      "act": "Personal Injury Commission Regulation 2020",
+      "provision": "14D Personal Injury Commission Regulation 2020",
+      "n_citing": 62,
+      "variable": "Injury Burden Intensity",
+      "effect": -0.06,
+      "p_value": 0.388,
+      "n_value": [
+        62,
+        478
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "14D",
+      "act": "Personal Injury Commission Regulation 2020",
+      "provision": "14D Personal Injury Commission Regulation 2020",
+      "n_citing": 62,
+      "variable": "Treatment Burden",
+      "effect": -0.016,
+      "p_value": 0.819,
+      "n_value": [
+        62,
+        478
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "14D",
+      "act": "Personal Injury Commission Regulation 2020",
+      "provision": "14D Personal Injury Commission Regulation 2020",
+      "n_citing": 62,
+      "variable": "Work Impact Severity",
+      "effect": -0.301,
+      "p_value": 4.76e-05,
+      "n_value": [
+        62,
+        478
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "14D",
+      "act": "Personal Injury Commission Regulation 2020",
+      "provision": "14D Personal Injury Commission Regulation 2020",
+      "n_citing": 62,
+      "variable": "Legal Procedural Complexity",
+      "effect": -0.369,
+      "p_value": 7.53e-08,
+      "n_value": [
+        62,
+        478
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "14D",
+      "act": "Personal Injury Commission Regulation 2020",
+      "provision": "14D Personal Injury Commission Regulation 2020",
+      "n_citing": 62,
+      "variable": "Psychological Injury Emphasis",
+      "effect": -0.197,
+      "p_value": 0.00703,
+      "n_value": [
+        62,
+        478
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "14D",
+      "act": "Personal Injury Commission Regulation 2020",
+      "provision": "14D Personal Injury Commission Regulation 2020",
+      "n_citing": 62,
+      "variable": "Liability Clarity",
+      "effect": 0.056,
+      "p_value": 0.13,
+      "n_value": [
+        62,
+        478
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "14D",
+      "act": "Personal Injury Commission Regulation 2020",
+      "provision": "14D Personal Injury Commission Regulation 2020",
+      "n_citing": 62,
+      "variable": "Causation Complexity",
+      "effect": -0.279,
+      "p_value": 7.79e-05,
+      "n_value": [
+        62,
+        478
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "14D",
+      "act": "Personal Injury Commission Regulation 2020",
+      "provision": "14D Personal Injury Commission Regulation 2020",
+      "n_citing": 62,
+      "variable": "Pre-existing Condition Salience",
+      "effect": -0.007,
+      "p_value": 0.921,
+      "n_value": [
+        62,
+        478
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "95",
+      "act": "Personal Injury Commission Rules 2021",
+      "provision": "95 Personal Injury Commission Rules 2021",
+      "n_citing": 31,
+      "variable": "Lump Sum",
+      "effect": -0.107,
+      "p_value": 0.318,
+      "n_value": [
+        31,
+        509
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "95",
+      "act": "Personal Injury Commission Rules 2021",
+      "provision": "95 Personal Injury Commission Rules 2021",
+      "n_citing": 31,
+      "variable": "WPI %",
+      "effect": -0.162,
+      "p_value": 0.228,
+      "n_value": [
+        20,
+        267
+      ],
+      "blank_rate_citing": 0.355,
+      "blank_rate_other": 0.475,
+      "gate_effect": -0.121,
+      "gate_p": 0.201,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "95",
+      "act": "Personal Injury Commission Rules 2021",
+      "provision": "95 Personal Injury Commission Rules 2021",
+      "n_citing": 31,
+      "variable": "Non-Economic Loss",
+      "effect": -0.187,
+      "p_value": 0.0833,
+      "n_value": [
+        28,
+        429
+      ],
+      "blank_rate_citing": 0.097,
+      "blank_rate_other": 0.157,
+      "gate_effect": -0.06,
+      "gate_p": 0.452,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "95",
+      "act": "Personal Injury Commission Rules 2021",
+      "provision": "95 Personal Injury Commission Rules 2021",
+      "n_citing": 31,
+      "variable": "Future Economic Loss",
+      "effect": -0.319,
+      "p_value": 0.0056,
+      "n_value": [
+        27,
+        386
+      ],
+      "blank_rate_citing": 0.129,
+      "blank_rate_other": 0.242,
+      "gate_effect": -0.113,
+      "gate_p": 0.192,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "95",
+      "act": "Personal Injury Commission Rules 2021",
+      "provision": "95 Personal Injury Commission Rules 2021",
+      "n_citing": 31,
+      "variable": "Claimant Weekly Income",
+      "effect": -0.174,
+      "p_value": 0.229,
+      "n_value": [
+        17,
+        297
+      ],
+      "blank_rate_citing": 0.452,
+      "blank_rate_other": 0.417,
+      "gate_effect": 0.035,
+      "gate_p": 0.711,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "95",
+      "act": "Personal Injury Commission Rules 2021",
+      "provision": "95 Personal Injury Commission Rules 2021",
+      "n_citing": 31,
+      "variable": "Claimant Age",
+      "effect": 0.079,
+      "p_value": 0.473,
+      "n_value": [
+        29,
+        467
+      ],
+      "blank_rate_citing": 0.065,
+      "blank_rate_other": 0.083,
+      "gate_effect": -0.018,
+      "gate_p": 1.0,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "95",
+      "act": "Personal Injury Commission Rules 2021",
+      "provision": "95 Personal Injury Commission Rules 2021",
+      "n_citing": 31,
+      "variable": "Claimant Gender",
+      "effect": -0.181,
+      "p_value": 0.0495,
+      "n_value": [
+        31,
+        509
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "95",
+      "act": "Personal Injury Commission Rules 2021",
+      "provision": "95 Personal Injury Commission Rules 2021",
+      "n_citing": 31,
+      "variable": "Nature",
+      "effect": -0.369,
+      "p_value": 2.83e-05,
+      "n_value": [
+        31,
+        509
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "95",
+      "act": "Personal Injury Commission Rules 2021",
+      "provision": "95 Personal Injury Commission Rules 2021",
+      "n_citing": 31,
+      "variable": "Injury Burden Intensity",
+      "effect": -0.042,
+      "p_value": 0.661,
+      "n_value": [
+        31,
+        509
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "95",
+      "act": "Personal Injury Commission Rules 2021",
+      "provision": "95 Personal Injury Commission Rules 2021",
+      "n_citing": 31,
+      "variable": "Treatment Burden",
+      "effect": 0.046,
+      "p_value": 0.641,
+      "n_value": [
+        31,
+        509
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "95",
+      "act": "Personal Injury Commission Rules 2021",
+      "provision": "95 Personal Injury Commission Rules 2021",
+      "n_citing": 31,
+      "variable": "Work Impact Severity",
+      "effect": -0.175,
+      "p_value": 0.0843,
+      "n_value": [
+        31,
+        509
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "95",
+      "act": "Personal Injury Commission Rules 2021",
+      "provision": "95 Personal Injury Commission Rules 2021",
+      "n_citing": 31,
+      "variable": "Legal Procedural Complexity",
+      "effect": -0.255,
+      "p_value": 0.00669,
+      "n_value": [
+        31,
+        509
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "95",
+      "act": "Personal Injury Commission Rules 2021",
+      "provision": "95 Personal Injury Commission Rules 2021",
+      "n_citing": 31,
+      "variable": "Psychological Injury Emphasis",
+      "effect": -0.096,
+      "p_value": 0.337,
+      "n_value": [
+        31,
+        509
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "95",
+      "act": "Personal Injury Commission Rules 2021",
+      "provision": "95 Personal Injury Commission Rules 2021",
+      "n_citing": 31,
+      "variable": "Liability Clarity",
+      "effect": 0.053,
+      "p_value": 0.3,
+      "n_value": [
+        31,
+        509
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "95",
+      "act": "Personal Injury Commission Rules 2021",
+      "provision": "95 Personal Injury Commission Rules 2021",
+      "n_citing": 31,
+      "variable": "Causation Complexity",
+      "effect": -0.284,
+      "p_value": 0.00328,
+      "n_value": [
+        31,
+        509
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "95",
+      "act": "Personal Injury Commission Rules 2021",
+      "provision": "95 Personal Injury Commission Rules 2021",
+      "n_citing": 31,
+      "variable": "Pre-existing Condition Salience",
+      "effect": -0.144,
+      "p_value": 0.149,
+      "n_value": [
+        31,
+        509
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "4.13",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "4.13 Motor Accident Injuries Act 2017",
+      "n_citing": 30,
+      "variable": "Lump Sum",
+      "effect": 0.475,
+      "p_value": 1.2e-05,
+      "n_value": [
+        30,
+        510
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "4.13",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "4.13 Motor Accident Injuries Act 2017",
+      "n_citing": 30,
+      "variable": "WPI %",
+      "effect": 0.374,
+      "p_value": 0.00792,
+      "n_value": [
+        18,
+        269
+      ],
+      "blank_rate_citing": 0.4,
+      "blank_rate_other": 0.473,
+      "gate_effect": -0.073,
+      "gate_p": 0.459,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "4.13",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "4.13 Motor Accident Injuries Act 2017",
+      "n_citing": 30,
+      "variable": "Non-Economic Loss",
+      "effect": 0.625,
+      "p_value": 3.59e-09,
+      "n_value": [
+        29,
+        428
+      ],
+      "blank_rate_citing": 0.033,
+      "blank_rate_other": 0.161,
+      "gate_effect": -0.127,
+      "gate_p": 0.0672,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "4.13",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "4.13 Motor Accident Injuries Act 2017",
+      "n_citing": 30,
+      "variable": "Future Economic Loss",
+      "effect": 0.266,
+      "p_value": 0.0229,
+      "n_value": [
+        26,
+        387
+      ],
+      "blank_rate_citing": 0.133,
+      "blank_rate_other": 0.241,
+      "gate_effect": -0.108,
+      "gate_p": 0.266,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "4.13",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "4.13 Motor Accident Injuries Act 2017",
+      "n_citing": 30,
+      "variable": "Claimant Weekly Income",
+      "effect": 0.116,
+      "p_value": 0.374,
+      "n_value": [
+        21,
+        293
+      ],
+      "blank_rate_citing": 0.3,
+      "blank_rate_other": 0.425,
+      "gate_effect": -0.125,
+      "gate_p": 0.189,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "4.13",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "4.13 Motor Accident Injuries Act 2017",
+      "n_citing": 30,
+      "variable": "Claimant Age",
+      "effect": -0.054,
+      "p_value": 0.634,
+      "n_value": [
+        27,
+        469
+      ],
+      "blank_rate_citing": 0.1,
+      "blank_rate_other": 0.08,
+      "gate_effect": 0.02,
+      "gate_p": 0.727,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "4.13",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "4.13 Motor Accident Injuries Act 2017",
+      "n_citing": 30,
+      "variable": "Claimant Gender",
+      "effect": -0.167,
+      "p_value": 0.0745,
+      "n_value": [
+        30,
+        510
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "4.13",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "4.13 Motor Accident Injuries Act 2017",
+      "n_citing": 30,
+      "variable": "Nature",
+      "effect": 0.267,
+      "p_value": 0.00292,
+      "n_value": [
+        30,
+        510
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "4.13",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "4.13 Motor Accident Injuries Act 2017",
+      "n_citing": 30,
+      "variable": "Injury Burden Intensity",
+      "effect": 0.245,
+      "p_value": 0.0106,
+      "n_value": [
+        30,
+        510
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "4.13",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "4.13 Motor Accident Injuries Act 2017",
+      "n_citing": 30,
+      "variable": "Treatment Burden",
+      "effect": 0.304,
+      "p_value": 0.00229,
+      "n_value": [
+        30,
+        510
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "4.13",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "4.13 Motor Accident Injuries Act 2017",
+      "n_citing": 30,
+      "variable": "Work Impact Severity",
+      "effect": 0.217,
+      "p_value": 0.0351,
+      "n_value": [
+        30,
+        510
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "4.13",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "4.13 Motor Accident Injuries Act 2017",
+      "n_citing": 30,
+      "variable": "Legal Procedural Complexity",
+      "effect": 0.229,
+      "p_value": 0.0166,
+      "n_value": [
+        30,
+        510
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "4.13",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "4.13 Motor Accident Injuries Act 2017",
+      "n_citing": 30,
+      "variable": "Psychological Injury Emphasis",
+      "effect": 0.335,
+      "p_value": 0.00101,
+      "n_value": [
+        30,
+        510
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "4.13",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "4.13 Motor Accident Injuries Act 2017",
+      "n_citing": 30,
+      "variable": "Liability Clarity",
+      "effect": 0.086,
+      "p_value": 0.0939,
+      "n_value": [
+        30,
+        510
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "4.13",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "4.13 Motor Accident Injuries Act 2017",
+      "n_citing": 30,
+      "variable": "Causation Complexity",
+      "effect": 0.304,
+      "p_value": 0.00195,
+      "n_value": [
+        30,
+        510
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "4.13",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "4.13 Motor Accident Injuries Act 2017",
+      "n_citing": 30,
+      "variable": "Pre-existing Condition Salience",
+      "effect": 0.229,
+      "p_value": 0.024,
+      "n_value": [
+        30,
+        510
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "14A",
+      "act": "Personal Injury Commission Regulation 2020",
+      "provision": "14A Personal Injury Commission Regulation 2020",
+      "n_citing": 29,
+      "variable": "Lump Sum",
+      "effect": -0.202,
+      "p_value": 0.067,
+      "n_value": [
+        29,
+        511
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "14A",
+      "act": "Personal Injury Commission Regulation 2020",
+      "provision": "14A Personal Injury Commission Regulation 2020",
+      "n_citing": 29,
+      "variable": "WPI %",
+      "effect": 0.111,
+      "p_value": 0.498,
+      "n_value": [
+        13,
+        274
+      ],
+      "blank_rate_citing": 0.552,
+      "blank_rate_other": 0.464,
+      "gate_effect": 0.088,
+      "gate_p": 0.445,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "14A",
+      "act": "Personal Injury Commission Regulation 2020",
+      "provision": "14A Personal Injury Commission Regulation 2020",
+      "n_citing": 29,
+      "variable": "Non-Economic Loss",
+      "effect": -0.107,
+      "p_value": 0.348,
+      "n_value": [
+        25,
+        432
+      ],
+      "blank_rate_citing": 0.138,
+      "blank_rate_other": 0.155,
+      "gate_effect": -0.017,
+      "gate_p": 1.0,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "14A",
+      "act": "Personal Injury Commission Regulation 2020",
+      "provision": "14A Personal Injury Commission Regulation 2020",
+      "n_citing": 29,
+      "variable": "Future Economic Loss",
+      "effect": -0.2,
+      "p_value": 0.175,
+      "n_value": [
+        16,
+        397
+      ],
+      "blank_rate_citing": 0.448,
+      "blank_rate_other": 0.223,
+      "gate_effect": 0.225,
+      "gate_p": 0.0112,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "14A",
+      "act": "Personal Injury Commission Regulation 2020",
+      "provision": "14A Personal Injury Commission Regulation 2020",
+      "n_citing": 29,
+      "variable": "Claimant Weekly Income",
+      "effect": 0.1,
+      "p_value": 0.544,
+      "n_value": [
+        13,
+        301
+      ],
+      "blank_rate_citing": 0.552,
+      "blank_rate_other": 0.411,
+      "gate_effect": 0.141,
+      "gate_p": 0.175,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "14A",
+      "act": "Personal Injury Commission Regulation 2020",
+      "provision": "14A Personal Injury Commission Regulation 2020",
+      "n_citing": 29,
+      "variable": "Claimant Age",
+      "effect": 0.272,
+      "p_value": 0.0141,
+      "n_value": [
+        29,
+        467
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.086,
+      "gate_effect": -0.086,
+      "gate_p": 0.156,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "14A",
+      "act": "Personal Injury Commission Regulation 2020",
+      "provision": "14A Personal Injury Commission Regulation 2020",
+      "n_citing": 29,
+      "variable": "Claimant Gender",
+      "effect": -0.152,
+      "p_value": 0.11,
+      "n_value": [
+        29,
+        511
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "14A",
+      "act": "Personal Injury Commission Regulation 2020",
+      "provision": "14A Personal Injury Commission Regulation 2020",
+      "n_citing": 29,
+      "variable": "Nature",
+      "effect": -0.368,
+      "p_value": 5.32e-05,
+      "n_value": [
+        29,
+        511
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "14A",
+      "act": "Personal Injury Commission Regulation 2020",
+      "provision": "14A Personal Injury Commission Regulation 2020",
+      "n_citing": 29,
+      "variable": "Injury Burden Intensity",
+      "effect": 0.014,
+      "p_value": 0.89,
+      "n_value": [
+        29,
+        511
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "14A",
+      "act": "Personal Injury Commission Regulation 2020",
+      "provision": "14A Personal Injury Commission Regulation 2020",
+      "n_citing": 29,
+      "variable": "Treatment Burden",
+      "effect": 0.049,
+      "p_value": 0.627,
+      "n_value": [
+        29,
+        511
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "14A",
+      "act": "Personal Injury Commission Regulation 2020",
+      "provision": "14A Personal Injury Commission Regulation 2020",
+      "n_citing": 29,
+      "variable": "Work Impact Severity",
+      "effect": -0.237,
+      "p_value": 0.024,
+      "n_value": [
+        29,
+        511
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "14A",
+      "act": "Personal Injury Commission Regulation 2020",
+      "provision": "14A Personal Injury Commission Regulation 2020",
+      "n_citing": 29,
+      "variable": "Legal Procedural Complexity",
+      "effect": -0.411,
+      "p_value": 2.23e-05,
+      "n_value": [
+        29,
+        511
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "14A",
+      "act": "Personal Injury Commission Regulation 2020",
+      "provision": "14A Personal Injury Commission Regulation 2020",
+      "n_citing": 29,
+      "variable": "Psychological Injury Emphasis",
+      "effect": -0.194,
+      "p_value": 0.0602,
+      "n_value": [
+        29,
+        511
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "14A",
+      "act": "Personal Injury Commission Regulation 2020",
+      "provision": "14A Personal Injury Commission Regulation 2020",
+      "n_citing": 29,
+      "variable": "Liability Clarity",
+      "effect": 0.086,
+      "p_value": 0.0999,
+      "n_value": [
+        29,
+        511
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "14A",
+      "act": "Personal Injury Commission Regulation 2020",
+      "provision": "14A Personal Injury Commission Regulation 2020",
+      "n_citing": 29,
+      "variable": "Causation Complexity",
+      "effect": -0.299,
+      "p_value": 0.00273,
+      "n_value": [
+        29,
+        511
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "14A",
+      "act": "Personal Injury Commission Regulation 2020",
+      "provision": "14A Personal Injury Commission Regulation 2020",
+      "n_citing": 29,
+      "variable": "Pre-existing Condition Salience",
+      "effect": 0.014,
+      "p_value": 0.894,
+      "n_value": [
+        29,
+        511
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "94",
+      "act": "Motor Accidents Compensation Act 1999",
+      "provision": "94 Motor Accidents Compensation Act 1999",
+      "n_citing": 26,
+      "variable": "Lump Sum",
+      "effect": 0.035,
+      "p_value": 0.764,
+      "n_value": [
+        26,
+        514
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "94",
+      "act": "Motor Accidents Compensation Act 1999",
+      "provision": "94 Motor Accidents Compensation Act 1999",
+      "n_citing": 26,
+      "variable": "WPI %",
+      "effect": 0.051,
+      "p_value": 0.733,
+      "n_value": [
+        16,
+        271
+      ],
+      "blank_rate_citing": 0.385,
+      "blank_rate_other": 0.473,
+      "gate_effect": -0.088,
+      "gate_p": 0.425,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "94",
+      "act": "Motor Accidents Compensation Act 1999",
+      "provision": "94 Motor Accidents Compensation Act 1999",
+      "n_citing": 26,
+      "variable": "Non-Economic Loss",
+      "effect": -0.087,
+      "p_value": 0.48,
+      "n_value": [
+        21,
+        436
+      ],
+      "blank_rate_citing": 0.192,
+      "blank_rate_other": 0.152,
+      "gate_effect": 0.041,
+      "gate_p": 0.577,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "94",
+      "act": "Motor Accidents Compensation Act 1999",
+      "provision": "94 Motor Accidents Compensation Act 1999",
+      "n_citing": 26,
+      "variable": "Future Economic Loss",
+      "effect": -0.007,
+      "p_value": 0.953,
+      "n_value": [
+        24,
+        389
+      ],
+      "blank_rate_citing": 0.077,
+      "blank_rate_other": 0.243,
+      "gate_effect": -0.166,
+      "gate_p": 0.0573,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "94",
+      "act": "Motor Accidents Compensation Act 1999",
+      "provision": "94 Motor Accidents Compensation Act 1999",
+      "n_citing": 26,
+      "variable": "Claimant Weekly Income",
+      "effect": -0.041,
+      "p_value": 0.777,
+      "n_value": [
+        17,
+        297
+      ],
+      "blank_rate_citing": 0.346,
+      "blank_rate_other": 0.422,
+      "gate_effect": -0.076,
+      "gate_p": 0.543,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "94",
+      "act": "Motor Accidents Compensation Act 1999",
+      "provision": "94 Motor Accidents Compensation Act 1999",
+      "n_citing": 26,
+      "variable": "Claimant Age",
+      "effect": -0.106,
+      "p_value": 0.381,
+      "n_value": [
+        24,
+        472
+      ],
+      "blank_rate_citing": 0.077,
+      "blank_rate_other": 0.082,
+      "gate_effect": -0.005,
+      "gate_p": 1.0,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "94",
+      "act": "Motor Accidents Compensation Act 1999",
+      "provision": "94 Motor Accidents Compensation Act 1999",
+      "n_citing": 26,
+      "variable": "Claimant Gender",
+      "effect": 0.263,
+      "p_value": 0.00853,
+      "n_value": [
+        26,
+        514
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "94",
+      "act": "Motor Accidents Compensation Act 1999",
+      "provision": "94 Motor Accidents Compensation Act 1999",
+      "n_citing": 26,
+      "variable": "Nature",
+      "effect": 0.685,
+      "p_value": 9.06e-13,
+      "n_value": [
+        26,
+        514
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "94",
+      "act": "Motor Accidents Compensation Act 1999",
+      "provision": "94 Motor Accidents Compensation Act 1999",
+      "n_citing": 26,
+      "variable": "Injury Burden Intensity",
+      "effect": 0.01,
+      "p_value": 0.92,
+      "n_value": [
+        26,
+        514
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "94",
+      "act": "Motor Accidents Compensation Act 1999",
+      "provision": "94 Motor Accidents Compensation Act 1999",
+      "n_citing": 26,
+      "variable": "Treatment Burden",
+      "effect": -0.094,
+      "p_value": 0.377,
+      "n_value": [
+        26,
+        514
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "94",
+      "act": "Motor Accidents Compensation Act 1999",
+      "provision": "94 Motor Accidents Compensation Act 1999",
+      "n_citing": 26,
+      "variable": "Work Impact Severity",
+      "effect": 0.109,
+      "p_value": 0.324,
+      "n_value": [
+        26,
+        514
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "94",
+      "act": "Motor Accidents Compensation Act 1999",
+      "provision": "94 Motor Accidents Compensation Act 1999",
+      "n_citing": 26,
+      "variable": "Legal Procedural Complexity",
+      "effect": 0.669,
+      "p_value": 5.62e-11,
+      "n_value": [
+        26,
+        514
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "94",
+      "act": "Motor Accidents Compensation Act 1999",
+      "provision": "94 Motor Accidents Compensation Act 1999",
+      "n_citing": 26,
+      "variable": "Psychological Injury Emphasis",
+      "effect": 0.311,
+      "p_value": 0.00425,
+      "n_value": [
+        26,
+        514
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "94",
+      "act": "Motor Accidents Compensation Act 1999",
+      "provision": "94 Motor Accidents Compensation Act 1999",
+      "n_citing": 26,
+      "variable": "Liability Clarity",
+      "effect": 0.086,
+      "p_value": 0.12,
+      "n_value": [
+        26,
+        514
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "94",
+      "act": "Motor Accidents Compensation Act 1999",
+      "provision": "94 Motor Accidents Compensation Act 1999",
+      "n_citing": 26,
+      "variable": "Causation Complexity",
+      "effect": 0.657,
+      "p_value": 4.01e-10,
+      "n_value": [
+        26,
+        514
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "94",
+      "act": "Motor Accidents Compensation Act 1999",
+      "provision": "94 Motor Accidents Compensation Act 1999",
+      "n_citing": 26,
+      "variable": "Pre-existing Condition Salience",
+      "effect": 0.364,
+      "p_value": 0.000794,
+      "n_value": [
+        26,
+        514
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "4.11",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "4.11 Motor Accident Injuries Act 2017",
+      "n_citing": 26,
+      "variable": "Lump Sum",
+      "effect": 0.276,
+      "p_value": 0.0175,
+      "n_value": [
+        26,
+        514
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "4.11",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "4.11 Motor Accident Injuries Act 2017",
+      "n_citing": 26,
+      "variable": "WPI %",
+      "effect": 0.375,
+      "p_value": 0.0117,
+      "n_value": [
+        16,
+        271
+      ],
+      "blank_rate_citing": 0.385,
+      "blank_rate_other": 0.473,
+      "gate_effect": -0.088,
+      "gate_p": 0.425,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "4.11",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "4.11 Motor Accident Injuries Act 2017",
+      "n_citing": 26,
+      "variable": "Non-Economic Loss",
+      "effect": 0.323,
+      "p_value": 0.0045,
+      "n_value": [
+        25,
+        432
+      ],
+      "blank_rate_citing": 0.038,
+      "blank_rate_other": 0.16,
+      "gate_effect": -0.121,
+      "gate_p": 0.157,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "4.11",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "4.11 Motor Accident Injuries Act 2017",
+      "n_citing": 26,
+      "variable": "Future Economic Loss",
+      "effect": 0.155,
+      "p_value": 0.222,
+      "n_value": [
+        22,
+        391
+      ],
+      "blank_rate_citing": 0.154,
+      "blank_rate_other": 0.239,
+      "gate_effect": -0.085,
+      "gate_p": 0.476,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "4.11",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "4.11 Motor Accident Injuries Act 2017",
+      "n_citing": 26,
+      "variable": "Claimant Weekly Income",
+      "effect": 0.039,
+      "p_value": 0.78,
+      "n_value": [
+        18,
+        296
+      ],
+      "blank_rate_citing": 0.308,
+      "blank_rate_other": 0.424,
+      "gate_effect": -0.116,
+      "gate_p": 0.309,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "4.11",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "4.11 Motor Accident Injuries Act 2017",
+      "n_citing": 26,
+      "variable": "Claimant Age",
+      "effect": -0.074,
+      "p_value": 0.535,
+      "n_value": [
+        25,
+        471
+      ],
+      "blank_rate_citing": 0.038,
+      "blank_rate_other": 0.084,
+      "gate_effect": -0.045,
+      "gate_p": 0.713,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "4.11",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "4.11 Motor Accident Injuries Act 2017",
+      "n_citing": 26,
+      "variable": "Claimant Gender",
+      "effect": -0.182,
+      "p_value": 0.0694,
+      "n_value": [
+        26,
+        514
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "4.11",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "4.11 Motor Accident Injuries Act 2017",
+      "n_citing": 26,
+      "variable": "Nature",
+      "effect": 0.2,
+      "p_value": 0.0371,
+      "n_value": [
+        26,
+        514
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "4.11",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "4.11 Motor Accident Injuries Act 2017",
+      "n_citing": 26,
+      "variable": "Injury Burden Intensity",
+      "effect": 0.176,
+      "p_value": 0.0861,
+      "n_value": [
+        26,
+        514
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "4.11",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "4.11 Motor Accident Injuries Act 2017",
+      "n_citing": 26,
+      "variable": "Treatment Burden",
+      "effect": 0.265,
+      "p_value": 0.0129,
+      "n_value": [
+        26,
+        514
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "4.11",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "4.11 Motor Accident Injuries Act 2017",
+      "n_citing": 26,
+      "variable": "Work Impact Severity",
+      "effect": 0.277,
+      "p_value": 0.012,
+      "n_value": [
+        26,
+        514
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "4.11",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "4.11 Motor Accident Injuries Act 2017",
+      "n_citing": 26,
+      "variable": "Legal Procedural Complexity",
+      "effect": 0.202,
+      "p_value": 0.0479,
+      "n_value": [
+        26,
+        514
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "4.11",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "4.11 Motor Accident Injuries Act 2017",
+      "n_citing": 26,
+      "variable": "Psychological Injury Emphasis",
+      "effect": 0.347,
+      "p_value": 0.00143,
+      "n_value": [
+        26,
+        514
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "4.11",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "4.11 Motor Accident Injuries Act 2017",
+      "n_citing": 26,
+      "variable": "Liability Clarity",
+      "effect": 0.042,
+      "p_value": 0.443,
+      "n_value": [
+        26,
+        514
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "4.11",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "4.11 Motor Accident Injuries Act 2017",
+      "n_citing": 26,
+      "variable": "Causation Complexity",
+      "effect": 0.323,
+      "p_value": 0.00214,
+      "n_value": [
+        26,
+        514
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "4.11",
+      "act": "Motor Accident Injuries Act 2017",
+      "provision": "4.11 Motor Accident Injuries Act 2017",
+      "n_citing": 26,
+      "variable": "Pre-existing Condition Salience",
+      "effect": 0.278,
+      "p_value": 0.0104,
+      "n_value": [
+        26,
+        514
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "83",
+      "act": "Motor Accidents Compensation Act 1999",
+      "provision": "83 Motor Accidents Compensation Act 1999",
+      "n_citing": 24,
+      "variable": "Lump Sum",
+      "effect": -0.034,
+      "p_value": 0.781,
+      "n_value": [
+        24,
+        516
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "83",
+      "act": "Motor Accidents Compensation Act 1999",
+      "provision": "83 Motor Accidents Compensation Act 1999",
+      "n_citing": 24,
+      "variable": "WPI %",
+      "effect": -0.199,
+      "p_value": 0.182,
+      "n_value": [
+        16,
+        271
+      ],
+      "blank_rate_citing": 0.333,
+      "blank_rate_other": 0.475,
+      "gate_effect": -0.141,
+      "gate_p": 0.211,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "83",
+      "act": "Motor Accidents Compensation Act 1999",
+      "provision": "83 Motor Accidents Compensation Act 1999",
+      "n_citing": 24,
+      "variable": "Non-Economic Loss",
+      "effect": -0.158,
+      "p_value": 0.236,
+      "n_value": [
+        18,
+        439
+      ],
+      "blank_rate_citing": 0.25,
+      "blank_rate_other": 0.149,
+      "gate_effect": 0.101,
+      "gate_p": 0.24,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "83",
+      "act": "Motor Accidents Compensation Act 1999",
+      "provision": "83 Motor Accidents Compensation Act 1999",
+      "n_citing": 24,
+      "variable": "Future Economic Loss",
+      "effect": -0.133,
+      "p_value": 0.296,
+      "n_value": [
+        22,
+        391
+      ],
+      "blank_rate_citing": 0.083,
+      "blank_rate_other": 0.242,
+      "gate_effect": -0.159,
+      "gate_p": 0.0855,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "83",
+      "act": "Motor Accidents Compensation Act 1999",
+      "provision": "83 Motor Accidents Compensation Act 1999",
+      "n_citing": 24,
+      "variable": "Claimant Weekly Income",
+      "effect": -0.045,
+      "p_value": 0.754,
+      "n_value": [
+        17,
+        297
+      ],
+      "blank_rate_citing": 0.292,
+      "blank_rate_other": 0.424,
+      "gate_effect": -0.133,
+      "gate_p": 0.213,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "83",
+      "act": "Motor Accidents Compensation Act 1999",
+      "provision": "83 Motor Accidents Compensation Act 1999",
+      "n_citing": 24,
+      "variable": "Claimant Age",
+      "effect": -0.112,
+      "p_value": 0.375,
+      "n_value": [
+        22,
+        474
+      ],
+      "blank_rate_citing": 0.083,
+      "blank_rate_other": 0.081,
+      "gate_effect": 0.002,
+      "gate_p": 1.0,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "83",
+      "act": "Motor Accidents Compensation Act 1999",
+      "provision": "83 Motor Accidents Compensation Act 1999",
+      "n_citing": 24,
+      "variable": "Claimant Gender",
+      "effect": 0.245,
+      "p_value": 0.0182,
+      "n_value": [
+        24,
+        516
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "83",
+      "act": "Motor Accidents Compensation Act 1999",
+      "provision": "83 Motor Accidents Compensation Act 1999",
+      "n_citing": 24,
+      "variable": "Nature",
+      "effect": 0.682,
+      "p_value": 7.36e-12,
+      "n_value": [
+        24,
+        516
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "83",
+      "act": "Motor Accidents Compensation Act 1999",
+      "provision": "83 Motor Accidents Compensation Act 1999",
+      "n_citing": 24,
+      "variable": "Injury Burden Intensity",
+      "effect": -0.109,
+      "p_value": 0.307,
+      "n_value": [
+        24,
+        516
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "83",
+      "act": "Motor Accidents Compensation Act 1999",
+      "provision": "83 Motor Accidents Compensation Act 1999",
+      "n_citing": 24,
+      "variable": "Treatment Burden",
+      "effect": -0.158,
+      "p_value": 0.153,
+      "n_value": [
+        24,
+        516
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "83",
+      "act": "Motor Accidents Compensation Act 1999",
+      "provision": "83 Motor Accidents Compensation Act 1999",
+      "n_citing": 24,
+      "variable": "Work Impact Severity",
+      "effect": 0.057,
+      "p_value": 0.618,
+      "n_value": [
+        24,
+        516
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "83",
+      "act": "Motor Accidents Compensation Act 1999",
+      "provision": "83 Motor Accidents Compensation Act 1999",
+      "n_citing": 24,
+      "variable": "Legal Procedural Complexity",
+      "effect": 0.648,
+      "p_value": 1.01e-09,
+      "n_value": [
+        24,
+        516
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "83",
+      "act": "Motor Accidents Compensation Act 1999",
+      "provision": "83 Motor Accidents Compensation Act 1999",
+      "n_citing": 24,
+      "variable": "Psychological Injury Emphasis",
+      "effect": 0.187,
+      "p_value": 0.0977,
+      "n_value": [
+        24,
+        516
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "83",
+      "act": "Motor Accidents Compensation Act 1999",
+      "provision": "83 Motor Accidents Compensation Act 1999",
+      "n_citing": 24,
+      "variable": "Liability Clarity",
+      "effect": 0.085,
+      "p_value": 0.136,
+      "n_value": [
+        24,
+        516
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "83",
+      "act": "Motor Accidents Compensation Act 1999",
+      "provision": "83 Motor Accidents Compensation Act 1999",
+      "n_citing": 24,
+      "variable": "Causation Complexity",
+      "effect": 0.656,
+      "p_value": 1.84e-09,
+      "n_value": [
+        24,
+        516
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "83",
+      "act": "Motor Accidents Compensation Act 1999",
+      "provision": "83 Motor Accidents Compensation Act 1999",
+      "n_citing": 24,
+      "variable": "Pre-existing Condition Salience",
+      "effect": 0.377,
+      "p_value": 0.000823,
+      "n_value": [
+        24,
+        516
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "7.38",
+      "act": "Motor Accident Guidelines",
+      "provision": "7.38 Motor Accident Guidelines",
+      "n_citing": 21,
+      "variable": "Lump Sum",
+      "effect": -0.244,
+      "p_value": 0.0577,
+      "n_value": [
+        21,
+        519
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "7.38",
+      "act": "Motor Accident Guidelines",
+      "provision": "7.38 Motor Accident Guidelines",
+      "n_citing": 21,
+      "variable": "WPI %",
+      "effect": -0.262,
+      "p_value": 0.16,
+      "n_value": [
+        10,
+        277
+      ],
+      "blank_rate_citing": 0.524,
+      "blank_rate_other": 0.466,
+      "gate_effect": 0.058,
+      "gate_p": 0.66,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "7.38",
+      "act": "Motor Accident Guidelines",
+      "provision": "7.38 Motor Accident Guidelines",
+      "n_citing": 21,
+      "variable": "Non-Economic Loss",
+      "effect": -0.21,
+      "p_value": 0.115,
+      "n_value": [
+        18,
+        439
+      ],
+      "blank_rate_citing": 0.143,
+      "blank_rate_other": 0.154,
+      "gate_effect": -0.011,
+      "gate_p": 1.0,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "7.38",
+      "act": "Motor Accident Guidelines",
+      "provision": "7.38 Motor Accident Guidelines",
+      "n_citing": 21,
+      "variable": "Future Economic Loss",
+      "effect": -0.3,
+      "p_value": 0.0762,
+      "n_value": [
+        12,
+        401
+      ],
+      "blank_rate_citing": 0.429,
+      "blank_rate_other": 0.227,
+      "gate_effect": 0.201,
+      "gate_p": 0.061,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "7.38",
+      "act": "Motor Accident Guidelines",
+      "provision": "7.38 Motor Accident Guidelines",
+      "n_citing": 21,
+      "variable": "Claimant Weekly Income",
+      "effect": null,
+      "p_value": null,
+      "n_value": [
+        8,
+        306
+      ],
+      "blank_rate_citing": 0.619,
+      "blank_rate_other": 0.41,
+      "gate_effect": 0.209,
+      "gate_p": 0.0711,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "7.38",
+      "act": "Motor Accident Guidelines",
+      "provision": "7.38 Motor Accident Guidelines",
+      "n_citing": 21,
+      "variable": "Claimant Age",
+      "effect": 0.223,
+      "p_value": 0.0913,
+      "n_value": [
+        20,
+        476
+      ],
+      "blank_rate_citing": 0.048,
+      "blank_rate_other": 0.083,
+      "gate_effect": -0.035,
+      "gate_p": 1.0,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "7.38",
+      "act": "Motor Accident Guidelines",
+      "provision": "7.38 Motor Accident Guidelines",
+      "n_citing": 21,
+      "variable": "Claimant Gender",
+      "effect": -0.134,
+      "p_value": 0.226,
+      "n_value": [
+        21,
+        519
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "7.38",
+      "act": "Motor Accident Guidelines",
+      "provision": "7.38 Motor Accident Guidelines",
+      "n_citing": 21,
+      "variable": "Nature",
+      "effect": -0.362,
+      "p_value": 0.000645,
+      "n_value": [
+        21,
+        519
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "7.38",
+      "act": "Motor Accident Guidelines",
+      "provision": "7.38 Motor Accident Guidelines",
+      "n_citing": 21,
+      "variable": "Injury Burden Intensity",
+      "effect": -0.016,
+      "p_value": 0.888,
+      "n_value": [
+        21,
+        519
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "7.38",
+      "act": "Motor Accident Guidelines",
+      "provision": "7.38 Motor Accident Guidelines",
+      "n_citing": 21,
+      "variable": "Treatment Burden",
+      "effect": 0.021,
+      "p_value": 0.86,
+      "n_value": [
+        21,
+        519
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "7.38",
+      "act": "Motor Accident Guidelines",
+      "provision": "7.38 Motor Accident Guidelines",
+      "n_citing": 21,
+      "variable": "Work Impact Severity",
+      "effect": -0.364,
+      "p_value": 0.00289,
+      "n_value": [
+        21,
+        519
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "7.38",
+      "act": "Motor Accident Guidelines",
+      "provision": "7.38 Motor Accident Guidelines",
+      "n_citing": 21,
+      "variable": "Legal Procedural Complexity",
+      "effect": -0.387,
+      "p_value": 0.000614,
+      "n_value": [
+        21,
+        519
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "7.38",
+      "act": "Motor Accident Guidelines",
+      "provision": "7.38 Motor Accident Guidelines",
+      "n_citing": 21,
+      "variable": "Psychological Injury Emphasis",
+      "effect": -0.184,
+      "p_value": 0.128,
+      "n_value": [
+        21,
+        519
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "7.38",
+      "act": "Motor Accident Guidelines",
+      "provision": "7.38 Motor Accident Guidelines",
+      "n_citing": 21,
+      "variable": "Liability Clarity",
+      "effect": 0.085,
+      "p_value": 0.165,
+      "n_value": [
+        21,
+        519
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "7.38",
+      "act": "Motor Accident Guidelines",
+      "provision": "7.38 Motor Accident Guidelines",
+      "n_citing": 21,
+      "variable": "Causation Complexity",
+      "effect": -0.2,
+      "p_value": 0.0852,
+      "n_value": [
+        21,
+        519
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "7.38",
+      "act": "Motor Accident Guidelines",
+      "provision": "7.38 Motor Accident Guidelines",
+      "n_citing": 21,
+      "variable": "Pre-existing Condition Salience",
+      "effect": 0.031,
+      "p_value": 0.797,
+      "n_value": [
+        21,
+        519
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "7.37",
+      "act": "Motor Accident Injuries Regulation 2017",
+      "provision": "7.37 Motor Accident Injuries Regulation 2017",
+      "n_citing": 21,
+      "variable": "Lump Sum",
+      "effect": -0.274,
+      "p_value": 0.0331,
+      "n_value": [
+        21,
+        519
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "7.37",
+      "act": "Motor Accident Injuries Regulation 2017",
+      "provision": "7.37 Motor Accident Injuries Regulation 2017",
+      "n_citing": 21,
+      "variable": "WPI %",
+      "effect": null,
+      "p_value": null,
+      "n_value": [
+        4,
+        283
+      ],
+      "blank_rate_citing": 0.81,
+      "blank_rate_other": 0.455,
+      "gate_effect": 0.355,
+      "gate_p": 0.00147,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": true
+    },
+    {
+      "section": "7.37",
+      "act": "Motor Accident Injuries Regulation 2017",
+      "provision": "7.37 Motor Accident Injuries Regulation 2017",
+      "n_citing": 21,
+      "variable": "Non-Economic Loss",
+      "effect": 0.207,
+      "p_value": 0.22,
+      "n_value": [
+        11,
+        446
+      ],
+      "blank_rate_citing": 0.476,
+      "blank_rate_other": 0.141,
+      "gate_effect": 0.336,
+      "gate_p": 0.000367,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": true
+    },
+    {
+      "section": "7.37",
+      "act": "Motor Accident Injuries Regulation 2017",
+      "provision": "7.37 Motor Accident Injuries Regulation 2017",
+      "n_citing": 21,
+      "variable": "Future Economic Loss",
+      "effect": -0.463,
+      "p_value": 0.00629,
+      "n_value": [
+        12,
+        401
+      ],
+      "blank_rate_citing": 0.429,
+      "blank_rate_other": 0.227,
+      "gate_effect": 0.201,
+      "gate_p": 0.061,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "7.37",
+      "act": "Motor Accident Injuries Regulation 2017",
+      "provision": "7.37 Motor Accident Injuries Regulation 2017",
+      "n_citing": 21,
+      "variable": "Claimant Weekly Income",
+      "effect": null,
+      "p_value": null,
+      "n_value": [
+        7,
+        307
+      ],
+      "blank_rate_citing": 0.667,
+      "blank_rate_other": 0.408,
+      "gate_effect": 0.258,
+      "gate_p": 0.0235,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "7.37",
+      "act": "Motor Accident Injuries Regulation 2017",
+      "provision": "7.37 Motor Accident Injuries Regulation 2017",
+      "n_citing": 21,
+      "variable": "Claimant Age",
+      "effect": 0.212,
+      "p_value": 0.137,
+      "n_value": [
+        17,
+        479
+      ],
+      "blank_rate_citing": 0.19,
+      "blank_rate_other": 0.077,
+      "gate_effect": 0.113,
+      "gate_p": 0.0824,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "7.37",
+      "act": "Motor Accident Injuries Regulation 2017",
+      "provision": "7.37 Motor Accident Injuries Regulation 2017",
+      "n_citing": 21,
+      "variable": "Claimant Gender",
+      "effect": -0.134,
+      "p_value": 0.226,
+      "n_value": [
+        21,
+        519
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "7.37",
+      "act": "Motor Accident Injuries Regulation 2017",
+      "provision": "7.37 Motor Accident Injuries Regulation 2017",
+      "n_citing": 21,
+      "variable": "Nature",
+      "effect": -0.362,
+      "p_value": 0.000645,
+      "n_value": [
+        21,
+        519
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "7.37",
+      "act": "Motor Accident Injuries Regulation 2017",
+      "provision": "7.37 Motor Accident Injuries Regulation 2017",
+      "n_citing": 21,
+      "variable": "Injury Burden Intensity",
+      "effect": -0.02,
+      "p_value": 0.862,
+      "n_value": [
+        21,
+        519
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "7.37",
+      "act": "Motor Accident Injuries Regulation 2017",
+      "provision": "7.37 Motor Accident Injuries Regulation 2017",
+      "n_citing": 21,
+      "variable": "Treatment Burden",
+      "effect": -0.205,
+      "p_value": 0.0826,
+      "n_value": [
+        21,
+        519
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "7.37",
+      "act": "Motor Accident Injuries Regulation 2017",
+      "provision": "7.37 Motor Accident Injuries Regulation 2017",
+      "n_citing": 21,
+      "variable": "Work Impact Severity",
+      "effect": -0.455,
+      "p_value": 0.000196,
+      "n_value": [
+        21,
+        519
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "7.37",
+      "act": "Motor Accident Injuries Regulation 2017",
+      "provision": "7.37 Motor Accident Injuries Regulation 2017",
+      "n_citing": 21,
+      "variable": "Legal Procedural Complexity",
+      "effect": -0.419,
+      "p_value": 0.000211,
+      "n_value": [
+        21,
+        519
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "7.37",
+      "act": "Motor Accident Injuries Regulation 2017",
+      "provision": "7.37 Motor Accident Injuries Regulation 2017",
+      "n_citing": 21,
+      "variable": "Psychological Injury Emphasis",
+      "effect": -0.294,
+      "p_value": 0.0149,
+      "n_value": [
+        21,
+        519
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "7.37",
+      "act": "Motor Accident Injuries Regulation 2017",
+      "provision": "7.37 Motor Accident Injuries Regulation 2017",
+      "n_citing": 21,
+      "variable": "Liability Clarity",
+      "effect": -0.164,
+      "p_value": 0.0071,
+      "n_value": [
+        21,
+        519
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": true,
+      "gate_link": false
+    },
+    {
+      "section": "7.37",
+      "act": "Motor Accident Injuries Regulation 2017",
+      "provision": "7.37 Motor Accident Injuries Regulation 2017",
+      "n_citing": 21,
+      "variable": "Causation Complexity",
+      "effect": -0.242,
+      "p_value": 0.0375,
+      "n_value": [
+        21,
+        519
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    },
+    {
+      "section": "7.37",
+      "act": "Motor Accident Injuries Regulation 2017",
+      "provision": "7.37 Motor Accident Injuries Regulation 2017",
+      "n_citing": 21,
+      "variable": "Pre-existing Condition Salience",
+      "effect": -0.252,
+      "p_value": 0.0361,
+      "n_value": [
+        21,
+        519
+      ],
+      "blank_rate_citing": 0.0,
+      "blank_rate_other": 0.0,
+      "gate_effect": 0.0,
+      "gate_p": null,
+      "definitional": false,
+      "value_link": false,
+      "gate_link": false
+    }
+  ],
+  "caveat": "A link is an association between citing a provision and a variable. It is NOT evidence that the provision makes the variable an input -- cases citing a provision differ in many ways at once. Stage 3b must confirm the provision text actually names the input before an edge is drawn."
+}
