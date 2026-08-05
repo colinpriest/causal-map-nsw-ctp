@@ -32,6 +32,19 @@ columns:
       impairment remaining once the claimant's condition has stabilised
     dtype: numeric
     recorded: read directly off the decision
+    # An ASSESSMENT SCORE, not the state it scores. That distinction has structural
+    # consequences: a measurement cannot cause what the measured state causes. The
+    # claimant's impairment is what limits their capacity to work; the number an assessor
+    # later writes down does not. An edge WPI % -> Work Impact Severity is therefore
+    # impossible however plausible the correlation, and one was drawn from a single
+    # reasoned-prior path asserting "WPI % affects working capacity".
+    measurement_of: the claimant's permanent impairment after stabilisation
+    # The exception, and the only one: where a rule makes the RECORDED SCORE itself
+    # operative. s 4.11 MAIA bars non-economic loss unless the assessed degree exceeds
+    # 10%, so here the number on the certificate really is decisive -- not the impairment
+    # behind it. Any target not listed is forbidden as a matter of measurement semantics.
+    operative_for:
+      - Non-Economic Loss
 
   - name: Non-Economic Loss
     definition: dollars awarded for pain and suffering, as a component of the payout

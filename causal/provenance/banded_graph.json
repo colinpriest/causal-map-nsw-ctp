@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-05T12:44:30+00:00",
+  "generated_at": "2026-08-05T21:55:30+00:00",
   "bands": [
     {
       "n": 1,
@@ -66,16 +66,16 @@
   ],
   "rule": "Every edge runs from a band to the same band or a later one. Band 1 is internally acyclic by fiat: pre-accident facts are not treated as causing one another.",
   "n_ordered_pairs": 272,
-  "n_permitted": 149,
-  "n_forbidden": 123,
-  "n_edges": 36,
-  "n_violations": 7,
-  "n_evidence_items": 48,
+  "n_permitted": 141,
+  "n_forbidden": 131,
+  "n_edges": 34,
+  "n_violations": 10,
+  "n_evidence_items": 45,
   "edges_by_strongest_class": {
     "elicited": 6,
     "measurement": 1,
-    "reasoned_prior_path": 17,
-    "reasoned_prior_tested": 9,
+    "reasoned_prior_path": 16,
+    "reasoned_prior_tested": 8,
     "statute": 3
   },
   "roles": {
@@ -149,7 +149,7 @@
       "marginal_with_target": 0.739,
       "unique_contribution_to_target": 0.07,
       "n_parents_permitted": 9,
-      "n_children_permitted": 9
+      "n_children_permitted": 1
     },
     "Treatment Burden": {
       "band": 3,
@@ -157,7 +157,7 @@
       "role": "pass_through",
       "marginal_with_target": 0.299,
       "unique_contribution_to_target": 0.017,
-      "n_parents_permitted": 9,
+      "n_parents_permitted": 8,
       "n_children_permitted": 9
     },
     "Work Impact Severity": {
@@ -166,7 +166,7 @@
       "role": "intermediate",
       "marginal_with_target": 0.579,
       "unique_contribution_to_target": 0.372,
-      "n_parents_permitted": 9,
+      "n_parents_permitted": 8,
       "n_children_permitted": 9
     },
     "Causation Complexity": {
@@ -175,7 +175,7 @@
       "role": "recorder",
       "marginal_with_target": 0.226,
       "unique_contribution_to_target": 0.016,
-      "n_parents_permitted": 13,
+      "n_parents_permitted": 12,
       "n_children_permitted": 6
     },
     "Nature": {
@@ -184,7 +184,7 @@
       "role": "recorder",
       "marginal_with_target": 0.437,
       "unique_contribution_to_target": 0.013,
-      "n_parents_permitted": 13,
+      "n_parents_permitted": 12,
       "n_children_permitted": 6
     },
     "Legal Procedural Complexity": {
@@ -193,7 +193,7 @@
       "role": "recorder",
       "marginal_with_target": 0.399,
       "unique_contribution_to_target": 0.045,
-      "n_parents_permitted": 13,
+      "n_parents_permitted": 12,
       "n_children_permitted": 6
     },
     "Psychological Injury Emphasis": {
@@ -202,7 +202,7 @@
       "role": "intermediate",
       "marginal_with_target": 0.427,
       "unique_contribution_to_target": 0.254,
-      "n_parents_permitted": 13,
+      "n_parents_permitted": 12,
       "n_children_permitted": 6
     },
     "Non-Economic Loss": {
@@ -220,7 +220,7 @@
       "role": "intermediate",
       "marginal_with_target": 0.847,
       "unique_contribution_to_target": 0.535,
-      "n_parents_permitted": 15,
+      "n_parents_permitted": 14,
       "n_children_permitted": 2
     },
     "Lump Sum": {
@@ -229,7 +229,7 @@
       "role": "target",
       "marginal_with_target": null,
       "unique_contribution_to_target": null,
-      "n_parents_permitted": 16,
+      "n_parents_permitted": 15,
       "n_children_permitted": 0
     }
   },
@@ -686,26 +686,6 @@
       ]
     },
     {
-      "source": "WPI %",
-      "target": "Work Impact Severity",
-      "evidence": [
-        {
-          "evidence_class": "reasoned_prior_path",
-          "confidence": 5,
-          "magnitude": 4,
-          "agreement": 0.67,
-          "test": "mediation",
-          "mechanism": "WPI % affects working capacity, influencing Future Economic Loss through Work Impact Severity.",
-          "verdict": "indirect",
-          "paths": [
-            "WPI % -> Work Impact Severity -> Future Economic Loss",
-            "Pre-existing Condition Salience -> WPI % -> Work Impact Severity"
-          ],
-          "n_paths": 2
-        }
-      ]
-    },
-    {
       "source": "Work Impact Severity",
       "target": "Nature",
       "evidence": [
@@ -807,34 +787,6 @@
             "Psychological Injury Emphasis -> Work Impact Severity -> Future Economic Loss"
           ],
           "n_paths": 5
-        }
-      ]
-    },
-    {
-      "source": "WPI %",
-      "target": "Lump Sum",
-      "evidence": [
-        {
-          "evidence_class": "reasoned_prior_tested",
-          "confidence": 5,
-          "magnitude": 5,
-          "agreement": 0.67,
-          "test": "monotone",
-          "mechanism": "WPI %, as a metric of impairment, directly influences the calculation of the Lump Sum awarded for compensation.",
-          "verdict": "b_causes_a"
-        },
-        {
-          "evidence_class": "reasoned_prior_path",
-          "confidence": 5,
-          "magnitude": 4,
-          "agreement": 0.67,
-          "test": "mediation",
-          "mechanism": "Injury burden intensity affects the lump sum through its impact on WPI %, Non-Economic Loss, and Future Economic Loss.",
-          "verdict": "indirect",
-          "paths": [
-            "Injury Burden Intensity -> WPI % -> Lump Sum"
-          ],
-          "n_paths": 1
         }
       ]
     },
@@ -1062,6 +1014,23 @@
     },
     {
       "source": "WPI %",
+      "target": "Lump Sum",
+      "evidence_class": "reasoned_prior_tested",
+      "times_seen": 1,
+      "band_source": 3,
+      "band_target": 6,
+      "detail": {
+        "confidence": 5,
+        "magnitude": 5,
+        "agreement": 0.67,
+        "test": "monotone",
+        "mechanism": "WPI %, as a metric of impairment, directly influences the calculation of the Lump Sum awarded for compensation.",
+        "verdict": "b_causes_a"
+      },
+      "resolution": "dropped: neither direction is permitted"
+    },
+    {
+      "source": "WPI %",
       "target": "Injury Burden Intensity",
       "evidence_class": "reasoned_prior_tested",
       "times_seen": 1,
@@ -1076,6 +1045,42 @@
         "verdict": "a_causes_b"
       },
       "resolution": "reversed to run forward in time"
+    },
+    {
+      "source": "WPI %",
+      "target": "Lump Sum",
+      "evidence_class": "reasoned_prior_path",
+      "times_seen": 1,
+      "band_source": 3,
+      "band_target": 6,
+      "detail": {
+        "confidence": 5,
+        "magnitude": 4,
+        "agreement": 0.67,
+        "test": "mediation",
+        "mechanism": "Injury burden intensity affects the lump sum through its impact on WPI %, Non-Economic Loss, and Future Economic Loss.",
+        "verdict": "indirect",
+        "path": "Injury Burden Intensity -> WPI % -> Lump Sum"
+      },
+      "resolution": "dropped: a leg of this path runs backwards, so the path claim is refuted rather than reversed"
+    },
+    {
+      "source": "WPI %",
+      "target": "Work Impact Severity",
+      "evidence_class": "reasoned_prior_path",
+      "times_seen": 2,
+      "band_source": 3,
+      "band_target": 3,
+      "detail": {
+        "confidence": 5,
+        "magnitude": 4,
+        "agreement": 0.67,
+        "test": "mediation",
+        "mechanism": "WPI % affects working capacity, influencing Future Economic Loss through Work Impact Severity.",
+        "verdict": "indirect",
+        "path": "WPI % -> Work Impact Severity -> Future Economic Loss"
+      },
+      "resolution": "dropped: a leg of this path runs backwards, so the path claim is refuted rather than reversed"
     },
     {
       "source": "Treatment Burden",

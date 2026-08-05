@@ -90,6 +90,24 @@ LABEL = {n: label for n, _, label, _ in BANDS}
 # mechanisms. Roots are the columns nothing can cause, not the columns in band 1.
 IMMUTABLE = ["Claimant Age", "Claimant Gender"]
 
+# ASSESSMENT SCORES. A column that measures a state cannot cause what that state causes:
+# the claimant's impairment limits their capacity to work, the number an assessor writes
+# down does not. Declared in ctp/columns.yaml as `measurement_of`, with `operative_for`
+# listing the only targets where a rule makes the recorded score itself decisive -- for
+# WPI %, s 4.11 MAIA bars non-economic loss unless the assessed degree exceeds 10%.
+#
+# This is the measurement counterpart of the band rule: chronology forbids an effect
+# preceding its cause, and this forbids a measurement standing in for what it measures.
+def _assessments():
+    import yaml
+    spec = yaml.safe_load((ROOT / "ctp" / "columns.yaml").read_text(encoding="utf-8"))
+    return {c["name"]: list(c.get("operative_for") or [])
+            for c in spec["columns"] if c.get("measurement_of")}
+
+
+ROOT = HERE.parent
+ASSESSMENT = _assessments()
+
 
 def permitted(src: str, dst: str) -> bool:
     """Forward in time. Same-band edges are allowed throughout -- two facts can sit in the
@@ -98,6 +116,8 @@ def permitted(src: str, dst: str) -> bool:
     a, b = BAND_OF[src], BAND_OF[dst]
     if dst in IMMUTABLE:
         return False
+    if src in ASSESSMENT and dst not in ASSESSMENT[src]:
+        return False          # a score cannot cause what the state it measures causes
     return a <= b and src != dst
 
 

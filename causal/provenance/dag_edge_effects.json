@@ -1,18 +1,18 @@
 {
-  "generated_at": "2026-08-05T12:56:24+00:00",
+  "generated_at": "2026-08-05T21:56:32+00:00",
   "learner": "LightGBM",
   "device": "cpu",
   "seed": 42,
   "mode": "edges",
   "graph": {
     "nodes": 16,
-    "edges": 36,
+    "edges": 34,
     "latent": [
       "Psychological Injury"
     ]
   },
   "estimand_note": "Discrete treatments report a top-vs-base level contrast; continuous treatments report a per-unit coefficient from a partially linear model. Sign and significance are comparable across the two; magnitudes are NOT.",
-  "n_estimated": 35,
+  "n_estimated": 33,
   "n_refused": 1,
   "effects": [
     {
@@ -314,29 +314,26 @@
           3.0
         ],
         "n": 540,
-        "ate": 8.560277810996102,
+        "ate": 8.827780605199157,
         "ci": [
-          6.4378211704029145,
-          10.682734451589289
+          6.712324398638026,
+          10.943236811760288
         ],
-        "se": 1.0829059397697374,
+        "se": 1.0793342241222699,
         "significant": true,
         "estimand": "top-vs-base level contrast",
         "ate_all": [
-          2.49014708949405,
-          8.560277810996102
+          2.9795354759312342,
+          8.827780605199157
         ],
-        "seconds": 11.7
+        "seconds": 3.7
       }
     },
     {
       "treatment": "Injury Burden Intensity",
       "outcome": "Work Impact Severity",
-      "backdoor_set": [
-        "Claimant Age",
-        "Pre-existing Condition Salience"
-      ],
-      "exogenous": false,
+      "backdoor_set": [],
+      "exogenous": true,
       "edge": true,
       "treatment_kind": "discrete",
       "mediators": [],
@@ -347,19 +344,20 @@
           3.0
         ],
         "n": 540,
-        "ate": 0.8169704741502061,
+        "ate": 0.567687074829932,
         "ci": [
-          0.4794230513175926,
-          1.1545178969828196
+          0.32345118560696395,
+          0.8119229640529
         ],
-        "se": 0.17222123747943557,
+        "se": 0.12387456332142731,
         "significant": true,
-        "estimand": "top-vs-base level contrast",
         "ate_all": [
-          0.46477383883671763,
-          0.8169704741502061
+          0.0,
+          0.5485,
+          0.5677
         ],
-        "seconds": 10.4
+        "estimand": "top-vs-base level contrast (exogenous, unadjusted)",
+        "seconds": 0.0
       }
     },
     {
@@ -379,19 +377,19 @@
           3.0
         ],
         "n": 540,
-        "ate": 1.4143388513808564,
+        "ate": 1.4091162355814477,
         "ci": [
-          1.2564743476952447,
-          1.572203355066468
+          1.2453996337956617,
+          1.5728328373672338
         ],
-        "se": 0.08054459415113065,
+        "se": 0.08353041335308285,
         "significant": true,
         "estimand": "top-vs-base level contrast",
         "ate_all": [
-          0.6847408704907653,
-          1.4143388513808564
+          0.6917623571257113,
+          1.4091162355814477
         ],
-        "seconds": 5.8
+        "seconds": 1.2
       }
     },
     {
@@ -440,19 +438,19 @@
           3.0
         ],
         "n": 540,
-        "ate": 0.22208415404308451,
+        "ate": 0.2802931223894766,
         "ci": [
-          0.013315646286042537,
-          0.4308526618001265
+          0.07722901348007005,
+          0.4833572312988832
         ],
-        "se": 0.10651650203972182,
+        "se": 0.10360604098399273,
         "significant": true,
         "estimand": "top-vs-base level contrast",
         "ate_all": [
-          0.26887047733586905,
-          0.22208415404308451
+          0.33655215537636635,
+          0.2802931223894766
         ],
-        "seconds": 6.4
+        "seconds": 1.2
       }
     },
     {
@@ -504,19 +502,19 @@
           3.0
         ],
         "n": 540,
-        "ate": 8.614120351661365,
+        "ate": 10.989872015037276,
         "ci": [
-          5.515027773085091,
-          11.713212930237638
+          9.230390152204698,
+          12.749353877869854
         ],
-        "se": 1.5811987378449404,
+        "se": 0.8977113236320392,
         "significant": true,
         "estimand": "top-vs-base level contrast",
         "ate_all": [
-          3.1674095161761,
-          8.614120351661365
+          5.514173332807234,
+          10.989872015037276
         ],
-        "seconds": 10.3
+        "seconds": 1.6
       }
     },
     {
@@ -537,19 +535,19 @@
           3.0
         ],
         "n": 540,
-        "ate": 2.8462012559714953,
+        "ate": 2.6640771529363914,
         "ci": [
-          1.398689543608378,
-          4.293712968334613
+          1.4462571299942328,
+          3.88189717587855
         ],
-        "se": 0.7385399547037113,
+        "se": 0.6213481638173801,
         "significant": true,
         "estimand": "top-vs-base level contrast",
         "ate_all": [
-          1.3020120814433316,
-          2.8462012559714953
+          1.1494388272447988,
+          2.6640771529363914
         ],
-        "seconds": 10.9
+        "seconds": 1.9
       }
     },
     {
@@ -570,42 +568,19 @@
           3.0
         ],
         "n": 540,
-        "ate": 2.7527626829022207,
+        "ate": 2.8446041494755505,
         "ci": [
-          2.3469720880379352,
-          3.158553277766506
+          2.4581128753757198,
+          3.2310954235753813
         ],
-        "se": 0.20703982219321876,
+        "se": 0.1971930490296885,
         "significant": true,
         "estimand": "top-vs-base level contrast",
         "ate_all": [
-          1.4985857511662068,
-          2.7527626829022207
+          1.619632959294691,
+          2.8446041494755505
         ],
-        "seconds": 11.1
-      }
-    },
-    {
-      "treatment": "WPI %",
-      "outcome": "Work Impact Severity",
-      "backdoor_set": [
-        "Injury Burden Intensity"
-      ],
-      "exogenous": false,
-      "edge": true,
-      "treatment_kind": "continuous",
-      "mediators": [],
-      "total": {
-        "n": 540,
-        "ate": -0.003733572458826008,
-        "ci": [
-          -0.019625058807288622,
-          0.012157913889636605
-        ],
-        "se": 0.008108050185520056,
-        "significant": false,
-        "estimand": "per-unit coefficient (partially linear)",
-        "seconds": 1.4
+        "seconds": 1.9
       }
     },
     {
@@ -626,28 +601,27 @@
           3.0
         ],
         "n": 540,
-        "ate": 0.4775354287153831,
+        "ate": 0.4659861202999036,
         "ci": [
-          0.319923111230096,
-          0.6351477462006703
+          0.286358137040455,
+          0.6456141035593522
         ],
-        "se": 0.08041592535807442,
+        "se": 0.09164861429920715,
         "significant": true,
         "estimand": "top-vs-base level contrast",
         "ate_all": [
-          0.0672066766948953,
-          0.31857171515652594,
-          0.4775354287153831
+          0.05640203767022359,
+          0.2998294489187091,
+          0.4659861202999036
         ],
-        "seconds": 9.1
+        "seconds": 1.8
       }
     },
     {
       "treatment": "Work Impact Severity",
       "outcome": "Legal Procedural Complexity",
       "backdoor_set": [
-        "Causation Complexity",
-        "Pre-existing Condition Salience"
+        "Injury Burden Intensity"
       ],
       "exogenous": false,
       "edge": true,
@@ -661,20 +635,20 @@
           3.0
         ],
         "n": 540,
-        "ate": 0.9362876979168457,
+        "ate": 1.0970029452960854,
         "ci": [
-          0.5805012131780634,
-          1.2920741826556281
+          0.8250409431538313,
+          1.3689649474383396
         ],
-        "se": 0.18152705230564478,
+        "se": 0.13875867326514968,
         "significant": true,
         "estimand": "top-vs-base level contrast",
         "ate_all": [
-          0.1724494238910294,
-          0.5780651973492881,
-          0.9362876979168457
+          0.24299963537768626,
+          0.9204406816065795,
+          1.0970029452960854
         ],
-        "seconds": 10.8
+        "seconds": 1.9
       }
     },
     {
@@ -691,23 +665,22 @@
       "mediators": [],
       "total": {
         "n": 540,
-        "ate": 0.24679820010743608,
+        "ate": 0.24054583518249642,
         "ci": [
-          0.1591222022060571,
-          0.33447419800881506
+          0.15314993479000077,
+          0.32794173557499207
         ],
-        "se": 0.044733473978581274,
+        "se": 0.044590564460297924,
         "significant": true,
         "estimand": "per-unit coefficient (partially linear)",
-        "seconds": 2.6
+        "seconds": 0.4
       }
     },
     {
       "treatment": "Work Impact Severity",
       "outcome": "Future Economic Loss",
       "backdoor_set": [
-        "Injury Burden Intensity",
-        "WPI %"
+        "Injury Burden Intensity"
       ],
       "exogenous": false,
       "edge": true,
@@ -721,45 +694,20 @@
           3.0
         ],
         "n": 540,
-        "ate": 1.9333622771658039,
+        "ate": 2.4731064623972383,
         "ci": [
-          0.9376557353294769,
-          2.929068819002131
+          1.36560240591096,
+          3.5806105188835167
         ],
-        "se": 0.5080228767928051,
+        "se": 0.5650634732179411,
         "significant": true,
         "estimand": "top-vs-base level contrast",
         "ate_all": [
-          -0.36499510826001647,
-          1.5654809511098051,
-          1.9333622771658039
+          0.3036299680836585,
+          2.132604619967154,
+          2.4731064623972383
         ],
-        "seconds": 12.9
-      }
-    },
-    {
-      "treatment": "WPI %",
-      "outcome": "Lump Sum",
-      "backdoor_set": [
-        "Claimant Age",
-        "Injury Burden Intensity",
-        "Pre-existing Condition Salience"
-      ],
-      "exogenous": false,
-      "edge": true,
-      "treatment_kind": "continuous",
-      "mediators": [],
-      "total": {
-        "n": 540,
-        "ate": 0.020681433573299168,
-        "ci": [
-          0.005108470691618024,
-          0.03625439645498031
-        ],
-        "se": 0.007945535226421855,
-        "significant": true,
-        "estimand": "per-unit coefficient (partially linear)",
-        "seconds": 2.4
+        "seconds": 1.9
       }
     },
     {
@@ -780,19 +728,19 @@
           2.0
         ],
         "n": 540,
-        "ate": 1.6485310522875822,
+        "ate": 1.6390780675230772,
         "ci": [
-          1.488184768986136,
-          1.8088773355890284
+          1.4619779230693504,
+          1.816178211976804
         ],
-        "se": 0.08181083150825076,
+        "se": 0.09035887692359158,
         "significant": true,
         "estimand": "top-vs-base level contrast",
         "ate_all": [
-          0.8576443976196073,
-          1.6485310522875822
+          0.8399954359536324,
+          1.6390780675230772
         ],
-        "seconds": 7.8
+        "seconds": 1.6
       }
     },
     {
@@ -812,19 +760,19 @@
           2.0
         ],
         "n": 540,
-        "ate": 0.7607360322062972,
+        "ate": 0.7593059935937014,
         "ci": [
-          0.591464497733277,
-          0.9300075666793173
+          0.588016928082516,
+          0.9305950591048868
         ],
-        "se": 0.08636461476242034,
+        "se": 0.0873939862478554,
         "significant": true,
         "estimand": "top-vs-base level contrast",
         "ate_all": [
-          0.47629662800543415,
-          0.7607360322062972
+          0.47084007121828486,
+          0.7593059935937014
         ],
-        "seconds": 7.2
+        "seconds": 1.4
       }
     },
     {
@@ -844,25 +792,25 @@
           1.0
         ],
         "n": 540,
-        "ate": 1.628551393304214,
+        "ate": 1.621698282398307,
         "ci": [
-          1.4967985789370586,
-          1.7603042076713693
+          1.4783737144546936,
+          1.7650228503419205
         ],
-        "se": 0.0672220588778185,
+        "se": 0.0731261232727435,
         "significant": true,
         "estimand": "top-vs-base level contrast",
         "ate_all": [
-          1.628551393304214
+          1.621698282398307
         ],
-        "seconds": 5.3
+        "seconds": 1.1
       }
     },
     {
       "treatment": "Causation Complexity",
       "outcome": "Nature",
       "backdoor_set": [
-        "Work Impact Severity"
+        "Injury Burden Intensity"
       ],
       "exogenous": false,
       "edge": true,
@@ -875,19 +823,19 @@
           2.0
         ],
         "n": 540,
-        "ate": 0.721593726922662,
+        "ate": 0.7767326435253399,
         "ci": [
-          0.6127910874479854,
-          0.8303963663973386
+          0.7004393381189511,
+          0.8530259489317287
         ],
-        "se": 0.055512570808901526,
+        "se": 0.038925871091602,
         "significant": true,
         "estimand": "top-vs-base level contrast",
         "ate_all": [
-          0.26507266071064883,
-          0.721593726922662
+          0.3339098729699321,
+          0.7767326435253399
         ],
-        "seconds": 6.8
+        "seconds": 1.4
       }
     },
     {
@@ -907,19 +855,19 @@
           2.0
         ],
         "n": 540,
-        "ate": 0.44293546496167924,
+        "ate": 0.6244061819460898,
         "ci": [
-          -0.9448056879212479,
-          1.8306766178446063
+          -0.6328431376075885,
+          1.881655501499768
         ],
-        "se": 0.7080442109290029,
+        "se": 0.6414655215456511,
         "significant": false,
         "estimand": "top-vs-base level contrast",
         "ate_all": [
-          0.6856255721447955,
-          0.44293546496167924
+          0.7093862419728323,
+          0.6244061819460898
         ],
-        "seconds": 7.3
+        "seconds": 1.6
       }
     },
     {
@@ -941,19 +889,19 @@
           2.0
         ],
         "n": 540,
-        "ate": -0.6602834583318504,
+        "ate": -0.636757773425412,
         "ci": [
-          -1.9215288651417972,
-          0.6009619484780964
+          -1.8645539432421538,
+          0.5910383963913299
         ],
-        "se": 0.6435043790388445,
+        "se": 0.6264381282010494,
         "significant": false,
         "estimand": "top-vs-base level contrast",
         "ate_all": [
-          -1.6036720430396372,
-          -0.6602834583318504
+          -1.1909414003735588,
+          -0.636757773425412
         ],
-        "seconds": 10.7
+        "seconds": 1.7
       }
     },
     {
@@ -961,8 +909,8 @@
       "outcome": "Non-Economic Loss",
       "backdoor_set": [
         "Causation Complexity",
-        "Pre-existing Condition Salience",
-        "Work Impact Severity"
+        "Injury Burden Intensity",
+        "Pre-existing Condition Salience"
       ],
       "exogenous": false,
       "edge": true,
@@ -975,19 +923,19 @@
           2.0
         ],
         "n": 540,
-        "ate": 2.9047399479174416,
+        "ate": 2.2513760170503048,
         "ci": [
-          0.9816858233247239,
-          4.82779407251016
+          0.5941115121741172,
+          3.9086405219264924
         ],
-        "se": 0.9811680927616646,
+        "se": 0.8455586520714048,
         "significant": true,
         "estimand": "top-vs-base level contrast",
         "ate_all": [
-          -0.16496122305746752,
-          2.9047399479174416
+          0.485796085085072,
+          2.2513760170503048
         ],
-        "seconds": 9.6
+        "seconds": 1.7
       }
     },
     {
@@ -995,8 +943,7 @@
       "outcome": "Lump Sum",
       "backdoor_set": [
         "Injury Burden Intensity",
-        "Non-Economic Loss",
-        "WPI %"
+        "Non-Economic Loss"
       ],
       "exogenous": false,
       "edge": true,
@@ -1004,15 +951,15 @@
       "mediators": [],
       "total": {
         "n": 540,
-        "ate": 0.10756951187638063,
+        "ate": 0.10544921586634867,
         "ci": [
-          0.0844215095581097,
-          0.13071751419465155
+          0.08119313467161267,
+          0.12970529706108466
         ],
-        "se": 0.011810422283704916,
+        "se": 0.012375779037811343,
         "significant": true,
         "estimand": "per-unit coefficient (partially linear)",
-        "seconds": 2.4
+        "seconds": 1.2
       }
     },
     {
@@ -1020,8 +967,7 @@
       "outcome": "Lump Sum",
       "backdoor_set": [
         "Future Economic Loss",
-        "Injury Burden Intensity",
-        "WPI %"
+        "Injury Burden Intensity"
       ],
       "exogenous": false,
       "edge": true,
@@ -1029,15 +975,15 @@
       "mediators": [],
       "total": {
         "n": 540,
-        "ate": 0.020585353942261533,
+        "ate": 0.03868943484545454,
         "ci": [
-          0.005123200316537277,
-          0.03604750756798579
+          0.0252356315793199,
+          0.052143238111589184
         ],
-        "se": 0.007888998852880845,
+        "se": 0.006864311473198755,
         "significant": true,
         "estimand": "per-unit coefficient (partially linear)",
-        "seconds": 2.5
+        "seconds": 3.0
       }
     }
   ],
