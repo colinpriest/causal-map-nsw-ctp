@@ -22,6 +22,7 @@ In:   causal/provenance/{banded_graph,sensitivity,provision_reading,dag_edge_eff
 Out:  docs/project-infographic.svg
 
 Run:  python causal/stage16_render_infographic.py
+      python causal/stage16_render_infographic.py --figures   # check the PNG
 """
 
 from __future__ import annotations
@@ -270,7 +271,40 @@ def build() -> str:
     return "".join(o)
 
 
+def figures() -> list[tuple[str, object]]:
+    """Every figure the infographic states, current as of the artifacts.
+
+    The illustrated PNG in the README is drawn by hand, so nothing can verify it
+    automatically -- there is no way to read a number back out of a picture. This is the
+    next best thing: one command that prints what the picture ought to say, to check it
+    against after any pipeline run. Its absence is why the previous image carried three
+    wrong numbers for months.
+    """
+    g, s = load("banded_graph"), load("sensitivity")
+    sc = g["edges_by_strongest_class"]
+    rows = [(f"edges: {label.lower()}", sc.get(key, 0)) for key, label, _ in CLASSES]
+    rows += [
+        ("edges: total", g["n_edges"]),
+        ("nodes", len(g["roles"])),
+        ("latent nodes", len(g["latent"])),
+        ("ordered pairs", g["n_ordered_pairs"]),
+        ("forbidden by chronology", g["n_forbidden"]),
+        ("permitted", g["n_permitted"]),
+        ("permitted with evidence", g["n_edges"]),
+        ("thresholds fragile", f'{s["n_fragile"]} of {s["n_parameters"]}'),
+        ("effects estimated", load("dag_edge_effects")["n_estimated"]),
+        ("provisions read", load("provision_reading")["n_provisions"]),
+        ("acyclic", g["acyclic"]),
+    ]
+    return rows
+
+
 def main() -> int:
+    if "--figures" in sys.argv:
+        print("Figures the infographic must state (check the hand-drawn PNG against these):")
+        for name, val in figures():
+            print(f"  {name:28} {val}")
+        return 0
     svg = build()
     OUT.parent.mkdir(exist_ok=True)
     OUT.write_text(svg, encoding="utf-8")

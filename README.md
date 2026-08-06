@@ -7,7 +7,7 @@ Every edge in the output traces to something checkable: a provision quoted verba
 the Act, a reasoned prior that survived a prediction registered before the data was
 consulted, or a domain expert's stated claim. Edges without evidence are not drawn.
 
-![How the graph is built: 34 edges by strongest evidence class, the two structural rules that need no evidence, and coverage against the chronologically permitted pairs](docs/project-infographic.svg)
+![How the graph is built: 34 edges by strongest evidence class, the two structural rules that need no evidence, and coverage against the chronologically permitted pairs](docs/project-infographic.png)
 
 > ### ⚠ Read this before using the graph
 >
@@ -33,6 +33,7 @@ consulted, or a domain expert's stated claim. Edges without evidence are not dra
 | [`docs/ordinals-review.md`](docs/ordinals-review.md) | The eight ordinal columns: level distributions, what separates the levels, and how each is used downstream. |
 | [`causal/ctp_identification_contrast.html`](causal/ctp_identification_contrast.html) | The competing analysis: what changes when the adjustment set changes. Two treatments change sign. |
 | [`docs/LLM-elicited-vs-TabPFN-causal.md`](docs/LLM-elicited-vs-TabPFN-causal.md) | **The two approaches compared.** Changing only the adjustment set flips two treatments' sign. |
+| [`docs/project-infographic.svg`](docs/project-infographic.svg) | The same summary, generated from the artefacts by `stage16`. The illustrated PNG above is drawn by hand and can drift; this one cannot, so it is what the PNG is checked against. |
 | `causal/provenance/*.json` | Every intermediate result, including the LLM request/response cache. |
 
 Current state: **17 nodes** (1 latent), **34 edges** with an effect estimate on 33 of them,
