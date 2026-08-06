@@ -4,8 +4,8 @@ Eight of the sixteen columns in `ctp.csv` are ordinal scores assigned by a langu
 reading each decision. They are the columns statute cannot reach, so they carry most of the
 graph's structure.
 
-This document records **what those columns turn out to be measuring**, which is not always
-what they are named for.
+This document records their level distributions, **what separates the levels in the
+underlying decisions**, and how each column is used downstream.
 
 ---
 
@@ -32,25 +32,28 @@ with a column's name is a reason to look closer, not a conclusion.
 
 ## 2. What each column recovered as
 
-| Column | What separates the levels | Matches its name? |
-|---|---|---|
-| `Psychological Injury Emphasis` | "the presence and impact of psychological injuries and their role in the claims" | **yes** |
-| `Liability Clarity` | "the presence and degree of contributory negligence attributed to the claimant" | **broadly** — contributory negligence is a fault concept |
-| `Injury Burden Intensity` | "the type of damages being claimed or approved in the settlement" | **no** |
-| `Treatment Burden` | "the type of loss or damages being claimed or approved" | **no** |
-| `Work Impact Severity` | "the type of damages claimed and approved, specifically whether non-economic loss was included" | **no** |
-| `Causation Complexity` | "the legislative framework under which the claims are assessed and settled" | **no** |
-| `Legal Procedural Complexity` | "the complexity and severity of the injuries … particularly contributory negligence and the type of loss" | **partly** |
-| `Pre-existing Condition Salience` | "the presence or absence of entitlement to non-economic loss based on whole person impairment" | **no** |
+| Column | What a blind reader said separates the levels |
+|---|---|
+| `Psychological Injury Emphasis` | "the presence and impact of psychological injuries and their role in the claims" |
+| `Liability Clarity` | "the presence and degree of contributory negligence attributed to the claimant" |
+| `Injury Burden Intensity` | "the type of damages being claimed or approved in the settlement" |
+| `Treatment Burden` | "the type of loss or damages being claimed or approved" |
+| `Work Impact Severity` | "the type of damages claimed and approved, specifically whether non-economic loss was included" |
+| `Causation Complexity` | "the legislative framework under which the claims are assessed and settled" |
+| `Legal Procedural Complexity` | "the complexity and severity of the injuries … particularly contributory negligence and the type of loss" |
+| `Pre-existing Condition Salience` | "the presence or absence of entitlement to non-economic loss based on whole person impairment" |
 
-**Two of eight recover cleanly as the construct their name promises.**
+**Read this as a description of the sampled documents, not a verdict on the columns.** Five
+of the eight recover as something about the heads of damage. That is close to uninformative
+here, because heads of damage are the most conspicuous thing in a CTP decision *and* they
+move with severity: a claimant with a worse injury is more likely to have non-economic loss
+awarded at all. A blind reader shown six decisions per level will name the visible
+correlate, not the construct behind it. Recovering "type of damages" is therefore consistent
+with a column that measures severity, and is not evidence against it.
 
-The clearest pattern: `Injury Burden Intensity`, `Treatment Burden` and `Work Impact
-Severity` all recover as variations on *what kind of damages the settlement was for*, rather
-than as injury severity, treatment extent or lost capacity. Whatever the scoring pass was
-reading, it was closer to the shape of the award than to the claimant's condition.
-
-**That is the finding: the names promise more than the codings deliver.**
+What the exercise can support is narrower: the levels **do** separate the documents, in a way
+a reader with no access to the column name can articulate. None of the eight came back as
+noise.
 
 ---
 
@@ -67,21 +70,17 @@ under MACA against 12.149 under MAIA, p = 0.665), and dropping all 30 MACA cases
 associations by 0.04–0.05 in the direction of strengthening them. Thirty cases are 5.6% of
 the sample.
 
-It is recorded only as further evidence about what the scoring pass was reading: levels that
-separate by procedural era were not tracking difficulty of attributing a condition to an
-accident.
+It is recorded as a fact about the coding and nothing more.
 
 ---
 
 ## 4. What should be done
 
-1. **Rename the columns, or restate their definitions**, so the name matches what is
-   measured. Three recover as "the type of damages claimed", which is a different quantity
-   from injury severity, treatment extent or lost capacity.
-   [`ctp/columns.yaml`](../ctp/columns.yaml) is where a definition changes.
-2. **Re-code with a written rubric.** The root problem is that the original instructions
-   were never recorded. Everything here is reverse-engineering around that gap, and none of
-   it substitutes for coding to a rubric that exists in advance.
+**Code to a rubric that exists in advance.** The original scoring instructions were never
+recorded, so nothing here can check the codings against what was asked for — only describe
+what they came out as. That is a gap in the record, not a defect found in the columns, and
+the only thing that closes it is writing the rubric down before the next pass rather than
+inferring one afterwards.
 
 ---
 

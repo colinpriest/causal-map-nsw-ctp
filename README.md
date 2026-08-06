@@ -7,6 +7,8 @@ Every edge in the output traces to something checkable: a provision quoted verba
 the Act, a reasoned prior that survived a prediction registered before the data was
 consulted, or a domain expert's stated claim. Edges without evidence are not drawn.
 
+![How the graph is built: the evidence hierarchy, and the structural rules that need no evidence](docs/project-infographic.png)
+
 > ### ⚠ Read this before using the graph
 >
 > **No practitioner has reviewed it.** The statutory edges quote primary legislation, but
@@ -28,7 +30,7 @@ consulted, or a domain expert's stated claim. Edges without evidence are not dra
 | [`causal/ctp_reviewed_dag.html`](causal/ctp_reviewed_dag.html) | Self-contained interactive graph, with an effect estimate on 33 of 34 edges — green/red by sign, solid/dashed by whether the 95% interval excludes zero. Click an edge for its provision quote, tested mechanism, backdoor set and estimate. |
 | [`causal/provenance/banded_graph.json`](causal/provenance/banded_graph.json) | The assembled graph: edges, evidence per edge, roles, violations, cycle breaks. |
 | [`ctp/dictionary.md`](ctp/dictionary.md) | Data dictionary, generated from [`ctp/columns.yaml`](ctp/columns.yaml). |
-| [`docs/ordinals-review.md`](docs/ordinals-review.md) | **What the eight ordinal columns actually measure** — only two recover as the construct they are named for. |
+| [`docs/ordinals-review.md`](docs/ordinals-review.md) | The eight ordinal columns: level distributions, what separates the levels, and how each is used downstream. |
 | [`causal/ctp_identification_contrast.html`](causal/ctp_identification_contrast.html) | The competing analysis: what changes when the adjustment set changes. Two treatments change sign. |
 | [`docs/LLM-elicited-vs-TabPFN-causal.md`](docs/LLM-elicited-vs-TabPFN-causal.md) | **The two approaches compared.** Changing only the adjustment set flips two treatments' sign. |
 | `causal/provenance/*.json` | Every intermediate result, including the LLM request/response cache. |
@@ -37,19 +39,31 @@ Current state: **17 nodes** (1 latent), **34 edges** with an effect estimate on 
 acyclic, against 141 chronologically permitted pairs. Sparse by construction — absence of an edge means no evidence was found,
 not that no relationship exists.
 
+[![The assembled causal graph: chronology runs left to right, green/red by sign of the effect, dashed where the 95% interval includes zero](docs/ctp_reviewed_dag.svg)](causal/ctp_reviewed_dag.html)
+
+Chronology runs left to right and no edge may run backwards. Green is a positive effect, red
+negative; solid means the 95% interval excludes zero, dashed means it does not, grey means no
+estimate — which is a different claim from an estimate of zero. The dashed box is the one
+latent node. Open
+[`causal/ctp_reviewed_dag.html`](causal/ctp_reviewed_dag.html) to click any edge for its
+provision quote, tested mechanism, backdoor set and estimate.
+
 ---
 
 ## Evidence classes, strongest first
 
-| Class | What it means | Edges |
-|---|---|---|
-| `elicited` | A domain expert stated it, with mechanism and verbatim quote. [`causal/elicited_edges.yaml`](causal/elicited_edges.yaml) | 6 |
-| `statute` | A provision names the input, quoted verbatim from primary source, and cases citing it differ on the variable | 5 |
-| `measurement` | An indicator and the latent quantity it traces | 1 |
-| `reasoned_prior_tested` | Blind causal reasoning that passed a prediction fixed before the data was seen | 11 |
-| `reasoned_prior_path` | An `indirect` verdict naming a mediator. **Weakest — and the count overstates support**, since one edge appearing as a leg in five paths is counted five times | 43 |
+| Class | What it means | Evidence items | Edges where it is the strongest |
+|---|---|---|---|
+| `elicited` | A domain expert stated it, with mechanism and verbatim quote. [`causal/elicited_edges.yaml`](causal/elicited_edges.yaml) | 6 | 6 |
+| `statute` | A provision names the input, quoted verbatim from primary source, and cases citing it differ on the variable | 5 | 3 |
+| `measurement` | An indicator and the latent quantity it traces | 1 | 1 |
+| `reasoned_prior_tested` | Blind causal reasoning that passed a prediction fixed before the data was seen | 10 | 8 |
+| `reasoned_prior_path` | An `indirect` verdict naming a mediator. **Weakest — and the item count overstates support**, since one edge appearing as a leg in several paths is counted once per path | 23 | 16 |
 
-Read the class mix at *edge* level, not item level: 34 edges carry 45 evidence items.
+**34 edges carry 45 evidence items.** The right-hand column is the one to read: an edge with
+both a statute quote and a reasoned prior rests on the statute, and is counted there only.
+Both columns are computed in [`causal/provenance/banded_graph.json`](causal/provenance/banded_graph.json)
+(`edges_by_strongest_class`), not typed in here.
 
 ---
 
@@ -130,17 +144,10 @@ and neither is used.
 
 ## What is known to be unresolved
 
-- **Only two of eight ordinals recover as the construct they are named for.** Three recover
-  as "the type of damages being claimed" rather than injury severity, treatment extent or
-  lost capacity. The names promise more than the codings deliver — see
-  [`docs/ordinals-review.md`](docs/ordinals-review.md).
 - **The statutory leg detects gates, limits and scope; it does not find everything.**
   Five links from 102 provisions read.
 - **`reasoned_prior_path` is the weakest evidence class and carries 16 of 34 edges.** It
   records that a model named a mediator, nothing more.
-- **The instructions given to the ordinal scoring pass were never recorded.** Stage 12
-  recovers what separates the levels, from the codings themselves — which describes the
-  output, not the instructions behind it.
 - **Two instruments block automated retrieval** (`legislation.nsw.gov.au`, `austlii.edu.au`
   — Cloudflare, and AustLII's `robots.txt` names `ClaudeBot`). Statute is read from locally
   saved files, identified by content rather than filename.
