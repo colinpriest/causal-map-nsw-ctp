@@ -7,7 +7,7 @@ Every edge in the output traces to something checkable: a provision quoted verba
 the Act, a reasoned prior that survived a prediction registered before the data was
 consulted, or a domain expert's stated claim. Edges without evidence are not drawn.
 
-![How the graph is built: the evidence hierarchy, and the structural rules that need no evidence](docs/project-infographic.png)
+![How the graph is built: 34 edges by strongest evidence class, the two structural rules that need no evidence, and coverage against the chronologically permitted pairs](docs/project-infographic.svg)
 
 > ### ⚠ Read this before using the graph
 >
@@ -92,6 +92,8 @@ merely repeatable in principle.
 | `stage13_tabpfn_dml` | Competing analysis: DoubleML + TabPFN-3, naive vs DAG adjustment | |
 | `stage14_render_dml_map` | The identification contrast: naive vs DAG adjustment | |
 | `stage15_dag_effects` | Minimal backdoor sets, identifiability refusals, an effect on every edge | |
+| `stage11b_export_dag_svg` | Export the graph as a standalone SVG for Markdown embedding | |
+| `stage16_render_infographic` | The summary infographic, with every figure read from the artefacts | |
 
 Plus `check_calibration.py`, which validates the statutory reader against
 [provisions whose correct reading is known](causal/calibration_provisions.yaml) — including
@@ -116,7 +118,7 @@ may only reach `Non-Economic Loss`, where s 4.11 makes the recorded number itsel
 Both are declared in [`ctp/columns.yaml`](ctp/columns.yaml) and enforced in stage 9.
 
 **Chronology is the strongest constraint.** Six bands from pre-accident to award; no edge
-may run backwards. That forbids 91 of 240 ordered pairs and does more orientation work
+may run backwards. That forbids 131 of 272 ordered pairs and does more orientation work
 than every statistical signal combined. It caught a reasoned prior asserting
 `WPI % → Injury Burden Intensity` at 100% sample agreement — backwards, since injury
 burden is a fact of the crash and WPI is a later assessment of it.
