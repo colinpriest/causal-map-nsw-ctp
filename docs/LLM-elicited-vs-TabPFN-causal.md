@@ -81,6 +81,12 @@ Every treatment was run under **two adjustment sets**:
 - `naive` — every other column. What a practitioner does without a graph.
 - `dag` — the treatment's parents in the assembled graph: the backdoor set.
 
+**`n_rep=5`.** An earlier version of this section reported `n_rep=1` figures. Re-running the
+identical `naive` specification — which conditions on all 19 other columns and therefore
+*cannot* be affected by the graph — moved three estimates by 38–50%. That is cross-fitting
+Monte Carlo noise, and it was the same size as several gaps reported below as findings.
+Every number in this section is now at `n_rep=5`; the run costs about 75 minutes.
+
 ---
 
 ## 3. The result that matters: the adjustment set changes the answer
@@ -90,18 +96,18 @@ not estimation**.
 
 | Treatment | naive ATE | DAG ATE | change |
 |---|---|---|---|
-| `Causation Complexity` | **−0.332** [−0.53, −0.14] | **+0.600** | **sign flip** |
-| `Nature` | −0.176 | +0.265 | **sign flip** |
-| `Psychological Injury Emphasis` | +0.199 | **+0.748** | 3.8× larger |
-| `Legal Procedural Complexity` | +0.253 | +0.663 | 2.6× larger |
-| `Injury Burden Intensity` | +1.972 | +2.797 | 42% larger |
-| `Treatment Burden` | +1.213 | +1.786 | 47% larger |
-| `Work Impact Severity` | +1.236 | +1.518 | 23% larger |
+| `Causation Complexity` | **−0.290** [−0.54, −0.07] | **+0.677** [+0.01, +1.44] | **sign flip** |
+| `Nature` | **−0.202** [−0.38, −0.03] | +0.329 [−0.03, +0.69] | **sign flip** |
+| `Work Impact Severity` | +0.999 [−0.33, **+2.39**] | **+1.324** [+1.00, +1.65] | 33% larger, and 4× tighter |
+| `Psychological Injury Emphasis` | +0.244 [+0.03, +0.44] | **+0.760** [+0.56, +0.97] | 3.1× larger |
+| `Treatment Burden` | +1.060 [+0.44, +1.67] | +1.803 [+1.21, +2.42] | 70% larger |
+| `Injury Burden Intensity` | +1.935 [+1.25, +2.60] | +2.816 [+2.43, +3.20] | 46% larger |
+| `Legal Procedural Complexity` | +0.248 [−0.08, +0.62] | +0.455 [−0.49, +1.41] | 1.8× larger, neither significant |
 
 ### `Causation Complexity` is the clearest case
 
-Naive: **−0.332, 95% CI [−0.525, −0.138]** — significant, and it says contested causation
-*reduces* the award by roughly 28%. DAG-adjusted: **+0.600**.
+Naive: **−0.290, 95% CI [−0.54, −0.07]** — significant, and it says contested causation
+*reduces* the award by roughly 25%. DAG-adjusted: **+0.677**.
 
 The naive estimate is not merely imprecise. It is significant, tight, and pointing the wrong
 way. It conditions on `Non-Economic Loss`, `Future Economic Loss` and `Lump Sum`'s other
@@ -116,11 +122,28 @@ flagged where the asserted direct effect and the marginal association disagree, 
 
 ### Direction of the bias is systematic
 
-Every non-flipping estimate is **larger** under DAG adjustment. Naive adjustment
-conditions on mediators, which removes the indirect part of a total effect and shrinks it
-toward zero. `Psychological Injury Emphasis` goes from +0.199 (not significant) to +0.748
-(significant) — the naive analysis would have concluded that psychological injury does not
-move an award.
+Every non-flipping estimate is **larger** under DAG adjustment — all five of them. Naive
+adjustment conditions on mediators, which removes the indirect part of a total effect and
+shrinks it toward zero. `Psychological Injury Emphasis` goes from +0.244 to +0.760: the
+naive arm recovers under a third of the effect.
+
+### Precision is *not* systematic, and the exception is instructive
+
+`Work Impact Severity` is the clean case for a smaller adjustment set. Naive gives
++0.999 with a CI of [−0.33, +2.39] — nineteen covariates on 540 rows, and the interval
+spans zero. The graph says one covariate suffices, and the estimate becomes
+**+1.324 [+1.00, +1.65]**, four times tighter and clear of zero. Same data, same learner:
+the eighteen covariates the graph did not ask for were buying nothing but variance.
+
+But this does not generalise, and claiming it would be wrong. Only three of ten treatments
+get a tighter interval under DAG adjustment. `Causation Complexity` goes the other way —
+naive [−0.54, −0.07], DAG [+0.01, +1.44], three times *wider*.
+
+That widening is the honest result, not an embarrassment. The narrow naive interval is
+narrow around a number with the wrong sign: precision estimating the wrong estimand. The
+wide DAG interval is what the data actually supports about the effect you asked for. **A
+graph buys unbiasedness; what it does to variance depends on the graph.** An analyst
+choosing an adjustment set by interval width will systematically choose the biased one.
 
 ---
 
@@ -132,8 +155,10 @@ source of a covariate list. **24 effects across three outcomes, 0 refused.**
 **Minimal backdoor sets, by d-separation.** Not parents-of-treatment.
 `Causation Complexity → Lump Sum` needs three covariates
 (`Injury Burden Intensity`, `Pre-existing Condition Salience`,
-`Psychological Injury Emphasis`) where the naive arm used nineteen. On 540 rows that is
-variance and positivity, not tidiness.
+`Psychological Injury Emphasis`) where the naive arm used nineteen. The gain here is
+bias and positivity — sixteen fewer covariates to find overlap on. It is *not* variance:
+this pair's interval widens under the smaller set (§3), and the naive arm's tighter
+interval sits around a sign-wrong estimate.
 
 **Knowing when to adjust for nothing.** Six treatment–outcome pairs are exogenous: the
 graph gives the treatment no parents, so no adjustment is required and the raw contrast IS
@@ -165,7 +190,7 @@ sign-conflicting edges. The decomposition shows both are right: contested causat
 awards *only* by travelling through injury severity and the heads of damage, and holding
 those fixed it slightly reduces them. Total positive, direct negative.
 
-Neither the naive run (−0.332, sign-wrong) nor the DAG-parents run (+0.600, total only)
+Neither the naive run (−0.290, sign-wrong) nor the DAG-parents run (+0.677, total only)
 could have shown that. It requires knowing which variables are mediators, which is
 structure, not estimation.
 
@@ -308,9 +333,9 @@ What can be measured:
 
 | Learner | median CI width | total runtime (naive arm) |
 |---|---|---|
-| LightGBM | **0.437** | 109 s |
-| TabPFN-3 | 0.722 | 671 s |
-| Linear | 1.192 | 14 s |
+| LightGBM | **0.410** | 519 s |
+| TabPFN-3 | 0.636 | 3221 s |
+| Linear | 1.053 | 74 s |
 
 On this dataset LightGBM produced the **narrower** intervals, at one sixth the runtime.
 That reverses the example's ordering — but it is not evidence that LightGBM is more
@@ -318,8 +343,8 @@ accurate. A narrow interval around a biased estimate is the worst of both. With 
 truth, interval width measures confidence, not correctness.
 
 Where the learners genuinely disagree is more informative than which is tightest. On
-`Causation Complexity` under naive adjustment, TabPFN gives −0.332 and LightGBM −0.259
-(both significant, both negative) while **Linear gives +0.353, significant and positive**.
+`Causation Complexity` under naive adjustment, TabPFN gives −0.290 and LightGBM −0.264
+(both significant, both negative) while **Linear gives +0.397, significant and positive**.
 Three reasonable learners, three intervals, two of which exclude the truth as the other
 sees it. When learners disagree in sign, the problem is rarely the learner.
 

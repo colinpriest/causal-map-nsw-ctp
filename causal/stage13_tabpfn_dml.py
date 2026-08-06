@@ -127,14 +127,55 @@ def make_learners(names, device=None):
     return out
 
 
-def dag_parents() -> dict[str, list[str]]:
+def dag_parents() -> tuple[dict[str, list[str]], str]:
+    """Parents from the assembled graph, plus its timestamp.
+
+    The dag arm reads the graph at RUN time, so this output goes stale the moment the graph
+    changes and nothing about the file says so. It happened: a run kept `WPI %` in the
+    adjustment set for `Work Impact Severity` for nine hours after the measurement rule
+    established that WPI cannot be its parent. The graph's generated_at is recorded here so
+    a reader can compare it against banded_graph.json and see.
+    """
     if not GRAPH.exists():
-        return {}
+        return {}, ""
     g = json.loads(GRAPH.read_text(encoding="utf-8"))
     par = {}
     for e in g["edges"]:
         par.setdefault(e["target"], []).append(e["source"])
-    return par
+    # A latent parent has no column, so it would silently vanish from the design matrix and
+    # the run would report a confident interval for an effect nothing had identified. It is
+    # harmless for the one latent here -- Psychological Injury is a pure ancestor of its own
+    # indicator and lies on no backdoor path -- but the failure is invisible when it is not,
+    # so drop such treatments from the dag arm rather than estimating them.
+    # A latent parent has no column, so it vanishes from the design matrix silently and the
+    # run reports a confident interval for whatever is left. That only INVALIDATES the
+    # estimate when the latent is a confounder -- i.e. when it also reaches the outcome by a
+    # route that does not pass through the treatment. A latent that is a pure ancestor of the
+    # treatment opens no backdoor path and is correctly omitted; refusing on "has a latent
+    # parent" alone would discard sound estimates. Psychological Injury is exactly that case:
+    # its only edge is to the indicator it measures.
+    latent = set(g.get("latent", []))
+    adj = {}
+    for e in g["edges"]:
+        adj.setdefault(e["source"], []).append(e["target"])
+
+    def reaches(start, goal, banned):
+        seen, stack = {start}, [start]
+        while stack:
+            u = stack.pop()
+            if u == goal:
+                return True
+            for v in adj.get(u, []):
+                if v not in banned and v not in seen:
+                    seen.add(v)
+                    stack.append(v)
+        return False
+
+    for tgt, srcs in list(par.items()):
+        confounders = [s for s in srcs if s in latent and reaches(s, TARGET, {tgt})]
+        if confounders:
+            par[tgt] = {"unidentified": confounders}
+    return par, g.get("generated_at", "")
 
 
 def run(dml, data, treatment, covars, learners, n_rep):
@@ -198,7 +239,12 @@ def main() -> int:
     names = ["TabPFN"] if args.quick else args.learners.split(",")
     learners = make_learners(names, args.device)
     data, imputed = load()
-    parents = dag_parents()
+    parents, graph_stamp = dag_parents()
+    unident = {k: v["unidentified"] for k, v in parents.items()
+               if isinstance(v, dict)}
+    parents = {k: v for k, v in parents.items() if not isinstance(v, dict)}
+    for k, v in unident.items():
+        print(f"  {k}: dag arm SKIPPED -- latent parent(s) {v} cannot be adjusted for")
 
     # Discrete columns are the only ones DoubleMLAPOS can treat.
     candidates = [c for c in data.columns
@@ -254,6 +300,11 @@ def main() -> int:
                 "so 0.10 is roughly a 10% change in the award."),
         target=TARGET, outcome_transform="log", seed=SEED, n_rep=args.n_rep,
         learners=list(learners), n_rows=int(len(data)),
+        graph_generated_at=graph_stamp,
+        unidentified_dag_arm=unident,
+        staleness_check=("Compare graph_generated_at against generated_at in "
+                         "banded_graph.json. If they differ, the dag arm was computed "
+                         "against an older set of parents and must be re-run."),
         tabpfn_version=(__import__("tabpfn").__version__ if "TabPFN" in learners else None),
         imputation=("median fill plus a per-column missingness indicator, because DoubleML "
                     "needs complete rows and complete-case would leave 149"),
